@@ -1,0 +1,68 @@
+% 使用自定义的文档类 AJbook.cls. 自动载入 xeCJK. 需要额外档案如下:
+% font-setup-open.tex, coverpage.tex, titles-setup.tex, mycommand.sty, myarrows.sty
+% 文档类选项 (key/val 格式):
+% draftmark = true (未定稿, 底部显示日期) 或 false (成品), 默认 false,
+% colors = true (链接带颜色无框) 或 false (黑色无框), 默认 true,
+% coverpage = 封面档档名, 默认为空 (此时不制作封面), 一般是 .tex 档, 若为 *.pdf 的形式则直接引入 PDF 页面.
+% fontsetup = 字体设置档档名,
+% titlesetup = 章节格式设置档名.
+
+% 注意: 如果文中未使用 \cite 和 \index 命令, 则可能报错.
+
+% 需动用 imakeidx + xindy (两份索引), biblatex + biber (书目). 
+% 索引用土法进行中文排序: 如 \index{zhongwen@中文} 等.
+
+\documentclass[
+    draftmark = true,   % 草稿模式下, 每页底部将打印相关版本信息.
+%	traditional = true,
+%	colors = false,
+	coverpage = coverpage.tex,
+%   geometry = a4,    % 版面设置, 目前仅容许 a4, b5, 默认 b5, 其它字串则不作自动设置.
+	fontsetup = font-setup-open.tex,
+	titlesetup = titles-setup.tex
+]{AJbook}
+
+% 封面页用到俄语
+\usepackage{fontspec}
+% 定义一个专门用于显示俄语的字体命令 \textcyr
+\newfontfamily\cyrillicfont{Times New Roman}[Script=Cyrillic]
+\newcommand{\textcyr}[1]{{\cyrillicfont #1}}
+
+% =================新增的索引设置=================
+\usepackage[xindy]{imakeidx}
+\makeindex[intoc, title=名词索引]               % 默认索引
+\makeindex[name=names, intoc, title=人名索引]   % 人名专用索引
+% ==============================================
+
+\usepackage[unicode, bookmarksnumbered]{hyperref}	% 启动超链接和 PDF 文档信息所需
+% 设置 PDF 文件信息
+\hypersetup{
+	pdfauthor = {王荣森(Yuufang)},
+	pdftitle = {微积分学教程},
+	pdfkeywords = {微积分},
+	CJKbookmarks = true}
+
+% 增加表格高度
+\renewcommand*\arraystretch{1.5}
+
+
+\usepackage{myarrows}				% 使用自定义的可伸缩箭头
+\usepackage{mycommand}				% 引入自定义的惯用的命令
+
+
+\begin{document}
+    \frontmatter	% 制作封面和目录.
+	
+    \mainmatter		% 正文开始：逐章引入 TeX 代码
+	\include{text/intro}
+    %\include{text/introduction}
+    %\include{text/chapter1}
+    %\include{text/chapter2}
+	%\include{text/chapter3}
+
+% =================新增的打印索引=================
+    \backmatter
+    \printindex         % 打印名词索引
+    %\printindex[names]  % 打印人名索引
+% ==============================================
+\end{document}

@@ -1,0 +1,58 @@
+\thispagestyle{empty}
+
+% --- 颜色定义 ---
+\definecolor{sp-blue}{HTML}{1E3867}  
+\definecolor{sp-yellow}{HTML}{FFF484} 
+\definecolor{sp-black}{HTML}{2D292D} 
+\definecolor{sp-vintage}{HTML}{EAE3A5}
+\definecolor{sp-yellow-light}{HTML}{FFF7B2} 
+
+\begin{tikzpicture}[remember picture, overlay]
+    % 背景色
+    \fill[sp-yellow] (current page.south west) rectangle (current page.north east);
+
+    % 顶部深蓝色横条
+    \fill[sp-blue] (current page.north west) rectangle ($(current page.north east) + (0, -1.2cm)$);
+
+    % 左下角色块
+    \fill[sp-yellow-light] 
+        (current page.south west) rectangle ($(current page.north west) + (1.5cm, -12cm)$);
+
+    % 左侧竖直的深蓝色竖线
+    \draw[sp-blue, line width=1.2pt] 
+        ($(current page.north west) + (1.5cm, -1.2cm)$) -- ($(current page.south west) + (1.5cm, 0)$);
+
+    % 分割横线 (贯穿左边缘到右边缘，与竖线交叉)
+    \draw[sp-blue, line width=1.2pt] 
+        ($(current page.north west) + (0, -7cm)$) -- ($(current page.north east) + (0, -7cm)$);
+
+   % 左下角色块分割横线 
+    \draw[sp-blue, line width=1.2pt] 
+        ($(current page.north west) + (0, -12cm)$) -- ($(current page.north west) + (1.5cm, -12cm)$);
+    
+    % 顶部横条内容
+    \node[anchor=west, text=sp-vintage, font=\sffamily\large] 
+        at ($(current page.north west) + (1.9cm, -0.6cm)$) 
+        {王荣森的小书库};
+
+    % 作者
+    \node[anchor=south west, text=sp-blue, align=left] 
+        at ($(current page.north west) + (2cm, -6.5cm)$) 
+        {
+            {\fontsize{20}{24}\selectfont\sffamily\bfseries \textcyr{Г. М. Фихтенгольц}} \\[0.2em]
+            {\fontsize{16}{20}\selectfont\fangsong [苏] \ 菲赫金戈尔茨 \quad 著}
+        };
+
+    % 标题
+    \node[anchor=north west, text=sp-blue, align=left] 
+        at ($(current page.north west) + (1.9cm, -7.8cm)$) 
+        {
+            \fontsize{64}{76}\selectfont\heiti 微积分学教程 \\[1em]
+            \fontsize{28}{40}\selectfont\kaishu 卷一：实变量微分学
+        };
+
+    % 右下角重排信息 
+    \node[anchor=south east, text=sp-black, font=\sffamily\LARGE] 
+        at ($(current page.south east) + (-1.5cm, 1.5cm)$) 
+        {\LaTeX{} 重排};
+\end{tikzpicture}

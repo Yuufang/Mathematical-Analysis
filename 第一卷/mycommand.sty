@@ -1,0 +1,109 @@
+% 个人偏好的一些自定义命令
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mycommand}[2026/02/22 My customized math commands]
+
+\newcommand\hmmax{0}    % 默认值为 3，增加字体容量（防止符号过多导致报错）
+\newcommand\bmmax{0}    % 默认值为 4，增加字体容量...
+\RequirePackage{bm}     % 引入粗体数学符号及其他功能软件包
+
+\renewcommand*\arraystretch{1.5} % 增加数组/表格中的行间距
+
+\RequirePackage{euscript}   % 引入 "Euler script" 字体
+
+
+% ==========================================
+% 自定义列表结构
+% ==========================================
+\setdefaultitem{$\diamond$}{}{}{} % 将默认 itemize 列表符号最左侧的默认圆点（$\bullet$）修改为小菱形符号（$\diamond$)
+\renewcommand{\descriptionlabel}[1]{\hspace{\labelsep} $\vartriangleright$\enskip {\heiti #1} } % 将 description 列表的标签改为：三角形 + 黑体文字
+\renewcommand{\paradescriptionlabel}[1]{\normalfont \heiti #1 \enskip}
+
+% ------------------------------------------
+% 允许引用的自定义列表项 (用于公理/性质编号等)
+% ------------------------------------------
+\makeatletter
+\newcommand{\myrefitem}[1]{%
+    \item[#1]% 打印粗体标签
+    \protected@edef\@currentlabel{#1}% 强制更新 \ref 的目标为当前标签内容
+}
+\makeatother
+
+% ==========================================
+% 集合
+% ==========================================
+\newcommand{\N}{\ensuremath{\mathbb{N}}}    % 自然数集
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}}    % 整数环
+\newcommand{\Q}{\ensuremath{\mathbb{Q}}}    % 有理数域
+\newcommand{\R}{\ensuremath{\mathbb{R}}}    % 实数域
+\newcommand{\CC}{\ensuremath{\mathbb{C}}}   % 复数域
+\newcommand{\X}{\ensuremath{\mathcal{X}}}   % 抽象空间/数集 X (花体)
+\newcommand{\Y}{\ensuremath{\mathcal{Y}}}   % 抽象空间/数集 Y (花体)
+\newcommand{\mes}{\operatorname{vol}}       % 体积/测度
+
+
+% ==========================================
+% 符号
+% ==========================================
+\newcommand{\abs}[1]{\ensuremath{\left| #1 \right|}}        % 绝对值 |x|
+\newcommand{\brac}[1]{\ensuremath{\left( #1 \right)}}       % 圆括号 (x)
+\newcommand{\bbrac}[1]{\ensuremath{\left[ #1 \right]}}      % 方括号 [x]
+\newcommand{\bbbrac}[1]{\ensuremath{\left\{ #1 \right\}}}   % 花括号 {x}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}       % 向下取整
+\newcommand{\ceil}[1]{\ensuremath{\left\lceil #1 \right\rceil}} % 向上取整
+
+\renewcommand{\leq}{\leqslant}              % 倾斜的小于等于号
+\renewcommand{\geq}{\geqslant}              % 倾斜的大于等于号
+\renewcommand{\epsilon}{\varepsilon}        % 变体 epsilon
+\renewcommand{\phi}{\varphi}                % 变体 phi
+
+\newcommand{\e}{\ensuremath{\mathrm{e}}}    % 自然底数 e (正体)
+\renewcommand{\i}{\ensuremath{\mathrm{i}}}  % 虚数单位 i (正体) 
+
+
+% ==========================================
+% 代数
+% ==========================================
+\newcommand{\rank}{\operatorname{rank}}     % 矩阵/线性映射的秩
+\newcommand{\adj}{\operatorname{adj}}       % 伴随矩阵
+\newcommand{\Aut}{\operatorname{Aut}}       % 自同构群
+\newcommand{\Hom}{\operatorname{Hom}}       % 同态集合/线性映射空间
+\newcommand{\Isom}{\operatorname{Isom}}     % 同构映射集合
+\newcommand{\Image}{\operatorname{Im}}      % 映射的像
+\newcommand{\Ker}{\operatorname{Ker}}       % 映射的核
+\newcommand{\Coker}{\operatorname{Coker}}   % 映射的余核
+\newcommand{\Spec}{\operatorname{Spec}}     % 环的谱
+\newcommand{\Lie}{\operatorname{Lie}}       % 李代数
+\newcommand{\id}{\ensuremath{\mathrm{id}}}  % 恒等映射 id
+\newcommand{\lrangle}[1]{\ensuremath{\left\langle #1 \right\rangle}} % 生成子空间尖括号 <x>
+
+
+% ==========================================
+% 分析
+% ==========================================
+\renewcommand{\d}{\ensuremath{\,\mathrm{d}}}    % 微分算子 d (正体)
+\newcommand{\sgn}{\operatorname{sgn}}           % 符号函数
+\newcommand{\Res}{\operatorname{Res}}           % 留数
+\newcommand{\odo}[2]{\ensuremath{\frac{\mathrm{d} #1}{\mathrm{d} #2}}}  % 常微分算子 (如 df/dx)
+\newcommand{\pdo}[2]{\ensuremath{\frac{\partial #1}{\partial #2}}}      % 偏微分算子 (如 ∂f/∂x)
+\newcommand{\norme}[1]{\ensuremath{\| #1 \|}}                           % 普通范数
+\newcommand{\normeL}[2]{\ensuremath{\| #2 \|_{L^{#1}}}}                 % L^p 范数
+\newcommand{\normeLs}[3]{\ensuremath{\| #3 \|_{L^{#1}, #2}}}            % 带区域的 L^p 范数
+
+
+% ==========================================
+% 序列
+% ==========================================
+\newcommand{\seq}[2][n]{\ensuremath{#2_1, #2_2, \cdots, #2_{#1}}}   % 展开序列 (\seq{a} 默认生成到 n，\seq[m]{a} 生成到 m)
+\newcommand{\seqset}[2][n]{\ensuremath{\{#2_{#1}\}}}                % 集合/数列形式 (\seqset{a} 默认 {a_n}，\seqset[m]{a} 生成到 m)
+\newcommand{\irange}[2][n]{\ensuremath{#2=1, 2, \cdots, #1}}        % 指标范围从 1 开始 (\irange{i} 默认 i=1,...,n)
+\newcommand{\orange}[2][n]{\ensuremath{#2=0, 1, \cdots, #1}}        % 指标范围从 0 开始 (\orange{i} 默认 i=0,...,n)
+\newcommand{\isum}[2][n]{\ensuremath{\sum_{#2=1}^{#1}}}             % 常用求和 (\isum{i} 默认 i=1 到 n，\nsum[k]{j} 默认 j=1 到 k)
+\newcommand{\osum}[2][n]{\ensuremath{\sum_{#2=0}^{#1}}}             % 常用求和 (\osum{i} 默认 i=0 到 n，\nsum[k]{j} 默认 j=0 到 k)
+
+
+% ==========================================
+% 极限
+% ==========================================
+\newcommand{\limto}[2][\infty]{\ensuremath{\lim\limits_{#2 \to #1}}}       % 通用极限 (\limto{n} 默认趋于 \infty，\limto[a]{x} x 趋于 a)
+\newcommand{\lmsup}[2][\infty]{\ensuremath{\varlimsup\limits_{#2 \to #1}}} % 上极限 (\lmsup{n} 默认趋于 \infty，\lmsup[0]{x} x 趋于 0)
+\newcommand{\lminf}[2][\infty]{\ensuremath{\varliminf\limits_{#2 \to #1}}} % 下极限 (\lminf{n} 默认趋于 \infty，\lminf[0]{y} y 趋于 0)
