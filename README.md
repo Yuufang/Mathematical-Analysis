@@ -20,11 +20,12 @@ xelatex main.tex # 编译三次左右
 若不懂 LaTeX 编译，也可直接下载已经编译好的成品 PDF 文件查看。
 
 ```text
-.
+第一卷
 ├── main.tex                 # 主控文件
 ├── main.pdf                 # 编译好的成品 PDF 文件
 ├── AJbook.cls               # 核心书籍文档类（版面、页眉页脚控制）
 ├── font-setup-open.tex      # 中西文字体配置（基于 xeCJK 与 Fandol 字体）
+├── coverpage.tex            # 封面制作代码
 ├── titles-setup.tex         # 章节标题样式与目录生成规则
 ├── mycommand.sty            # 自定义快捷命令、数学符号与定理环境（这里换上了我常用的）
 ├── myarrows.sty             # 李文威老师定义的可伸缩的 TikZ 交换图箭头
