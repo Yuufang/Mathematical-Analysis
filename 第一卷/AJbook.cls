@@ -385,8 +385,11 @@
     \theoremseparator{\ }                        % 标题后的间距
     \newtheorem{namedtheorem}{定理}               % 环境名设为 namedtheorem
 
+    % --- 恢复正常的带编号样式 ---
+    \theoremstyle{plain}                         % <====== 加上这一行！切回带编号模式
     \theorembodyfont{\songti}                    % 辅助说明环境内容使用宋体
-    \newtheorem{example}{例}                     % 不与定理共享编号
+    \newtheorem{example}{例}                     % 现在的“例”就会有编号 1, 2, 3 了
+
     % --- 插入以下代码来实现无编号注记 ---
     \theoremstyle{nonumberplain}                 % 切换为无编号样式
     \newtheorem{remark}{注记}                    % 定义无编号的注记
