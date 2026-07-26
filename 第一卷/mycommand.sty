@@ -26,6 +26,11 @@
     \item[#1]% 打印粗体标签
     \protected@edef\@currentlabel{#1}% 强制更新 \ref 的目标为当前标签内容
 }
+% 可引用的正文编号：不用列表缩进，后续行恢复到正文左边界。
+\newcommand{\myrefparagraph}[1]{%
+    \par{#1}\quad
+    \protected@edef\@currentlabel{#1}% 强制更新 \ref 的目标为当前标签内容
+}
 \makeatother
 
 % ==========================================
@@ -52,7 +57,9 @@
 \newcommand{\ceil}[1]{\ensuremath{\left\lceil #1 \right\rceil}} % 向上取整
 
 \renewcommand{\leq}{\leqslant}              % 倾斜的小于等于号
+\renewcommand{\le}{\leqslant}               % 倾斜的小于等于号
 \renewcommand{\geq}{\geqslant}              % 倾斜的大于等于号
+\renewcommand{\ge}{\geqslant}               % 倾斜的大于等于号
 \renewcommand{\epsilon}{\varepsilon}        % 变体 epsilon
 \renewcommand{\phi}{\varphi}                % 变体 phi
 
