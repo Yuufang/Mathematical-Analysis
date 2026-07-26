@@ -6,7 +6,7 @@
 任一种量, 按照不同的情况, 有时具有不同的值, 有时仅取固定的值.
 在第一种情形我们称它为\emph{变量}, 在第二种情形称它为\emph{常量}.
 
-但在数学上我们并不考察量所蕴含的物理意义, 仅仅关心表示这量所表示的数字.
+但在数学上我们并不考察量所蕴含的物理意义, 只关心表示这个量的数值.
 这样, 对于我们来说, 变量仅为赋予数值的符号(例如字母 $x$)而已.
 若变量所能取值的集合 $\X = \{ x\}$ 已经确定, 则这变量就当作是已给定了.
 常量可以当作变量的特殊情形来看待, 它相当于 $\X = \{x\}$ 只有一个元素的情形.
@@ -31,8 +31,9 @@
 这里所说的是排列的次序, 与 $x_n$ 和 $x_{n'}$ 的大小无关,
 $x_{n'}$ 可以大于、小于或等于 $x_n$.
 
-这样得到的对象就是数列, 并将序列 \ref{eq:real_seq} 简记成 $\{x_n\}$,
+这样得到的对象就是数列, 并将序列 \eqref{eq:real_seq} 简记成 $\{x_n\}$,
 它的每一个数值都由一个自然数序号标记, 并且这些数值按序号的先后依次排列.
+\footnote{原书沿用“整序变量”这一历史术语. 指定整序变量与指定数列在本质上是同一件事: 都是按照某种确定规则, 使每个自然数 $n$ 对应一个确定的实数 $x_n$. 现代数学教材通常使用“数列”, 本书重排本亦统一采用这一名称.}
 
 中学中常见的变量大多属于这一类型.
 例如, 等差数列
@@ -43,9 +44,20 @@ $$
 $$
     \underset{1}{a}, \underset{2}{aq}, \cdots, \underset{n}{aq^{n-1}}, \cdots
 $$
-都是数列. 再如, 将 $\sqrt{2}$ 的十进制近似值逐位写出:
+都是数列.
+
+在定义圆周长时, 还会考察圆内接正多边形的周长: 从正六边形开始, 每次将边数加倍, 可得到数列
 $$
-    \underset{1}{1.4}, \underset{2}{1.41},\underset{3}{1.414},\underset{3}{1.4142}, \cdots
+P_6,\ P_{12},\ P_{24},\ P_{48},\ \cdots.
+$$
+若圆的半径为 $R$, 则内接正 $m$ 边形的周长为
+$$
+P_m=2mR\sin\frac{\pi}{m}.
+$$
+
+再如, 将 $\sqrt{2}$ 的十进制近似值逐位写出:
+$$
+    \underset{1}{1.4}, \underset{2}{1.41},\underset{3}{1.414},\underset{4}{1.4142}, \cdots
 $$
 同样得到一个数列.
 
@@ -69,7 +81,7 @@ $$
 $$
 \begin{array}{ccccccc}
 \phantom{-}1, & \phantom{-}1, & \phantom{-}1, & \phantom{-}1, & \phantom{-}1, & \phantom{-}1, & \cdots \\
-\phantom{-}1, & -1, & \phantom{-}1 & -1, & \phantom{-}1, & -1, & \cdots \\
+\phantom{-}1, & -1, & \phantom{-}1, & -1, & \phantom{-}1, & -1, & \cdots \\
 \phantom{-}0, & \phantom{-}1, & \phantom{-}0, & \phantom{-}\dfrac{1}{2}, & \phantom{-}0, & \phantom{-}\dfrac{1}{3}, & \cdots
 \end{array}
 $$
@@ -86,7 +98,7 @@ $$
 
 {\kaishu
     若对于任意正数 $\epsilon$, 不论它怎样小, 总存在一个序号 $N$, 使在 $n>N$ 时, 一切 $x_n$ 的值满足不等式
-    \begin{equation} \label{limit_definition1}
+    \begin{equation} \label{eq:sequence_limit_definition}
         \abs{x_n-a}<\epsilon,
     \end{equation}
     则常数 $a$ 称为数列 $\{x_n\}$ 的\emph{极限}.
@@ -105,13 +117,14 @@ $$
 对于这个定义, 重要的是要认识到, 序号 $N$ 一般来说, 并不是一经指定后就永远不变的,
 {\kaishu 它是由我们所选的数 $\epsilon$ 来决定的}.
 为了着重强调这一点, 我们有时不写 $N$ 而写成 $N_{\epsilon}$ 来强调 $N$ 与 $\epsilon$ 之间的关系.
-一般来说, 数 $\epsilon$ 减小时, 与它对应的序数 $N = N_{\epsilon}$, 将会增大: 因为要使 $x_n$ 的值与 $a$ 的接近程度愈大, 我们在数列 $\seqset{x}$ 内所要考察的数值序号便必须愈大.
+需要注意的是, 对给定的 $\epsilon$, 满足条件的 $N$ 并不唯一; 任意更大的序号同样有效.
+通常, 随着 $\epsilon$ 减小, 为保证所需精度而选取的阈值也会增大.
 
 数列 $\seqset{x}$ 的一切数值都等于常量 $a$ 的这情形是例外.
 显然, 这时 $a = \displaystyle \limto{n} x_n$,
-因为这时对于任何 $\epsilon > 0$ , 不等式 \eqref{limit_definition1} 能同时对于 $x_n$ 的一切值都成立.
+因为这时对于任何 $\epsilon > 0$, 不等式 \eqref{eq:sequence_limit_definition} 能同时对于 $x_n$ 的一切值都成立.
 
-在 \emph{\ref{subsec:17}} 中我们知道, 不等式 \eqref{limit_definition1} 相当于下列不等式
+在 \emph{\ref{subsec:17}} 中我们知道, 不等式 \eqref{eq:sequence_limit_definition} 相当于下列不等式
 $$
 -\epsilon < x_n - a < \epsilon
 $$
@@ -154,14 +167,16 @@ a - \epsilon < x_n < a + \epsilon,
 }
 
 若在前面数列极限的定义 [\emph{\ref{subsec:23}}] 内使 $a = 0$,
-则不等式 \eqref{limit_definition1} 成为
+则不等式 \eqref{eq:sequence_limit_definition} 成为
 $$
 \abs{x_n - 0} = \abs{x_n} < \epsilon \quad (n > N_\epsilon).
 $$
 这样, 上面无穷小的定义可以不用术语“极限”而更详细地叙述成:
 {\kaishu
-若数列 $\seqset{x}$ 的绝对值, 自某项起, 成为而且永远保持小于预先指定的任意小数 $\epsilon > 0$, 则它称为无穷小.
+若数列 $\seqset{x}$ 的绝对值, 自某项起, 成为而且永远保持小于预先指定的任意小的正数 $\epsilon$, 则它称为无穷小.
 }
+
+“无穷小”这一历史名称容易引起误解. 除恒等于 $0$ 的平凡情形外, 无穷小数列的某个单独项不能被笼统地称为“很小的量”; 这里描述的是数列的变化过程, 即它的绝对值最终能小于任意预先给定的正数.
 
 有了无穷小, 如果设数列 $\seqset{x}$ 以 $a$ 为极限, 则此变量与其极限的差
 $$
@@ -169,7 +184,8 @@ $$
 $$
 显然将为无穷小.
 
-反之, 若 $\alpha_n$ 是无穷小, 则 $x_n \to a$.
+反之, 若 $\alpha_n=x_n-a$ 是无穷小, 则 $x_n \to a$.
+因此, $x_n\to a$ 的充分必要条件是差 $\alpha_n=x_n-a$ 为无穷小.
 这使我们可以给予“极限”的概念以第二定义:
 {\kaishu
 若常数 $a$ 与 $x_n$ 的差是无穷小量, 则 $a$ 称为数列 $\seqset{x}$ 的极限.
@@ -194,9 +210,9 @@ $$
     它们分别取值为
     $$
     \begin{array}{ccccc}
-    \phantom{-}1, & \phantom{-}\dfrac{1}{2}, & \phantom{-}\dfrac{1}{3} & \phantom{-}\dfrac{1}{4}, & \cdots \\
-    -1, & -\dfrac{1}{2}, & -\dfrac{1}{3} & -\dfrac{1}{4}, & \cdots \\
-    \phantom{-}1, & -\dfrac{1}{2}, & \phantom{-}\dfrac{1}{3} & -\dfrac{1}{4}, & \cdots
+    \phantom{-}1, & \phantom{-}\dfrac{1}{2}, & \phantom{-}\dfrac{1}{3}, & \phantom{-}\dfrac{1}{4}, & \cdots \\
+    -1, & -\dfrac{1}{2}, & -\dfrac{1}{3}, & -\dfrac{1}{4}, & \cdots \\
+    \phantom{-}1, & -\dfrac{1}{2}, & \phantom{-}\dfrac{1}{3}, & -\dfrac{1}{4}, & \cdots
     \end{array}
     $$
     观察到它们的绝对值都等于 $\dfrac{1}{n}$, 因此当 $n>\dfrac{1}{\epsilon}$ 时, 便有
@@ -204,8 +220,8 @@ $$
     \abs{x_n}<\epsilon,\qquad \abs{y_n}<\epsilon,\qquad \abs{z_n}<\epsilon.
     $$
     这样, 我们取 $\dfrac{1}{\epsilon}$ 的整数部分,
-    令 $N_\epsilon = \bbrac{\dfrac{1}{\epsilon}}$
-    \footnote{$\bbrac{p}$ 表示不超过 $p$ 的最大整数, 或简称数 $p$ 的整数部分.},
+    令 $N_\epsilon = \max\left\{1,\floor{\dfrac{1}{\epsilon}}\right\}$
+    \footnote{$\floor{p}$ 表示不超过 $p$ 的最大整数, 或简称数 $p$ 的整数部分.},
     就能证明了这三个数列都是无穷小.
     尽管它们在 $0$ 的同一侧、另一侧或两侧交替出现, 但这都不影响最终极限为 $0$.
 
@@ -222,7 +238,7 @@ $$
     $$
     \abs{x_n}\leq \frac{3}{n}<\epsilon,
     \qquad
-    \text{当 } \ n>\bbrac{\frac{3}{\epsilon}}\text{ 时}.
+    \text{当 } \ n>\max\left\{1,\floor{\frac{3}{\epsilon}}\right\}\text{ 时}.
     $$
     因而 $x_n\to0$.
 
@@ -231,10 +247,10 @@ $$
     $$
     x_n=\frac{1+(-1)^n}{n}.
     $$
-    这里所有奇数项都等于 $0$, 偶数项为 $2/n$.由于
+    这里所有奇数项都等于 $0$, 偶数项为 $2/n$. 由于
     $$
     \abs{x_n}\leq\frac{2}{n}<\epsilon,
-    \qquad\text{当 } \ n>\bbrac{\frac{2}{\epsilon}}\text{ 时},
+    \qquad\text{当 } \ n>\max\left\{1,\floor{\frac{2}{\epsilon}}\right\}\text{ 时},
     $$
     所以 $x_n\to0$.
     数列可以在无穷多个位置恰好取到极限值, 这同样不妨碍极限的存在.
@@ -255,14 +271,18 @@ $$
     $$
     证明 $x_n\to\dfrac{1}{3}$.
 
-    为此直接比较 $x_n$ 与候选极限,当 $n>2$ 时,
+    为此直接比较 $x_n$ 与候选极限. 当 $n>2$ 时,
     $$
     \abs{x_n-\frac{1}{3}}
     =\frac{5n-10}{3(3n^2+2n-4)}
     <\frac{5n}{3(3n^2-4)}
     <\frac{5n}{3\cdot2n^2}<\frac{1}{n}.
     $$
-    故当 $n>N_\epsilon = \bbrac{\dfrac{1}{\epsilon}}$ 时有 $\abs{x_n-\dfrac{1}{3}}<\epsilon$, 从而 $x_n\to\dfrac{1}{3}$.
+    因此取
+    $$
+    N_\epsilon=\max\left\{2,\floor{\frac{1}{\epsilon}}\right\},
+    $$
+    则当 $n>N_\epsilon$ 时既有 $n>2$, 又有 $1/n<\epsilon$, 从而 $\abs{x_n-\dfrac{1}{3}}<\epsilon$, 即 $x_n\to\dfrac{1}{3}$.
 
 \myrefparagraph{5)}\label{ex:nth_root_constant_supplement}
     对 $a>1$, 数列
@@ -272,11 +292,18 @@ $$
     要证 $x_n\to1$.
     若应用绪论中的 Bernoulli 不等式 \eqref{eq:bernoulli_application}, 则有
     $$
-    \abs{x_n-1} = \sqrt[n]{a} - 1 < \frac{a-1}{n} < \epsilon, \quad \text{当} \ n > N_\epsilon = \bbrac{\dfrac{a-1}{\epsilon}}.
+    \abs{x_n-1} = \sqrt[n]{a} - 1 \leq \frac{a-1}{n} < \epsilon,
+    \quad \text{当} \ n > N_\epsilon = \max\left\{1,\floor{\dfrac{a-1}{\epsilon}}\right\}.
     $$
     亦可以直接运用对数
     $$
-    \abs{x_n-1} = \sqrt[n]{a} - 1 < \epsilon \Rightarrow \frac{1}{n} < \log_a(1+\epsilon), \quad \text{当} \ n > N_\epsilon = \bbrac{\dfrac{1}{\log_a(1+\epsilon)}}.
+    \abs{x_n-1} = \sqrt[n]{a} - 1 < \epsilon
+    \quad\Longleftrightarrow\quad
+    \frac{1}{n} < \log_a(1+\epsilon).
+    $$
+    因此也可以取
+    $$
+    N_\epsilon=\max\left\{1,\floor{\frac{1}{\log_a(1+\epsilon)}}\right\}.
     $$
 
     由于所选的方法不同, 我们便得出不同的 $N_\epsilon$ 的表达.
@@ -286,13 +313,13 @@ $$
     $
     而依第二种方法得
     $
-    N_{0.01} = \bbrac{\dfrac{1}{0.004 \ 32 \ \cdots}} = 231.
+    N_{0.01} = \floor{\dfrac{1}{0.004 \ 32 \ \cdots}} = 231.
     $
     注意到
     $
     10^{\frac{1}{231}} = 1.010 \, 017 \, \cdots
     $
-    与 1 的差已大于 \( \varepsilon = 0.01 \)
+    与 $1$ 的差已大于 $\varepsilon = 0.01$,
     所以依第二种方法我们得到的 \( N_{0.01}=231 \) 是一切可能的数值中的最小者,
     也就是说为了满足 $ a = 10, \epsilon = 0.01 $ 的条件, 我们的 $N_{0.01}$ 最小只能到 231.
     这在一般情形也是如此, 因为很容易看出, 当
@@ -306,8 +333,8 @@ $$
 
     注意: 如果只是要证明极限存在,
     那么我们其实并不需要关心 \( N_\varepsilon \) 最小可能的数值.
-    只需保证不等式 (\ref{limit_definition1}) 能成立就好了,
-    至于从哪一项开始, 位置远些的活近些的, 可以不必管它.
+    只需保证不等式 \eqref{eq:sequence_limit_definition} 能成立就好了,
+    至于从哪一项开始, 位置远些或近些, 可以不必管它.
 
 \myrefparagraph{6)}\label{ex:geometric_infinitesimal}
     若 $\abs{q}<1$, 则数列
@@ -317,14 +344,14 @@ $$
     是无穷小.
 
     $q=0$ 时结论显然;
-    若 $0<\abs{q}<1$, 取 $0<\epsilon<1$, 则
+    若 $0<\abs{q}<1$, 证明时只需考虑 $0<\epsilon<1$, 此时
     $$
     \abs{a_n}=\abs{q}^n<\epsilon, \qquad \text{当} \ n>\frac{\ln\epsilon}{\ln\abs{q}} \text{时}.
     $$
     更一般地, 任意常数 $A$ 的数列 $Aq^n$ 也趋于 $0$.
 
 \myrefparagraph{7)}\label{ex:geometric_series_sum}
-    再考察无穷个递减等比数列的和
+    再考察无穷等比级数
     $$
     a+aq+aq^2+\cdots+aq^{n-1}+\cdots,\qquad \abs{q}<1.
     $$
@@ -353,7 +380,7 @@ $$
     $$
     进而
     $$
-    x_n=a+(b-a)\sum_{k=0}^{n-1}\left(-\frac{1}{2}\right)^k.
+    x_n=a+(b-a)\sum_{k=0}^{n-1}\left(-\frac{1}{2}\right)^k\qquad(n\geq1).
     $$
     利用等比级数的求和公式, 得到
     $$
@@ -370,7 +397,7 @@ $$
     a_1+a_2+\cdots+a_n+\cdots
     $$
     的和, 上面这个式子也被称为\emph{无穷级数}\index{wuqiongjishu@无穷级数}.
-    这时称该级数称为\emph{收敛}的.
+    这时称该级数为\emph{收敛级数}.
     例如
     $$
     \frac{1}{1\cdot2}+\frac{1}{2\cdot3}+\frac{1}{3\cdot4}+\cdots
@@ -388,12 +415,12 @@ $$
     $$1+1+1+\cdots.$$
 
 \subsection{关于有极限数列的一些定理}\label{subsec:26}
-设数列 $\seqset{x}$ 有极限 $a$, 那么应当存在不等式 (\ref{eq:limit_inequality}):
+设数列 $\seqset{x}$ 有极限 $a$, 那么由极限定义可知, 对任意 $\epsilon>0$, 从某一项开始都有不等式 \eqref{eq:limit_inequality}:
 $$
 a - \epsilon < x_n < a + \epsilon,
 $$
-也就是说我们的数列在某项之后与极限值应当具有一样的大小关系.
-换句话来说, 若有数 $p<a$（或 $q>a$）,
+这一估计可以用来比较数列的后续各项与任意给定常数的大小.
+若有数 $p<a$（或 $q>a$）,
 都可以选取 $\epsilon<a-p$（或 $\epsilon<q-a$）, 并找到序号 $N$, 使当 $n>N$ 时有
 $$
 x_n>a-\epsilon > p \qquad \text{（或 }\ x_n<a+\epsilon<q\text{）}.
@@ -487,34 +514,11 @@ $\seqset{x}$ 便称为无穷大.}
 $$
 x_n=n,\quad y_n=-n,\quad z_n=(-1)^{n+1}n.
 $$
-它们在取定 $N_E = [E]$ 后都可以使得各自的绝对值大于事先指定的数 $E$.
-
-进一步地可以发现,
-$\seqset{x}$ 在变化过程中始终带正号, $\seqset{y}$ 始终带负号, $\seqset{z}$ 则是正负交替出现.
-
-我们可以将前面两种情况细分:
-{\kaishu 若 $\seqset{x}$ 成为无穷大, 并且(至少在充分大的 $n$ 时)保持着一定的符号(+或−),
-这时按照符号的正或负, 我们说 $\seqset{x}$ 有极限 $+\infty$ 或 $-\infty$, 并写成:
+它们在取定
 $$
-\limto{n} x_n = +\infty, \ x_n \to +\infty \quad \text{或} \quad \limto{n} x_n = -\infty, \ x_n \to -\infty.
-$$}
-在这些情形时, 可以分别用不等式
+N_E=\max\left\{1,\floor{E}\right\}
 $$
-x_n > E \quad \text{或} \quad x_n < -E
-$$
-来代替不等式 $\abs{x_n} > E$, 以作为每种特殊无穷大量的定义式.
-一般的无穷大量则可以统一写成
-$$
-\abs{x_n}\to+\infty.
-$$
-
-因此, 前面例子里的 $\{x_n\}$ 趋向 $+\infty$, $\{y_n\}$ 趋向 $-\infty$.
-至于 $\{z_n\}$, 对于它我们既不能说它趋向 $+\infty$, 也不能说它趋向 $-\infty$,
-仅能说极限不存在或者\emph{发散}.
-
-关于这些“广义的数” $\pm\infty$, 我们在 \emph{\ref{subsec:11}} 已讨论过它.
-它们必须结合上述定义使用, 不能不加条件地当作普通实数进行四则运算.
-按照习惯, 语境明确时常用 $\infty$ 代替 $+\infty$.
+后, 都能使各自的绝对值大于事先指定的数 $E$.
 
 再看一个无穷大量的例子:
 $$
@@ -528,22 +532,57 @@ $$
 $$
 n>\frac{\ln E}{\ln\abs{Q}}.
 $$
-因此取数 $N_E = \bbrac{\dfrac{\ln E}{\ln\abs{Q}}}$ 就证明了我们的命题.
+因此取
+$$
+N_E=\max\left\{1,\floor{\frac{\ln E}{\ln\abs{Q}}}\right\}
+$$
+就证明了我们的命题. 这里取最大值是为了保证当 $0<E<1$ 时, $N_E$ 仍是正整数.
 因此, 当 $\abs{Q}>1$ 时, $Q^n$ 是无穷大量.
 同样, 当 $Q>1$ 时有 $Q^n\to+\infty$;
 当 $Q<-1$ 时, $Q^n$ 的绝对值趋于 $+\infty$, 但它本身没有带符号的无穷极限.
 
+回到最初的三个例子, $\seqset{x}$ 始终带正号, $\seqset{y}$ 始终带负号, $\seqset{z}$ 则正负交替出现.
+前两种情形可以进一步细分:
+{\kaishu 若数列 $\seqset{x}$ 是无穷大量, 并且从某项开始保持一定的符号(+或−),
+则按照符号的正或负, 我们说 $\seqset{x}$ 有极限 $+\infty$ 或 $-\infty$, 并写成:
+$$
+\limto{n}x_n=+\infty,\quad x_n\to+\infty
+\qquad\text{或}\qquad
+\limto{n}x_n=-\infty,\quad x_n\to-\infty.
+$$}
+在这两种情形中, 可以分别用不等式
+$$
+x_n>E \quad\text{或}\quad x_n<-E
+$$
+来代替 $\abs{x_n}>E$, 作为带确定符号的无穷极限的定义.
+一般的无穷大量则统一写成
+$$
+\abs{x_n}\to+\infty.
+$$
+
+因此, 前面例子里的 $\{x_n\}$ 趋向 $+\infty$, $\{y_n\}$ 趋向 $-\infty$.
+至于 $\{z_n\}$, 它没有有限极限, 也不趋向 $+\infty$ 或 $-\infty$;
+但由于 $\abs{z_n}\to+\infty$, 它仍是一般意义下的无穷大量.
+
+关于这些“广义的数” $\pm\infty$, 我们在 \emph{\ref{subsec:11}} 已讨论过它们.
+它们必须结合上述定义使用, 不能不加条件地当作普通实数进行四则运算.
+按照习惯, 语境明确时常用 $\infty$ 代替 $+\infty$.
+
+引入无穷极限并不会破坏命题 \ref{prop:limit_uniqueness} 中建立的极限唯一性.
+事实上, 有有限极限的数列必定有界, 因而不可能同时趋于无穷.
+
 最后, 讲一讲无穷大量与无穷小量间的简单关系:
 
 {\kaishu
-    若 $\seqset{x}$ 是无穷大, 则它的倒数 $\alpha_n = \dfrac{1}{x_n}$ 将成无穷小.
+若 $\seqset{x}$ 是无穷大量, 则从某项开始必有 $x_n\neq0$.
+从这一项起令 $\alpha_n=\dfrac{1}{x_n}$, 并任意补定有限个初始项, 所得数列 $\seqset{\alpha}$ 是无穷小.
 }
 \begin{proof}
-    取任意数 $\epsilon > 0$. 因 $x_n \to \infty$, 故对于数 $E = \dfrac{1}{\epsilon}$ 可以求得序号 $N$, 使
+取任意数 $\epsilon>0$. 因 $\abs{x_n}\to+\infty$, 故对于数 $E=\dfrac{1}{\epsilon}$ 可以求得序号 $N$, 使
 $$
-\abs{x_n} > \frac{1}{\epsilon}, \quad \text{仅需} \ n > N.
+\abs{x_n}>\frac{1}{\epsilon}\qquad(n>N).
 $$
-于是对于这种 $n$, 显然将有
+于是对于这样的 $n$, 有
 $$
 \abs{\alpha_n} = \abs{\frac{1}{x_n}} < \epsilon,
 $$
@@ -553,13 +592,11 @@ $$
 仿此, 可以证明逆命题:
 
 {\kaishu
-    若变量 $\alpha_n$ (不等于零) 是无穷小, 则其倒数 $x_n = \dfrac{1}{\alpha_n}$ 将成无穷大.
+若无穷小数列 $\seqset{\alpha}$ 的各项均不为 $0$, 则其倒数 $x_n=\dfrac{1}{\alpha_n}$ 是无穷大量.
 }
 
 \begin{remark}
-引入无穷极限并不会破坏命题 \ref{prop:limit_uniqueness} 中建立的极限的唯一性.
-由命题 \ref{prop:convergent_sequence_bounded}, 有有限极限的数列必定有界;
-与之相反的, 我们可以建立无界的概念:
+下面进一步比较无穷大量与无界数列.
 
 若不存在常数 $M>0$, 使 $\abs{x_n}\leq M$ 对一切自然数 $n$ 成立,
 就称数列 $\seqset{x}$ \emph{无界}\index{wujieshulie@无界数列}.
