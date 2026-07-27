@@ -14,8 +14,12 @@
 在建立变量 $x$ 的极限概念时, 仅知道这变量所取值的数集 $\X$ 还是不够的,
 必须再知道它所取的到底是些怎样的数值(在它们中间, 可能有重复的), 以及它取这些值的次序.
 一般变量可以按十分复杂的方式变动; 对它的极限作完整讨论, 需要待函数、聚点等概念建立后再进行.
-本章先考察最简单而且最重要的一类情形: 变量的数值由自然数编号, 并按编号的次序逐一出现.
-这就需要我们建立\emph{数列}\index{shulie@数列}的概念.
+本章先考察最简单而且最重要的一类情形 —— \emph{数列}\index{shulie@数列}
+\footnote{原书沿用“整序变量”这一历史术语.
+指定整序变量与指定数列在本质上是同一件事:
+都是按照某种确定规则, 使每个自然数 $n$ 对应一个确定的实数 $x_n$.
+现代数学教材通常使用“数列”, 本书重排本亦统一采用这一名称.}
+.
 
 设有自然数的序列
 \begin{equation}
@@ -24,7 +28,7 @@
 在该序列中, 数字严格按从小到大的顺序排列着; 若 $n' > n$, 则 $n'$ 位于 $n$ 的后面.
 若在序列 \eqref{eq:natural_seq} 内, 按照某种确定的规律, 将每一个自然数 $n$ 对应到一个实数 $x_n$, 我们便得到了数列:
 \begin{equation}
-    \seq{x} \cdots, x_{n'}, \cdots \label{eq:real_seq}
+    \seq{x}, \cdots, x_{n'}, \cdots \label{eq:real_seq}
 \end{equation}
 数项 $x_n$ 依序号增大的次序排列着,
 也就是说, 当 $n' > n$ 时, $x_{n'}$ 位于 $x_n$ 的后面.
@@ -33,7 +37,6 @@ $x_{n'}$ 可以大于、小于或等于 $x_n$.
 
 这样得到的对象就是数列, 并将序列 \eqref{eq:real_seq} 简记成 $\{x_n\}$,
 它的每一个数值都由一个自然数序号标记, 并且这些数值按序号的先后依次排列.
-\footnote{原书沿用“整序变量”这一历史术语. 指定整序变量与指定数列在本质上是同一件事: 都是按照某种确定规则, 使每个自然数 $n$ 对应一个确定的实数 $x_n$. 现代数学教材通常使用“数列”, 本书重排本亦统一采用这一名称.}
 
 中学中常见的变量大多属于这一类型.
 例如, 等差数列
@@ -45,15 +48,6 @@ $$
     \underset{1}{a}, \underset{2}{aq}, \cdots, \underset{n}{aq^{n-1}}, \cdots
 $$
 都是数列.
-
-在定义圆周长时, 还会考察圆内接正多边形的周长: 从正六边形开始, 每次将边数加倍, 可得到数列
-$$
-P_6,\ P_{12},\ P_{24},\ P_{48},\ \cdots.
-$$
-若圆的半径为 $R$, 则内接正 $m$ 边形的周长为
-$$
-P_m=2mR\sin\frac{\pi}{m}.
-$$
 
 再如, 将 $\sqrt{2}$ 的十进制近似值逐位写出:
 $$
@@ -94,7 +88,7 @@ $$
 单独抽离出来的 $\bbbrac{1, \dfrac{1}{2}, \dfrac{1}{3}, \cdots}$ 总会有趋于 $0$ 的趋势,
 再加回 $0$ 项, 直觉告诉我们这个数列的极限应当也是 $0$.
 
-然而这种依靠直觉判断的数列极限显然不合乎严谨, 所以我们应当给出数列极限严格的定义:
+然而这种依靠直觉判断的极限显然不严谨, 所以我们应当给出极限严格的定义.
 
 {\kaishu
     若对于任意正数 $\epsilon$, 不论它怎样小, 总存在一个序号 $N$, 使在 $n>N$ 时, 一切 $x_n$ 的值满足不等式
@@ -176,7 +170,9 @@ $$
 若数列 $\seqset{x}$ 的绝对值, 自某项起, 成为而且永远保持小于预先指定的任意小的正数 $\epsilon$, 则它称为无穷小.
 }
 
-“无穷小”这一历史名称容易引起误解. 除恒等于 $0$ 的平凡情形外, 无穷小数列的某个单独项不能被笼统地称为“很小的量”; 这里描述的是数列的变化过程, 即它的绝对值最终能小于任意预先给定的正数.
+“无穷小”这一历史名称容易引起误解.
+除恒等于 $0$ 的平凡情形外, 无穷小数列的某个单独项不能被笼统地称为“很小的量”;
+这里描述的是数列的变化过程, 即它的绝对值最终能小于任意预先给定的正数 $\epsilon$.
 
 有了无穷小, 如果设数列 $\seqset{x}$ 以 $a$ 为极限, 则此变量与其极限的差
 $$
@@ -210,20 +206,26 @@ $$
     它们分别取值为
     $$
     \begin{array}{ccccc}
-    \phantom{-}1, & \phantom{-}\dfrac{1}{2}, & \phantom{-}\dfrac{1}{3}, & \phantom{-}\dfrac{1}{4}, & \cdots \\
-    -1, & -\dfrac{1}{2}, & -\dfrac{1}{3}, & -\dfrac{1}{4}, & \cdots \\
+    \phantom{-}1, & \phantom{-}\dfrac{1}{2}, & \phantom{-}\dfrac{1}{3}, & \phantom{-}\dfrac{1}{4}, & \cdots \\[0.8em]
+    -1, & -\dfrac{1}{2}, & -\dfrac{1}{3}, & -\dfrac{1}{4}, & \cdots \\[0.8em]
     \phantom{-}1, & -\dfrac{1}{2}, & \phantom{-}\dfrac{1}{3}, & -\dfrac{1}{4}, & \cdots
     \end{array}
     $$
+    要证明这三个数列都是无穷小.
+
     观察到它们的绝对值都等于 $\dfrac{1}{n}$, 因此当 $n>\dfrac{1}{\epsilon}$ 时, 便有
     $$
     \abs{x_n}<\epsilon,\qquad \abs{y_n}<\epsilon,\qquad \abs{z_n}<\epsilon.
     $$
     这样, 我们取 $\dfrac{1}{\epsilon}$ 的整数部分,
     令 $N_\epsilon = \max\left\{1,\floor{\dfrac{1}{\epsilon}}\right\}$
-    \footnote{$\floor{p}$ 表示不超过 $p$ 的最大整数, 或简称数 $p$ 的整数部分.},
-    就能证明了这三个数列都是无穷小.
-    尽管它们在 $0$ 的同一侧、另一侧或两侧交替出现, 但这都不影响最终极限为 $0$.
+    \footnote{$\max\{\cdots\}$ 指在所给数中选择最大的那个数,
+    但实际情况是 $\epsilon$ 常常是个非常小的数, $\dfrac{1}{\epsilon}$ 将会远远大于 1,
+    所以也可以将 $\max$ 省略只保留 $N_\epsilon = \floor{\dfrac{1}{\epsilon}}$; $\floor{p}$ 表示不超过 $p$ 的最大整数, 或简称数 $p$ 的整数部分.},
+    就完成了证明.
+
+    注意到第一个变量常大于其极限 0, 第二个常小于 0, 第三个则交迭地忽大于忽小于 0,
+    尽管如此, 这都不影响其最终极限为 $0$.
 
 \myrefparagraph{2)}\label{ex:oscillatory_zero_limit}
     若设
@@ -255,7 +257,7 @@ $$
     所以 $x_n\to0$.
     数列可以在无穷多个位置恰好取到极限值, 这同样不妨碍极限的存在.
 
-    \ref{ex:infinitesimal_basic_sequences}-\ref{ex:zero_odd_terms_limit}
+    \ref{ex:infinitesimal_basic_sequences}、 \ref{ex:oscillatory_zero_limit}、 \ref{ex:zero_odd_terms_limit}
     这些简单的例子是很有趣的, 它们体现了数列在趋于极限的方式上的各种可能性.
     无论是变量的值是否均在极限值的一方;
     还是变量是否每一步都向其极限接近;
@@ -271,7 +273,12 @@ $$
     $$
     证明 $x_n\to\dfrac{1}{3}$.
 
-    为此直接比较 $x_n$ 与候选极限. 当 $n>2$ 时,
+    为此直接比较 $x_n$ 与候选极限, 当 $n>2$ 时,
+    $$
+    x_n-\frac{1}{3}
+    =\frac{-5n+10}{3(3n^2+2n-4)}
+    $$
+    估计其绝对值, 当 $n>2$ 时有
     $$
     \abs{x_n-\frac{1}{3}}
     =\frac{5n-10}{3(3n^2+2n-4)}
@@ -282,7 +289,7 @@ $$
     $$
     N_\epsilon=\max\left\{2,\floor{\frac{1}{\epsilon}}\right\},
     $$
-    则当 $n>N_\epsilon$ 时既有 $n>2$, 又有 $1/n<\epsilon$, 从而 $\abs{x_n-\dfrac{1}{3}}<\epsilon$, 即 $x_n\to\dfrac{1}{3}$.
+    这式的结果便小于 $\epsilon$, 这就证明了 $x_n\to\dfrac{1}{3}$.
 
 \myrefparagraph{5)}\label{ex:nth_root_constant_supplement}
     对 $a>1$, 数列
@@ -390,7 +397,7 @@ $$
 \myrefparagraph{9)}\label{ex:series_partial_sums}
     与等比数列相似, 给定一般数列 $\{a_n\}$, 将它们依次相加, 做成“部分和”
     $$
-    A_1 = a_1, \ A_2 = a_1+a_2,\ \cdots,\ A_n=a_1+a_2+\cdots+a_n.
+    A_1 = a_1, \ A_2 = a_1+a_2,\ \cdots,\ A_n=a_1+a_2+\cdots+a_n,\ \cdots
     $$
     若 $A_n\to A$, 就把 $A$ 定义为
     $$
@@ -403,6 +410,7 @@ $$
     \frac{1}{1\cdot2}+\frac{1}{2\cdot3}+\frac{1}{3\cdot4}+\cdots
     $$
     的第 $n$ 个部分和为
+    \footnote{$\displaystyle \sum_{k=1}^n a_k$ 是对求和式 $a_1 + a_2 + \cdots + a_n$ 的简写.}
     $$
     A_n=\sum_{k=1}^n\frac{1}{k(k+1)}
     =\sum_{k=1}^n\left(\frac{1}{k}-\frac{1}{k+1}\right)
@@ -410,9 +418,11 @@ $$
     $$
     因而该级数的和为 $1$.
 
+    \enlargethispage{0.5\baselineskip}
     相反, 如果级数没有有限和, 这时我们就说这个级数\emph{发散}.
     例如
-    $$1+1+1+\cdots.$$
+    $$1+1+1+\cdots$$
+    就是这样的级数.
 
 \subsection{关于有极限数列的一些定理}\label{subsec:26}
 设数列 $\seqset{x}$ 有极限 $a$, 那么由极限定义可知, 对任意 $\epsilon>0$, 从某一项开始都有不等式 \eqref{eq:limit_inequality}:
@@ -440,27 +450,34 @@ $$}
 $$
 x_n>0 \qquad \text{（或 }\ x_n<0\text{）}.
 $$}
-这被称为收敛数列的\emph{保号性}\index{baohaoxing@保号性}.
-它是命题 \emph{\ref{prop:eventual_order_from_limit}} 在 $p=0$（或 $q=0$）时的直接推论.
 
+这被称为收敛数列的\emph{保号性}\index{baohaoxing@保号性}.
+它是命题 \ref{prop:eventual_order_from_limit} 在 $p=0$（或 $q=0$）时的直接推论.
 更为一般的结果是:
 \myrefparagraph{3\textdegree}\label{prop:convergent_sequence_away_from_zero}
 {\kaishu 若 $x_n\to a$, 且 $a\neq0$, 则存在正数 $r$ 和自然数 $N$, 使当 $n>N$ 时,
 $$
 \abs{x_n}>r>0.
 $$}
-事实上, 当 $a>0$ 时, 可以任取 $0<r<a$, 再应用命题 \emph{\ref{prop:eventual_order_from_limit}}; 当 $a<0$ 时, 可以任取 $a<-r<0$. 因此, 一个趋于非零极限的数列, 从某一项开始总与 $0$ 保持正的距离.
+
+事实上, 当 $a>0 \ (<0)$ 时, 可以取
+$$0<p<a \ (a<q<0),$$
+再假定 $r=p\ (r=\abs{q})$,
+应用命题 \ref{prop:eventual_order_from_limit} 即可.
 
 \myrefparagraph{4\textdegree}\label{prop:convergent_sequence_bounded}
 {\kaishu 若数列 $\seqset{x}$ 有有限极限 $a$, 则它必为有界数列, 即存在常数 $M>0$, 使
 $$
 \abs{x_n}\leq M \qquad (n=1,2,\cdots).
 $$}
-取 $M'>\abs{a}$. 由命题 \emph{\ref{prop:eventual_order_from_limit}}, 存在 $N$, 使当 $n>N$ 时,
+
+\enlargethispage{0.5\baselineskip}
+取 $M'>\abs{a}$. 由命题 \ref{prop:eventual_order_from_limit}, 存在 $N$, 使当 $n>N$ 时,
 $$
 -M'<x_n<M',\quad\text{即}\quad \abs{x_n}<M'.
 $$
-再令
+这不等式只可能对于数列的前 $N$ 项(或它们之中的某几项)不满足.
+因此只需再令
 $$
 M=\max\bbbrac{\abs{x_1},\abs{x_2},\ldots,\abs{x_N},M'},
 $$
@@ -475,14 +492,14 @@ $$
 若已知这组不等式, 取 $M=\max\bbbrac{\abs{k},\abs{g}}$, 便有 $\abs{x_n}\leq M$; 反过来, 由 $\abs{x_n}\leq M$ 可得 $-M\leq x_n\leq M$.
 
 \myrefparagraph{II.}\label{note:bounded_not_necessarily_convergent}
-命题 \emph{\ref{prop:convergent_sequence_bounded}} 的逆命题不成立: 有界数列未必收敛. 例如
+命题 \ref{prop:convergent_sequence_bounded} 的逆命题不成立: 有界数列未必收敛. 例如
 $$
 x_n=(-1)^{n+1}
 $$
 恒有 $\abs{x_n}=1$, 但它在 $1$ 与 $-1$ 之间交替取值, 没有极限.
 \end{remark}
 
-最后可以根据命题 \emph{\ref{prop:eventual_order_from_limit}} 证明极限的\emph{唯一性}.
+最后可以根据命题 \ref{prop:eventual_order_from_limit} 证明极限的\emph{唯一性}.
 \myrefparagraph{5\textdegree}\label{prop:limit_uniqueness}
 {\kaishu 数列的极限若存在, 则必定唯一\index{jixiandeweiyixing@极限的唯一性};
 也就是说, 一个数列不能同时趋于两个相异的极限. }
@@ -491,7 +508,7 @@ $$
 $$
 a<r<b.
 $$
-由命题 \emph{\ref{prop:eventual_order_from_limit}}, 存在 $N'$, 使当 $n>N'$ 时有 $x_n<r$; 又存在 $N''$, 使当 $n>N''$ 时有 $x_n>r$. 于是当
+由命题 \ref{prop:eventual_order_from_limit}, 存在 $N'$, 使当 $n>N'$ 时有 $x_n<r$; 又存在 $N''$, 使当 $n>N''$ 时有 $x_n>r$. 于是当
 $$
 n>\max\bbbrac{N',N''}
 $$
@@ -507,6 +524,7 @@ $$
 \abs{x_n} > E \quad (\text{当} \ n > N_E \ \text{时}),
 $$
 $\seqset{x}$ 便称为无穷大.}
+
 如同无穷小的情形, 所谓“无穷大”, 说的是数列变化的过程, 而不是某一项的数值,
 无穷大量中任一个别数值都不能当作“大量”来看待.
 
@@ -515,34 +533,14 @@ $$
 x_n=n,\quad y_n=-n,\quad z_n=(-1)^{n+1}n.
 $$
 它们在取定
-$$
-N_E=\max\left\{1,\floor{E}\right\}
-$$
+$
+N_E=\floor{E}
+$
 后, 都能使各自的绝对值大于事先指定的数 $E$.
 
-再看一个无穷大量的例子:
-$$
-x_n=Q^n,\qquad \abs{Q}>1.
-$$
-任给 $E>0$, 要使 $\abs{x_n}=\abs{Q}^n>E$, 只需
-$$
-n\ln\abs{Q}>\ln E,
-$$
-也就是
-$$
-n>\frac{\ln E}{\ln\abs{Q}}.
-$$
-因此取
-$$
-N_E=\max\left\{1,\floor{\frac{\ln E}{\ln\abs{Q}}}\right\}
-$$
-就证明了我们的命题. 这里取最大值是为了保证当 $0<E<1$ 时, $N_E$ 仍是正整数.
-因此, 当 $\abs{Q}>1$ 时, $Q^n$ 是无穷大量.
-同样, 当 $Q>1$ 时有 $Q^n\to+\infty$;
-当 $Q<-1$ 时, $Q^n$ 的绝对值趋于 $+\infty$, 但它本身没有带符号的无穷极限.
-
-回到最初的三个例子, $\seqset{x}$ 始终带正号, $\seqset{y}$ 始终带负号, $\seqset{z}$ 则正负交替出现.
-前两种情形可以进一步细分:
+进一步地可以发现, $\seqset{x}$ 在变化过程中始终带正号,
+$\seqset{y}$ 始终带负号, $\seqset{z}$ 则是正负交替出现.
+前两种情形可以进一步说明:
 {\kaishu 若数列 $\seqset{x}$ 是无穷大量, 并且从某项开始保持一定的符号(+或−),
 则按照符号的正或负, 我们说 $\seqset{x}$ 有极限 $+\infty$ 或 $-\infty$, 并写成:
 $$
@@ -564,12 +562,27 @@ $$
 至于 $\{z_n\}$, 它没有有限极限, 也不趋向 $+\infty$ 或 $-\infty$;
 但由于 $\abs{z_n}\to+\infty$, 它仍是一般意义下的无穷大量.
 
-关于这些“广义的数” $\pm\infty$, 我们在 \emph{\ref{subsec:11}} 已讨论过它们.
+关于这些“广义的数” $\pm\infty$, 我们在 \emph{\ref{subsec:11}} 已讨论过,
 它们必须结合上述定义使用, 不能不加条件地当作普通实数进行四则运算.
 按照习惯, 语境明确时常用 $\infty$ 代替 $+\infty$.
 
-引入无穷极限并不会破坏命题 \ref{prop:limit_uniqueness} 中建立的极限唯一性.
-事实上, 有有限极限的数列必定有界, 因而不可能同时趋于无穷.
+再看一个无穷大量的例子:
+$$
+x_n=Q^n,\qquad \abs{Q}>1.
+$$
+任给 $E>0$, 要使 $\abs{x_n}=\abs{Q}^n>E$, 只需
+$$
+n\ln\abs{Q}>\ln E, \quad \text{即} \ n>\frac{\ln E}{\ln\abs{Q}}.
+$$
+因此取
+$$
+N_E=\max\left\{1,\floor{\frac{\ln E}{\ln\abs{Q}}}\right\}
+$$
+就证明了我们的命题
+\footnote{这里取最大值是为了保证当 $0<E<1$ 时, $N_E$ 仍是正整数.}.
+因此, 当 $\abs{Q}>1$ 时, $Q^n$ 是无穷大量.
+同样, 当 $Q>1$ 时有 $Q^n\to+\infty$;
+当 $Q<-1$ 时, $Q^n$ 的绝对值趋于 $+\infty$, 但它本身没有带符号的无穷极限.
 
 最后, 讲一讲无穷大量与无穷小量间的简单关系:
 
@@ -596,7 +609,9 @@ $$
 }
 
 \begin{remark}
-下面进一步比较无穷大量与无界数列.
+引入无穷极限并不会破坏命题 \ref{prop:limit_uniqueness} 中建立的极限的唯一性.
+由命题 \ref{prop:convergent_sequence_bounded}, 有有限极限的数列必定有界;
+与之相反的, 我们可以建立无界的概念:
 
 若不存在常数 $M>0$, 使 $\abs{x_n}\leq M$ 对一切自然数 $n$ 成立,
 就称数列 $\seqset{x}$ \emph{无界}\index{wujieshulie@无界数列}.

@@ -3,6 +3,7 @@
 \ProvidesFile{titles-setup.tex}[2018/03/04]
 
 \RequirePackage[calcwidth, nobottomtitles, explicit, newparttoc, indentafter]{titlesec}      % 标题格式: explicit 选项导致须在 titleformat 的 before-code 中加 #1. 选项 newparttoc 用来将各部分加入目录. indentafter: 首行一律缩进
+\renewcommand{\bottomtitlespace}{2\baselineskip}
 \RequirePackage{titletoc}                 % 目录格式
 
 % 目录部分: 章名除附录外仍用中文标号, 黑体显示. 以参数是否为大写拉丁字母来判定是否在附录 (烂招)

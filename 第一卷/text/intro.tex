@@ -41,20 +41,20 @@
 
 有理数域的序得自“大于”($>$)的概念, 与之有关的是第一组性质:
 {\kaishu
-\begin{itemize}
-    \myrefitem{I $1^\circ$}\label{ax:rational_order_1}
+    \myrefparagraph{I $1^\circ$}\label{ax:rational_order_1}
     每一对数 $a$ 与 $b$ 之间必有且仅有下列关系之一:
     $$
     a = b, \quad a > b, \quad a < b;
     $$
-    \myrefitem{I $2^\circ$}\label{ax:rational_order_2}
+
+    \myrefparagraph{I $2^\circ$}\label{ax:rational_order_2}
     由 $a > b$ 及 $b > c$ 可推得 $a > c$ ($>$ 的传递性);
-    \myrefitem{I $3^\circ$}\label{ax:rational_order_3}
+
+    \myrefparagraph{I $3^\circ$}\label{ax:rational_order_3}
     若 $a > b$, 则必能求得一数 $c$, 使
     $$a > c, \quad \text{且} \quad c > b
     \ \footnote{在这条件下也说成: 数 $c$ 位于数 $a$ 与 $b$ 之间. 显然, 这样的数有无限个之多.}
     \ \text{(\emph{稠密性}\index{youlishudechoumixing@有理数的稠密性})}.$$
-\end{itemize}
 }
 
 “小于”($<$)的概念则是作为“大于”的派生而引入.
@@ -68,28 +68,24 @@
 对于每一对数 $a$ 及 $b$, 存在着一个唯一的数,
 被称为 $a$ 与 $b$ 的\emph{和}\index{youlishudehe@有理数的和} (记成 $a + b$).
 这概念具有下列的性质:
+
 {\kaishu
-\begin{itemize}
-    \myrefitem{II $1^\circ$}\label{ax:rational_add_1}
+    \myrefparagraph{II $1^\circ$}\label{ax:rational_add_1}
     $a + b = b + a$ (加法的交换律);
-    \myrefitem{II $2^\circ$}\label{ax:rational_add_2}
+
+    \myrefparagraph{II $2^\circ$}\label{ax:rational_add_2}
     $\brac{a + b} + c = a + \brac{b + c}$ (加法的结合律).
-\end{itemize}
 }
 
 “$0$” 这个数比较特殊, 它具有下列特性:
-{\kaishu
-\begin{itemize}
-    \myrefitem{II $3^\circ$}\label{ax:rational_add_3} $a + 0 = a$;
-\end{itemize}
-}
 
+{\kaishu
+    \myrefparagraph{II $3^\circ$}\label{ax:rational_add_3} $a + 0 = a$;
+}\\
 此外,
 {\kaishu
-\begin{itemize}
-    \myrefitem{II $4^\circ$}\label{ax:rational_add_4}
+    \myrefparagraph{II $4^\circ$}\label{ax:rational_add_4}
     对每一数 $a$ 存在着与它相反的数 $-a$, 使 $a + \brac{-a} = 0$.
-\end{itemize}
 }
 
 在这些性质的基础上, 首先可以解决加法的逆运算即\emph{减法}的问题.
@@ -98,7 +94,7 @@
 的数 $c$, 为数 $a$ 及 $b$ 的\emph{差}\index{youlishudecha@有理数的差}.
 伴随而来的问题就是: 这样的数是否存在? 如果存在, 是否唯一?
 
-\begin{proof}
+为说明这一点, 我们
     设 $c = a + \brac{-b}$, 则根据 [\ref{ax:rational_add_2}, \ref{ax:rational_add_1}, \ref{ax:rational_add_4}, \ref{ax:rational_add_3}], 有
     $$
     c + b = \bbrac{a + \brac{-b}} + b = a + \bbrac{\brac{-b} + b} = a + \bbrac{b + \brac{-b}} = a + 0 = a.
@@ -114,8 +110,7 @@
     结果得 $c' = a + \brac{-b} = c$.
     这样就证明了这个数的唯一性.
 
-    于是, 我们证明了数 $a$ 及 $b$ 的差的存在及唯一性, 可以把它记成 $a - b$.
-\end{proof}
+    这样, 我们就证明了数 $a$ 及 $b$ 的差的存在及唯一性, 可以把它记成 $a - b$.
 
 由差的唯一性可以推得一系列的推论.
 第一, 由 \ref{ax:rational_add_3} 推得 $0 = a - a$, 因而得出结论:
@@ -136,9 +131,7 @@ $$
 
 最后, 再引进联系 $>$ 与加号的一个性质:
 {\kaishu
-\begin{itemize}
-    \myrefitem{II $5^\circ$}\label{ax:rational_add_5} 由 $a > b$ 可推得 $a + c > b + c$.
-\end{itemize}
+    \myrefparagraph{II $5^\circ$}\label{ax:rational_add_5} 由 $a > b$ 可推得 $a + c > b + c$.
 }
 
 它使我们得以在不等式的两边各加上一个等量, 用它又可证明两不等式
@@ -156,7 +149,7 @@ $a - b = a + \brac{-b} = \brac{-b} + a = \brac{-b} + \bbrac{-\brac{-a}} = \brac{
 $$
 \abs{a} = \abs{-a}.
 $$
-规定, 零的绝对值就定为零: $\abs{0} = 0$.
+我们规定, 零的绝对值就定为零: $\abs{0} = 0$.
 
 根据性质 \ref{ax:rational_add_5}, 由 $a > b$ 可推得 $a + c > b + c$;
 仿此, 由 $c > d$ 可推得 $c + b > d + b$, 或根据 \ref{ax:rational_add_1} 有 $b + c > b + d$,
@@ -169,24 +162,17 @@ $$
 对于每一对数 $a$ 及 $b$ 存在着一个唯一的数, 被称为 $a$ 与 $b$ 的\emph{积}\index{youlishudeji@有理数的积}(记成 $a \cdot b$ 或 $ab$).
 这概念具有下列性质:
 {\kaishu
-\begin{itemize}
-    \myrefitem{III $1^\circ$}\label{ax:rational_mul_1} $ab = ba$ (乘法的交换律);
-    \myrefitem{III $2^\circ$}\label{ax:rational_mul_2} $\brac{ab}c = a\brac{bc}$ (乘法的结合律).
-\end{itemize}
+    \myrefparagraph{III $1^\circ$}\label{ax:rational_mul_1} $ab = ba$ (乘法的交换律);
+    \myrefparagraph{III $2^\circ$}\label{ax:rational_mul_2} $\brac{ab}c = a\brac{bc}$ (乘法的结合律).
 }
 
 “$1$” 这个数比较特殊, 它具有下列特性:
 {\kaishu
-\begin{itemize}
-    \myrefitem{III $3^\circ$}\label{ax:rational_mul_3} $a \cdot 1 = a$;
-\end{itemize}
-}
-
+    \myrefparagraph{III $3^\circ$}\label{ax:rational_mul_3} $a \cdot 1 = a$;
+}\\
 此外,
 {\kaishu
-\begin{itemize}
-    \myrefitem{III $4^\circ$}\label{ax:rational_mul_4} 对于每一异于 $0$ 的数 $a$, 必有数 $\dfrac{1}{a}$ (其倒数), 使 $a \cdot \dfrac{1}{a} = 1$.
-\end{itemize}
+    \myrefparagraph{III $4^\circ$}\label{ax:rational_mul_4} 对于每一异于 $0$ 的数 $a$, 必有数 $\dfrac{1}{a}$ (其倒数), 使 $a \cdot \dfrac{1}{a} = 1$.
 }
 
 正如前面根据加法的性质来解决关于减法的问题一样, \emph{除法}, 作为乘法的逆运算, 亦可根据乘法的性质来解决.
@@ -215,9 +201,7 @@ $$\brac{c' \cdot b} \cdot \frac{1}{b} = c' \cdot \brac{b \cdot \frac{1}{b}} = c'
 
 下列性质与加法及乘法都有关系:
 {\kaishu
-\begin{itemize}
-    \myrefitem{III $5^\circ$}\label{ax:rational_mul_5} $\brac{a + b}c = a \cdot c + b \cdot c$ (乘法关于和的分配律).
-\end{itemize}
+    \myrefparagraph{III $5^\circ$}\label{ax:rational_mul_5} $\brac{a + b}c = a \cdot c + b \cdot c$ (乘法关于和的分配律).
 }
 
 由此很易导出关于{\kaishu 乘法关于差的分配律}:
@@ -229,24 +213,16 @@ $$
 \brac{a - b} \cdot c + b \cdot c = \bbrac{\brac{a - b} + b} \cdot c = a \cdot c.
 $$
 
-再应用性质 \ref{ax:rational_mul_5}, 可证
-$$
-b \cdot 0 = 0 \cdot b = 0.
-$$
-实际上, 因为 [\ref{ax:rational_add_3}]
+再应用性质 [\ref{ax:rational_add_3}] 和 \ref{ax:rational_mul_5}, 有
 $$
 a + 0 = a, \quad \brac{a + 0} \cdot b = a \cdot b + 0 \cdot b = a \cdot b,
 $$
-可推得 $0 \cdot b = 0$, 再由 [\ref{ax:rational_mul_1}] 得 $b \cdot 0 = 0$.
-
+于是可推得 $0 \cdot b = 0$, 再由 \ref{ax:rational_mul_1} 得 $b \cdot 0 = 0$.
 反之, 若 $a \cdot b = 0$ 且 $b \neq 0$, 则必须 $a = 0$.
-因为 $a = \dfrac{0}{b}$, 但同时又有 $0 = \dfrac{0}{b}$ (因 $b \cdot 0 = 0$), 而商是唯一的, 故 $a = 0$.
 
 最后我们指出联系符号 $>$ 与乘号的一个性质:
 {\kaishu
-\begin{itemize}
-    \myrefitem{III $6^\circ$}\label{ax:mul_6} 由 $a > b$ 及 $c > 0$ 可推得 $a \cdot c > b \cdot c$.
-\end{itemize}
+    \myrefparagraph{III $6^\circ$}\label{ax:mul_6} 由 $a > b$ 及 $c > 0$ 可推得 $a \cdot c > b \cdot c$.
 }
 
 据此可以用正数乘不等式的两边.
@@ -278,9 +254,7 @@ $$
 我们用下列简单而重要的论证, 来结束我们的有理数基本性质一览表.
 这一性质是不能由上述的诸性质里推得的.
 {\kaishu
-\begin{itemize}
-    \myrefitem{IV $1^\circ$}\label{ax:archimedes} 不论 $c > 0$ 是怎样的数, 总有大于 $c$ 的自然数 $n$ 存在着.
-\end{itemize}
+    \myrefparagraph{IV $1^\circ$}\label{ax:archimedes} 不论 $c > 0$ 是怎样的数, 总有大于 $c$ 的自然数 $n$ 存在着.
 }
 
 实际上, 阿基米德曾说明了一个几何命题:
@@ -306,12 +280,12 @@ $$\underbrace{a + a + \cdots + a}_{n \text{次}} = a \cdot n > b.$$
 若将全体有理数构成的集合划分为两个非空集合 $A$ 与 $A'$ (即每个集合都至少包含一个元素),
 只要满足以下条件, 我们就把这样的划分称为\emph{分划}\index{fenhua@分划}:
 {\kaishu
-\begin{itemize}
-    \myrefitem{1$^\circ$}\label{ax:rational_cut_1} 任意有理数, 必在且仅在 $A$ 与 $A'$ 这两个集合之一中出现
+    \myrefparagraph{1$^\circ$}\label{ax:rational_cut_1} 任意有理数, 必在且仅在 $A$ 与 $A'$ 这两个集合之一中出现
     \footnote{“任意有理数仅在两集合之一中出现” 这一事实亦可由性质 \ref{ax:rational_cut_2} 推得.};
-    \myrefitem{2$^\circ$}\label{ax:rational_cut_2} 集合 $A$ 内的任意元素 $a$, 必定小于集合 $A'$ 内的任意元素 $a'$.
-\end{itemize}
+
+    \myrefparagraph{2$^\circ$}\label{ax:rational_cut_2} 集合 $A$ 内的任意元素 $a$, 必定小于集合 $A'$ 内的任意元素 $a'$.
 }
+
 其中集合 $A$ 称为分划的\emph{下组}, 集合 $A'$ 称为分划的\emph{上组}.
 该分划记为 $A|A'$.
 由分划的定义可以推得, 小于下组内某个元素 $a$ 的一切有理数也都属于下组.
@@ -349,37 +323,31 @@ $$
 \brac{a + \dfrac{1}{n}}^2 < 2,
 $$
 于是 $a + \dfrac{1}{n}$ 亦属于下组 $A$.
-将上述不等式展开, 即相当于:
+将上述不等式展开, 于是只要满足
 $$
-a^2 + \dfrac{2a}{n} + \dfrac{1}{n^2} < 2.
+a^2 + \dfrac{2a}{n} + \dfrac{1}{n^2} \leq a^2 + \dfrac{2a}{n} + \frac{1}{n} < 2.
 $$
-注意到 $\dfrac{1}{n^2} \leq \dfrac{1}{n}$, 因此只要
-$$
-a^2 + \dfrac{2a + 1}{n} < 2,
-$$
-则上面展开的不等式也自然满足了.
 为此, 只需选取
 $$
 n > \dfrac{2a + 1}{2 - a^2}.
 $$
-根据阿基米德公理 [\ref{ax:archimedes}], 这恒是可能的.
+则上面展开的不等式也自然满足了.
+而根据阿基米德公理 [\ref{ax:archimedes}], 这恒是可能的.
 因此, 不论 $a$ 为 $A$ 组内的何种正数, 在 $A$ 组内总能求得大于它的数.
 又因为当 $a \leq 0$ 时该论断显然成立, 故在 $A$ 组内没有任何数能成为最大的.
 
 很显然, 不可能有这样的分划存在: 在它的下组内有最大数 $a_0$, 同时在上组内又有最小数 $a'_0$.
-实际上, 假设这样的分划存在着.
-则应用有理数域的稠密性[\ref{ax:rational_order_3}], 必然能取得一个位于 $a_0$ 与 $a'_0$ 之间的有理数 $c$, 即 $a_0 < c < a'_0$.
+因为假设这样的分划存在着.
+则应用有理数域的稠密性 [\ref{ax:rational_order_3}], 必然能取得一个位于 $a_0$ 与 $a'_0$ 之间的有理数 $c$, 即 $a_0 < c < a'_0$.
 数 $c$ 不能属于 $A$ 组, 否则 $a_0$ 就不是此组的最大数.
 同理, $c$ 亦不能属于 $A'$ 组.
 但这与定义分划概念的性质 \ref{ax:rational_cut_1} 相矛盾.
 
 这样, 分划仅能有三种类型, 恰如刚才例 \ref{ex:partition1}, \ref{ex:partition2}, \ref{ex:partition3} 所表明的那样:
 {\kaishu
-\begin{itemize}
-    \item[1)] 在下组 $A$ 内无最大数, 而在上组 $A'$ 内有最小数 $r$;
-    \item[2)] 在下组 $A$ 内有最大数 $r$, 而在上组 $A'$ 内无最小数;
-    \item[3)] 在下组内既无最大数, 在上组内亦无最小数.
-\end{itemize}
+    \myrefparagraph{1)} 在下组 $A$ 内无最大数, 而在上组 $A'$ 内有最小数 $r$;
+    \myrefparagraph{2)} 在下组 $A$ 内有最大数 $r$, 而在上组 $A'$ 内无最小数;
+    \myrefparagraph{3)} 在下组内既无最大数, 在上组内亦无最小数.
 }
 
 在前两种情形中, 我们说分划由有理数 $r$ 所产生 ($r$ 被称为 $A$ 与 $A'$ 之间的\emph{界数}\index{jieshu@界数}).
@@ -429,12 +397,10 @@ $$
 
 现在证明实数均能满足性质 \ref{prop:real_order_1} 和 \ref{prop:real_order_2}
 {\kaishu
-\begin{itemize}
-    \myrefitem{I $1^\circ$}\label{prop:real_order_1} 任意一对(实)数 $\alpha$ 与 $\beta$ 之间必有且仅有下列三种关系之一:
+    \myrefparagraph{I $1^\circ$}\label{prop:real_order_1} 任意一对(实)数 $\alpha$ 与 $\beta$ 之间必有且仅有下列三种关系之一:
     $$
     \alpha = \beta, \quad \alpha > \beta, \quad \beta > \alpha.
     $$
-\end{itemize}
 }
 
 \begin{proof}
@@ -446,9 +412,7 @@ $$
 \end{proof}
 
 {\kaishu
-\begin{itemize}
-    \myrefitem{I $2^\circ$}\label{prop:real_order_2} 由 $\alpha > \beta, \beta > \gamma$ 可推得 $\alpha > \gamma$.
-\end{itemize}
+    \myrefparagraph{I $2^\circ$}\label{prop:real_order_2} 由 $\alpha > \beta, \beta > \gamma$ 可推得 $\alpha > \gamma$.
 }
 
 \begin{proof}
@@ -624,10 +588,8 @@ $$
 因为任一以 $0$ 或 $9$ 来循环的小数显然表示有限小数.
 
 今后我们就可以将实数想象为无限十进小数.
-由中学课本内, 我们知道, 无限循环小数表示有理数,
-反之, 任一有理数总可化成循环小数.
-这样, 无限不循环小数, 就用来表示我们新引入的无理数
-(这一概念也可作为建立无理数理论的出发点).
+我们知道, 无限循环小数就是有理数.
+而{\kaishu 这里建立的无限不循环小数就用来表示我们新引入的无理数}.
 
 \begin{remark}\label{rem:rational_approx}
 下面我们将常应用有理近似值 $a$ 及 $a'$ 以接近实数 $\alpha$, 此时,
@@ -644,14 +606,11 @@ $$ a < \alpha < a'. $$
 这种性质使实数域在本质上异于有理数域.
 在考察有理数域的分划时, 我们已看到, 有时会存在一种分划, 使得在有理数域内并无产生此分划的界数.
 正是由于有理数域有这种不完全性, 即在它们中间存在着这些空隙, 我们才要引入无理数.
-
 现在考察实数域 $\R$ 的分划.
 在这种分划之下, 我们把该数域分拆成两个均非空集 $A$ 及 $A'$, 使其满足:
 {\kaishu
-\begin{itemize}
-    \myrefitem{$1^\circ$}\label{ax:real_cut_1} 每一实数必落在集 $A, A'$ 中一个且仅一个之内;
-    \myrefitem{$2^\circ$}\label{ax:real_cut_2} 集 $A$ 的每一数 $\alpha$ 小于集 $A'$ 的每一数 $\alpha'$.
-\end{itemize}
+    \myrefparagraph{$1^\circ$}\label{ax:real_cut_1} 每一实数必落在集 $A, A'$ 中一个且仅一个之内;
+    \myrefparagraph{$2^\circ$}\label{ax:real_cut_2} 集 $A$ 的每一数 $\alpha$ 小于集 $A'$ 的每一数 $\alpha'$.
 }
 
 现在的问题就是:
@@ -697,7 +656,7 @@ $r$ 亦属于 $A$, 故必属于 $A$ 的一部分 $A_r$.
 
 \subsection{数集的界}\label{subsec:11}
 
-我们应用 Dedekind 基本定理 [\emph{\ref{thm:dedekind_cut}}],
+我们应用 Dedekind 基本定理 [\emph{\ref{subsec:10}}],
 在这里建立一些在现代分析中担任重要角色的概念.
 
 设有一实数的无限集, 比如自然数集, 一切满足 $0<x<1$ 的正有理数所成的集合, 在 $0$ 与 $1$ 之间的一切实数集,
@@ -863,11 +822,9 @@ $$ (a'+b') - (a+b) = (a'-a) + (b'-b) < 2e, $$
 \subsection{加法的性质}\label{subsec:13}
 
 很容易证实, 对于实数, 下列的运算性质仍然保持:
-\begin{itemize}
-    \myrefitem{II $1^\circ$}\label{prop:add_comm} $\alpha + \beta = \beta + \alpha$;
-    \myrefitem{II $2^\circ$}\label{prop:add_assoc} $(\alpha + \beta) + \gamma = \alpha + (\beta + \gamma)$;
-    \myrefitem{II $3^\circ$}\label{prop:add_zero} $\alpha + 0 = \alpha$.
-\end{itemize}
+\myrefparagraph{II $1^\circ$}\label{prop:add_comm} $\alpha + \beta = \beta + \alpha$;
+\myrefparagraph{II $2^\circ$}\label{prop:add_assoc} $(\alpha + \beta) + \gamma = \alpha + (\beta + \gamma)$;
+\myrefparagraph{II $3^\circ$}\label{prop:add_zero} $\alpha + 0 = \alpha$.
 
 例如, 我们来证明最后一个性质.
 若有理数 $a, a', b, b'$ 是这样的数, 使得:
@@ -881,12 +838,9 @@ $$ a+b < a < \alpha < a' < a'+b'. $$
 
 现在证明下一个性质:
 {\kaishu
-\begin{itemize}
-    \myrefitem{II $4^\circ$}\label{prop:add_inv} 对于任一实数 $\alpha$, 存在着(对称于它的)数 $-\alpha$, 满足条件 $\alpha + (-\alpha) = 0$.
-\end{itemize}
+    \myrefparagraph{II $4^\circ$}\label{prop:add_inv} 对于任一实数 $\alpha$, 存在着(对称于它的)数 $-\alpha$, 满足条件 $\alpha + (-\alpha) = 0$.
 }
 
-\begin{proof}
 在这里, 只要就无理数 $\alpha$ 的情形来证就足够了.
 
 假定数 $\alpha$ 被分划 $A|A'$ 所确定, 我们用下面的方法确定 $-\alpha$.
@@ -903,17 +857,12 @@ $$ a - a' < 0 < a' - a, $$
 于是数 $0$ 也位于方才所述的数之间.
 但具有这种性质的数是唯一的, 故有:
 $$ \alpha + (-\alpha) = 0. $$
-这就是需要证明的.
-\end{proof}
 
 最后, 证明性质:
 {\kaishu
-\begin{itemize}
-    \myrefitem{II $5^\circ$}\label{prop:add_order} 由 $\alpha > \beta$ 推得 $\alpha + \gamma > \beta + \gamma$.
-\end{itemize}
+    \myrefparagraph{II $5^\circ$}\label{prop:add_order} 由 $\alpha > \beta$ 推得 $\alpha + \gamma > \beta + \gamma$.
 }
 
-\begin{proof}
 若 $\alpha > \beta$, 则在它们中间可以插入两个有理数 $r_1$ 及 $r_2$, 使得:
 $$ \alpha > r_1 > r_2 > \beta. $$
 依 \emph{\ref{subsec:9}} 的附注, 必有两个有理数 $c$ 及 $c'$ 存在, 使得:
@@ -923,7 +872,6 @@ $$ r_1 + c > r_2 + c', $$
 而依和的定义, 又有:
 $$ \alpha + \gamma > r_1 + c, \quad r_2 + c' > \beta + \gamma. $$
 比较这些不等式, 我们就得出了所需的结论.
-\end{proof}
 
 这样, 就加法来说, 实数域具有一切基本性质 \ref{prop:add_comm} $\sim$ \ref{prop:add_order}.
 有理数的这些性质在 \emph{\ref{subsec:3}} 内已早叙述过了.
@@ -977,20 +925,17 @@ $$ \alpha \cdot 0 = 0 \cdot \alpha = 0. $$
 $$ \alpha \cdot \beta = \abs{\alpha} \cdot \abs{\beta}, \quad \text{当 $\alpha$ 与 $\beta$ 同号时,} $$
 $$ \alpha \cdot \beta = -(\abs{\alpha} \cdot \abs{\beta}), \quad \text{当 $\alpha$ 与 $\beta$ 异号时.} $$
 这样任意实数的乘积就都可以计算了.
-如果希望实数运算继续满足有理数运算的一切基本性质, 那么正如第 \ref{subsec:4} 节所说明的那样, 上述关于 $0$ 和符号的约定是必需的.
+如果希望实数运算继续满足有理数运算的一切基本性质, 那么正如第 \emph{\ref{subsec:4}} 节所说明的那样, 上述关于 $0$ 和符号的约定是必需的.
 
 \subsection{乘法的性质}\label{subsec:15}
 
 如同有理数的情形一样, 对于任何实数仍保持以下性质:
 {\kaishu
-\begin{itemize}
-    \myrefitem{III $1^\circ$}\label{prop:mult_comm} $\alpha \cdot \beta = \beta \cdot \alpha$;
-    \myrefitem{III $2^\circ$}\label{prop:mult_assoc} $(\alpha \cdot \beta)\gamma = \alpha \cdot (\beta \cdot \gamma)$;
-    \myrefitem{III $3^\circ$}\label{prop:mult_id} $\alpha \cdot 1 = \alpha$.
-\end{itemize}
+    \myrefparagraph{III $1^\circ$}\label{prop:mult_comm} $\alpha \cdot \beta = \beta \cdot \alpha$;
+    \myrefparagraph{III $2^\circ$}\label{prop:mult_assoc} $(\alpha \cdot \beta)\gamma = \alpha \cdot (\beta \cdot \gamma)$;
+    \myrefparagraph{III $3^\circ$}\label{prop:mult_id} $\alpha \cdot 1 = \alpha$.
 }
 
-\begin{proof}
 证明第二式作为例子, 先从三数 $\alpha, \beta, \gamma$ 都是正数的情形开始.
 设 $a, a', b, b', c, c'$ 是任意的有理数, 满足不等式:
 $$ 0 < a < \alpha < a', \quad 0 < b < \beta < b', \quad 0 < c < \gamma < c'. $$
@@ -1010,18 +955,14 @@ $(ab)c = a(bc)$ 与 $(a'b')c' = a'(b'c')$ 之间.
 
 当 $\alpha, \beta, \gamma$ 不全为正数时, 只需注意到“符号规则”, 便可立刻得出结果.
 又若数 $\alpha, \beta, \gamma$ 中至少有一数等于 $0$, 则两个积都化为 $0$.
-\end{proof}
 
 现在讲性质:
 {\kaishu
-\begin{itemize}
-    \myrefitem{III $4^\circ$}\label{prop:mult_inv} 对于任一异于零的实数 $\alpha$, 必有\emph{倒数}\index{daoshu@倒数} $\dfrac{1}{\alpha}$ 存在, 满足条件:
+    \myrefparagraph{III $4^\circ$}\label{prop:mult_inv} 对于任一异于零的实数 $\alpha$, 必有\emph{倒数}\index{daoshu@倒数} $\dfrac{1}{\alpha}$ 存在, 满足条件:
     $$ \alpha \cdot \dfrac{1}{\alpha} = 1. $$
-\end{itemize}
 }
 
-\begin{proof}
-这里只要证无理数 $\alpha$ 的情形便够了.先设 $\alpha > 0$.
+这里只要证无理数 $\alpha$ 的情形便够了. 先设 $\alpha > 0$.
 
 若 $\alpha$ 由分划 $A|A'$ 所确定, 则我们可用下法构成对于数 $\dfrac{1}{\alpha}$ 的分划.
 我们把一切负的有理数, 零, 以及一切形如 $\dfrac{1}{a'}$ 的数归入下组 $\overline{A}$, 此处 $a'$ 是 $A'$ 组的任何数;
@@ -1041,7 +982,6 @@ $$ \dfrac{a}{a'} < 1 < \dfrac{a'}{a}, $$
 $$ \dfrac{1}{\alpha} = -\dfrac{1}{\abs{\alpha}}. $$
 于是依“符号规则”:
 $$ \alpha \cdot \dfrac{1}{\alpha} = \abs{\alpha} \cdot \dfrac{1}{\abs{\alpha}} = 1. $$
-\end{proof}
 
 当我们证明了实数域也具有关于乘法的一切基本性质 \ref{prop:mult_comm} $\sim$ \ref{prop:mult_inv} 以后,
 显然可知, 这数域也保持着在 \emph{\ref{subsec:4}} 内所述的一切性质,
@@ -1049,22 +989,18 @@ $$ \alpha \cdot \dfrac{1}{\alpha} = \abs{\alpha} \cdot \dfrac{1}{\abs{\alpha}} =
 
 {\kaishu 分配律}:
 {\kaishu
-\begin{itemize}
-    \myrefitem{III $5^\circ$}\label{prop:distributive} $(\alpha + \beta) \cdot \gamma = \alpha \cdot \gamma + \beta \cdot \gamma$
-\end{itemize}
+    \myrefparagraph{III $5^\circ$}\label{prop:distributive} $(\alpha + \beta) \cdot \gamma = \alpha \cdot \gamma + \beta \cdot \gamma$
 }
 对于任何实数亦成立.
-在正数的情形(如证明 \ref{prop:mult_assoc}那样)这极易证明.
+在正数的情形 (如证明 \ref{prop:mult_assoc}那样) 这极易证明.
 所有其他的情形可以用等式两边均变号的方法, 或由一边移项到另一边的方法化为这个特别情形.
 但是数 $\alpha, \beta, \gamma, (\alpha + \beta)$ 中之一等于零的情形并不在内; 对于这种情形, 等式的成立是非常明显的.
 
 最后, 还有性质:
 {\kaishu
-\begin{itemize}
-    \myrefitem{III $6^\circ$}\label{prop:mult_order} 由 $\alpha > \beta$ 及 $\gamma > 0$ 推得 $\alpha \cdot \gamma > \beta \cdot \gamma$.
-\end{itemize}
+    \myrefparagraph{III $6^\circ$}\label{prop:mult_order} 由 $\alpha > \beta$ 及 $\gamma > 0$ 推得 $\alpha \cdot \gamma > \beta \cdot \gamma$.
 }
-其核验并不困难.不等式 $\alpha > \beta$ 相当于 $\alpha - \beta > 0$;
+其核验并不困难. 不等式 $\alpha > \beta$ 相当于 $\alpha - \beta > 0$;
 依“符号规则”有 $(\alpha - \beta) \cdot \gamma > 0$.
 但乘法也有关于差的分配性, 故知 $\alpha \cdot \gamma - \beta \cdot \gamma > 0$, 而由此即得 $\alpha \cdot \gamma > \beta \cdot \gamma$.
 
@@ -1072,9 +1008,7 @@ $$ \alpha \cdot \dfrac{1}{\alpha} = \abs{\alpha} \cdot \dfrac{1}{\abs{\alpha}} =
 
 最后, 还要讲一讲\emph{阿基米德公理}:
 {\kaishu
-\begin{itemize}
-    \myrefitem{IV $1^\circ$}\label{ax:real_archimedes} 对不论怎样的实数 $\gamma$, 必有大于 $\gamma$ 的自然数 $n$ 存在.
-\end{itemize}
+    \myrefparagraph{IV $1^\circ$}\label{ax:real_archimedes} 对不论怎样的实数 $\gamma$, 必有大于 $\gamma$ 的自然数 $n$ 存在.
 }
 
 这公理的核验是很容易的:
@@ -1152,7 +1086,7 @@ $$ \xi^n = \alpha, $$
 关于 $\xi$ 的唯一性这一点, 可立刻推得.
 因为不同的正数, 它们的幂一定不同,
 即若 $0 < \xi < \xi'$, 则 $\xi^n < \xi'^n$.
-若存在一个有理数 $r$, 它的 $n$ 次幂等于 $\alpha$, 则它就是所求的数 $\xi$.
+若存在一个正有理数 $r$, 它的 $n$ 次幂等于 $\alpha$, 则它就是所求的数 $\xi$.
 因此, 下面我们只需讨论这种有理数并不存在的情形就行.
 
 今在一切有理数域内用下列方法构成一个分划 $X|X'$.
@@ -1338,13 +1272,10 @@ $$ \alpha^\beta = \gamma \quad \text{而} \quad \beta = \log_\alpha \gamma; $$
 {\kaishu
 现在要求对于任意直线段 $A$, 都能指定一个正实数 $l(A)$ 与之对应,
 我们称其为\emph{线段 $A$ 的长}\index{xianduandechang@线段的长度}, 并且需要满足以下条件:
-\begin{itemize}
-    \myrefitem{1)}\label{prop:length_1} 某一预先指定的线段 $E$ (长度单位) 的长度为 1, 即 $l(E) = 1$;
-    \myrefitem{2)}\label{prop:length_2} 相等的线段具有相同的长度;
-    \myrefitem{3)}\label{prop:length_3} 在线段相加时, 和的长度始终等于各相加线段长度的和:
-    $$ l(A + B) = l(A) + l(B) $$
-    (可加性).
-\end{itemize}
+    \myrefparagraph{1)}\label{prop:length_1} 某一预先指定的线段 $E$ (长度单位) 的长度为 1, 即 $l(E) = 1$;
+    \myrefparagraph{2)}\label{prop:length_2} 相等的线段具有相同的长度;
+    \myrefparagraph{3)}\label{prop:length_3} 在线段相加时, 和的长度始终等于各相加线段长度的和:
+    $$ l(A + B) = l(A) + l(B) \ \text{(可加性)}.$$
 }
 
 在这些条件的限制下, 该问题的解答是唯一的.
@@ -1375,10 +1306,9 @@ $$ l(A) = l(B) + l(C). $$
 则所求的长度 $l(\Sigma)$ 必须满足不等式:
 $$ s < l(\Sigma) < s'. $$
 
-现在把一切负有理数及 $0$, 以及所有能作为短于 $\Sigma$ 的可通约线段之长度的正有理数 $s$, 归入下组 $A$;
-把所有能作为长于 $\Sigma$ 的可通约线段之长度的正有理数 $s'$, 归入上组 $A'$.
-由于每个正有理数都是某条与 $E$ 可通约的线段的长度, 而 $\Sigma$ 本身与 $E$ 不可通约,
-所以每个有理数恰好归入上述两组之一, 从而得到有理数域中的分划 $A|A'$.
+现在把一切负有理数及 $0$, 以及所有数 $s$, 归入下组 $A$;
+把所有数 $s'$, 归入上组 $A'$.
+则得到有理数域中的分划 $A|A'$.
 因为显然在下组内没有最大数, 在上组内也没有最小数,
 所以这个分划确定了一个无理数 $\sigma$,
 它是唯一满足所有不等式 $s < \sigma < s'$ 的实数.
@@ -1396,7 +1326,6 @@ $$ r < \rho < r', \quad s < \sigma < s'. $$
 而线段 $R' + S'$ (长为 $r' + s'$) 将比 $T$ 长.
 因此:
 $$ r + s < \tau < r' + s'. $$
-
 但是依据 [\emph{\ref{subsec:12}}],
 位于形如 $r + s$ 与 $r' + s'$ 的数值之间的实数是唯一的.
 因此必定有 $\tau = \rho + \sigma$, 这就证明了条件 \ref{prop:length_3}.
@@ -1435,14 +1364,13 @@ $$ r + s < \tau < r' + s'. $$
         \node[scale=0.8] at (1.5,-0.5) {$x$};
     \end{tikzpicture}
 \end{figure}
-则这条直线上的任意一点 $X$ 必然对应于某一个实数 $x$, 我们称其为该点的\emph{坐标}\index{zuobiao@坐标}(或横坐标).
+则{\kaishu 这条直线上的任意一点 $X$ 必然对应于某一个实数 $x$,} 我们称其为该点的\emph{坐标}\index{zuobiao@坐标}(或横坐标).
 若 $X$ 位于自 $O$ 起的正方向上, $x$ 即等于线段 $OX$ 的长度;
 而在相反的情形下, 则等于这个长度的负值.
 
-自然要问其逆命题是否亦真: 即任意一个实数 $x$ 在这时是否必然对应于直线上的某一点？
-这个问题在几何学上的回答是肯定的.
-即依靠直线的连续性公理, 它赋予了作为点的集合的直线以类似于实数域连续性的性质 [\emph{\ref{subsec:10}}].
+而由几何学上直线的连续性公理,
+以点为集合的直线有类似于实数域连续性的性质 [\emph{\ref{subsec:10}}],
+因此任意一个实数 $x$ 都必然对应于直线上的某一点.
 
 这样, 在一切实数与有向直线(轴)上的点之间就可以建立起一一对应的关系.
 实数可以被表示为轴上的点, 这条轴因此便被称为\emph{数轴}\index{shuzhou@数轴}.
-类似的表示法我们以后将会经常应用.

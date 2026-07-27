@@ -21,7 +21,9 @@
 	fontsetup = font-setup-open.tex,
 	titlesetup = titles-setup.tex
 ]{AJbook}
-
+\AtEndPreamble{%
+    \addtolength{\textheight}{15mm}
+}
 % 封面页用到俄语
 \usepackage{fontspec}
 % 定义一个专门用于显示俄语的字体命令 \textcyr
