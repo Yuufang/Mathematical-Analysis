@@ -372,6 +372,8 @@
     % 核心定理环境定义 (简体中文体系)
     \theorembodyfont{\kaishu}                    % 核心定理内容使用楷体
     \newtheorem{lemma}{引理}
+    \counterwithin{lemma}{chapter}
+    \renewcommand{\thelemma}{\arabic{lemma}}
     \newtheorem{proposition}{命题}
     \theoremstyle{nonumberplain}   
     \newtheorem{definition}{定义}
