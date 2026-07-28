@@ -640,557 +640,859 @@ $$
 换言之, {\kaishu 无穷大量一定无界, 但无界数列未必是无穷大量. }
 \end{remark}
 
-\begin{comment}
-\section{极限的定理·若干容易求得的极限}
-\subsection{比较性} {\kaishu 若两个数列 $\seqset{x} , \seqset{y}$ 对应项常满足不等式 $x_n \geq y_n$, 并且各趋于有限极限:
-$$
-\limto{n} x_n = a, \quad \limto{n} y_n = b,
-$$
-则必 $a \geq b$.}
+\section{极限的定理·若干容易求得的极限}\label{sec:limit_theorems_elementary_limits}
+\subsection{对等式及不等式取极限}\label{subsec:28}
+当我们用等号或不等号联系两个数列 $\seqset{x}$ 和 $\seqset{y}$ 时,
+所比较的是它们的对应项, 即具有同一序号的项.
 
-假定是相反的情形: 设 $a < b$.
-任取在 $a$ 与 $b$ 间的一数 $r$, $a < r < b$.
-那么, 一方面, 可以求得序号 $N'$, 使当 $n > N'$ 时成立 $x_n < r$;
-另一方面, 又可求得序号 $N''$, 使当 $n > N''$ 时成立 $y_n > r$.
-若 $N$ 大于 $N'$ 和 $N''$, 则当 $n > N$ 时将同时成立不等式
+\myrefparagraph{1\textdegree}\label{prop:limit_preserves_equality}
+{\kaishu 若两个数列 $\seqset{x}$ 和 $\seqset{y}$ 的对应项始终相等:
+$
+x_n=y_n,
+$
+并且它们分别趋于有限极限
 $$
-x_n < r, \quad y_n > r \Rightarrow x_n < y_n,
+\limto{n}x_n=a,\quad \limto{n}y_n=b,
 $$
-这与假定矛盾.
+则 $a=b$.}
 
-比较性使得我们得以对不等式(连同着等号的)取极限: 由 $x_n \geq y_n$ 得结论:
+这可以由极限的唯一性 [\emph{\ref{subsec:26}}, \ref{prop:limit_uniqueness}] 直接推出.
+通常将这一结论写成对等式取极限的形式:
 $$
-\limto{n} x_n \geq \limto{n} y_n.
+x_n = y_n,\quad \text{有}\quad \limto{n}x_n=\limto{n}y_n.
 $$
-当然, 各处的 $\geq$ 号都可以换成 $\leq$ 号.
 
-请注意, 由严格的不等式 $x_n > y_n$, 一般说来, 不能推得严格的不等式 $\displaystyle \limto{n} x_n > \limto{n} y_n$, 而仅能推得: $\displaystyle \limto{n} x_n \geqslant \limto{n} y_n$.
+\myrefparagraph{2\textdegree}\label{prop:limit_preserves_inequality}
+{\kaishu 若两个数列 $\seqset{x}$ 和 $\seqset{y}$ 的对应项始终满足
+$
+x_n\geq y_n,
+$
+并且它们分别趋于有限极限
+$$
+\limto{n}x_n=a,\quad \limto{n}y_n=b,
+$$
+则 $a\geq b$.}
 
-例如, 对于一切的自然数 $n$, 都有 $\displaystyle \frac{1}{n} > -\frac{1}{n}$, 但
+用反证法证明. 假设反而有 $a<b$, 在 $a$ 与 $b$ 之间任取一数 $r$, 使
 $$
-\limto{n} \frac{1}{n} = \limto{n} \brac{-\frac{1}{n}} = 0.
+a<r<b.
 $$
-最后的极限并不是严格大于.
+一方面, 可以找到序号 $N'$, 使当 $n>N'$ 时有 $x_n<r$;
+另一方面, 可以找到序号 $N''$, 使当 $n>N''$ 时有 $y_n>r$.
+于是当
+$$
+n>\max\bbbrac{N',N''}
+$$
+时, 同时有
+$$
+x_n<r<y_n,
+$$
+这与 $x_n\geq y_n$ 矛盾, 因此 $a\geq b$.
 
-\subsection{夹逼准则}
-{\kaishu 若 $x_n, y_n, z_n$ 恒满足不等式
+命题 \ref{prop:limit_preserves_inequality} 表明, 可以对带等号的不等式取极限:
+
 $$
-x_n \leqslant y_n \leqslant z_n,
+x_n\geq y_n, \quad \text{有} \quad \limto{n}x_n\geq\limto{n}y_n.
 $$
-并且 $x_n$ 及 $z_n$ 趋向同一极限 $a$:
+当然这里的 $\geq$ 也都可以换成 $\leq$.
+
+需要注意的是, 由严格不等式 $x_n>y_n$ 一般不能推出
+$
+\limto{n}x_n>\limto{n}y_n,
+$
+而只能推出非严格的
+$
+\limto{n}x_n\geq\limto{n}y_n.
+$
+例如, 对一切自然数 $n$ 都有
+$
+\dfrac{1}{n}>-\dfrac{1}{n},
+$
+但是
 $$
-\limto{n} x_n = \limto{n} z_n = a,
+\limto{n}\dfrac{1}{n}=\limto{n}\brac{-\dfrac{1}{n}}=0.
 $$
-则 $y_n$ 亦必以 $a$ 为极限:
+
+在确定数列极限是否存在以及求它的数值时, 下面的\emph{夹逼准则}\index{jiabizhunze@夹逼准则}经常很有用.
+
+\myrefparagraph{3\textdegree}\label{thm:sequence_squeeze}
+{\kaishu 若三个数列 $\seqset{x}$、$\seqset{y}$ 和 $\seqset{z}$ 的对应项始终满足
 $$
-\limto{n} y_n = a.
+x_n\leq y_n\leq z_n,
+$$
+并且 $\seqset{x}$ 与 $\seqset{z}$ 趋于同一有限极限 $a$:
+$$
+\limto{n}x_n=\limto{n}z_n=a,
+$$
+则 $\seqset{y}$ 也以 $a$ 为极限:
+$$
+\limto{n}y_n=a.
 $$}
 
-指定任意的 $\epsilon > 0$. 对于这 $\epsilon$, 首先可以求得序号 $N'$, 使当 $n > N'$ 时
+指定任意的 $\epsilon>0$. 对于这个 $\epsilon$, 可以找到序号 $N'$, 使当 $n>N'$ 时
 $$
-a - \epsilon < x_n < a + \epsilon.
+a-\epsilon<x_n<a+\epsilon;
 $$
-其次, 又可求得序号 $N''$, 使当 $n > N''$ 时
+又可以找到序号 $N''$, 使当 $n>N''$ 时
 $$
-a - \epsilon < z_n < a + \epsilon.
+a-\epsilon<z_n<a+\epsilon.
 $$
-设 $N$ 大于 $N'$ 及 $N''$, 则当 $n > N$ 时, 上述两不等式都能满足, 故
+因此, 当 $n>\max\bbbrac{N',N''}$ 时, 上述两个不等式同时成立, 从而
 $$
-a - \epsilon < x_n \leqslant y_n \leqslant z_n < a + \epsilon.
+a-\epsilon<x_n\leq y_n\leq z_n<a+\epsilon.
 $$
-结果当 $n > N$ 时
+于是
 $$
-a - \epsilon < y_n < a + \epsilon \quad \text{或} \quad \abs{y_n - a} < \epsilon.
+a-\epsilon<y_n<a+\epsilon,\qquad\text{即}\qquad \abs{y_n-a}<\epsilon,
 $$
-这样, 实际上就是 $\displaystyle \limto{n} y_n = a$.
+这就证明了 $y_n\to a$.
 
-\subsection{无穷小引理}
-在后面极限的中我们将要同时考虑两个(或更多个)数列极限, 并在它们之间施行算术运算.
-在证明关于极限的算术运算的性质时, 下面两个关于无穷小的引理, 将担任着重要的角色.
+特别地, 若对一切自然数 $n$ 都有
+$$
+a\leq y_n\leq z_n,
+$$
+且 $z_n\to a$, 则由夹逼准则立即得到 $y_n\to a$.
 
-\begin{lemma} \label{n0}
-    任何有限个无穷小的和亦是无穷小量.
+定理 \ref{prop:limit_preserves_equality}、\ref{prop:limit_preserves_inequality} 和
+\ref{thm:sequence_squeeze} 都容易推广到无穷极限的情形;
+其中夹逼准则只适用于带有确定符号的无穷极限.
+
+\subsection{关于无穷小的引理}\label{subsec:29}
+在后面的定理中, 我们将同时考察两个或更多个数列, 并在它们的对应项之间进行算术运算.
+例如, 若数列 $\seqset{x}$ 和 $\seqset{y}$ 的项依次为
+$$
+x_1,x_2,x_3,\ldots,x_n,\ldots
+$$
+和
+$$
+y_1,y_2,y_3,\ldots,y_n,\ldots,
+$$
+那么它们的和数列就是
+$$
+x_1+y_1,x_2+y_2,x_3+y_3,\ldots,x_n+y_n,\ldots.
+$$
+在证明数列算术运算的极限定理时, 下面两个关于无穷小的引理起着重要作用.
+
+\begin{lemma}\label{lem:finite_sum_infinitesimals}
+任意有限个无穷小量的和仍是无穷小量.
 \end{lemma}
 
 \begin{proof}
-我们只证明对于二无穷小 $\alpha_n$ 及 $\beta_n$ 的情形(一般的情形仿此讨论).
-
-给定任意的 $\epsilon > 0$.
-根据无穷小的定义, 由 $\epsilon$ 可以决定无穷小 $\alpha_n$ 的序号 $N'$, 以及关于 $\beta_n$ 的序号 $N''$, 使当 $n > N', N''$ 时有
+这里只证明两个无穷小量 $\alpha_n$ 和 $\beta_n$ 的情形, 一般情形可以同样处理.
+指定任意的 $\epsilon>0$. 根据无穷小量的定义, 可以分别找到序号 $N'$ 和 $N''$, 使当 $n>N'$ 时
 $$
-\abs{\alpha_n} < \frac{\epsilon}{2}, \quad \abs{\beta_n} < \frac{\epsilon}{2}.
+\abs{\alpha_n}<\frac{\epsilon}{2},
 $$
-若取自然数 $N$ 大于 $N'$ 及 $N''$, 则当 $n > N$ 时, 两不等式同时成立, 这样, 便有
+当 $n>N''$ 时
 $$
-\abs{\alpha_n + \beta_n} \leqslant \abs{\alpha_n} + \abs{\beta_n} < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon.
+\abs{\beta_n}<\frac{\epsilon}{2}.
 $$
-因此, $\alpha_n + \beta_n$ 也是无穷小.
+因此, 当 $n>\max\bbbrac{N',N''}$ 时, 有
+$$
+\abs{\alpha_n+\beta_n}
+\leq\abs{\alpha_n}+\abs{\beta_n}
+<\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon.
+$$
+所以 $\alpha_n+\beta_n$ 也是无穷小量.
 \end{proof}
 
-\begin{lemma} \label{a0}
-    有界变量 $x_n$ 与无穷小 $\alpha_n$ 的乘积仍是无穷小.
+\begin{lemma}\label{lem:bounded_times_infinitesimal}
+有界数列 $\seqset{x}$ 与无穷小数列 $\seqset{\alpha}$ 的对应项之积仍是无穷小量.
 \end{lemma}
 
 \begin{proof}
-设对于一切 $n$ 有
+由于 $\seqset{x}$ 有界, 存在常数 $M>0$, 使对一切自然数 $n$ 都有
 $$
-\abs{x_n} \leqslant M \quad (M > 0).
+\abs{x_n}\leq M.
 $$
-若给定任意数 $\epsilon > 0$, 则依 $\dfrac{\epsilon}{M}$, 对于无穷小 $\alpha_n$ 可以求出 $N$, 使当 $n > N$ 时有
+指定任意的 $\epsilon>0$. 根据无穷小量的定义, 可以找到序号 $N$, 使当 $n>N$ 时
 $$
-\abs{\alpha_n} < \frac{\epsilon}{M}.
+\abs{\alpha_n}<\frac{\epsilon}{M}.
 $$
-对于这种 $n$, 显然有
+对于这样的 $n$, 有
 $$
-\abs{x_n \cdot \alpha_n} = \abs{x_n} \cdot \abs{\alpha_n} < M \cdot \frac{\epsilon}{M} = \epsilon.
+\abs{x_n\alpha_n}=\abs{x_n}\abs{\alpha_n}
+<M\cdot\frac{\epsilon}{M}=\epsilon.
 $$
-由此推得, $x_n \cdot \alpha_n$ 为无穷小.
+因此, $x_n\alpha_n$ 是无穷小量.
 \end{proof}
 
-\subsection{四则运算}
-有了上述两个引理, 我们便可以叙述极限的四则运算, 有了它们便可以不必把一切与极限有关的问题都追溯到“极限”的定义, 然后依指定的 $\epsilon$ 找出对应的 $N$ 等等, 使得极限的计算将大为简化.
+\subsection{数列的算术运算}\label{subsec:30}
+下面这些定理之所以重要, 是因为应用它们以后, 在许多情形下不必再把与极限有关的问题都追溯到极限定义,
+然后依照给定的 $\epsilon$ 寻找相应的 $N$.
+借助这些定理, 数列算术运算\index{shuliedesuanshuyunsuan@数列的算术运算}的极限计算将大为简化.
 
-1\textdegree~
-{\kaishu 若数列 $\{x_n\}$ 及 $\{y_n\}$ 趋于有限极限:
+\myrefparagraph{1\textdegree}\label{prop:limit_sum_difference}
+{\kaishu 若数列 $\seqset{x}$ 和 $\seqset{y}$ 分别趋于有限极限
 $$
-\limto{n} x_n = a, \quad \limto{n} y_n = b,
+\limto{n}x_n=a,\qquad \limto{n}y_n=b,
 $$
-则它们的和(差)仍趋于有限极限, 并且
+则它们的和数列与差数列仍有有限极限, 并且
 $$
-\limto{n} \brac{x_n \pm y_n} = a \pm b.
+\limto{n}\brac{x_n\pm y_n}=a\pm b.
 $$}
 
-由极限的第二定义, 推得
+由极限的第二定义可写成
+\begin{equation}\label{eq:limit_sequence_decomposition}
+x_n=a+\alpha_n,\qquad y_n=b+\beta_n,
+\end{equation}
+其中 $\alpha_n$ 和 $\beta_n$ 都是无穷小量. 因此
 $$
-x_n = a + \alpha_n, \quad y_n = b + \beta_n
+x_n\pm y_n=(a\pm b)+(\alpha_n\pm\beta_n).
 $$
-式中 $\alpha_n$ 及 $\beta_n$ 为无穷小. 故
-$$
-x_n \pm y_n = (a \pm b) + (\alpha_n \pm \beta_n).
-$$
-这里的 $\alpha_n \pm \beta_n$ 依引理 \ref{n0} 为无穷小.
-因此, 应用极限的第二定义, 可以证明 $x_n \pm y_n$ 有极限 $a \pm b$.
+由引理 \ref{lem:bounded_times_infinitesimal}, $-\beta_n$ 也是无穷小量;
+再由引理 \ref{lem:finite_sum_infinitesimals}, $\alpha_n\pm\beta_n$ 是无穷小量;
+再应用极限的第二定义, 便得 $x_n\pm y_n\to a\pm b$.
 
-这定理及其证法, 可以推广到任意有限个有极限的数列相加的情形.
+这一定理及其证明可以推广到任意有限个有极限的数列相加的情形.
 
-2\textdegree~
-{\kaishu 若数列 $\{x_n\}$ 及 $\{y_n\}$ 趋于有限极限:
+\myrefparagraph{2\textdegree}\label{prop:limit_product}
+{\kaishu 若数列 $\seqset{x}$ 和 $\seqset{y}$ 分别趋于有限极限
 $$
-\limto{n} x_n = a, \quad \limto{n} y_n = b,
+\limto{n}x_n=a,\qquad \limto{n}y_n=b,
 $$
-则它们的积仍趋于有限极限, 并且
+则它们的积数列仍有有限极限, 并且
 $$
-\limto{n} x_n y_n = ab.
+\limto{n}x_ny_n=ab.
 $$}
 
-仍由极限的第二定义, 这次便有
+由等式 \eqref{eq:limit_sequence_decomposition} 可得
 $$
-x_n y_n = ab + (a\beta_n + b\alpha_n + \alpha_n\beta_n).
+x_ny_n=ab+(a\beta_n+b\alpha_n+\alpha_n\beta_n).
 $$
-依引理 \ref{n0} 及 \ref{a0}, 在括号内的式子为无穷小量.由此便推得, $x_n y_n$ 确趋于极限 $ab$.
+根据引理 \ref{lem:finite_sum_infinitesimals} 和 \ref{lem:bounded_times_infinitesimal},
+括号内的式子是无穷小量, 因而 $x_ny_n\to ab$.
 
-这定理同样可以推广到任意有限个有极限的数列相乘的情形.
+这一定理同样可以推广到任意有限个有极限的数列相乘的情形.
 
-3\textdegree~
-{\kaishu 若数列 $\{x_n\}$ 及 $\{y_n\}$ 趋于有限极限:
+\myrefparagraph{3\textdegree}\label{prop:limit_quotient}
+{\kaishu 若数列 $\seqset{x}$ 和 $\seqset{y}$ 分别趋于有限极限
 $$
-\limto{n} x_n = a, \quad \limto{n} y_n = b,
+\limto{n}x_n=a,\qquad \limto{n}y_n=b,
 $$
-并且 $b$ \emph{异于} 0, 则它们的比仍趋于有限极限, 并且
+并且 $b\neq0$, 则从某一项开始比 $\dfrac{x_n}{y_n}$ 有意义, 其极限为
 $$
-\limto{n} \frac{x_n}{y_n} = \frac{a}{b}.
+\limto{n}\frac{x_n}{y_n}=\frac{a}{b}.
 $$}
 
-由于 $b \neq 0$, 根据保号性, 由某项开始, 不仅 $y_n \neq 0$, 且有
+由于 $b\neq0$, 根据命题 \ref{prop:convergent_sequence_away_from_zero},
+存在常数 $r>0$ 和序号 $N$, 使当 $n>N$ 时
 $$
-\abs{y_n} > r > 0,
+\abs{y_n}>r>0.
 $$
-式中 $r$ 是常数.
-对于使上面的不等式成立的那些 $n$, 比 $\dfrac{x_n}{y_n}$ 显然是有意义的.
+因此从这一项起 $y_n\neq0$, 比 $\dfrac{x_n}{y_n}$ 有意义.
 
-依旧从极限的第二定义出发, 得
+仍由等式 \eqref{eq:limit_sequence_decomposition}, 对上述 $n$ 有
 $$
-\frac{x_n}{y_n} - \frac{a}{b} = \frac{a + \alpha_n}{b + \beta_n} - \frac{a}{b} = \frac{1}{by_n}(b\alpha_n - a\beta_n).
+\frac{x_n}{y_n}-\frac{a}{b}
+=\frac{a+\alpha_n}{b+\beta_n}-\frac{a}{b}
+=\frac{1}{by_n}(b\alpha_n-a\beta_n).
 $$
-
-依引理 \ref{n0} 及 \ref{a0}, 在括号内的式子 $b\alpha_n - a\beta_n$ 为无穷小量.
-根据开始时的叙述, 而其乘数将是有界变量:
+由引理 \ref{lem:finite_sum_infinitesimals} 和 \ref{lem:bounded_times_infinitesimal},
+$b\alpha_n-a\beta_n$ 是无穷小量. 同时
 $$
-\abs{\frac{1}{by_n}} = \frac{1}{\abs{b}\abs{y_n}} < \frac{1}{\abs{b}r}.
+\abs{\frac{1}{by_n}}
+=\frac{1}{\abs{b}\abs{y_n}}
+<\frac{1}{\abs{b}r},
 $$
-因此, 依引理 \ref{a0}, 等式右边的积将是无穷小.
-但它表示 $\dfrac{x_n}{y_n}$ 及数 $\dfrac{a}{b}$ 的差, 故 $\dfrac{x_n}{y_n}$ 的极限是 $\dfrac{a}{b}$.
-此即所要证的.
+所以乘数 $\dfrac{1}{by_n}$ 从第 $N+1$ 项起有界.
+再次应用引理 \ref{lem:bounded_times_infinitesimal}, 上式右边的乘积是无穷小量.
+它正是 $\dfrac{x_n}{y_n}$ 与 $\dfrac{a}{b}$ 的差, 因此
+$\dfrac{x_n}{y_n}\to\dfrac{a}{b}$.
 
-\subsection{未定式}
-上面我们讨论了
+\subsection{未定式}\label{subsec:31}
+在上一小节中, 我们考察了
 $$
-x_n \pm y_n, \quad x_ny_n, \quad \frac{x_n}{y_n},
+x_n\pm y_n,\qquad x_ny_n,\qquad \frac{x_n}{y_n},
 $$
-并在 $\seqset{x}$ 及 $\seqset{y}$ 都趋于有限极限的假定下在相除的情形, $\seqset{y}$ 的极限应不等于零, 各式子的极限.
+并在 $\seqset{x}$ 和 $\seqset{y}$ 都趋于有限极限的条件下确定了这些数列的极限
+(在相除的情形还要求分母数列的极限不为零).
 
-今再详述余下的尚未考虑的情形, 当 $\seqset{x}$ 及 $\seqset{y}$ (其中之一或两者) 的极限是无穷大时, 或(若论及除法)当分母的极限为零时.
-由这两种情形, 这里讲述四种重要而且有用的未定式.
+下面考察尚未包括的情形: $\seqset{x}$ 和 $\seqset{y}$ 中至少有一个是无穷大量,
+或者在相除时分母趋于零.
+这里我们讨论由此产生的四种重要的奇异式子, 它们的结果往往具有不确定性,
+因此被称为\emph{未定式}\index{weidingshi@未定式}.
 
-1\textdegree~
-我们首先来看商 $\dfrac{x_n}{y_n}$, 设 $\seqset{x}$ 及 $\seqset{y}$ 同时趋于零.
-下面给出三种情况:
+\myrefparagraph{1\textdegree}\label{form:zero_over_zero}
+先考察商 $\dfrac{x_n}{y_n}$, 设 $x_n\to0$ 且 $y_n\to0$.
+只知道两个数列的极限, 并不能判断它们的比的极限; 这个极限取决于两个数列各自的变化规律,
+可以等于不同的数, 也可能根本不存在. 例如:
 
-设 $x_n = \dfrac{1}{n^2}, y_n = \dfrac{1}{n}$, 则两数列各自趋于零, 它们的比 $\dfrac{x_n}{y_n} = \dfrac{1}{n}$ 也趋于零; 反之, 设 $x_n = \dfrac{1}{n}, y_n = \dfrac{1}{n^2}$, 虽然它们依旧各自趋于零, 但这次它们的比 $\dfrac{x_n}{y_n} = n$ 趋于 $\infty$.
+设 $x_n=\dfrac{1}{n^2}, y_n=\dfrac{1}{n}$, 很明显它们各自都是无穷小量,
+它们的比 $\dfrac{x_n}{y_n}=\dfrac{1}{n}$ 也趋于 0;
+反过来, 当 $x_n=\dfrac{1}{n}, y_n=\dfrac{1}{n^2}$时, 虽然它们依旧各自趋于 0,
+但是比值 $\dfrac{x_n}{y_n}=n$ 却最终是个无穷大量.
 
-再取任一异于零的数 $a$, 并作出两个无穷小 $x_n = \dfrac{a}{n}$ 及 $y_n = \dfrac{1}{n}$ 便知它们的比有极限为 $a$.
+再取任一异于零的数 $a$, 作出两个无穷小 $x_n=\dfrac{a}{n}, y_n=\dfrac{1}{n}$,
+易知它们的比值极限为 $a$.
+最后, 若 $x_n=\dfrac{(-1)^{n+1}}{n}, y_n=\dfrac{1}{n}$, 则比 $\dfrac{x_n}{y_n}=(-1)^{n+1}$ 发散.
 
-最后, 若 $x_n = \dfrac{(-1)^{n+1}}{n}, y_n = \dfrac{1}{n}$ (两者各有极限为零), 则比 $\dfrac{x_n}{y_n} = (-1)^{n+1}$ 没有极限.
+因此, 单知道 $x_n\to0$ 且 $y_n\to0$, 它们比值的性态并不能直接确定,
+这样, 称{\kaishu 表达式 $\dfrac{x_n}{y_n}$ 为 $\dfrac{0}{0}$ 型未定式}.
 
-这样, 单知道 $\seqset{x}$ 及 $\seqset{y}$ 的极限 0, 在目前的情形下我们无法判断它们的比的极限, 必须知道数列本身改变的规律, 并直接研究比 $\dfrac{x_n}{y_n}$.
-为了要表达当 $x_n \to 0$ 及 $y_n \to 0$ 的情形时的未定性, 就说, {\kaishu 表达式 $\dfrac{x_n}{y_n}$ 是 $\dfrac{0}{0}$ 型的未定式}.
-
-2\textdegree~
-在同时 $x_n \to \pm \infty$ 及 $y_n \to \pm \infty$ 的情形, 亦有类似的情况.
-若不知数列本身, 关于它们的比的极限便不能作出一般的论断.
-这一事实可以用完全类似于 1\textdegree 内引用的那些例题来表明:
+\myrefparagraph{2\textdegree}\label{form:infinity_over_infinity}
+当 $x_n\to\pm\infty$ 且 $y_n\to\pm\infty$ 时也有类似情形:
 \begin{align*}
-    &x_n = n \to \infty, \quad y_n = n^2 \to \infty, \quad \frac{x_n}{y_n} = \frac{1}{n} \to 0; \\
-    &x_n = n^2 \to \infty, \quad y_n = n \to \infty, \quad \frac{x_n}{y_n} = n \to \infty; \\
-    &x_n = an \to \pm \infty \quad (a \neq 0), \quad y_n = n \to \infty, \quad \frac{x_n}{y_n} = a \to a; \\
-    &x_n = [2 + (-1)^{n+1}]n \to \infty, \quad y_n = n \to \infty, \quad \frac{x_n}{y_n} = 2 + (-1)^{n+1} \ \text{发散}
+&x_n=n,\quad y_n=n^2,
+&&\frac{x_n}{y_n}=\frac{1}{n}\to0;\\
+&x_n=n^2,\quad y_n=n,
+&&\frac{x_n}{y_n}=n\to+\infty;\\
+&x_n=an\quad(a\neq0),\quad y_n=n,
+&&\frac{x_n}{y_n}=a;\\
+&x_n=\bbrac{2+(-1)^{n+1}}n,\quad y_n=n,
+&&\frac{x_n}{y_n}=2+(-1)^{n+1}\ \text{发散}.
 \end{align*}
+这种情形称{\kaishu  表达式 $\dfrac{x_n}{y_n}$ 为 $\dfrac{\infty}{\infty}$ 型未定式}.
 
-在这种情况下, 就说, {\kaishu 表达式 $\dfrac{x_n}{y_n}$ 是 $\dfrac{\infty}{\infty}$ 型的未定式}.
-
-3\textdegree~
-若 $\seqset{x}$ 趋于零, 同时 $\seqset{y}$ 趋于 $\pm \infty$, 则研究积 $x_n y_n$ 的极限时, 我们又遇到像 1\textdegree 及 2\textdegree 内所遇到的那种未定性. 关于这点可以由下面的例题证实它:
+\myrefparagraph{3\textdegree}\label{form:zero_times_infinity}
+若 $x_n\to0$, 同时 $y_n\to\pm\infty$, 则积 $x_ny_n$ 的极限也不能由两个数列的极限确定:
 \begin{align*}
-    &x_n = \frac{1}{n^2} \to 0, \quad y_n = n \to \infty, \quad x_n y_n = \frac{1}{n} \to 0; \\
-    &x_n = \frac{1}{n} \to 0, \quad y_n = n^2 \to \infty, \quad x_n y_n = n \to \infty; \\
-    &x_n = \frac{a}{n} \to 0 \quad (a \neq 0), \quad y_n = n \to \infty, \quad x_n y_n = a \to a; \\
-    &x_n = \frac{(-1)^{n+1}}{n} \to 0, \quad y_n = n \to \infty, \quad x_n y_n = (-1)^{n+1} \ \text{发散}
+&x_n=\frac{1}{n^2},\quad y_n=n,
+&&x_ny_n=\frac{1}{n}\to0;\\
+&x_n=\frac{1}{n},\quad y_n=n^2,
+&&x_ny_n=n\to+\infty;\\
+&x_n=\frac{a}{n}\quad(a\neq0),\quad y_n=n,
+&&x_ny_n=a;\\
+&x_n=\frac{(-1)^{n+1}}{n},\quad y_n=n,
+&&x_ny_n=(-1)^{n+1}\ \text{发散}.
 \end{align*}
+这种情形称{\kaishu $\ x_n y_n$ 为 $0\cdot\infty$ 型未定式.}
 
-在这种情况下, 就说, {\kaishu 表达式 $x_n y_n$ 是 $0 \cdot \infty$ 型的未定式}.
-
-4\textdegree~
-这里讲当 $\seqset{x}$ 及 $\seqset{y}$ 趋于异号的无穷大时, 若不知道 $x_n$ 及 $y_n$ 本身, 也不可能确定 $x_n + y_n$ 的极限. 在这里所表示的各种不同的可能性可用下面的例题表明它:
+\myrefparagraph{4\textdegree}\label{form:infinity_minus_infinity}
+最后考察 $x_n+y_n$, 其中 $x_n$ 和 $y_n$ 趋于异号的无穷大.
+若不知道数列本身的变化规律, 也不能确定它们的和的极限:
 \begin{align*}
-    &x_n = 2n \to +\infty, \quad y_n = -n \to -\infty, \quad x_n + y_n = n \to +\infty; \\
-    &x_n = n \to +\infty, \quad y_n = -2n \to -\infty, \quad x_n + y_n = -n \to -\infty; \\
-    &x_n = n + a \to +\infty, \quad y_n = -n \to -\infty, \quad x_n + y_n = a \to a; \\
-    &x_n = n + (-1)^{n+1} \to +\infty, \quad y_n = -n \to -\infty, \quad x_n + y_n = (-1)^{n+1} \ \text{发散}
+&x_n=2n,\quad y_n=-n,
+&&x_n+y_n=n\to+\infty;\\
+&x_n=n,\quad y_n=-2n,
+&&x_n+y_n=-n\to-\infty;\\
+&x_n=n+a,\quad y_n=-n,
+&&x_n+y_n=a;\\
+&x_n=n+(-1)^{n+1},\quad y_n=-n,
+&&x_n+y_n=(-1)^{n+1}\ \text{发散}.
 \end{align*}
+因此, 当 $x_n\to+\infty$ 且 $y_n\to-\infty$ 时, 称 {\kaishu $\ x_n+y_n$ 为
+$\infty-\infty$ 型未定式.}
 
-因此, 当 $x_n \to +\infty$ 及 $y_n \to -\infty$ 时, 即说, {\kaishu 表达式 $x_n + y_n$ 是 $\infty - \infty$ 型的未定式}.
-
-综合上面所讨论, 当提出了依 $\seqset{x}$ 及 $\seqset{y}$ 的极限去确定由它们所组成的四则运算的极限这个问题以后, 我们可以发现不可能解答的四种情形: 即型为
+综上, 仅凭 $\seqset{x}$ 和 $\seqset{y}$ 的极限, 不能确定下列四种形式的极限:
 $$
-\frac{0}{0}, \quad \frac{\infty}{\infty}, \quad 0 \cdot \infty, \quad \infty - \infty
+\frac{0}{0},\qquad \frac{\infty}{\infty},\qquad
+0\cdot\infty,\qquad \infty-\infty.
 $$
-的\emph{未定式}.在这些情形, 必须注意数列 $\seqset{x}$ 及 $\seqset{y}$ 的改变规律, 直接去研究我们所关心的式子.
-类似的研究称为\emph{未定式的定值法}.
-以后它并不永远像上面所举的例题那样简单.
+在这些情形中, 必须考察数列的具体变化规律, 直接研究所关心的表达式;
+这类研究称为\emph{未定式的定值法}. 将原式适当变形以消除未定性, 是其中常用的方法.
 
-将已给式子\emph{变形}以消除其“未定性”是未定式定值法中常用的方法.
-
-\begin{example}
-    考察这么一个极限, 设 $p(n)$ 是整数 $n$ 的常系数多项式:
-    $$
-    p(n) = a_0n^k + a_1n^{k-1} + \cdots + a_{k-1}n + a_k,
-    $$
-    若这多项式的一切系数全是正(负)的, 则显然 $p(n)$ 的极限是 $+\infty$ ($-\infty$).
-    但在系数为异号的情形, 某些项趋向 $+\infty$, 另一些项趋向 $-\infty$, 就遇到 $\infty - \infty$ 型的未定式.
-
-    要确定这一未定式, 可以把 $p(n)$ 写成
-    $$
-    p(n) = n^k \brac{a_0 + \frac{a_1}{n} + \cdots + \frac{a_{k-1}}{n^{k-1}} + \frac{a_k}{n^k}}.
-    $$
-    因为在括号内的一切加数, 从第二项起, 当 $n$ 增大时为无穷小, 所以括号内的式子有极限为 $a_0$.
-    第一个乘数趋向 $+\infty$. 则整个式子趋于 $+\infty$ 或 $-\infty$, 结果视 $a_0$ 的符号而定.
-\end{example}
-
-\begin{example}
-    若 $q(n)$ 也是多项式:
-    $$q(n) = b_0n^l + b_1n^{l-1} + \cdots + b_{l-1}n + b_l, $$
-    则商 $\dfrac{p(n)}{q(n)}$ 在 $n\to\infty$ 时是 $\dfrac{\infty}{\infty}$ 型的未定式.
-
-    在这里也就将每一个多项式变形, 如同在上例内做过的那样, 则得:
-    $$
-    \frac{p(n)}{q(n)} = n^{k-l} \frac{a_0 + \dfrac{a_1}{n} + \cdots + \dfrac{a_k}{n^k}}{b_0 + \dfrac{b_1}{n} + \cdots + \dfrac{b_l}{n^l}}.
-    $$
-    上式右边第二个乘数有一有限极限 $\dfrac{a_0}{b_0}$.
-    若两个多项式的幂次相等: $k = l$, 则比 $\dfrac{p(n)}{q(n)}$ 的极限为 $\dfrac{a_0}{b_0}$.
-    当 $k > l$ 时, 第一个乘数趋向 $\infty$, 故所考察的比亦趋向 $\pm\infty$ (其符号视 $\dfrac{a_0}{b_0}$ 的符号而定).
-    最后, 当 $k < l$ 时, 第一个乘数趋向零, 于是整个式子跟着它趋向零.
-\end{example}
-
-\begin{example}
-    证明, 在 $0 < k < 1$ 时,
-    $$
-    \limto{n} [(n+1)^k - n^k] = 0.
-    $$
-
-    这里是 $\infty - \infty$ 型的未定式.
-    进行变形:
-    $$
-    0 < (n+1)^k - n^k = n^k \bbrac{\brac{1 + \frac{1}{n}}^k - 1} < n^k \bbrac{\brac{1 + \frac{1}{n}} - 1} = \frac{1}{n^{1-k}}.
-    $$
-    因 $\dfrac{1}{n^{1-k}} \to 0$, 所以 $(n+1)^k - n^k \to 0$, 此即所要证的.
-\end{example}
-
-\begin{example}
-    求
-    $$
-    x_n = \sqrt{n}(\sqrt{n+1}-\sqrt{n})
-    $$
-    的极限.
-    根据上例, $x_n$ 是 $0\cdot\infty$ 的未定式.
-
-    经过变形:
-    $$
-    x_n = \sqrt{n} \cdot \frac{(\sqrt{n+1}-\sqrt{n})(\sqrt{n+1}+\sqrt{n})}{\sqrt{n+1}+\sqrt{n}} = \frac{\sqrt{n}}{\sqrt{n+1}+\sqrt{n}} = \frac{1}{\sqrt{1+1/n}+1} \to \frac{1}{2}.
-    $$
-\end{example}
-
-\begin{example}
-    求出下列数列的极限:
-    $$
-    x_n = \frac{n}{\sqrt{n^2 + n}}, \quad y_n = \frac{n}{\sqrt{n^2 + 1}},
-    $$
-    及
-    $$
-    z_n = \frac{1}{\sqrt{n^2 + 1}} + \frac{1}{\sqrt{n^2 + 2}} + \cdots + \frac{1}{\sqrt{n^2 + i}} + \cdots + \frac{1}{\sqrt{n^2 + n}}.
-    $$
-
-    容易看出, $x_n$ 及 $y_n$ 是 $\dfrac{\infty}{\infty}$ 型的未定式(因两者中的根式都 $> n$, 故它们必趋向 $\infty$).
-    将它们变形, 用 $n$ 除分子及分母:
-    $$
-    x_n = \frac{1}{\sqrt{1 + 1/n}} \to 1, \quad y_n = \frac{1}{\sqrt{1 + 1/n^2}} \to 1.
-    $$
-
-    $z_n$ 的表示式有着特有的形式: 这个和的每一项都依赖于 $n$, 且其项数也随着 $n$ 而增大.
-    因每一项都小于首项而大于末项, 故
-    $$
-    \frac{n}{\sqrt{n^2 + n}} < z_n < \frac{n}{\sqrt{n^2 + 1}},
-    $$
-    即 $x_n < z_n < y_n$.
-    因此, 依夹逼准则, $z_n$ 亦必趋于极限 1.
-\end{example}
-
-\begin{example}
-    设给定 $m$ 个正数 $a_1, a_2, \cdots, a_m$, 其中之最大者记成 $A$, 证明
-    $$
-    \limto{n} \sqrt[n]{a_1^n + a_2^n + \cdots + a_m^n} = A.
-    $$
-
-    这一结论可由很明显的不等式
-    $$
-    A \leq \sqrt[n]{a_1^n + a_2^n + \cdots + a_m^n} \leq A \cdot \sqrt[n]{m}
-    $$
-    推得.
-\end{example}
-
-\begin{example} \label{muchbigger}
-    今研究比
-    $$
-    \frac{a^n}{n^k}, \quad \frac{\log_a n}{n^k}
-    $$
-    的极限(当 $k \geq 1$ 时), 它们都是 $\dfrac{\infty}{\infty}$ 型的未定式.
-
-    对于第一个极限, 先证一辅助不等式.
-    令 $a = 1 + \lambda$, 因此 $\lambda > 0$, 依Newton二项公式得:
-    $$
-    a^n = (1 + \lambda)^n = 1 + n\lambda + \frac{n(n-1)}{2}\lambda^2 + \cdots > \frac{n(n-1)}{2}\lambda^2.
-    $$
-    因在 $n > 2$ 时, 显然 $n - 1 > \dfrac{n}{2}$, 故最后得出
-    $$
-    \frac{a^n}{n} > \frac{(a-1)^2}{4} n.
-    $$
-
-    在 $k = 1$ 时, 立即得出
-    $$
-    \frac{a^n}{n} > \frac{(a-1)^2}{4} n \to \infty.
-    $$
-    这一结果对于任何 $a > 1$ 均成立, 故若 $k > 1$, 便可写成(至少在充分大的 $n$ 时)
-    $$
-    \frac{a^n}{n^k} = \bbrac{\frac{(a^{\frac{1}{k}})^n}{n}}^k > \frac{(a^{\frac{1}{k}})^n}{n} \to \infty,
-    $$
-    由此
-    $$
-    \limto{n} \frac{a^n}{n^k} = +\infty \quad (a > 1).
-    $$
-
-    对于第二个极限, 我们仅需考虑 $k=1$ 的情况.
-    实际上, 若取任意数 $\epsilon > 0$, 则根据 $a^\epsilon > 1$, 当 $n$ 充分大时将有
-    $$
-    \sqrt[n]{n} < a^\epsilon.
-    $$
-    以 $a$ 为底取对数, 便得
-    $$
-    \frac{\log_a n}{n} < \epsilon.
-    $$
-    由此便推得上述命题.
-
-    这两个极限告诉我们, 指数, 幂和对数在无穷处的极限性态, 我们记做
-    $$
-    \text{指数} \gg \text{幂} \gg \text{对数}.
-    $$
-\end{example}
-
-\subsection{Stolz 定理} 为着要确定 $\dfrac{\infty}{\infty}$ 或 $\dfrac{0}{0}$ 型未定式的极限, 下面这个定理是经常有用的:
-\begin{theorem}($\dfrac{*}{\infty}$)
-    设 $y_n \to +\infty$, 并且从某一项开始, 在 $n$ 增大时 $y_n$ 亦增大: $y_{n+1} > y_n$. 则
-    $$
-    \limto{n} \frac{x_n}{y_n} = \limto{n} \frac{x_n - x_{n-1}}{y_n - y_{n-1}}
-    $$
-    只需等式右边的极限已知为存在(有限或 $\pm \infty$).
-\end{theorem}
-\begin{proof}
-    首先假定这极限等于有限数 $l$:
-    $$
-    \limto{n} \frac{x_n - x_{n-1}}{y_n - y_{n-1}} = l
-    $$
-
-    则依任何已给的 $\epsilon > 0$, 必能求得序号 $N$, 使当 $n > N$ 时有
-    $$
-    \abs{\frac{x_n - x_{n-1}}{y_n - y_{n-1}} - l} < \frac{\epsilon}{2}
-    $$
-    或
-    $$
-    l - \frac{\epsilon}{2} < \frac{x_n - x_{n-1}}{y_n - y_{n-1}} < l + \frac{\epsilon}{2}
-    $$
-    意即, 不论取怎样的 $n > N$, 一切分数
-    $$
-    \frac{x_{N+1} - x_N}{y_{N+1} - y_N}, \frac{x_{N+2} - x_{N+1}}{y_{N+2} - y_{N+1}},  \cdots,  \frac{x_{n-1} - x_{n-2}}{y_{n-1} - y_{n-2}},  \frac{x_n - x_{n-1}}{y_n - y_{n-1}}
-    $$
-    都包含在这些限界之内. 因为 $n$ 增大时 $y_n$ 随着增大, 它们的分母都是正数, 所以在那些限界之内亦包含着分数
-    $$
-    \frac{x_n - x_N}{y_n - y_N}
-    $$
-    它的分子即为上述各分式的一切分子的和, 分母即为一切分母的和. 因此, 在 $n > N$ 时,
-    $$
-    \abs{\frac{x_n - x_N}{y_n - y_N} - l} < \frac{\epsilon}{2}
-    $$
-
-    由恒等式:
-    $$
-    \frac{x_n}{y_n} - l = \frac{x_N - ly_N}{y_n} + \brac{1 - \frac{y_N}{y_n}} \brac{\frac{x_n - x_N}{y_n - y_N} - l}
-    $$
-    可得
-    $$
-    \abs{\frac{x_n}{y_n} - l} \leqslant \abs{\frac{x_N - ly_N}{y_n}} + \abs{\frac{x_n - x_N}{y_n - y_N} - l}
-    $$
-
-    右边的第二项, 我们已看到, 在 $n > N$ 时 $< \dfrac{\epsilon}{2}$; 由于 $y_n \to +\infty$, 所以第一项, 在 $n > N'$ 时, 也将 $< \dfrac{\epsilon}{2}$. 若在这时所取的 $N' > N$, 则在 $n > N'$ 时, 显然有
-    $$
-    \abs{\frac{x_n}{y_n} - l} < \epsilon,
-    $$
-    这就证明了我们的命题.
-
-    而无穷极限的情形可以化为上面已研究过的情形. 例如, 设
-    $$
-    \limto{n} \frac{x_n - x_{n-1}}{y_n - y_{n-1}} = +\infty.
-    $$
-    由此, 首先推得(在充分大的 $n$ 时),
-    $$
-    x_n - x_{n-1} > y_n - y_{n-1},
-    $$
-    因此, 随着 $y_n \to +\infty$ 而 $x_n \to +\infty$, 并且 $x_n$ 随着序号 $n$ 的增大而无限制增大. 在这种情况下, 可以把已证明的定理应用于
-    $$
-    \limto{n} \frac{y_n}{x_n} = \limto{n} \frac{y_n - y_{n-1}}{x_n - x_{n-1}} = 0.
-    $$
-    因为在这里极限已是有限的, 由此推得
-    $$
-    \limto{n} \frac{x_n}{y_n} = +\infty,
-    $$
-    此即所要证的.
-\end{proof}
-
-我们知道, 无穷大量的倒数是无穷小量, 则对于 Stolz 定理的分子分母同时进行倒数处理(在倒数后, 增大的性质应当变为减小的性质), 可以得到
-\begin{theorem}($\dfrac{*}{0}$)
-    设 $\seqset{y}$ 是无穷小, 且从某一项开始, 在 $n$ 增大时 $y_n$ 减小: $y_{n+1} < y_n$.则
-    $$
-    \limto{n} \frac{x_n}{y_n} = \limto{n} \frac{x_n - x_{n-1}}{y_n - y_{n-1}}
-    $$
-    只需等式右边的极限已知为存在(有限或 $\pm \infty$).
-\end{theorem}
-
-应用 Stolz 定理可以得到下面这个 Cauchy 命题
-\begin{proposition} \label{Cauchy_Proposition}
-    若数列 $\{a_n\}$ 有(有限或无穷)极限, 则
-    $$
-    b_n = \frac{a_1 + a_2 + \cdots + a_n}{n}
-    $$
-    (数列 $\{a_n\}$ 的首 $n$ 个值的“算术平均值”)亦有同一极限.
-\end{proposition}
-
-实际上, 在 Stolz 定理内令
+\subsection{极限求法的例题}\label{subsec:32}
+\myrefparagraph{1)}\label{ex:polynomial_limit}
+设 $p(n)$ 是关于整数 $n$ 的常系数多项式:
 $$
-x_n = a_1 + a_2 + \cdots + a_n, \quad y_n = n,
+p(n)=a_0n^k+a_1n^{k-1}+\cdots+a_{k-1}n+a_k.
 $$
-便有
+若各项系数全为正数或全为负数, 则显然 $p(n)$ 分别趋于 $+\infty$ 或 $-\infty$.
+当系数异号时, 某些项趋于 $+\infty$, 另一些项趋于 $-\infty$, 因而出现
+$\infty-\infty$ 型未定式.
+
+未确定这一未定式, 可以将最高次幂提出, 得
 $$
-    \limto{n} b_n = \limto{n} \frac{x_n}{y_n} = \limto{n} \frac{x_n - x_{n-1}}{y_n - y_{n-1}} = \limto{n} a_n.
+p(n)=n^k\brac{a_0+\frac{a_1}{n}+\cdots+
+\frac{a_{k-1}}{n^{k-1}}+\frac{a_k}{n^k}}.
 $$
-例如,
+括号内的式子趋于 $a_0$, 而 $n^k\to+\infty$, 所以 $p(n)$ 的符号最终由首项系数
+$a_0$ 决定, 即 $p(n)\to+\infty$ 或 $p(n)\to-\infty$.
+这种通过变形消除未定性的方法以后还会经常使用.
+
+\myrefparagraph{2)}\label{ex:rational_polynomial_limit}
+若
 $$
-    \limto{n} \frac{1+\sqrt{2}+\sqrt[3]{3}+\cdot + \sqrt[n]{n}}{n} = \limto{n} \sqrt[n]{n} = 1.
+q(n)=b_0n^l+b_1n^{l-1}+\cdots+b_{l-1}n+b_l,
+$$
+则商 $\dfrac{p(n)}{q(n)}$ 是 $\dfrac{\infty}{\infty}$ 型未定式. 仿照例 \ref{ex:polynomial_limit}, 得
+$$
+\frac{p(n)}{q(n)}
+=n^{k-l}
+\frac{a_0+\dfrac{a_1}{n}+\cdots+\dfrac{a_k}{n^k}}
+{b_0+\dfrac{b_1}{n}+\cdots+\dfrac{b_l}{n^l}}.
+$$
+右边第二个乘数趋于 $\dfrac{a_0}{b_0}$. 因此
+$$
+\limto{n}\frac{p(n)}{q(n)}
+=
+\begin{cases}
+\dfrac{a_0}{b_0}, & k=l,\\[4pt]
+\pm\infty, & k>l,\\
+0, & k<l,
+\end{cases}
+$$
+其中 $k>l$ 时无穷极限的符号由 $\dfrac{a_0}{b_0}$ 的符号决定.
+
+\myrefparagraph{3)}\label{ex:pyramid_volume}
+求三棱锥 $SABC$ 的体积 $V$.
+
+\begin{wrapfigure}[10]{r}{0.32\textwidth}
+    \vspace{-40pt}
+    \centering
+    \begin{tikzpicture}[scale=0.55]
+        \coordinate (S) at (-2.6,8);
+        \coordinate (A) at (-2.6,1);
+        \coordinate (B) at (0.45,-1.15);
+        \coordinate (C) at (3.5,1);
+        \coordinate (D) at (-2.6,9.75);
+        \coordinate (E) at (-2.6,2.75);
+        \coordinate (F) at (0.45,0.6);
+        \coordinate (G) at (3.5,2.75);
+
+        \draw[thick] (S)--(A)--(B)--(C)--cycle;
+        \draw[thick] (A)--(C);
+        \draw[thick] (S)--(B);
+
+        \foreach \t in {0.25,0.5,0.75}{
+            \coordinate (ASt) at ($(S)!\t!(A)$);
+            \coordinate (BSt) at ($(S)!\t!(B)$);
+            \coordinate (CSt) at ($(S)!\t!(C)$);
+            \coordinate (BAt) at ($(A)!\t!(B)$);
+            \draw[thick] (ASt)--(BSt)--(CSt)--cycle;
+        }
+
+        \foreach \t in {0.75, 1}{
+            \coordinate (DEt) at ($(D)!\t!(E)$);
+            \coordinate (DFt) at ($(D)!\t!(F)$);
+            \coordinate (DGt) at ($(D)!\t!(G)$);
+            \coordinate (BSt) at ($(S)!\t!(B)$);
+            \coordinate (CSt) at ($(S)!\t!(C)$);
+            \draw[thick,dashed] (DEt)--(DFt)--(DGt)--cycle;
+            \draw[thick,dashed] (BSt)--(DFt);
+            \draw[thick,dashed] (CSt)--(DGt);
+        }
+
+        \draw[thick] ($(S)!0.75!(B)$)--($(A)!0.75!(B)$)--($(A)!0.75!(C)$)--($(S)!0.75!(C)$)--cycle;
+        \draw[thick] ($(S)!0.5!(B)$)--($(E)!0.5!(F)$)--($(E)!0.5!(G)$)--($(S)!0.5!(C)$)--cycle;
+
+        \node[above,scale=0.8] at (S) {$S$};
+        \node[left,scale=0.8] at (A) {$A$};
+        \node[below,scale=0.8] at (B) {$B$};
+        \node[right,scale=0.8] at (C) {$C$};
+        \node[below,scale=0.8] at ($(A)!0.75!(B)$) {$B'$};
+        \node[below,scale=0.8] at ($(C)!0.25!(A)$) {$C'$};
+        \node[right,scale=0.8] at ($(S)!0.75!(B)$) {$F'$};
+        \node[above right,scale=0.8] at ($(S)!0.75!(C)$) {$G'$};
+        \node[left,scale=0.8] at (E) {$E$};
+        \node[right,scale=0.8] at (F) {$F$};
+        \node[right,scale=0.8] at (G) {$G$};
+    \end{tikzpicture}
+\end{wrapfigure}
+设底面 $\triangle ABC$ 的面积为 $Q$, 高为 $H$.
+把高分成 $n$ 等份, 过各分点作平行于底面的平面, 再由截面构造两组内含与外包的三棱柱,
+例如最底下一层的台体 $EF'G'-ABC$ 就由两个柱体 $EF'G'-AB'C'$ 和 $EFG-ABC$ 包裹住,
+我们将每一层内含与外包的三棱柱体积和分别记为 $V_n$ 和 $V'_n$.
+显然
+$$
+V_n<V<V'_n.
+$$
+对于两者之差, 我们同样考虑最底下一层的台体 $F'FGG'-B'BCC'$,
+很明显它的高为 $\dfrac{H}{n}$, 底面为 $\Delta ABC$ 的一部分,
+并且可以发现, 其它每一层的差都有同样的高, 而它们的底面可以共同构成整个 $\Delta ABC$,
+因此 $V‘_n$ 和 $V_n$ 两者之差就是最下面的外包三棱柱:
+$$
+V'_n-V_n=\frac{QH}{n}\to0.
+$$
+由夹逼准则可得
+$$
+V=\limto{n}V_n=\limto{n}V'_n.
 $$
 
-\begin{example}
-    计算
-    $$
-    \limto{n} z_n = \limto{n} \frac{1^k + 2^k + ... + n^k}{n^{k+1}} , \quad k \text{为自然数.}
-    $$
-\end{example}
-令
+外包三棱柱的底面积依次为
 $$
-x_n = 1^k + 2^k + \cdots + n^k, \quad y_n = n^{k+1},
+\frac{1^2}{n^2}Q,\quad\frac{2^2}{n^2}Q,\quad\ldots,\quad
+\frac{n^2}{n^2}Q=Q,
 $$
-便有
+高均为 $\dfrac{H}{n}$. 因此
 $$
-    \limto{n} z_n = \limto{n} \frac{n^k}{n^{k+1} - (n-1)^{k+1}}.
+V'_n
+=\frac{QH}{n^3}\brac{1^2+2^2+\cdots+n^2}
+=\frac{QH}{6}\frac{(n+1)(2n+1)}{n^2}.
 $$
-由二项式展开:
+取极限便得到
 $$
-(n-1)^{k+1} = n^{k+1} - (k+1)n^k +  \cdots
+V=\frac{QH}{3}.
 $$
-如此, 便有
+
+\myrefparagraph{4)}\label{ex:parabolic_area}
+求抛物线 $y=ax^2\ (a>0)$、$x$ 轴上的线段 $OP$ 和竖直线段 $PM$ 所围成的面积 $Q$.
+
+\begin{wrapfigure}[10]{l}{0.4\textwidth}
+    \vspace{-1cm}
+\centering
+\begin{tikzpicture}
+    \draw[-latex] (-2.2,0)--(2.2,0) node[right,scale=0.8] {$x$};
+    \draw[-latex] (0,-0.3)--(0,3.65) node[left,scale=0.8] {$y$};
+    \draw[thick,domain=-1.9:1.9,samples=100] plot (\x,{1.0*\x*\x});
+    \draw[thick,dashed] (-1.8,0) node[below,scale=0.8] {$P'$} -- (-1.8,3.24) node[left,scale=0.8] {$M'$}
+        -- (1.8,3.24) node[right,scale=0.8] {$M$} -- (1.8,0) node[below,scale=0.8] {$P$};
+
+    \draw[thick] (0.3,0.09)--(0.6,0.09);
+    \draw[thick] (0.6,0.36)--(0.9,0.36);
+    \draw[thick] (0.9,0.81)--(1.2,0.81);
+    \draw[thick] (1.2,1.44)--(1.5,1.44);
+    \draw[thick] (1.5,2.25)--(1.8,2.25);
+
+    \foreach \i in {1,...,6}{
+        \pgfmathsetmacro{\xa}{0.3*(\i-1)}
+        \pgfmathsetmacro{\xb}{0.3*\i}
+        \pgfmathsetmacro{\yy}{1.0*\xb*\xb}
+        \draw[thick] (\xa,0) rectangle (\xb,\yy);
+    }
+
+    \node[below left] at (0,0) {$O$};
+    \node[right,scale=0.8] at (-1.2,1.5) {$y=ax^2$};
+\end{tikzpicture}
+\end{wrapfigure}
+把 $OP$ 分成 $n$ 等份, 作内含与外包矩形, 其面积和分别记为 $Q_n$ 和 $Q'_n$.
+二者之差不超过最右侧外包矩形的面积 $\dfrac{x}{n} \cdot y$, 所以
 $$
-n^{k+1} - (n-1)^{k+1} = (k+1)n^k - \cdots
+Q_n<Q<Q'_n,\qquad Q'_n-Q_n = \dfrac{x}{n}y \to0,
 $$
 从而
 $$
-    \limto{n} z_n = \limto{n} \frac{n^k}{(k+1)n^k + \cdots } = \frac{1}{k+1}.
+Q=\limto{n}Q_n=\limto{n}Q'_n.
 $$
 
-\begin{example}
-    计算
-    $$
-    u_n = n \brac{z_n - \frac{1}{k+1}} = \frac{1^k + 2^k + \cdots + n^k}{n^k} - \frac{n}{k+1}
-    $$
-    的极限.
-\end{example}
-简单化简得:
+各外包矩形的高依次为
 $$
-u_n = \frac{(k+1)(1^k + 2^k + \cdots + n^k) - n^{k+1}}{(k+1)n^k}.
+a\frac{1^2}{n^2}x^2,\quad
+a\frac{2^2}{n^2}x^2,\quad\ldots,\quad ax^2.
 $$
-令 $x_n$ 等于分子, $y_n$ 等于分母, 应用 Stolz 定理:
+因此
 $$
-    \limto{n} u_n = \limto{n} \frac{(k+1)n^k - [n^{k+1} - (n-1)^{k+1}]}{(k+1)[n^k - (n-1)^k]}.
+Q'_n
+=\frac{ax^3}{n^3}\brac{1^2+2^2+\cdots+n^2}
+=\frac{ax^3}{6}\frac{(n+1)(2n+1)}{n^2},
 $$
-对分子进行二项式展开:
-\begin{align*}
-(k+1)n^k  - [n^{k+1} - (n-1)^{k+1}]
-&= (k+1)n^k - \bbrac{(k+1)n^k - \binom{k+1}{2}n^{k-1} + \cdots} \\
-&= \binom{k+1}{2}n^{k-1} + \cdots = \frac{(k+1)k}{2}n^{k-1} + \cdots
-\end{align*}
-对分母进行二项式展开:
+于是
 $$
-n^k - (n-1)^k = kn^{k-1} - \cdots
+Q=\frac{ax^3}{3}=\frac{xy}{3}.
 $$
-最后即得
+由此还可得到抛物线弓形 $M'OM$ 的面积为 $\dfrac{4}{3}xy$,
+即外接矩形 $M'P'PM$ 面积的 $\dfrac{2}{3}$.
+
+\myrefparagraph{5)}\label{ex:power_difference_limit}
+证明当 $0<k<1$ 时,
 $$
-    \limto{n} u_n = \limto{n} \frac{\dfrac{(k+1)k}{2}n^{k-1} + \cdots}{(k+1)kn^{k-1} + \cdots } = \frac{1}{2}.
+\limto{n}\bbrac{(n+1)^k-n^k}=0.
+$$
+这是 $\infty-\infty$ 型未定式. 将 $n^k$ 提出, 得
+$$
+0<(n+1)^k-n^k
+=n^k\bbrac{\brac{1+\frac1n}^k-1}
+<n^k\bbrac{\brac{1+\frac1n}-1}
+=\frac{1}{n^{1-k}}.
+$$
+右端趋于零, 因而由夹逼准则得到所需结论.
+
+\myrefparagraph{6)}\label{ex:radical_product_limit}
+求数列
+$$
+x_n=\sqrt n\brac{\sqrt{n+1}-\sqrt n}
+$$
+的极限. 这是 $0\cdot\infty$ 型未定式.
+常见的变形为
+$$
+x_n
+=\frac{\sqrt (n\brac{\sqrt{n+1}-\sqrt n})(\sqrt{n+1}+\sqrt n)}{\sqrt{n+1}+\sqrt n}
+=\frac{\sqrt n}{\sqrt{n+1}+\sqrt n}
+=\frac{1}{\sqrt{1+\dfrac1n}+1}.
+$$
+因为
+$$
+1<\sqrt{1+\frac1n}<1+\frac1n,
+$$
+所以 $\sqrt{1+\dfrac1n}\to1$, 最终有
+$$
+\limto{n}x_n=\frac12.
 $$
 
+\myrefparagraph{7)}\label{ex:variable_length_sum_limit}
+求下列数列的极限:
+$$
+x_n=\frac{n}{\sqrt{n^2+n}},\qquad
+y_n=\frac{n}{\sqrt{n^2+1}},
+$$
+以及
+$$
+z_n=\frac1{\sqrt{n^2+1}}+\frac1{\sqrt{n^2+2}}+\cdots+
+\frac1{\sqrt{n^2+i}}+\cdots+\frac1{\sqrt{n^2+n}}.
+$$
+将 $x_n$ 和 $y_n$ 的分子、分母同除以 $n$, 得
+$$
+x_n=\frac1{\sqrt{1+\dfrac1n}}\to1,\qquad
+y_n=\frac1{\sqrt{1+\dfrac1{n^2}}}\to1.
+$$
+$z_n$ 的项数也随 $n$ 增加. 因每一项都不大于首项且不小于末项,
+$$
+\frac{n}{\sqrt{n^2+n}}<z_n<\frac{n}{\sqrt{n^2+1}},
+$$
+即 $x_n<z_n<y_n$. 由夹逼准则得 $z_n\to1$.
+
+\myrefparagraph{8)}\label{ex:max_nth_root_limit}
+给定 $m$ 个正数 $a_1,a_2,\ldots,a_m$, 其中最大者为 $A$. 证明
+$$
+\limto{n}\sqrt[n]{a_1^n+a_2^n+\cdots+a_m^n}=A.
+$$
+由
+$$
+A\leq\sqrt[n]{a_1^n+a_2^n+\cdots+a_m^n}
+\leq A\sqrt[n]{m}
+$$
+以及 $\sqrt[n]{m}\to1$ [\emph{\ref{subsec:25}}, \ref{ex:nth_root_constant_supplement}], 立即得到结论.
+
+\myrefparagraph{9)}\label{ex:exponential_dominates_power}\label{muchbigger}
+设 $a>1,\ k>0$. 证明
+$$
+\limto{n}\frac{a^n}{n^k}=+\infty.
+$$
+先建立辅助不等式 (参阅 \emph{\ref{subsec:19}} 内的 Bernoulli 不等式).
+令 $a=1+\lambda\ (\lambda>0)$, 由 Newton 二项公式,
+$$
+a^n=(1+\lambda)^n
+= 1 + n\lambda + \frac{n(n-1)}{2}\lambda^2 + \cdots
+> \frac{n(n-1)}{2}\lambda^2.
+$$
+当 $n>2$ 时, $n-1>\dfrac n2$, 因而
+\begin{equation}\label{eq:exponential_lower_bound}
+a^n>\frac{(a-1)^2}{4}n^2.
+\end{equation}
+特别地, $k=1$ 时立即得出
+$$
+\frac{a^n}{n}>\frac{(a-1)^2}{4}n\to+\infty.
+$$
+当 $k>1$ 时, 至少对充分大的 $n$ 有
+$$
+\frac{a^n}{n^k}
+=\bbrac{\frac{(a^{1/k})^n}{n}}^k
+>\frac{(a^{1/k})^n}{n}\to+\infty.
+$$
+当 $0<k<1$ 时, $n^k<n$ 有 $\dfrac{a^n}{n^k}> \dfrac{a^n}{n}$,
+故结论也由 $k=1$ 的情形推出.
+
+\myrefparagraph{10)}\label{ex:nth_root_n_limit}
+利用不等式 \eqref{eq:exponential_lower_bound} 亦可以用来证明
+$$
+\limto{n}\sqrt[n]{n}=1.
+$$
+在该不等式中令 $a=\sqrt[n]{n}$, 得
+$$
+n>\frac{n^2}{4}\brac{\sqrt[n]{n}-1}^2.
+$$
+因此
+$$
+0<\sqrt[n]{n}-1<\frac{2}{\sqrt n},
+$$
+由夹逼准则即得结论.
+
+\myrefparagraph{11)}\label{ex:log_over_n_limit}
+我们再来建立另一有趣的极限.
+设 $a>1$, 证明
+$$
+\limto{n}\frac{\log_a n}{n}=0.
+$$
+任取 $\epsilon>0$. 因 $a^\epsilon>1$, 由 [\emph{\ref{subsec:26}}, \ref{prop:eventual_order_from_limit}]
+及例 \ref{ex:nth_root_n_limit}, 当 $n$ 充分大时有
+$$
+\sqrt[n]{n}<a^\epsilon.
+$$
+以 $a$ 为底取对数, 得
+$$
+0<\frac{\log_a n}{n}<\epsilon,
+$$
+所以所求极限为零.
+
+例 \ref{ex:exponential_dominates_power} 和 \ref{ex:log_over_n_limit} 表明,
+在无穷处有如下增长速度关系:
+$$
+\text{指数}\gg\text{幂}\gg\text{对数}.
+$$
+
+\subsection{Stolz 定理及其应用}\label{subsec:stolz_theorem}
+在处理 $\dfrac{\infty}{\infty}$ 型未定式时,
+\emph{Stolz 定理}\index{stolzdingli@Stolz 定理}经常很有用.
+
+\begin{theorem}[Stolz 定理]\label{thm:stolz}
+设 $y_n\to+\infty$, 并且至少从某一项开始, $y_n$ 随 $n$ 严格递增, 即
+$y_{n+1}>y_n$. 若极限
+$$
+\limto{n}\frac{x_n-x_{n-1}}{y_n-y_{n-1}}
+$$
+存在, 无论为有限数还是 $\pm\infty$, 则\footnote{当 $y_n=n$ 时, 这一结论早已由 Cauchy 证明.}
+$$
+\limto{n}\frac{x_n}{y_n}
+=\limto{n}\frac{x_n-x_{n-1}}{y_n-y_{n-1}}.
+$$
+\end{theorem}
+
+\begin{proof}
+先设右端极限为有限数 $l$. 任取 $\epsilon>0$. 因为 $y_n\to+\infty$ 且最终严格递增,
+可以把序号 $N$ 取得充分大, 使 $y_N>0$, 并且当 $n>N$ 时
+$$
+\abs{\frac{x_n-x_{n-1}}{y_n-y_{n-1}}-l}<\frac{\epsilon}{2},
+$$
+即
+$$
+l-\frac{\epsilon}{2}
+<\frac{x_n-x_{n-1}}{y_n-y_{n-1}}
+<l+\frac{\epsilon}{2}.
+$$
+因此, 对任意 $n>N$, 各分式
+$$
+\frac{x_{N+1}-x_N}{y_{N+1}-y_N},\
+\frac{x_{N+2}-x_{N+1}}{y_{N+2}-y_{N+1}},\ \ldots,\
+\frac{x_n-x_{n-1}}{y_n-y_{n-1}}
+$$
+都在上述两个界之间. 由于各分母均为正数, 把分子与分母分别相加后得到的分式也在两界之间, 即
+$$
+\abs{\frac{x_n-x_N}{y_n-y_N}-l}<\frac{\epsilon}{2}.
+$$
+
+此时 $0<1-\dfrac{y_N}{y_n}<1$. 利用恒等式(它可以直接验算出来)
+$$
+\frac{x_n}{y_n}-l
+=\frac{x_N-ly_N}{y_n}
++\brac{1-\frac{y_N}{y_n}}
+\brac{\frac{x_n-x_N}{y_n-y_N}-l},
+$$
+可得
+$$
+\abs{\frac{x_n}{y_n}-l}
+\leq
+\abs{\frac{x_N-ly_N}{y_n}}
++\abs{\frac{x_n-x_N}{y_n-y_N}-l}.
+$$
+右边第二项在 $n>N$ 时小于 $\dfrac{\epsilon}{2}$.
+又因为 $y_n\to+\infty$, 所以存在 $N'>N$, 使当 $n>N'$ 时第一项也小于
+$\dfrac{\epsilon}{2}$. 因此
+$$
+\abs{\frac{x_n}{y_n}-l}<\epsilon,
+$$
+这就证明了有限极限的情形.
+
+无穷极限可化为有限极限处理. 例如, 若
+$$
+\limto{n}\frac{x_n-x_{n-1}}{y_n-y_{n-1}}=+\infty,
+$$
+则对充分大的 $n$ 有
+$$
+x_n-x_{n-1}>y_n-y_{n-1}.
+$$
+于是 $x_n\to+\infty$, 且从某项开始严格递增. 把已经证明的有限极限情形应用于
+$\dfrac{y_n}{x_n}$, 得
+$$
+\limto{n}\frac{y_n}{x_n}
+=\limto{n}\frac{y_n-y_{n-1}}{x_n-x_{n-1}}
+=0.
+$$
+因此
+$$
+\limto{n}\frac{x_n}{y_n}=+\infty.
+$$
+其余无穷极限的情形同理.
+\end{proof}
+
+\myrefparagraph{12)}\label{ex:stolz_exponential_over_n}
+例 \ref{ex:exponential_dominates_power} 已证明, 当 $a>1$ 时
+$$
+\limto{n}\frac{a^n}{n}=+\infty.
+$$
+应用 Stolz 定理(例 \ref{ex:log_over_n_limit} 也可用同样方法处理)可以立即得到
+$$
+\limto{n}\frac{a^n}{n}
+=\limto{n}\brac{a^n-a^{n-1}}
+=\limto{n}a^n\brac{1-\frac1a}
+=+\infty.
+$$
+
+\myrefparagraph{13)}\label{ex:cesaro_mean}
+Stolz 定理可以推出著名的 Cauchy 命题:{\kaishu
+若数列 $\seqset{a}$ 有有限或无穷极限, 则其前 $n$ 项的算术平均值
+$$
+b_n=\frac{a_1+a_2+\cdots+a_n}{n}
+$$
+也有同一极限.
+}
+
+事实上, 在 Stolz 定理中令
+$$
+x_n=a_1+a_2+\cdots+a_n,\qquad y_n=n,
+$$
+便有
+$$
+\limto{n}b_n
+=\limto{n}\frac{x_n}{y_n}
+=\limto{n}\frac{x_n-x_{n-1}}{y_n-y_{n-1}}
+=\limto{n}a_n.
+$$
+例如, 由例 \ref{ex:nth_root_n_limit} 可得
+$$
+\frac{1+\sqrt2+\sqrt[3]{3}+\cdots+\sqrt[n]{n}}{n}\to1.
+$$
+
+\myrefparagraph{14)}\label{ex:power_sum_asymptotic}
+设 $k$ 为自然数, 求
+$$
+z_n=\frac{1^k+2^k+\cdots+n^k}{n^{k+1}}
+$$
+的极限. 在 Stolz 定理中令
+$$
+x_n=1^k+2^k+\cdots+n^k,\qquad y_n=n^{k+1},
+$$
+则
+$$
+\limto{n}z_n
+=\limto{n}\frac{n^k}{n^{k+1}-(n-1)^{k+1}}.
+$$
+由二项式展开,
+$$
+n^{k+1}-(n-1)^{k+1}=(k+1)n^k+\cdots,
+$$
+故
+$$
+\limto{n}z_n=\frac{1}{k+1}.
+$$
+
+\myrefparagraph{15)}\label{ex:power_sum_second_term}
+最后求
+$$
+u_n=n\brac{z_n-\frac{1}{k+1}}
+=\frac{1^k+2^k+\cdots+n^k}{n^k}-\frac{n}{k+1}
+$$
+的极限. 化为
+$$
+u_n=
+\frac{(k+1)(1^k+2^k+\cdots+n^k)-n^{k+1}}{(k+1)n^k}.
+$$
+令 $x_n$、$y_n$ 分别为上式的分子、分母, 再应用 Stolz 定理:
+$$
+\limto{n}u_n
+=\limto{n}
+\frac{(k+1)n^k-\bbrac{n^{k+1}-(n-1)^{k+1}}}
+{(k+1)\bbrac{n^k-(n-1)^k}}.
+$$
+二项式展开给出
+$$
+(k+1)n^k-\bbrac{n^{k+1}-(n-1)^{k+1}}
+=\frac{(k+1)k}{2}n^{k-1}+\cdots,
+$$
+并且
+$$
+n^k-(n-1)^k=kn^{k-1}+\cdots.
+$$
+因此
+$$
+\limto{n}u_n
+=\limto{n}
+\frac{\dfrac{(k+1)k}{2}n^{k-1}+\cdots}
+{(k+1)kn^{k-1}+\cdots}
+=\frac12.
+$$
+
+\begin{comment}
 \section{单调数列}
 \subsection{单调数列的极限}
 到目前为止, 我们所学的极限存在的定理中, 都是先假设存在, 再去根据某些表达式去计算这个极限.
