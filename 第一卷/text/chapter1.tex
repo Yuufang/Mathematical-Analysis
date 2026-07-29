@@ -1492,404 +1492,452 @@ $$
 =\frac12.
 $$
 
-\begin{comment}
-\section{单调数列}
-\subsection{单调数列的极限}
-到目前为止, 我们所学的极限存在的定理中, 都是先假设存在, 再去根据某些表达式去计算这个极限.
-如果能用定义直接说明自然是十分完美, 但是定义的过程非常繁琐, 我们一般都不用其去说明.
-有些情况下, 我们假设了极限的存在性, 并且也确实求出了某个极限, 但是这个极限真的存在吗?
-这句话看起来有点绕口, 我们以一个例子进行说明:
+\section{单调数列}\label{sec:monotone_sequences}
+\subsection{单调数列的极限}\label{subsec:monotone_sequence_limits}
+到目前为止, 我们所学的极限定理大都以极限已经存在为前提,
+再根据数列之间的关系求出极限值. 直接由定义证明极限存在当然可行,
+但往往十分繁琐. 更重要的是, 即使假定极限存在并求出了一个可能的数值,
+也不能据此断定极限确实存在. 下面这个例子可以清楚地说明这一点.
 
-由某一实数 $c$ 出发, 假定 $x_1 = \dfrac{c}{2}$, 数列 $\{x_n\}$ 有递推式
-\begin{equation} \label{monotone_ex1}
-    x_{n+1} = \frac{c}{2} + \frac{x_n^2}{2}.
+从实数 $c$ 出发, 令 $x_1=\dfrac{c}{2}$, 并由递推式
+\begin{equation}\label{eq:quadratic_recurrence}
+x_{n+1}=\frac{c}{2}+\frac{x_n^2}{2}
 \end{equation}
-
-我们假设 $\seqset{x}$ 有极限存在, 是为 $a$, 那么上式两边同时取极限, 应当有
+确定数列 $\seqset{x}$. 假定它有有限极限 $a$, 对式
+\eqref{eq:quadratic_recurrence} 两边取极限, 便应有
 $$
-a = \frac{c}{2} + \frac{a^2}{2}.
+a=\frac{c}{2}+\frac{a^2}{2}.
 $$
-由这二次方程求得
-\begin{equation} \label{monotone_ex2}
-    a_{\pm} = 1 \pm \sqrt{1 - c}.
+因此, 极限只能是二次方程的根
+\begin{equation}\label{eq:quadratic_recurrence_candidates}
+a_{\pm}=1\pm\sqrt{1-c}.
 \end{equation}
-由此立刻看出, 在 $c > 1$ 时这个实数列极限是个带有 $\i$ 的复数, 这是不可能的, 从而极限不存在.
-这里用了“反证法”, 所以可以直接下结论说 $c > 1$ 原数列必定没有极限.
+当 $c>1$ 时, 方程没有实根, 所以原数列不可能有有限极限.
+然而, 当 $c\leqslant1$ 时, 实根的存在并不能保证数列收敛.
+例如, $c=0$ 时数列恒为零; $c=-4$ 时却得到
+$$
+-2,\ 0,\ -2,\ 0,\ -2,\ 0,\ \ldots,
+$$
+它显然发散.
 
-但是到 $c \leq 1$ 的情况就不行了, 我们已假设了极限存在并且也求出了所谓极限 $a_{\pm}$, 这时就不是所谓反证法能够解决的了.
-比方说 $c=0$ 时, 这个数列为
-$$
-\begin{array}{ccccccc}
-     0, & 0, & 0, & 0, & 0, & 0, & \cdots
-\end{array}
-$$
-极限为 0. 但如果 $c=-4$, 我们有
-$$
-\begin{array}{ccccccc}
-    -2, & 0, & -2, & 0, & -2, & 0, & \cdots
-\end{array}
-$$
-这个数列显然没有极限.
+这个例子表明, “先假定极限存在, 再求出可能的极限值”并不能解决极限的存在性问题.
+因此, 我们需要寻找能够直接判定极限存在的定理.
 
-前面这个例子说明, 假设极限存在, 并求出了极限的步骤是不够的, 我们需要找到一些定理, 能够直接判断极限的存在性, 从而避免最初的假设.为此我们先看一种简单而特殊的数列.
-
-若对于数列 $\{x_n\}$ 有
+\enlargethispage{1\baselineskip}
+为此先考察一类简单而重要的数列.
+若数列 $\seqset{x}$ 满足
 $$
-x_1 < x_2 < \cdots < x_n < x_{n+1} < \cdots
+x_1<x_2<\cdots<x_n<x_{n+1}<\cdots,
 $$
-就是说, 若 $n' > n$, 必有 $x_{n'} > x_n$, 这时我们把 $x_n$ 称为是\emph{递增的}.
-若
+则称它为\emph{严格递增数列}.
+若仅有
 $$
-x_1 \leqslant x_2 \leqslant \cdots \leqslant x_n \leqslant x_{n+1} \leqslant \cdots
+x_1\leqslant x_2\leqslant\cdots\leqslant x_n\leqslant x_{n+1}\leqslant\cdots,
 $$
-就是说, 若 $n' > n$, 必有 $x_{n'} \geqslant x_n$, 这时就把 $x_n$ 称为\emph{不减小的}.
-若对于增的这一术语, 赋予更广泛的意义, 则在上述的后一种情形亦可以称为广义的递增数列.
+则称它为\emph{单调不减数列},
+也称为广义递增数列.
 
-仿此, 可建立\emph{递减的}(狭义的或广义的)数列的概念: , 若
-$$x_1 > x_2 > \cdots > x_n > x_{n+1} > \cdots$$
-或
-$$x_1 \geqslant x_2 \geqslant \cdots \geqslant x_n \geqslant x_{n+1} \geqslant \cdots$$
-数列 $\{x_n\}$ 称为是递减的. 如此由 $n' > n$, 推得(看情形而论) $x_{n'} < x_n$ 或仅 $x_{n'} \leqslant x_n$.
+类似地, 若 $n'>n$ 时恒有 $x_{n'}<x_n$, 则称 $\seqset{x}$ 为\emph{严格递减数列};
+若仅有 $x_{n'}\leqslant x_n$, 则称它为\emph{单调不增数列},
+也称为广义递减数列. 这些沿同一方向变化的数列统称为\emph{单调数列}\index{dandiaoshulie@单调数列}.
 
-一切这种类型的, 向单一方向改变的数列总称为\emph{单调数列}.
-关于单调数列成立下面这个具有基本重要性的定理, 我们一般称作\emph{单调有界数列的收敛定理}.
+关于单调数列有下面这个基本定理, 通常称为\emph{单调有界数列的收敛定理}\index{dandiaoyoujieshuliedeshoulian@单调有界数列的收敛定理}.
 
-\begin{theorem}
-    设单调增大的数列 $\{x_n\}$, 若它上有界:
-    $$
-    x_n \leqslant M \quad (M = \text{常量}; \quad n = 1, 2, \cdots),
-    $$
-    则必有一有限的极限, 否则, 它趋向 $+\infty$.
+\begin{theorem}\label{thm:monotone_convergence}
+设数列 $\seqset{x}$ 单调不减. 若它上有界, 即存在常数 $M$, 使
+$$
+x_n\leqslant M\qquad(n=1,2,\ldots),
+$$
+则它有有限极限; 若它不上有界, 则 $x_n\to+\infty$.
 
-    完全同样地, 若单调减小的数列 $\{x_n\}$  下有界:
-    $$
-    x_n \geqslant m \quad (m = \text{常量}, \quad n = 1, 2, \cdots),
-    $$
-    则它恒有有限极限, 否则它的极限为 $-\infty$.
+类似地, 设 $\seqset{x}$ 单调不增. 若它下有界, 即存在常数 $m$, 使
+$$
+x_n\geqslant m\qquad(n=1,2,\ldots),
+$$
+则它有有限极限; 若它不下有界, 则 $x_n\to-\infty$.
 \end{theorem}
 
 \begin{proof}
-    且限制在数列 $\{x_n\}$ 递增的情形, 可能是广义的.
+只证明单调不减的情形, 单调不增的情形完全类似.
 
-    先假定这数列上有界. 则根据确界存在定理 [\emph{\ref{subsec:11}}], 其必有(有限的)上确界存在:
-    $$
-    a = \sup\{x_n\}.
-    $$
-    我们将指出, 这数 $a$ 刚好就是数列 $\{x_n\}$ 的极限.
+先设 $\seqset{x}$ 上有界. 根据确界存在定理 [\emph{\ref{subsec:11}}],
+集合 $\bbbrac{x_n:n=1,2,\ldots}$ 有有限的上确界
+$$
+a=\sup\bbbrac{x_n:n=1,2,\ldots}.
+$$
+我们将证明 {\kaishu $\ a$ 就是 $\seqset{x}$ 的极限}.
 
-    第一, 对于一切 $n$ 值将有
-    $$x_n \leqslant a.$$
-    第二, 不论取怎样的数 $\epsilon > 0$, 但能求出序号 $N$, 使
-    $$x_N > a - \epsilon.$$
-    由于数列的单调性 , 在 $n > N$ 时将有 $x_n \geqslant x_N$, 从而 $x_n > a - \epsilon$, 因此对于这种 $n$ 就成立不等式:
-    $$0 \leqslant a - x_n < \epsilon \quad \text{或} \quad \abs{x_n - a} < \epsilon, $$
-    由此, 必有 $\displaystyle \limto{n} x_n = a$.
+一方面, 对一切 $n$ 都有 $$x_n\leqslant a.$$
+另一方面, 任给 $\epsilon>0$, 由上确界的定义, 存在序号 $N$, 使
+$$
+x_N>a-\epsilon.
+$$
+由于数列单调不减, 当 $n>N$ 时
+$$
+a-\epsilon<x_N\leqslant x_n\leqslant a.
+$$
+因此
+$$
+0\leqslant a-x_n<\epsilon, \quad \text{或} \quad \abs{x_n-a} \leq \epsilon,
+$$
+即 $x_n\to a$.
 
-    今设 $\{x_n\}$ 不上有界.
-    则不论数 $E > 0$ 怎样大, 总会从某项开始, 其值大于 $E$.
-    设这数值是 $x_N : x_N > E$.
-    根据单调性, 在 $n > N$ 时成立
-    $$x_n > E, $$
-    而这即表示 $\displaystyle \limto{n} x_n = +\infty$.
+再设 $\seqset{x}$ 不上有界. 任给 $E>0$, 总能找到序号 $N$, 使 $x_N>E$.
+由单调性可知, 当 $n>N$ 时
+$$x_n\geqslant x_N>,E$$
+因而 $x_n\to+\infty$.
 \end{proof}
 
-很易明了, 对于那种仅从某一项起才变成单调的数列, 一切结论仍能适用 (因为弃去起首的任何有限个数值, 对于数列的极限并无影响).
+如果一个数列只从某一项起才单调, 上述结论仍然适用,
+因为删去开头有限项不会改变数列的极限.
 
-\begin{example}
-    考察
-    $$
-    \limto{n} x_n = \frac{a^n}{n!} \quad(a>1),
-    $$
-    这是个 $\dfrac{\infty}{\infty}$ 型未定式.因
-    $$
-    x_{n+1} = x_n \cdot \frac{a}{n+1},
-    $$
-    故在 $n>a-1$ 时, 它是递增的数列; 同时它肯定有下界 0. 因此该数列有极限, 记做 $c$.
+\subsection{例题}\label{subsec:monotone_sequence_examples}
 
-    现在我们可以对上面那个等式两边同时取极限:
-    $$
-    c = c \cdot 0 \Rightarrow \limto{n} \frac{a^n}{n!} = 0.
-    $$
+\myrefparagraph{1)}\label{ex:factorial_dominates_exponential}
+设 $c>0$, 考察数列
+$$
+x_n=\frac{c^n}{n!} \ \footnotemark.
+$$
+\footnotetext{式中 $n!=n\times (n-1)\times\cdots2\times1.$}
+当 $c>1$ 时, 这是一个 $\dfrac{\infty}{\infty}$ 型未定式. 由
+$$
+x_{n+1}=x_n\frac{c}{n+1}
+$$
+可知, 当 $n>c-1$ 时, $x_{n+1}<x_n$. 因此 $\seqset{x}$ 从某一项起单调递减,
+并且以下界 $0$ 为界, 所以它有有限极限, 记为 $a$. 由于移去有限项不改变极限,
+$x_{n+1}$ 也趋于 $a$. 对上式取极限, 得
+$$
+a=a\cdot0=0.
+$$
+故对一切 $c>0$ 都有
+$$
+\limto{n}\frac{c^n}{n!}=0.
+$$
 
-    这个例子结合例 \ref{muchbigger}, 我们说
-    $$
-    \text{阶乘} \gg \text{指数} \gg \text{幂} \gg \text{对数}.
-    $$
-\end{example}
+\myrefparagraph{2)}\label{ex:nested_radical_limit}
+设 $c>0$, 定义数列
+$$
+x_1=\sqrt c,\qquad
+x_2=\sqrt{c+\sqrt c},\qquad
+x_3=\sqrt{c+\sqrt{c+\sqrt c}},\quad\ldots,
+$$
+一般地,
+$$
+x_n=\underbrace{\sqrt{c+\sqrt{c+\cdots+\sqrt c}}}_{n \text{个根式}}.
+$$
+因此这个数列满足递推关系
+\begin{equation}\label{eq:nested_radical_recurrence}
+x_{n+1}=\sqrt{c+x_n}.
+\end{equation}
+显然 $x_2>x_1$. 若 $x_n>x_{n-1}$, 则由式
+\eqref{eq:nested_radical_recurrence} 立即得到 $x_{n+1}>x_n$,
+所以 $\seqset{x}$ 严格递增.
 
-\begin{example}
-    取 $0 < x_0 < 1$, 我们用递推关系式
-    $$x_{n+1} = x_n (2 - x_n)$$
-    确定数列 $\{x_n\}$.
+它又以上界 $\sqrt c+1$ 为界.
+显然 $x_1<\sqrt c+1$;
+现在假定 $x_n<\sqrt c+1$, 则
+$$
+x_{n+1}<\sqrt{c+\sqrt c+1}<\sqrt{c+2\sqrt c+1}=\sqrt c+1.
+$$
+由数学归纳法可知, $x_n<\sqrt c+1$ 对一切 $n$ 成立.
 
-    设 $0 < x_n < 1$ , 则 $2 - x_n > 1$, 所以 $x_{n+1} > x_n$, 又 $x_n (2 - x_n) = 1 - (1 - x_n)^2$, 由此 $x_{n+1} < 1$, 于是我们确定了
-    $$0 < x_n < x_{n+1} < 1.$$
-    因此我们已归纳地证明了, 数列 $\{x_n\}$ 是单调增大的, 而且保持小于 1.
-    所以它有有限极限 $a \neq 0$.
-    对递推关系式取极限, 得出 $a = 1$.
-    因此 $\displaystyle\limto{n} x_n = 1$.
-    \begin{remark}
-        现设 $c$ 是任何正数, 并设 $x_n = c y_n$, 上述递推关系式变成为:
-        $$y_{n+1} = y_n (2 - cy_n).$$
-        取第一个值 $y_0$ 满足条件: $0 < y_0 < \dfrac{1}{c}$, 我们得出 $y_n$ 是单调增大的, 将趋于 $\dfrac{1}{c}$. 计算机就是按这个方法来计算 $c$ 的倒数.
-    \end{remark}
-\end{example}
+因此 $\seqset{x}$ 有有限极限 $a$. 在式
+\eqref{eq:nested_radical_recurrence} 中取极限, 得
+$$
+a^2=c+a.
+$$
+这方程有异号的两个根, 但我们所要的极限 $a$ 不可能是负数,
+因此, 必等于其正根
+$$
+a=\frac{1+\sqrt{4c+1}}{2}.
+$$
 
-\begin{example}
-    设给定二正数 $a$ 及 $b$ $(a > b)$. 作出其等差中项及等比中项:
-    $$
-    a_1 = \frac{a + b}{2}, \quad b_1 = \sqrt{ab}.
-    $$
-    则可以得到不等式
-    $$
-    a > a_1 > b_1 > b.
-    $$
-    对于数 $a_1$ 及 $b_1$, 再作出它们的等差中项及等比中项:
-    $$
-    a_2 = \frac{a_1 + b_1}{2}, \quad b_2 = \sqrt{a_1 b_1},
-    $$
-    并且有
-    $$
-    a_1 > a_2 > b_2 > b_1
-    $$
-    等等. 若数 $a_n$ 及 $b_n$ 已确定, 则数 $a_{n+1}$ 及 $b_{n+1}$ 依公式
-    $$
-    a_{n+1} = \frac{a_n + b_n}{2}, \quad b_{n+1} = \sqrt{a_n b_n}
-    $$
-    确定, 并且, 如上所述, 有
-    $$
-    a_n > a_{n+1} > b_{n+1} > b_n.
-    $$
+\myrefparagraph{3)}\label{ex:newton_reciprocal_iteration}
+任取 $0<x_0<1$, 由递推关系
+\begin{equation}\label{eq:newton_reciprocal_unit}
+x_{n+1}=x_n(2-x_n)
+\end{equation}
+确定数列 $\seqset{x}$. 若 $0<x_n<1$, 则
+$$
+x_{n+1}>x_n,\qquad
+x_{n+1}=1-(1-x_n)^2<1.
+$$
+由数学归纳法可知
+$$
+0<x_n<x_{n+1}<1.
+$$
+因此 $\seqset{x}$ 严格递增且上有界, 必有有限极限 $a$.
+又因 $a\geqslant x_0>0$, 对式 \eqref{eq:newton_reciprocal_unit} 取极限可得
+$$
+a=a(2-a),
+$$
+从而 $a=1$.
 
-    这样就得出二数列 $\{a_n\}$ 及 $\{b_n\}$, 其中第一个显然是减小的, 而第二个显然是增大的 (逐渐互相接近). 同时
-    $$
-    a > a_n > b_n > b.
-    $$
-    即二数列都是有界的, 故二者都趋于有限极限:
-    $$
-    \alpha = \limto{n} a_n \quad \text{及} \quad \beta = \limto{n} b_n.
-    $$
-    若在等式
-    $$
-    a_{n+1} = \frac{a_n + b_n}{2}
-    $$
-    中取极限, 则得
-    $$
-    \alpha = \frac{\alpha + \beta}{2}, \quad \text{由此} \quad \alpha = \beta.
-    $$
-    这样, 等差中项 $a_n$ 的数列及等比中项 $b_n$ 的数列都趋向于公共极限 $AG(a, b)$, 称它为原数 $a$ 及 $b$ 的\emph{算数几何平均值}.
-    尽管是如此简单的构造, 但要通过二数 $a, b$ 来表达 $AG(a, b)$, 在现阶段中对于我们是不能办到的, 它需要用到所谓\emph{椭圆积分}
-    \footnote{$AG(a, b)=\dfrac{\pi}{2G}, \quad G=\displaystyle \int_{0}^{\pi/2}\frac{\d x}{\sqrt{a^2\cos^2x+b^2\sin^2x}} $, 而这个积分我们是无法找到具体的解析形式的.}.
+\begin{remark}
+I. 事实上, 这个递推数列可以完全求出. 令
+$$
+u_n=1-x_n,
+$$
+则
+$$
+u_{n+1}=1-x_{n+1}
+=1-x_n(2-x_n)
+=(1-x_n)^2
+=u_n^2.
+$$
+因此
+$$
+u_n=u_0^{2^n}=(1-x_0)^{2^n},
+$$
+从而
+\begin{equation}\label{eq:newton_reciprocal_explicit}
+x_n=1-(1-x_0)^{2^n}.
+\end{equation}
 
-    类似的, 构造等差中项和调和中项所组成的数列
-    $$\begin{aligned}
-    a_1=\frac{a+b}{2}, \quad b_1=\frac{2ab}{a+b}, \\
-    a_2=\frac{a_1+b_1}{2}, \quad b_1=\frac{2a_1b_1}{a_1+b_1}\\
-    \cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\\
-    a_{n+1}=\frac{a_n+b_n}{2}, \quad b_{n+1}=\frac{2a_nb_n}{a_n+b_n}, \\
-    \cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\\
-    \end{aligned}$$
-    可以得到\emph{算数调和平均值}.
-\end{example}
+由此可以完整讨论初值的影响. 当 $0<x_0<2$ 时,
+$\abs{1-x_0}<1$, 因而 $x_n\to1$. 其中, 若 $0<x_0<1$,
+数列严格递增; 若 $1<x_0<2$, 则 $x_1\in(0,1)$,
+所以数列先降到区间 $(0,1)$ 内, 此后严格递增并趋于 $1$;
+$x_0=1$ 时数列恒等于 $1$.
 
-\begin{example}
-    最后我们看回本小节最开始的例子.我们已经说明了 $c>1$ 时极限不存在, 下面我们继续讨论其他情况.
+当 $x_0=0$ 时, 数列恒等于 $0$; 当 $x_0=2$ 时,
+$x_1=0$, 此后各项也都等于 $0$.
 
-    a) 先假定 $0 < c \leq 1$.
-    则显见 $x_n > 0$. 由 \eqref{monotone_ex1} 式逐项地减去相似的等式
-    $$
-    x_n = \frac{c}{2} + \frac{x_{n-1}^2}{2},
-    $$
-    便得
-    $$
-    x_{n+1} - x_n = \frac{x_n^2 - x_{n-1}^2}{2}.
-    $$
-    显然, $x_2 > x_1 = \dfrac{c}{2}$.
-    而由上述等式推得, 仅需 $x_n > x_{n-1}$, 便必定有 $x_{n+1} > x_n$. 这样, 依数学归纳法, 可以确定 $\seqset{x}$ 为单调增大的数列.
+最后, 若 $x_0<0$ 或 $x_0>2$, 则 $\abs{1-x_0}>1$.
+由式 \eqref{eq:newton_reciprocal_explicit} 可知
+$$
+1-x_n = (1-x_0)^{2^n}\to+\infty \Rightarrow x_n\to-\infty.
+$$
 
-    类似地, 可证明这数列是有上界的:
-    $$
-    x_n < 1.
-    $$
-    这不等式在 $n = 1$ 时显然成立.
-    又根据 \eqref{monotone_ex1} 式, 若它在任何 $n$ 值时成立, 则在 $n + 1$ 时亦成立.
-    因此知道, $\seqset{x}$ 的极限确实存在, 且可由 \eqref{monotone_ex2} 式来表示, 因这极限不能大于 1, 根号前必然是负号, 取 $a_-$.
+II. 设 $c>0$, 并令 $x_n=cy_n$, 则式 \eqref{eq:newton_reciprocal_unit} 化为
+$$
+y_{n+1}=y_n(2-cy_n).
+$$
+只要初值满足 $0<y_0<\dfrac1c$, 数列 $\seqset{y}$ 就严格递增并趋于 $\dfrac1c$.
+计算机可以用这种迭代方法求正数 $c$ 的倒数.
+\end{remark}
 
-    $c=0$ 已经讨论, 不多赘述.
+\myrefparagraph{4)}\label{ex:arithmetic_geometric_mean}
+设 $a>b>0$. 先作它们的等差中项和等比中项:
+$$
+a_1=\frac{a+b}{2},\qquad b_1=\sqrt{ab}.
+$$
+由等差中项大于等比中项可知\footnote{因为
+$\dfrac{a+b}{2}-\sqrt{ab}=\dfrac{(\sqrt a-\sqrt b)^2}{2}>0$.}
+$$
+a>a_1>b_1>b.
+$$
+再对 $a_1,b_1$ 作同样的运算:
+$$
+a_2=\frac{a_1+b_1}{2},\qquad b_2=\sqrt{a_1b_1}.
+$$
+依次进行下去, 令
+\begin{equation}\label{eq:arithmetic_geometric_iteration}
+a_{n+1}=\frac{a_n+b_n}{2},\qquad b_{n+1}=\sqrt{a_nb_n}.
+\end{equation}
+则对一切 $n$ 都有
+$$
+a_n>a_{n+1}>b_{n+1}>b_n.
+$$
+因此 $\seqset{a}$ 单调递减, $\seqset{b}$ 单调递增, 并且
+$$
+a>a_n>b_n>b.
+$$
+两数列都有有限极限, 设
+$$
+\alpha=\limto{n}a_n,\qquad \beta=\limto{n}b_n.
+$$
+在式 \eqref{eq:arithmetic_geometric_iteration} 的第一个等式中取极限, 得
+$$
+\alpha=\frac{\alpha+\beta}{2},
+$$
+所以 $\alpha=\beta$. 这个公共极限称为 $a,b$ 的\emph{算术-几何平均值}\index{suanshujipingjunzhi@算术-几何平均值}.
+虽然它由上述简单迭代得到, 但在现阶段还不能用 $a,b$ 的初等表达式表示;
+以后借助椭圆积分才能进一步研究它.
 
-    b) 再设 $ c < 0$.
-    显然, 对于一切 $n$ 有
-    $$x_n \geq \frac{c}{2}.$$
-    然后我们将指出, 这数列在某些情况下有上界 $x_n \leq 0$. 这在 $n = 1$ 时为真.
-    若设这一事实对某一 $n$ 值时为真, 则
-    $$
-    \frac{c}{2} \leq x_n \leq 0 \Rightarrow \abs{x_n} \leqslant \frac{\abs{c}}{2} \Rightarrow x_n^2 \leqslant \frac{\abs{c}^2}{4},
-    $$
-    故如果我们假设 $-4\leq c <0$ 则
-    $$\frac{\abs{c}}{4}\leq 1 \Rightarrow x_{n+1} = \frac{c}{2} + \frac{x_n^2}{2} \leq \frac{c}{2} +\frac{\abs{c}}{2}\cdot \frac{\abs{c}}{4} \leq \frac{c+\abs{c}}{2} =0. $$
+\myrefparagraph{5)}\label{ex:arithmetic_harmonic_mean}
+仍从 $a>b>0$ 出发, 这次依次取等差中项和调和中项\footnote{正数 $a,b$ 的倒数
+$\dfrac1a,\dfrac1b$ 的等差中项的倒数为 $\dfrac{2ab}{a+b}$,
+称为 $a,b$ 的调和中项.}:
+$$
+a_1=\frac{a+b}{2},\qquad b_1=\frac{2ab}{a+b},
+$$
+并递推定义
+\begin{equation}\label{eq:arithmetic_harmonic_iteration}
+a_{n+1}=\frac{a_n+b_n}{2},\qquad
+b_{n+1}=\frac{2a_nb_n}{a_n+b_n}.
+\end{equation}
+因为
+$$
+\brac{\frac{a+b}{2}}^2>ab,
+$$
+所以等差中项大于调和中项, 而两种中项都位于原来两数之间. 因此
+$$
+a_n>a_{n+1}>b_{n+1}>b_n.
+$$
+与例 \ref{ex:arithmetic_geometric_mean} 相同, $\seqset{a}$ 与 $\seqset{b}$
+分别单调递减、单调递增, 并趋于同一个有限极限 $d$.
+另一方面, 由式 \eqref{eq:arithmetic_harmonic_iteration} 可知
+$$
+a_{n+1}b_{n+1}=a_nb_n.
+$$
+因 $a_1b_1=ab$, 故对一切 $n$ 都有 $a_nb_n=ab$.
+取极限便得 $d^2=ab$, 从而
+$$
+d=\sqrt{ab}.
+$$
+所以 $a,b$ 的\emph{算术-调和平均值}\index{suanshudiahepingjunzhi@算术-调和平均值}就是它们的等比中项.
 
-    但此时 $\seqset{x}$ 不再是单调的了.
-    于是, 若在 \eqref{monotone_ex1} 式内先设 $n = 2k$ 及 $2k - 2$, 然后设 $n = 2k + 1$ 及 $2k - 1$, 并在两个情形内逐项相减, 则得
-    \begin{equation} \label{monotone_ex3}
-    \begin{cases}
-    x_{2k+1} - x_{2k-1} = \dfrac{x_{2k}^2 - x_{2k-2}^2}{2}, \\
-    x_{2k+2} - x_{2k} = \dfrac{x_{2k+1}^2 - x_{2k-1}^2}{2}.
-    \end{cases}
-    \end{equation}
-    很容易验证 $x_3 > x_1 = \dfrac{c}{2}$, 故 $x_3^2 < x_1^2$. 又依上面递推式中的第二式 (在 $k = 1$ 时) 将有 $x_4 < x_2$. 因此 $ x_4^2 > x_2^2$. 又依上面递推式中的第一式 (在 $k = 2$ 时) 得 $x_5 > x_3$, 等等. 可以归纳地得出结论, 恒有
-    $$x_{2k+1} > x_{2k-1} \quad \text{及} \quad x_{2k+2} < x_{2k}.$$
+\myrefparagraph{6)}\label{ex:quadratic_recurrence}
+回到 \emph{\ref{subsec:monotone_sequence_limits}} 节开头的数列
+\eqref{eq:quadratic_recurrence}. 我们已经知道, 若它有有限极限,
+则极限只能取式 \eqref{eq:quadratic_recurrence_candidates} 中的值;
+当 $c>1$ 时, 它不可能有有限极限. 下面讨论其余两种情形.
 
-    这样分别地取出的奇数项 $\{x_{2k-1}\}$ 及偶数项$\{x_{2k}\}(k = 1, 2, \cdots)$ 将成为单调的.
-    又因它们都位于有限限界 $\dfrac{c}{2}$ 及 0 之间, 则必两者都有有限极限
-    $$
-    a' = \limto{k} x_{2k-1}, \quad a'' = \limto{k} x_{2k}.
-    $$
+\myrefparagraph{a)}\label{case:quadratic_recurrence_positive}
+设 $0<c\leqslant1$. 显然 $x_n>0$. 将式
+\eqref{eq:quadratic_recurrence} 与序号减一后的同一等式相减, 得
+\begin{equation}\label{eq:quadratic_recurrence_difference}
+x_{n+1}-x_n=\frac{x_n^2-x_{n-1}^2}{2}.
+\end{equation}
+因为 $x_2>x_1$, 所以由式 \eqref{eq:quadratic_recurrence_difference}
+和数学归纳法可知 $x_{n+1}>x_n$. 同时, $x_n<1$ 对一切 $n$ 成立:
+它在 $n=1$ 时显然成立; 若 $x_n<1$, 则
+$$
+x_{n+1}=\frac c2+\frac{x_n^2}{2}<\frac12+\frac12=1.
+$$
+因此 $\seqset{x}$ 严格递增且上有界, 极限确实存在.
+由于这个极限不大于 $1$, 故在式 \eqref{eq:quadratic_recurrence_candidates} 中只能取
+$$
+a_-=1-\sqrt{1-c}.
+$$
+$c=0$ 的情形已经在那节开头讨论过.
 
-    剩下来重点就是看看 $a' , a''$之间的关系. 为这目的, 使 \eqref{monotone_ex1} 式内的序号 $n$, 先经由偶数各值, 然后经由奇数各值趋于无穷. 我们得出两个极限关系式:
-    $$
-    a' = \frac{c}{2} + \frac{a''^2}{2}, \quad a'' = \frac{c}{2} + \frac{a'^2}{2}.
-    $$
-    相减, 消去 $c$, 得
-    $$
-    (a' - a'')(a' + a'' + 2) = 0.
-    $$
-    如果我们考虑第二个因式为零, $a'' = -a' - 2$ 代入前面的极限关系式中, 将得出 $a'$ 的二次方程
-    \begin{equation} \label{monotone_ex4}
-        a'^2 + 2a' + (4 + c) = 0,
-    \end{equation}
+\myrefparagraph{b)}\label{case:quadratic_recurrence_negative}
+设 $-3\leqslant c<0$. 对一切 $n$ 都有
+$$
+\frac c2\leqslant x_n<0.
+$$
+事实上, 这个结论在 $n=1$ 时成立. 若它对某个 $n$ 成立, 则
+$$
+\abs{x_n}\leqslant\frac{\abs{c}}{2},\qquad
+x_n^2\leqslant\frac{\abs{c}^2}{4}<\abs{c},
+$$
+从而
+$$
+\frac c2\leqslant x_{n+1}=\frac c2+\frac{x_n^2}{2}<0.
+$$
+不过, 此时整个数列未必单调. 从式
+\eqref{eq:quadratic_recurrence_difference} 分别取偶数序号和奇数序号, 得
+\begin{equation}\label{eq:quadratic_recurrence_subsequence_differences}
+\begin{cases}
+x_{2k+1}-x_{2k-1}=\dfrac{x_{2k}^2-x_{2k-2}^2}{2},\\[2mm]
+x_{2k+2}-x_{2k}=\dfrac{x_{2k+1}^2-x_{2k-1}^2}{2}.
+\end{cases}
+\end{equation}
+先有 $x_3>x_1$, 因各项均为负数, 所以 $x_3^2<x_1^2$;
+再由第二个等式得到 $x_4<x_2$. 如此反复并使用数学归纳法, 可得
+$$
+x_{2k+1}>x_{2k-1},\qquad x_{2k+2}<x_{2k}.
+$$
+因此, 奇数项组成的子列单调递增, 偶数项组成的子列单调递减.
+它们都位于 $\dfrac c2$ 与 $0$ 之间, 故分别有有限极限
+$$
+a'=\limto{k}x_{2k-1},\qquad a''=\limto{k}x_{2k}.
+$$
+让式 \eqref{eq:quadratic_recurrence} 中的序号分别沿奇数和偶数趋于无穷, 得
+$$
+a'=\frac c2+\frac{a''^2}{2},\qquad
+a''=\frac c2+\frac{a'^2}{2}.
+$$
+两式相减可得
+\begin{equation}\label{eq:quadratic_recurrence_subsequence_limits}
+(a'-a'')(a'+a''+2)=0.
+\end{equation}
+若第二个因式为零, 把 $a''=-a'-2$ 代回上式, 得
+$$
+a'^2+2a'+4+c=0.
+$$
+当 $c>-3$ 时, 这个方程没有实根; 当 $c=-3$ 时, 它只有根 $a'=-1$,
+此时仍有 $a'=a''$. 因此在 $-3\leqslant c<0$ 时总有 $a'=a''$,
+原数列收敛, 其极限同样为
+$$
+a_-=1-\sqrt{1-c}.
+$$
 
-    b$'$) 考虑 \eqref{monotone_ex4} 的判别式, 可得出其在 $c > -3$ 时是不能有实根的.
-    因此我们说, 若 $c > -3$, 第二因式不能为零, 故必须 $a' = a''$.
-    若 $c = -3$, 则解得 $a' = a'' = -1$, 极限也是相等的.
-    因此, 在 $-3\leq c <0$ 时, 数列 $\seqset{x}$ 奇数项子列和偶数项子列有共同极限, 并且是负的, 则原数列的极限必为 $a_-$.
+上述例题再次说明, 式 \eqref{eq:quadratic_recurrence_candidates}
+只给出了极限存在时可能取得的数值, 并不能保证极限存在.
+例如 $c=-4$ 时, 该式仍有实根, 但数列
+$$
+-2,\ 0,\ -2,\ 0,\ldots
+$$
+却是发散的.
 
-    b$''$) 而如果 $-4\leq c <-3$, 我们求解 \eqref{monotone_ex4} 得到相异实根:
-    $$
-    a'_{\pm} = -1 \pm \sqrt{-3-c}.
-    $$
-    注意到
-    \begin{gather*}
-        x_1 = \dfrac{c}{2} \leq -1 -\sqrt{-3-c} =a'_-, \\
-        x_2 = \dfrac{c}{2}+\dfrac{x_1^2}{2} \geq \dfrac{c}{2}+\dfrac{(-1 -\sqrt{-3-c})^2}{2} = -1 + \sqrt{-3-c} = a'_+,
-    \end{gather*}
-    进而归纳得出 $\{x_{2k-1}\}$ 递增有上界 $a'_-$, $\{x_{2k}\}$ 递减有下界 $a'_+$, 并且这两个界即是各自的极限, 不等, 所以原数列极限不存在.
-    \footnote{事实上, $c=-4$ 时上面的不等关系都变成等号, 也就是我们在本小节最开头举的一个反例.}
+最后总结一下: 定理 \ref{thm:monotone_convergence} 是典型的存在性定理.
+它只保证极限存在, 并不直接给出计算极限的方法; 但在许多问题中,
+一旦先由它证明了极限存在, 就可以在递推关系中取极限, 从而求出极限值.
+对于例 \ref{ex:arithmetic_geometric_mean}, 虽然目前还不能写出公共极限的初等表达式,
+但因它始终夹在 $a_n$ 与 $b_n$ 之间, 仍可通过迭代得到任意精度的近似值.
 
-    c) 类似于前面假设 $\seqset{x}$ 的上界为 0 进而推出后面的一系列结论, 这里我们假设 $\seqset{x}$ 的上界为 $\dfrac{\abs{c}}{2}$, 看看此时的 $c$ 会满足哪些条件.
+\subsection{数 \texorpdfstring{$\e$}{e}}\label{subsec:number_e}
+现在应用单调有界数列的收敛定理来定义一个新的数.
+考察数列 $\seqset{x}$, 其中
+\begin{equation}\label{eq:e_defining_sequence}
+x_n=\brac{1+\frac1n}^n.
+\end{equation}
+当指数 $n$ 增大时, 幂的底数反而减小, 所以这个数列的单调性并不能直接看出.
+利用二项式定理展开式 \eqref{eq:e_defining_sequence}, 得
+\begin{equation}\label{eq:e_binomial_expansion}
+\begin{aligned}
+x_n
+&=1+n\frac1n+\frac{n(n-1)}{1\cdot2}\frac1{n^2}
+ +\frac{n(n-1)(n-2)}{1\cdot2\cdot3}\frac1{n^3}+\cdots\\
+&\quad+\frac{n(n-1)\cdots(n-k+1)}{1\cdot2\cdots k}\frac1{n^k}
+ +\cdots+\frac{n(n-1)\cdots1}{1\cdot2\cdots n}\frac1{n^n}\\
+&=1+1+\frac1{2!}\brac{1-\frac1n}
+ +\frac1{3!}\brac{1-\frac1n}\brac{1-\frac2n}+\cdots\\
+&\quad+\frac1{k!}\brac{1-\frac1n}\cdots\brac{1-\frac{k-1}{n}}
+ +\cdots+\frac1{n!}\brac{1-\frac1n}\cdots\brac{1-\frac{n-1}{n}}.
+\end{aligned}
+\end{equation}
+把 $n$ 换成 $n+1$ 后, 右边会多出一个正项;
+同时, 原有每个 $1-\dfrac{s}{n}$ 型因子都变成较大的
+$1-\dfrac{s}{n+1}$. 因此
+$$
+x_{n+1}>x_n,
+$$
+即 $\seqset{x}$ 严格递增.
 
-    假设 $x_n \leq \dfrac{\abs{c}}{2}$ 成立, 要使
-    $$
-    x_{n+1} = \frac{c}{2} + \frac{x_n^2}{2} \leq \frac{c}{2} +\frac{\abs{c}^2}{8} \leq \frac{\abs{c}}{2},
-    $$
-    可以得出 $-8 \leq c < -4$. $c=-8$ 时, 数列为
-    $$
-    \begin{array}{ccccccc}
-         -4, & 4, & 4, & 4, & 4, & 4, & \cdots
-    \end{array}
-    $$
+下面证明它上有界. 式 \eqref{eq:e_binomial_expansion} 中各括号内的因子
+都是小于 $1$ 的正数, 把它们略去会使结果增大, 因而
+$$
+x_n\leqslant2+\frac1{2!}+\frac1{3!}+\cdots+\frac1{n!}=y_n.
+$$
+对于 $k\geqslant2$, 有 $k!=1\cdot2\cdots k\geqslant2^{k-1}$. 因此
+$$
+y_n\leqslant2+\frac12+\frac1{2^2}+\cdots+\frac1{2^{n-1}}<3.
+$$
+所以 $\seqset{x}$ 严格递增且上有界, 必有有限极限. 按照 Euler 的记号,
+把这个极限记为\footnote{Leonhard Euler 的记号 $\e$ 后来成为通用记法.}
+$$
+\e=\limto{n}\brac{1+\frac1n}^n.
+$$
+\index{e@数 e}
+这个数在分析学及其应用中极为重要, 它的前十五位小数为
+$$
+\e=2.718\,281\,828\,459\,045\ldots.
+$$
+下一小节将给出计算其近似值的方法, 并证明它是无理数.
 
-    现在假设 $-8 < c < -4$, 则根据数学归纳有 $\seqset{x}$ 的上界为 $\dfrac{\abs{c}}{2}$.
-    注意到
-    $$
-    x_n \leq \frac{\abs{c}}{2} < 1 + \sqrt{1-c} =a_+.
-    $$
-    这说明如果 $\seqset{x}$ 收敛, 其极限只能取 $a_-=1- \sqrt{1-c}$.
-    注意, 我们这里得到的结论只是必要的结论, 即 $\seqset{x}$ 收敛, 一定只有极限 $a_-$, 反过来不成立.
+数 $\e$ 的一些性质使它特别适合作为对数的底. 以 $\e$ 为底的对数称为\emph{自然对数}\index{ziranduishu@自然对数}
+\footnote{自然对数有时被称为 Napier 对数. 这种说法并不十分准确:
+John Napier 当时尚未明确提出对数底的概念, 他的对数相当于底数接近 $1/\e$ 的对数;
+与他同时代的 Jost B\"urgi 所用的底数则接近 $\e$.}
+, 记作 $\ln$.
+在理论的研究中, 总是用着自然对数.
 
-    于是, 我们给出一个反过来也成立的条件.假设 $a_-$ 就是极限, 则对任意的 $\epsilon > 0$, 存在一个序号 $N$, 当 $n', n>N$ 时\footnote{这里用到了后面才学的 Cauchy 收敛准则, 我们先假定其成立.},
-    $$
-    \abs{x_{n'}-x_n}<\epsilon, \quad a_- -\epsilon < x_n < a_- +\epsilon.
-    $$
-    而 $-2 \leq a_- < 1-\sqrt{5} < -1$, 即 $\abs{a_-} >1$, 则有一个充分小的 $\epsilon$, 满足
-    $$
-    \abs{a_- + \epsilon} >1
-    $$
-    于是取 $n' = n+1$, 当 $n>N$ 时
-    $$
-    \epsilon > \abs{x_{n+1}-x_n} = \frac{\abs{x_{n}+x_{n-1}}}{2}\cdot \cdots \cdot \frac{\abs{x_{N+1}+x_{N}}}{2}\cdot \abs{x_{N+1}-x_N} > r^{n-N}\abs{x_{N+1}-x_N}.
-    $$
-    即
-    $$
-    \abs{x_{N+1}-x_N} < \frac{\epsilon}{r^{n-N}} \to 0.
-    $$
-    从而序号 $N$ 后所有的项值都相等, 就是 $a_-$.
-    为什么说这个条件可以推出 $\seqset{x}$ 一定收敛呢?
-    显然, 如果存在一些 $c$ 使得 $\seqset{x}$ 在某个序号 $N$ 后一切项都等于 $a_-$, 相当于常数项, 因此一定收敛.
-    那么我们取其逆否命题, 如果对于任何的 $n$ 都不能满足 $x_n =a_-$, 则说明 $\seqset{x}$ 一定不存在极限.
-
-    所以接下来的问题就是, 是否存在一些 $c$, 它既满足 $-8<c<-4$, 又能使 $\seqset{x}$ 在某个序号 $N$ 后一切项都等于 $a_-$ 呢?
-
-    根据 $x_n$ 的递推式, 可以发现 $x_n$ 是一个关于 $c$ 的至多 $2n$ 次多项式.为此, 我们构造一个关于 $c$ 的连续函数
-    $$
-    \phi_N(c) = x_N(c) - a_- = x_N - \brac{1-\sqrt{1-c}}.
-    $$
-    则问题就变成集合
-    $$
-    E = \bbbrac{c \mid -8<c<-4, \quad \phi_N(c) = 0, \quad N \text{为自然数}}
-    $$
-    是否为空集.
-
-    前面我们举了 $c=-4, -8$ 的例子:
-    $$
-    \begin{array}{ccccccc}
-    -2, & 0, & -2, & 0, & -2, & 0, & \cdots \\
-     -4, & 4, & 4, & 4, & 4, & 4, & \cdots
-    \end{array}
-    $$
-    当 $N$ 取做 3 后的所有奇数时,
-    \begin{gather*}
-        \phi_N(-8) = 4 - \brac{1-\sqrt{1-(-8)}} = 6>0, \\
-        \phi_N(-4) = -2 - \brac{1-\sqrt{1-(-4)}} = \sqrt{5} -3 <0.
-    \end{gather*}
-    这就说明
-    \footnote{这也用到了后面函数部分的零点存在性定理, 可以后面学完了再回过来看.}
-    至少存在一个 $c_N \in(-8, -4)$ 使得 $\phi_N(c_N) = 0$, 也即 $E$ 非空.
-
-    然而这似乎只说明 $N$ 为充分大的奇数时, 能够满足 $x_N = a_-$, 但是不要忘了, $x_N$ 同样满足递推关系式 \eqref{monotone_ex1}, $a_-$ 也是由其解出来的, 所以只要确定了奇数项的 $x_N$, 偶数项的 $x_{N+1}$ 必然也满足等于 $a_-$.
-
-    因此我们就证明了 $-8<c<-4$ 时, 若 $c\in E$, 则 $\seqset{x}$ 有极限 $a_-$, 若 $c\notin E$, 则 $\seqset{x}$ 不存在极限.
-
-    d)最后只剩下 $c<-8$ 的情况.容易验证
-    $$
-    x_n > \frac{\abs{c}}{2} > a_{\pm}.
-    $$
-    这是严格的不等, 因此若 $\seqset{x}$ 有极限, 至多只能到 $\dfrac{\abs{c}}{2}$, 一定不可能是 $a_{\pm}$, 但是 $a_\pm$ 是我们求得的仅有的极限候选.
-    产生矛盾, 从而 $\seqset{x}$ 没有有限极限.
-\end{example}
-
-\subsection{自然对数的底 \texorpdfstring{$\e$}{e}}
-尽管在高中阶段我们就学习过 $\e$ 的含义, 即自然对数的底, 但是其具体的数值以及严谨的定义那时的我们还无法搞清楚.
-现在, 学习了数列的极限, 我们终于可以重新审视这个十分重要的常数了.
-
-为此, 我们考察数列 $\seqset{x}$, 其有通项
-$$x_n = \brac{1 + \frac{1}{n}}^n, $$
-我们将说明, 它的极限是一个确定常数, 并以此定义 $\e$.
-
-因为在指数 $n$ 增大时幂的底数正在减小, 所以数列的“单调性”不是直接看得出来的.
-为着证明 $x_n$ 的单调性, 可根据二项定理展开上式:
-\begin{align*}
-x_n &= \brac{1 + \frac{1}{n}}^n \\
-&= 1 + n \cdot \frac{1}{n} + \frac{n(n-1)}{1\cdot2} \cdot \frac{1}{n^2} + \frac{n(n-1)(n-2)}{1\cdot2\cdot3} \cdot \frac{1}{n^3} + \cdots \\
-&\quad + \frac{n(n-1)\cdots(n-k+1)}{1\cdot2\cdots k} \cdot \frac{1}{n^k} + \cdots + \frac{n(n-1)\cdots(n-n+1)}{1\cdot2\cdots n} \cdot \frac{1}{n^n} \\
-&= 1 + 1 + \frac{1}{2!} \brac{1 - \frac{1}{n}} + \frac{1}{3!} \brac{1 - \frac{1}{n}} \brac{1 - \frac{2}{n}} + \cdots \\
-&\quad + \frac{1}{k!} \brac{1 - \frac{1}{n}} \cdots \brac{1 - \frac{k-1}{n}} + \cdots + \frac{1}{n!} \brac{1 - \frac{1}{n}} \cdots \brac{1 - \frac{n-1}{n}}.
-\end{align*}
-若改上式左边的 $x_n$ 为 $x_{n+1}$, 则在该式右边首先须在最后加上第 $(n+2)$ 项 (该项是正的).
-又因为前面的 $n+1$ 项任一括号内 $1 - \dfrac{s}{n}$ 型的因式都换成较大的因式 $1 - \dfrac{s}{n+1}$, 前 $n+1$ 项中每一项也都增大了些.
-
-由此必有
-$$x_{n+1} > x_n, $$
-即 $\seqset{x}$ 是增大的数列.
-
-今将证明, 它又是上有界的. 由于展开式中一切括号内的因式都是比 1 小的正分数, 那么略去这些分数会使它增大了些. 因此
-$$x_n < 2 + \frac{1}{2!} + \frac{1}{3!} + \cdots + \frac{1}{n!} = y_n.$$
-
-更进一步, (由第 2 个分数起) 将分母中的每一因子都换成 2, 使所得的式子又增大了些, 因此
-$$y_n < 2 + \frac{1}{2} + \frac{1}{2^2} + \cdots + \frac{1}{2^{n-1}}.$$
-但是由第二项 $\dfrac{1}{2}$ 起各项的总和 $<1$, 因此 $y_n < 3$, 从而 $x_n < 3$.
-
-由此, $\seqset{x}$ 是个递增有上界的数列, 则 $\seqset{x}$ 必有一有限极限. 这就是我们所说的:
-$$\e = \limto{n} \brac{1 + \frac{1}{n}}^n.$$
+\begin{comment}
+\subsection{数 \texorpdfstring{$\e$}{e} 的近似计算法}\label{subsec:e_approximation}
 
 回到展开式本身, 若固定 $k$, 并设 $n > k$, 弃去最后的一部分, 即在第 $k + 1$ 项以后的一切项, 则得不等式
 $$x_n > 2 + \frac{1}{2!} \brac{1 - \frac{1}{n}} + \frac{1}{3!} \brac{1 - \frac{1}{n}} \brac{1 - \frac{2}{n}} + \cdots + \frac{1}{k!} \brac{1 - \frac{1}{n}} \cdots \brac{1 - \frac{k-1}{n}}.$$
