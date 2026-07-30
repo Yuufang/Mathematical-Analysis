@@ -1936,49 +1936,149 @@ John Napier 当时尚未明确提出对数底的概念, 他的对数相当于底
 , 记作 $\ln$.
 在理论的研究中, 总是用着自然对数.
 
-\begin{comment}
 \subsection{数 \texorpdfstring{$\e$}{e} 的近似计算法}\label{subsec:e_approximation}
 
-回到展开式本身, 若固定 $k$, 并设 $n > k$, 弃去最后的一部分, 即在第 $k + 1$ 项以后的一切项, 则得不等式
-$$x_n > 2 + \frac{1}{2!} \brac{1 - \frac{1}{n}} + \frac{1}{3!} \brac{1 - \frac{1}{n}} \brac{1 - \frac{2}{n}} + \cdots + \frac{1}{k!} \brac{1 - \frac{1}{n}} \cdots \brac{1 - \frac{k-1}{n}}.$$
-让 $n$ 增大至无穷取极限, 因所有括号的极限均为 1, 故得:
-$$\e \geq 2 + \frac{1}{2!} + \frac{1}{3!} + \cdots + \frac{1}{k!} = y_k.$$
-这不等式对于任何自然数 $k$ 都成立. 因此,
-$$x_n < y_n \leqslant \e, $$
-由此
-$$\limto{n} y_n = \e.$$
-顺便注意到, $y_n$ 是无穷级数
-$$1 + \frac{1}{1!} + \frac{1}{2!} + \cdots + \frac{1}{n!} + \cdots$$
-的前 $n + 1$ 项的部分和, 因而刚才所说的极限关系式表明 $\e$ 是它的和, 也可以说 $\e$ 展开成为这个级数, 因而可写
-$$\e = 1 + \frac{1}{1!} + \frac{1}{2!} + \cdots + \frac{1}{n!} + \cdots$$
-
-继续考虑 $y_n$ 与在 $y_n$ 后面的任何数值 $y_{n+m}(m=1, 2, \cdots)$ 之间的差. 得
+回到二项展开式 \eqref{eq:e_binomial_expansion}.
+若固定自然数 $k$, 并令 $n>k$.
+舍去第 $k+1$ 项以后的所有正项, 得
 \begin{align*}
-y_{n+m} - y_n &= \frac{1}{(n+1)!} + \frac{1}{(n+2)!} + \cdots + \frac{1}{(n+m)!} \\
-= &\frac{1}{(n+1)!} \bbbrac{1 + \frac{1}{n+2} + \frac{1}{(n+2)(n+3)} + \cdots + \frac{1}{(n+2)(n+3)\cdots(n+m)}}.
+x_n>2
+&+\frac1{2!}\brac{1-\frac1n}
++\frac1{3!}\brac{1-\frac1n}\brac{1-\frac2n}+\cdots\\
+&+\frac1{k!}\brac{1-\frac1n}\cdots\brac{1-\frac{k-1}{n}}.
 \end{align*}
-若在括号 $\{ \}$ 内把各分母中的因子都换成 $n + 2$, 则得不等式
-$$y_{n+m} - y_n < \frac{1}{(n+1)!} \bbbrac{1 + \frac{1}{n+2} + \frac{1}{(n+2)^2} + \cdots + \frac{1}{(n+2)^{m-1}}}.$$
-若把括号内换成无穷级数的和, 则不等式只有加强, 故
-$$y_{n+m} - y_n < \frac{1}{(n+1)!} \cdot \frac{n+2}{n+1}.$$
+令 $n\to\infty$, 各括号内的因子都趋于 $1$, 因而
+$$
+\e\geqslant2+\frac1{2!}+\frac1{3!}+\cdots+\frac1{k!}=y_k.
+$$
+这对每个自然数 $k$ 都成立. 因此, 把 $k$ 改记为 $n$, 并结合
+$x_n\leqslant y_n$, 可得
+$$
+x_n\leqslant y_n\leqslant\e.
+$$
+由夹逼准则 \ref{thm:sequence_squeeze},
+$$
+\limto{n}y_n=\e.
+$$
 
-今使 $n$ 固定不变, 并使 $m$ 趋于无穷, 则 $y_{n+m}$ (标着序号 $m$ 的) 依次取数列
-$$y_{n+1}, y_{n+2}, \cdots, y_{n+m}, \cdots$$
-中的各值, 显然将收敛于 $\e$. 因此, 在取极限时得
-$$\e - y_n \leqslant \frac{1}{(n+1)!} \cdot \frac{n+2}{n+1}$$
-或最后, 得
-$$0 < \e - y_n < \frac{1}{n!n} .$$
+数列 $\seqset{y}$ 的第 $n$ 项是无穷级数
+$$
+1+\frac1{1!}+\frac1{2!}+\cdots+\frac1{n!}+\cdots
+$$
+的前 $n+1$ 项之和, 即例 \ref{ex:series_partial_sums} 所说的部分和.
+所以 $\e$ 就是这个级数的和:
+\begin{equation}\label{eq:e_factorial_series}
+\e=1+\frac1{1!}+\frac1{2!}+\cdots+\frac1{n!}+\cdots.
+\end{equation}
 
-若用 $\theta$ 表示差 $\e - y_n$ 与数 $\dfrac{1}{n!n}$ 的比值 (显然, 它位于 0 与 1 之间), 则又可以写成
-$$\e - y_n = \frac{\theta}{n!n}.$$
-将式中的 $y_n$ 用它的展开式代入, 我们便得出重要的公式:
-$$\e = 1 + \frac{1}{1!} + \frac{1}{2!} + \cdots + \frac{1}{n!} + \frac{\theta}{n!n}, $$
-这个重要的公式不仅能帮我们近似计算 $\e$ 的具体值, 还能帮我们证明 $\e$ 的无理性:
+在近似计算 $\e$ 时, 使用 $y_n$ 比使用 $x_n$ 更方便. 为了估计
+$y_n$ 接近 $\e$ 的程度, 固定 $n$, 并考察它与后续任一项
+$y_{n+m}$ 之差, 其中 $m=1,2,\ldots$. 有
+\begin{align*}
+y_{n+m}-y_n
+&=\frac1{(n+1)!}+\frac1{(n+2)!}+\cdots+\frac1{(n+m)!}\\
+&=\frac1{(n+1)!}\bbbrac{\begin{aligned}
+1+\frac1{n+2}+\frac1{(n+2)(n+3)}+\cdots\\
+{}+\frac1{(n+2)(n+3)\cdots(n+m)}
+\end{aligned}}.
+\end{align*}
+把方括号内各分母的因子都换成不大于它们的 $n+2$, 再把所得有限和
+放大为无穷等比级数, 便有
+\begin{align*}
+y_{n+m}-y_n
+&<\frac1{(n+1)!}\brac{
+1+\frac1{n+2}+\frac1{(n+2)^2}+\cdots+\frac1{(n+2)^{m-1}}}\\
+&<\frac1{(n+1)!}\sum_{j=0}^{\infty}\frac1{(n+2)^j}
+=\frac1{(n+1)!}\frac{n+2}{n+1}.
+\end{align*}
+保持 $n$ 不变并令 $m\to\infty$, 则 $y_{n+m}\to\e$, 从而
+$$
+0<\e-y_n\leqslant\frac1{(n+1)!}\frac{n+2}{n+1}.
+$$
+又因为
+$$
+\frac1{(n+1)!}\frac{n+2}{n+1}
+=\frac1{n!}\frac{n+2}{(n+1)^2}
+<\frac1{n!n},
+$$
+所以得到余项估计
+\begin{equation}\label{eq:e_factorial_series_remainder}
+0<\e-y_n<\frac1{n!n}.
+\end{equation}
 
-试假定 $\e$ 等于有理数 $\dfrac{m}{n}$, 则
-$$\frac{m}{n} = 1 + \frac{1}{1!} + \frac{1}{2!} + \cdots + \frac{1}{n!} + \frac{\theta}{n!n} \quad (0 < \theta < 1).$$
-在这等式的两边都乘以 $n!$, 约去除末项以外的一切分母, 我们将得出左边是整数, 而右边是整数带着分数 $\dfrac{\theta}{n}$, 但这是不可能的.
-这矛盾便证明了我们的命题.
+令 $\theta$ 表示 $\e-y_n$ 与 $\dfrac1{n!n}$ 的比值, 则
+$0<\theta<1$. 把 $y_n$ 的展开式代入, 得到重要公式
+\begin{equation}\label{eq:e_approximation_formula}
+\e=1+\frac1{1!}+\frac1{2!}+\cdots+\frac1{n!}
++\frac{\theta}{n!n},\qquad 0<\theta<1.
+\end{equation}
+上式是近似计算 $\e$ 的出发点.
+若希望达到指定的十进制精度, 可先选取足够大的 $n$, 使余项上界
+$\dfrac1{n!n}$ 小于所允许的误差, 再计算前面的有限和, 这样就计算出了指定精度的 $\e$ 近似值.
+
+\begin{wrapfigure}[20]{r}{0.27\textwidth}
+  \centering
+  \vspace{-4em}
+  \[
+  \begin{array}{r@{\ }c@{\ }l@{\ }c}
+  2&=&2.000\,000\,00&\\
+  \dfrac1{2!}&=&0.500\,000\,00&\\[0.5em]
+  \dfrac1{3!}&=&0.166\,666\,67&-\\[0.5em]
+  \dfrac1{4!}&=&0.041\,666\,67&-\\[0.5em]
+  \dfrac1{5!}&=&0.008\,333\,33&+\\[0.5em]
+  \dfrac1{6!}&=&0.001\,388\,89&-\\[0.5em]
+  \dfrac1{7!}&=&0.000\,198\,41&+\\[0.5em]
+  \dfrac1{8!}&=&0.000\,024\,80&+\\[0.5em]
+  \dfrac1{9!}&=&0.000\,002\,76&-\\[0.5em]
+  \dfrac1{10!}&=&0.000\,000\,28&-\\[0.5em]
+  \hline
+  &&2.718\,281\,81&
+  \end{array}
+  \]
+  \vspace{-1em}
+\end{wrapfigure}
+例如我们用式 \eqref{eq:e_approximation_formula} 计算 $\e$, 使得它的精度达到 $\dfrac{1}{10^7}$.
+
+首先须确定怎样选取 $n$, 才能实现这一准确度.
+为此我们依次计算阶乘的倒数(见右表),
+可以发现, 在 $n=10$, 余项已经满足
+$$
+0<\frac{\theta}{10!\cdot10}<0.000\,000\,03.
+$$
+所以弃去它时，我们造成的误差已经可以小于所规定的限度.
+此时我们的计算就停止在这 $n$ 值上.
+
+接下来, 我们四舍五入使得每一项都成为八位小数.
+这么做的原因在于四舍五入时, 我们的最大误差在绝对值上小于第八位小数的半个单位, 即小于 $\dfrac1{2\cdot10^8}$.
+我们再在近似值右端添上正负号以表示从所列近似值恢复到准确值时应加校正数的符号.
+
+这样, 连同刚刚舍去的余项 (它的校正数小于 $\dfrac3{10^8}$),
+加上我们四舍五入后的校正数,
+计算出来的总校正数应当大于 $-\dfrac3{10^8}$ 而小于 $\dfrac5{10^8}$
+(根据计算应当是 $-\dfrac{5}{2\cdot10^8}$ 和 $\dfrac{9}{2\cdot10^8}$, 为了方便最后取整我们进一步放缩了).
+我们再将每一项进行求和,
+得到的近似值在校正数的范围内应有
+$$
+2.718\,281\,78<\e<2.718\,281\,86,
+$$
+也可以写成
+$$
+\e=2.718\,281\,8\mathbin{\pm}0.000\,000\,1.
+$$
+而这就是我们所需的精度 $\dfrac{1}{10^7}$.
+
+公式 \eqref{eq:e_approximation_formula} 还可以用来证明 $\e$ 是无理数.
+反设 $\e=\dfrac pq$, 其中 $p,q$ 是正整数. 在该公式中取 $n=q$,
+并把两边乘以 $q!$, 得
+$$
+p(q-1)!=q!\brac{1+\frac1{1!}+\frac1{2!}+\cdots+\frac1{q!}}
++\frac{\theta}{q}.
+$$
+等式左边是整数, 右边括号中的有限和乘以 $q!$ 后也是整数;
+但 $0<\dfrac{\theta}{q}<1$, 所以右边不是整数, 产生矛盾.
+因此 $\e$ 是无理数.
+
+\begin{comment}
 
 \subsection{Euler 常数 \texorpdfstring{$\gamma$}{gamma}}
 下面我们介绍一个全新的常数, 尽管它不如 $\e$ 和 $\pi$ 那般出名, 但在分析学中也有一些比较有用的场景.
@@ -2040,43 +2140,106 @@ $$\begin{aligned}
     $$
 \end{example}
 
-\subsection{闭区间套定理}
-本节的最后, 我们再叙述有关两个“面对面”地接近的单调数列的一个定理.
+\end{comment}
 
-{\kaishu 设给定单调增大的数列 $\{x_n\}$ 及单调减小的数列 $\{y_n\}$, 且恒有 $x_n \leqslant y_n$, 若其差 $y_n - x_n$ 趋向于 0, 则二数列必有公共的有限极限:
-$$c = \limto{n} x_n = \limto{n} y_n$$}
+\subsection{关于区间套的引理}\label{subsec:nested_interval_lemma}
+在这一节的末尾, 我们再讨论两个从相反方向互相接近的单调数列.
 
-事实上, 在一切 $n$ 值时 $y_n \leqslant y_1$, 于是依不等式 $x_n \leqslant y_n$, 又必有 $x_n < y_1$ ($n = 1, 2, \cdots$). 增大的数列 $\seqset{x}$ 上有界, 则它必有一有限极限
-$$c = \limto{n} x_n.$$
-类似地, 对于 $y_n$ 将有
-$$y_n > x_n \geqslant x_1, $$
-因而它也趋于有限极限
-$$c' = \limto{n} y_n.$$
-两极限的差
-$$c' - c = \limto{n} \brac{y_n - x_n} = 0, $$
-因而 $c' = c$. 此即所要证的.
+{\kaishu 设数列 $\seqset{x}$ 单调不减, 数列 $\seqset{y}$ 单调不增,
+且对每个 $n$ 都有
+\begin{equation}\label{eq:paired_monotone_order}
+x_n\leqslant y_n.
+\end{equation}
+若
+$
+y_n-x_n\to0,
+$
+则两个数列具有相同的有限极限:
+$$
+c=\limto{n}x_n=\limto{n}y_n.
+$$}
 
-这个命题更多情况下是以区间的形式论述, 我们称为闭区间套定理.
-\begin{theorem}
-    设有一区间套的无穷序列
-    $$[a_1, b_1], [a_2, b_2], \cdots, [a_n, b_n], \cdots$$
-    后一个总是包含在前一个内, 并且在 $n$ 增大时这些区间的长趋向 0:
-    $$\limto{n} \brac{b_n - a_n} = 0.$$
-    则区间的端点 $a_n$ 及 $b_n$ (从不同的两边)趋于公共的极限
-    $$c = \limto{n} a_n = \limto{n} b_n, $$
-    它是一切区间的唯一的公共点.
-\end{theorem}
+因为 $y_n\leqslant y_1$, 所以由式 \eqref{eq:paired_monotone_order},
+$$
+x_n\leqslant y_n\leqslant y_1\qquad(n=1,2,\ldots).
+$$
+数列 $\seqset{x}$ 单调不减且上有界, 由单调有界收敛定理 [\emph{\ref{subsec:monotone_sequence_limits}}], 它有有限极限
+$$
+c=\limto{n}x_n.
+$$
+类似地,
+$$
+y_n\geqslant x_n\geqslant x_1,
+$$
+所以单调不增的数列 $\seqset{y}$ 下有界, 也有有限极限
+$$
+c'=\limto{n}y_n.
+$$
+根据 \emph{\ref{subsec:30}} 中的定理 \ref{prop:limit_sum_difference},
+$$
+c'-c=\limto{n}\brac{y_n-x_n}=0,
+$$
+故 $c'=c$.
 
-这只是前面已证明的命题的另一种写法而已, 依条件
-$$a_n \leqslant a_{n+1} < b_{n+1} \leqslant b_n, $$
-因而第 $n$ 个区间的左端点 $a_n$ 及右端点 $b_n$ 就分别担任着 $x_n$ 及 $y_n$ 的角色.
+下面把这个结论写成更简洁常用的区间形式.
+先设 $a<b$,
+我们将满足不等式
+$$
+a\leqslant x\leqslant b
+$$
+的所有实数 $x$ 构成的集合称为\emph{闭区间}\index{biqujian@闭区间},
+记作 $[a,b]$. 数 $a,b$ 分别称为区间的左端点和右端点,
+$b-a$ 称为区间的长度.
+不难看出在数轴上, 闭区间对应一条包含两个端点的线段.
 
-因为 $a_n$ 增大而趋于 $c$, $b_n$ 减小而趋于 $c$, 故
-$$a_n \leqslant c \leqslant b_n \quad (n = 1, 2, \cdots), $$
-即点 $c$ 实际上属于一切这些区间. 同时, 异于 $c$ 的另一点 $c'$ 就不会有这样的性质, 因为, 否则我们便要有
-$$b_n - a_n \geq \abs{c' - c} > 0, $$
-而第 $n$ 个区间的长就不能趋于 0.
+若闭区间 $[a',b']$ 的每一点都属于 $[a,b]$, 即
+$$
+a\leqslant a'<b'\leqslant b,
+$$
+则称 $[a',b']$ 包含在 $[a,b]$ 中.
 
+{\kaishu
+设有一列闭区间
+$$
+[a_1,b_1],\ [a_2,b_2],\ \ldots,\ [a_n,b_n],\ \ldots,
+$$
+后一个总是包含在前一个中, 即它们构成一个\emph{闭区间套}
+\index{biqujiantao@闭区间套}; 并且这些区间的长度趋于 $0$:
+$$
+\limto{n}\brac{b_n-a_n}=0.
+$$
+则左右端点数列 $\seqset{a}$ 与 $\seqset{b}$ 趋于同一个有限极限
+$$
+c=\limto{n}a_n=\limto{n}b_n,
+$$
+而且 $c$ 是所有这些区间唯一的公共点.
+}
+
+这只是前面已证明的定理的另一种写法而已, 由区间的包含关系,
+$$
+a_n\leqslant a_{n+1}<b_{n+1}\leqslant b_n.
+$$
+因此 $\seqset{a}$ 单调不减, $\seqset{b}$ 单调不增,
+并且 $a_n<b_n$.
+再由前面的定理, 两个端点数列趋于同一个有限极限 $c$.
+
+因为 $a_n$ 从下方趋于 $c$, 而 $b_n$ 从上方趋于 $c$, 所以
+$$
+a_n\leqslant c\leqslant b_n\qquad(n=1,2,\ldots).
+$$
+故 $c$ 属于所有这些区间.
+同时, 若另有一点 $c'\neq c$ 也属于每一个区间,
+则对一切 $n$ 都有
+$$
+b_n-a_n\geqslant\abs{c'-c}>0,
+$$
+这就与区间的长度趋于 $0$ 的前提矛盾.
+因而公共点 $c$ 是唯一的.
+
+这个命题以后将经常使用, 称为\emph{关于区间套的引理}
+\index{qujiantaoyinli@区间套引理}.
+
+\begin{comment}
 \section{收敛原理}
 设给定数列
 $$
