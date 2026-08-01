@@ -2196,7 +2196,7 @@ $b-a$ 称为区间的长度.
 $$
 a\leqslant a'<b'\leqslant b,
 $$
-则称 $[a',b']$ 包含在 $[a,b]$ 中.
+则称 $[a',b']$ 包含在 $[a,b]$ 中, 或套在它里面.
 
 {\kaishu
 设有一列闭区间
@@ -2222,8 +2222,7 @@ $$
 因此 $\seqset{a}$ 单调不减, $\seqset{b}$ 单调不增,
 并且 $a_n<b_n$.
 再由前面的定理, 两个端点数列趋于同一个有限极限 $c$.
-
-因为 $a_n$ 从下方趋于 $c$, 而 $b_n$ 从上方趋于 $c$, 所以
+又因为 $a_n$ 从下方趋于 $c$, 而 $b_n$ 从上方趋于 $c$, 所以
 $$
 a_n\leqslant c\leqslant b_n\qquad(n=1,2,\ldots).
 $$
@@ -2239,316 +2238,564 @@ $$
 这个命题以后将经常使用, 称为\emph{关于区间套的引理}
 \index{qujiantaoyinli@区间套引理}.
 
-\begin{comment}
-\section{收敛原理}
-设给定数列
-$$
-\seq{x} , \cdots x_{n'}, \cdots
-$$
-前一节, 我们给出了如果这个数列有单调性, 并且有界, 那么可以判断极限存在.
-但是, 如果 $\seqset{x}$ 是一个一般的数列, 我们就需要寻找关于这一数列是否有有限极限存在的一般判定法.
-为着这一目的, 极限定义本身自然是不能使用的, 因为在定义内已经用到这个极限, 而它的存在与否却还是我们所要讨论的问题.
-我们所需要的, 是在判定法内仅需应用我们已经有的东西, 也就是只有数列 $\{x_n\}$ 本身.
+\section{收敛原理·部分极限}\label{sec:convergence_principle_partial_limits}
+\subsection{收敛原理}\label{subsec:cauchy_convergence_principle}
+设给定数列 $\seqset{x}$, 它依次取值
+\begin{equation}\label{eq:cauchy_sequence_values}
+x_1,x_2,\ldots,x_n,\ldots,x_{n'},\ldots.
+\end{equation}
+现在要研究判定这一数列是否具有有限极限的一般方法.
+显然, 极限定义本身不能直接充当这种判定法, 因为定义中已经用到尚待确定是否存在的极限.
+因此, 所需条件应当只涉及数列本身, 也就是式 \eqref{eq:cauchy_sequence_values} 中的各项.
 
-这个问题已经由下面著名的定理而得解决.
-这定理属于捷克数学家 Bolzano 及法国数学家 Cauchy, 它常被称为收敛原理, 或\emph{ Cauchy 收敛准则}.
+这个问题由下面的著名定理解决.
+这一结果由捷克数学家 Bolzano 和法国数学家 Cauchy 建立,
+通常称为\emph{收敛原理}\index{shoulianyuanli@收敛原理},
+也称为\emph{Cauchy 收敛准则}\index{cauchyshoulianzhunze@Cauchy 收敛准则}.
 
-\begin{theorem}
-    数列 $\{x_n\}$ 有有限极限的必要且充分的条件是: 对于每一个数 $\epsilon > 0$ 总存在着序号 $N$, 使当 $n > N$ 及 $n' > N$ 时, 便能成立不等式
-    $$\abs{x_n - x_{n'}} < \epsilon.$$
+\begin{theorem}\label{thm:cauchy_convergence_criterion}
+数列 $\seqset{x}$ 具有有限极限的充分必要条件是:
+对于任意 $\epsilon>0$, 总存在序号 $N$, 使当 $n>N$ 且 $n'>N$ 时,
+恒有
+\begin{equation}\label{eq:cauchy_criterion}
+\abs{x_n-x_{n'}}<\epsilon.
+\end{equation}
 \end{theorem}
-这个定理直观的理解就是, 收敛数列的各项数值会依它们的序号增大而无限低接近着.
+
+直观地说, 随着序号增大, 数列中任意两个充分靠后的项都可以彼此任意接近.
+满足式 \eqref{eq:cauchy_criterion} 的数列称为\emph{Cauchy 数列}
+\index{cauchyshulie@Cauchy 数列}
+\footnote{原书称这样的数列为“自己收敛的”, 并指出“基本序列”和“Cauchy 序列”等名称也同样通行.}.
 
 \begin{proof}
-    \emph{必要性}~
-    设数列 $\{x_n\}$ 有确定的有限极限 $a$.
-    依极限的定义, 对于不论怎样的数 $\epsilon > 0$, 根据数 $\dfrac{\epsilon}{2}$, 必能求出序号 $N$, 使当 $n > N$ 时, 不等式
-    $$\abs{x_n - a} < \frac{\epsilon}{2}$$
-    恒能成立.
+\emph{必要性.}
+设数列 $\seqset{x}$ 具有有限极限 $a$.
+任取 $\epsilon>0$. 根据极限定义, 对数 $\dfrac{\epsilon}{2}$,
+存在序号 $N$, 使当 $n>N$ 时恒有
+$$
+\abs{x_n-a}<\frac{\epsilon}{2}.
+$$
+任取两个序号 $n>N$ 及 $n'>N$, 则同时有
+$$
+\abs{x_n-a}<\frac{\epsilon}{2},\qquad
+\abs{a-x_{n'}}<\frac{\epsilon}{2}.
+$$
+因此
+$$
+\begin{aligned}
+\abs{x_n-x_{n'}}
+&=\abs{(x_n-a)+(a-x_{n'})}\\
+&\leqslant\abs{x_n-a}+\abs{a-x_{n'}}
+<\frac{\epsilon}{2}+\frac{\epsilon}{2}
+=\epsilon.
+\end{aligned}
+$$
+这就证明了条件的必要性.
 
-    今任意取出二序号 $n > N$ 及 $n' > N$, 则必同时成立
-    $$\abs{x_n - a} < \frac{\epsilon}{2} \quad \text{及} \quad \abs{a - x_{n'}} < \frac{\epsilon}{2}, $$
-    由此
-    $$\abs{x_n - x_{n'}} = \abs{(x_n - a) + (a - x_{n'})} \leq \abs{x_n - a} + \abs{a - x_{n'}} < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon.$$
+\emph{充分性.}
+现在设式 \eqref{eq:cauchy_criterion} 的条件成立.
+为了证明数列 $\seqset{x}$ 具有有限极限, 在实数域中依照下列法则构造一个分划.
+对于实数 $\alpha$, 若从某一项开始恒有
+$$
+x_n>\alpha,
+$$
+就把 $\alpha$ 归入下组 $A$;
+其余实数 $\alpha'$ 全部归入上组 $A'$.
 
-    \emph{充分性}~
-    设定理的条件已经满足, 需要证明数列 $\{x_n\}$ 有确定的有限极限存在.
-    为这目的, 在全体实数域中依下列法则产生一个分划.
-    对于实数 $\alpha$, 若 $x_n$ 从某一序号开始能满足不等式
-    $$x_n > \alpha, $$
-    则取这种实数 $\alpha$ 归入下组 $A$.
-    取其余的 (即不落在 $A$ 内的) 一切实数 $\alpha'$ 归入上组 $A'$.
+先证明两组都非空.
+任取 $\epsilon>0$, 并取式 \eqref{eq:cauchy_criterion} 中相应的序号 $N$.
+当 $n>N$ 且 $n'>N$ 时,
+\begin{equation}\label{eq:cauchy_tail_bounds}
+x_{n'}-\epsilon<x_n<x_{n'}+\epsilon.
+\end{equation}
+固定任意 $n'>N$.
+由左边的不等式, $x_{n'}-\epsilon$ 属于 $A$;
+由右边的不等式, $x_{n'}+\epsilon$ 不可能属于 $A$, 因而属于 $A'$.
+所以 $A$ 与 $A'$ 均非空.
 
-    首先, 利用定理的条件说明这些组均非空集.
-    指定任意数 $\epsilon > 0$, 取出 (在前述的意义下) 对应于它的序号 $N$.
-    若 $n > N$ 及 $n' > N$, 则 $\abs{x_n - x_{n'}} < \epsilon$ 成立, 由此
-    $$x_{n'} - \epsilon < x_n < x_{n'} + \epsilon.$$
+按照定义, 每个实数都在且仅在两组之一中.
+此外, $A$ 中的每个数都小于 $A'$ 中的每个数.
+事实上, 若有 $\alpha\in A$、$\alpha'\in A'$ 而 $\alpha>\alpha'$,
+则从某一项开始有 $x_n>\alpha>\alpha'$, 这将使 $\alpha'$ 也属于 $A$, 产生矛盾.
+因此, $A|A'$ 确实是实数域的一个分划.
 
-    现在我们看到, 每一数 $x_{n'} - \epsilon$ (其中 $n' > N$) 都属于 $A$ 组, 因为在 $n$ 充分大时 (就是, $n > N$) $x_n$ 总能超过它.
-    另一方面, 因为 (对于同样这些 $n$) $x_n$ 显得比 $x_{n'} + \epsilon (n' > N)$ 型的任何一数为小, 就没有哪一个 $x_{n'} + \epsilon$ 可以放入 $A$ 内去, 因此, 必属于 $A'$ 组.
-
-    由确定 $A$ 及 $A'$ 的法则很明显地可以看出, 每一实数必定而且仅只落在二组之一内.
-    同时还有, 每一 ($A$ 内的) 数 $\alpha$ 必小于每一 ($A'$ 内的) 数 $\alpha'$: 事实上, 在 $\alpha > \alpha'$ 时, $x_n$从某一项起, 便要违反数 $\alpha'$ 的定义而超过数 $\alpha'$ 了.
-    这样, 上述实数域的分组确实产生一个分划.
-
-    根据 Dedekind 的\hyperref[thm:dedekind_cut]{基本定理}, 有实数 $a$ 存在.
-    它是两组数中间的界数:
-    $$\alpha \leqslant a \leqslant \alpha'.$$
-    但我们注意到, 在任何 $n' > N$ 时, $x_{n'} - \epsilon$ 是某一个 $\alpha$, 而 $x_{n'} + \epsilon$ 是某一个 $\alpha'$.
-    因此, 对于任何 $n' > N$, 特别有
-    $$x_{n'} - \epsilon \leqslant a \leqslant x_{n'} + \epsilon \quad \text{或} \quad \abs{a - x_{n'}} = \abs{x_{n'} - a} \leqslant \epsilon.$$
-    这即指
-    $$a = \limto{n} x_n.$$
-
-    我们也可以不用\emph{分割的概念}来证明\emph{充分性}~
-    定义
-    $$
-    a_n =\inf_{k\geq n}x_k, \quad b_n = \sup_{k\geq n}x_k.
-    $$
-    $a_n, b_n$ 是有限的或无穷暂时没多大关系.
-
-    那么, 当 $k\geq n$ 时, $a_n\leq x_n \leq b_n$, 并且对任意的 $n$ 都有
-    $$
-    a_n\leq a_{n+1}, \quad b_n\geq b_{n+1}.
-    $$
-    根据条件, 对于任意 $\epsilon>0$, 存在一个序号 $N$, 使得对所有的 $n, n'>N$ 有
-    $$
-    \abs{x_n-x_{n'}} < \epsilon.
-    $$
-    那么我们固定 $n'>N$, $x_n<x_{n'}+\epsilon$ 表明数列上有界, 因此 $b_n$ 必定是一个有限的数, 且当 $n>N$ 时,
-    $$
-    b_n \leq x_{n'} +\epsilon.
-    $$
-
-    类似地, 固定 $n>N$, 上面已经说了 $n'>N$ 时有 $x_{n'} \geq b_n -\epsilon$, 表明 $a_{n'}$ 一定也是个有限数, 且 $n'>N$ 时
-    $$
-    a_{n'} \geq b_n -\epsilon
-    $$
-
-    现在令 $n=n'$, 便有 $n>N$ 时
-    $$
-    0<b_n-a_n \leq \epsilon, \quad \text{或} \quad b_n-a_n \to 0.
-    $$
-    那么根据闭区间套定理, $a_n$ 与 $b_n$ 收敛于某个共同的极限, 而 $a_n\leq x_n \leq b_n$, $x_n$ 同样收敛于该极限.
+由 Dedekind 基本定理 [\emph{\ref{subsec:10}}],
+存在产生这个分划的实数
+$a$\footnote{Dedekind 基本定理的原陈述用 $\beta$ 表示这个界数.},
+它满足
+$$
+\alpha\leqslant a\leqslant\alpha'
+\qquad(\alpha\in A,\ \alpha'\in A').
+$$
+对于任意 $n'>N$, 数 $x_{n'}-\epsilon$ 属于 $A$,
+而 $x_{n'}+\epsilon$ 属于 $A'$, 因此
+$$
+x_{n'}-\epsilon\leqslant a\leqslant x_{n'}+\epsilon,
+\qquad
+\abs{x_{n'}-a}\leqslant\epsilon.
+$$
+这即指
+$$
+a=\limto{n}x_n.
+$$
 \end{proof}
 
-\section{部分数列及部分极限}
-\subsection{部分数列}
-下面同时考察数列 $x_{n}$ 及由它里面所选出的任一部分数列(或\emph{子列})
-$$ x_{n_1}, x_{n_2}, \cdots, x_{n_k}, \cdots $$
-式中 $\{ n_k \}$ 是某一自然数的递增数列:
-$$ n_1 < n_2 < \cdots < n_k < n_{k+1} < \cdots $$
-在这里, 依次取所有自然数为值的序号已不是由 $n$ 而是由 $k$ 担任.
-而 $n_k$ 则已成为一个取自然数为值的递增序列, 且显然地, 在 $k$ 增大时它趋向于 $\infty$.
+\begin{proof}[原书附注中的另一证明]
+不使用分划也可以证明充分性. 定义
+$$
+a_n=\inf_{k\geqslant n}x_k,\qquad
+b_n=\sup_{k\geqslant n}x_k.
+$$
+暂时不必预先断定 $a_n,b_n$ 是有限数.
+当 $k\geqslant n$ 时,
+$$
+a_n\leqslant x_k\leqslant b_n,
+$$
+并且对每个 $n$ 都有
+$$
+a_n\leqslant a_{n+1},\qquad
+b_n\geqslant b_{n+1}.
+$$
 
-{\kaishu 若数列 $\{x_{n}\}$ 有确定的极限 $a$ (有限或无穷), 则部分数列 $\{x_{n_k}\}$ 亦必有相同的极限.}
+任取 $\epsilon>0$.
+由式 \eqref{eq:cauchy_criterion}, 存在序号 $N$, 使对所有 $n,n'>N$ 都有
+$$
+\abs{x_n-x_{n'}}<\epsilon.
+$$
+固定任意 $n'>N$. 对一切 $k>N$ 都有
+$$
+x_k<x_{n'}+\epsilon.
+$$
+这说明数列 $\seqset{x}$ 上有界, 因而每个 $b_n$ 都是有限数;
+并且当 $n>N$ 时,
+$$
+b_n\leqslant x_{n'}+\epsilon.
+$$
+类似地, 现在固定 $n>N$. 由
+于上面的 $n'$ 是任意选取的, 对所有 $n'>N$ 都有
+$$
+x_{n'}\geqslant b_n-\epsilon.
+$$
+这说明数列 $\seqset{x}$ 下有界, 因而每个 $a_n$ 也是有限数;
+并且当 $n'>N$ 时
+$$
+a_{n'}\geqslant b_n-\epsilon.
+$$
+令 $n'=n$, 得到当 $n>N$ 时
+$$
+0\leqslant b_n-a_n\leqslant\epsilon.
+$$
+因此
+$$
+\limto{n}(b_n-a_n)=0.
+$$
 
-为了示例, 试考察 $a$ 为有限的情形.
-设对于指定的 $\epsilon > 0$ 能求出 $N$, 使当 $n > N$ 时已成立不等式:
-$$ \abs{x_n - a} < \epsilon, $$
+数列 $\seqset{a}$ 单调不减, 数列 $\seqset{b}$ 单调不增,
+且 $a_n\leqslant b_n$.
+由 \emph{\ref{subsec:nested_interval_lemma}} 开头关于相向单调数列的结论,
+它们收敛于同一个有限极限 $c$.
+又因
+$
+a_n\leqslant x_n\leqslant b_n,
+$
+数列 $\seqset{x}$ 也收敛于 $c$.
+这就再次证明了 Bolzano--Cauchy 收敛原理.
+\end{proof}
 
-因 $n_k \to \infty$, 故必有 $K$ 存在, 使当 $k > K$ 时有 $n_k > N$. 于是对于那些 $k$ 的值将成立不等式
-$$ \abs{x_{n_k} - a} < \epsilon, $$
-这就证明了我们的命题.
+这一判定法以后还会多次用到.
 
-值得注意的是, 在作出这论断时, 我们并没用数列 $\{n_k\}$ 的递增性. 因此, 不论 $n_k$ 依怎样的规律趋向 $+\infty$, 我们的命题仍为有效.
+\subsection{部分数列及部分极限}\label{subsec:subsequences_partial_limits}
+现在同时考察数列 (\ref{eq:cauchy_sequence_values}) 以及从中依次选出的任意一个\emph{部分数列}（通常简称\emph{子列}）
+\index{bufenshulie@部分数列}\index{zilie@子列}:
+\begin{equation}\label{eq:subsequence_terms}
+x_{n_1},x_{n_2},\ldots,x_{n_k},\ldots,
+\end{equation}
+其中 $\seqset[k]{n}$ 是严格递增的自然数列:
+\begin{equation}\label{eq:subsequence_indices}
+n_1<n_2<\cdots<n_k<n_{k+1}<\cdots.
+\end{equation}
+在子列中, 依次取遍自然数值的序号是 $k$, 而 $n_k$ 是随 $k$ 变化的自然数.
+由式 \eqref{eq:subsequence_indices} 显然有 $n_k\to+\infty$.
 
-若数列 $\{x_{n}\}$ 并无确定的极限, 则对于它的任何一个部分数列 $\{x_{n_k}\}$ 来说, 极限仍可能存在.
-这种极限称为数列 $\{x_{n}\}$ 的\emph{部分极限}.
+{\kaishu 若数列 $\seqset{x}$ 有确定的极限 $a$（有限或无穷）, 则它的任一子列
+$\bbbrac{x_{n_k}}$ 也有相同的极限.}
 
-例如, 设 $x_n = (-1)^{n+1}$, 这一数列无极限. 但若限制 $n$ 仅依奇数或偶数而递变, 则部分数列
-$$ x_1 = 1, \quad x_3 = 1, \cdots, \quad x_{2k-1} = 1, \cdots $$
+下面只验证 $a$ 为有限数的情形.
+任给 $\epsilon>0$, 存在序号 $N$, 使当 $n>N$ 时
+$$
+\abs{x_n-a}<\epsilon.
+$$
+由于 $n_k\to+\infty$, 存在序号 $K$, 使当 $k>K$ 时 $n_k>N$.
+于是对一切这样的 $k$ 都有
+$$
+\abs{x_{n_k}-a}<\epsilon,
+$$
+故 $x_{n_k}\to a$. 无穷极限的情形可按同样方式验证.
+
+值得注意的是, 上述论证只用到了 $n_k\to+\infty$, 并未用到
+$\seqset[k]{n}$ 的单调性. 因而即使 $n_k$ 不按单调方式趋于 $+\infty$,
+相应选出的项仍趋于 $a$; 当然, 要把它称为子列, 仍须满足
+式 \eqref{eq:subsequence_indices}.
+
+若数列 $\seqset{x}$ 并无确定极限, 但是对于它的某个子列 $\bbbrac{x_{n_k}}$ 来说,
+极限仍可能存在,
+此时称这种极限为数列 $\seqset{x}$ 的\emph{部分极限}
+\index{bufenjixian@部分极限}.
+
+例如
+数列
+$
+x_n=(-1)^{n+1}
+$
+没有极限.
+但它的奇数项子列和偶数项子列分别为
+$$
+x_1=1,\quad x_3=1,\quad\ldots,\quad x_{2k-1}=1,\quad\ldots
+$$
 及
-$$ x_2 = -1, \quad x_4 = -1, \cdots, \quad x_{2k} = -1, \cdots $$
-将各有极限为 1 或 $-1$.
-这两数就是 $x_n$ 的部分极限.
+$$
+x_2=-1,\quad x_4=-1,\quad\ldots,\quad x_{2k}=-1,\quad\ldots,
+$$
+二者的极限分别是 $1$ 和 $-1$. 因而 $1$ 与 $-1$ 都是原数列的部分极限.
+类似地, 数列 $x_n=(-1)^{n+1}n$ 有部分极限 $+\infty$ 和 $-\infty$;
+数列 $x_n=n^{(-1)^{n+1}}$ 有部分极限 $+\infty$ 和 $0$.
 
-数列 $\{x_{n}\}$ 是否恒有部分极限存在?
-在其非为有界时, 这问题很易肯定地回答.
-例如, 设它不上有界, 则对于每一个自然数 $k$, 必能在数列 $\{x_{n}\}$ 内求得大于 $k$ 的项 $x_{n_k}$:
-$$ x_{n_k} > k \quad (k = 1, 2, \cdots) $$
-并且很易办到, 使得序号 $n_k$ 随 $k$ 而增大. 部分数列
-$$ x_{n_1}, x_{n_2}, \cdots, x_{n_k}, \cdots $$
-显然地将有极限 $+\infty$.
-它就是原数列的部分极限.
+一个数列的部分极限还可以构成无穷集. 下面给出一个这样的例子.
+将自然数 $n$ 的十进制数字依次记为 $\alpha,\beta,\ldots,\gamma$,
+并定义
+$$
+x_n=0{.}\alpha\beta\cdots\gamma.
+$$
+例如,
+$
+x_{13}=0.13, x_{4035}=0.4035
+$.
+这样, $0.1$ 与 $1$ 之间的每一个有限十进制小数都会在数列中出现无穷多次.
+例如, $0.217$ 分别在第 $217$ 项、第 $2170$ 项、第 $21700$ 项等处出现.
 
-在有界的情形, 亦可以给予肯定的回答.
-这样我们就得到\emph{Bolzano-Weierstrass 定理}(或称\emph{凝聚定理}).
-\begin{theorem}
-    由任何有界数列 $\{x_{n}\}$ 内恒能选出收敛于有限极限的部分数列 $\{x_{n_k}\}$.
-\end{theorem}
+因此, 这些 $[0.1,1]$ 中的有限十进制小数都是数列的部分极限.
+那是否可以推广至任意实数呢?
+为此我们再任取 $[0.1,1]$ 中的实数 $\alpha$, 将它写成无限十进制小数
+$$
+\alpha=0{.}c_1c_2\cdots c_k\cdots,\qquad c_1\geqslant1.
+$$
+由此很易见
+$$
+x_{c_1} = 0.c_1,\ x_{c_1c_2} = 0.c_1c_2,\ \cdots, \ x_{c_1c_2\cdots c_k} = 0.c_1c_2\cdots c_k,\ \cdots
+$$
+的极限就是 $\alpha$.
+所以这个数列的部分极限充满整个区间 $[0.1,1]$.
+
+一个数列是否总有部分极限存在？对无界数列, 这个问题很容易回答.
+例如, 若数列 $\seqset{x}$ 上方无界, 则可依次选取严格递增的序号
+$n_1,n_2,\ldots$, 使
+\begin{equation}\label{eq:unbounded_sequence_positive_subsequence}
+x_{n_k}>k\qquad(k=1,2,\ldots).
+\end{equation}
+于是子列 $\bbbrac{x_{n_k}}$ 趋于 $+\infty$, 因而 $+\infty$ 是原数列的部分极限.
+
+对于有界数列, 答案也是肯定的, 但需要作更细致的讨论.
+
+\subsection{Bolzano--Weierstrass 引理}\label{subsec:bolzano_weierstrass_lemma}
+{\kaishu 从任一有界数列 $\seqset{x}$ 中, 总能选出一个收敛于有限极限的子列
+$\bbbrac{x_{n_k}}$.}
+\index{bolzanoweierstrassyinli@Bolzano--Weierstrass 引理}
+
 \begin{proof}
-    设一切数 $x_n$ 都位于界限 $a$ 与 $b$ 之间.
-    将区间 $[a, b]$ 分为两半, 则必有一半包含着所给数列的无穷多个元素, 因为, 若不是这样, 则在全区间 $[a, b]$ 内所包含着的元素将是有限个数, 但这是不可能的.
-    因此设包含着无穷多个 $x_n$ 的那一半是 $[a_1, b_1]$ (若两个半区间都是如此, 则任取其中之一).
+设数列的所有项都在 $a$ 与 $b$ 之间. 将闭区间 $[a,b]$ 二等分,
+则至少有一个半区间包含数列的无穷多项 (假设两个半区间都只含有限多项,
+整个区间 $[a,b]$ 也只会含有限多项, 这是不可能的).
+记所选的半区间为 $[a_1,b_1]$; 若两个半区间都含无穷多项, 则任取其一.
 
-    类似地, 在区间 $[a_1, b_1]$ 内分出它的一半 $[a_2, b_2]$, 使得在它里面包含无穷多个 $x_n$. 继续这种步骤至于无穷, 在第 $k$ 次分出的区间 $[a_k, b_k]$ 内照样包含着无穷多个 $x_n$.
+类似地, 再将 $[a_1,b_1]$ 二等分, 从中选取一个包含无穷多项的半区间
+$[a_2,b_2]$. 如此继续, 在第 $k$ 步得到包含数列无穷多项的闭区间
+$[a_k,b_k]$. 这些区间逐层包含, 每一个都是前一个的一半, 并且
+$$
+b_k-a_k=\frac{b-a}{2^k}\to0.
+$$
+由关于闭区间套的引理 [\emph{\ref{subsec:nested_interval_lemma}}],
+端点数列 $\seqset{a}$ 与 $\seqset{b}$ 趋于同一个有限极限 $c$.
 
-    这样构成的区间 (由第二个开始), 每一个都包含在前一个之内, 等于它的一半.
-    此外, 第 $k$ 个区间的长等于
-    $$ b_k - a_k = \frac{b - a}{2^k} $$
-    它随着 $k$ 的增大而趋向零.
-    把关于闭区间套的定理应用到这里来, 便得结论: $a_k$ 及 $b_k$ 趋向一公共极限 $c$.
+现在递归地选取子列. 先从 $[a_1,b_1]$ 中所含的数列项里任选一项
+（例如第一项）作为 $x_{n_1}$; 再在它后面的项中, 选取一个属于
+$[a_2,b_2]$ 的项作为 $x_{n_2}$;
+更为一般地, 在已经选取
+$x_{n_1},\ldots,x_{n_{k-1}}$ 后, 从 $x_{n_{k-1}}$ 后面的项中选取一个
+属于 $[a_k,b_k]$ 的项作为 $x_{n_k}$.
+这一过程始终可以继续, 因为每个区间 $[a_k,b_k]$ 都包含数列的无穷多项,
+其中必有序号任意大的项.
 
-    现在部分数列 $\{x_{n_k}\}$ 可由下列方法归纳地产生出来.
-    在所给数列的元素 $x_n$ 内任取包含在 $[a_1, b_1]$ 中的一个 (例如, 第一个) 当作 $x_{n_1}$.
-    在 $x_{n_1}$ 后面的元素 $x_n$ 内任取包含在 $[a_2, b_2]$ 中的一个 (例如, 第一个) 当作 $x_{n_2}$, 等等.
-    一般地说, 在以前分出的 $x_{n_1}, x_{n_2}, \cdots, x_{n_{k-1}}$ 后面的元素 $x_n$ 内任取包含在 $[a_k, b_k]$ 中的一个 (例如, 第一个), 当作 $x_{n_k}$.
-    这种产生数列方法是完全可能的: 因为每一区间 $[a_k, b_k]$ 内包含着无穷多个 $x_n$, 即包含着序号可为任意大的元素 $x_n$.
-
-    再则, 因为
-    $$ a_k \leqslant x_{n_k} \leqslant b_k, \quad \text{又} \quad \limto{k} a_k = \limto{k} b_k = c, $$
-    根据闭区间套定理, 则必有 $\displaystyle\limto{k} x_{n_k} = c$. 此即所要证的.
+由构造可知
+$$
+a_k\leqslant x_{n_k}\leqslant b_k.
+$$
+去个极限便得
+$
+\limto{k}x_{n_k}=c
+$,
+这就证明了引理.
 \end{proof}
 
-在证明这定理时, 用了逐次等分所考察的区间的方法, 称为\emph{Bolzano 方法}.
-这在其他场合对我们也是经常有用的.
+证明中逐次二等分所考察区间的方法称为\emph{Bolzano 方法}
+\index{bolzanofangfa@Bolzano 方法}. 这种方法在其他问题中也经常有用.
 
-我们可以用 Bolzano-Weierstrass 定理来证明 Cauchy 收敛准则的充分性:
+Bolzano--Weierstrass 引理可以使许多困难定理的证明大为简化.
+作为一个例子, 下面用它重新证明 Cauchy 收敛准则充分性;
+这个结论在 \emph{\ref{subsec:cauchy_convergence_principle}} 中我们花费了很大的力气去证明.
 
-设给定的 $\epsilon>0$ 已求出序号 $N$, 在 $n>N$ 及 $n'>N$ 时成立不等式
-$$x_{n'} - \epsilon < x_n < x_{n'} + \epsilon.$$
-若在这样的固定 $n'$, 则很清楚地, 由上式, $x_n$ 在一切情形下将成立为有界的: 因为在 $n>N$ 时它的值全部位于 $x_{n'}-\epsilon$ 与 $x_{n'}+\epsilon$ 之间, 且不难把这些限界的距离拉长, 使它又包括首 $N$ 个值: $x_1, x_2, \cdots, x_N$.
-
-于是, 依刚才所证明的定理, 可以分出收敛于有限极限 $c$ 的部分数列 $\{x_{n_k}\}$:
+\begin{proof}[Cauchy 收敛准则充分性的另一证明]
+设数列 $\seqset{x}$ 满足 Cauchy 条件. 任给 $\epsilon>0$,
+存在序号 $N$, 使当 $n>N$ 且 $n'>N$ 时
 $$
-    \limto{k} x_{n_k}=c.
+x_{n'}-\epsilon<x_n<x_{n'}+\epsilon.
 $$
+固定一个 $n'>N$. 于是当 $n>N$ 时, $x_n$ 全部位于
+$x_{n'}-\epsilon$ 与 $x_{n'}+\epsilon$ 之间.
+适当放宽这两个界, 还可以把有限多项 $x_1,x_2,\ldots,x_N$ 包含进去,
+所以数列 $\seqset{x}$ 有界.
 
-现在证明, $x_n$ 也趋向这一极限. 我们可以选取充分大的 $k$, 使
+由 Bolzano--Weierstrass 引理, 可从中选出一个收敛于有限极限 $c$ 的子列 $\bbbrac{x_{n_k}}$:
+$$
+\limto{k}x_{n_k}=c.
+$$
+选取充分大的 $k$, 使
 $$
 \abs{x_{n_k}-c}<\epsilon,
 $$
-又同时使 $n_k>N$. 因此, 取 $n'=n_k$:
+同时又有 $n_k>N$. 在 Cauchy 条件中取 $n'=n_k$, 对一切 $n>N$ 都有
 $$
-\abs{x_n-x_{n_k}}<\epsilon,
+\abs{x_n-x_{n_k}}<\epsilon.
 $$
-联合这两不等式, 最后即得
+合并这两个不等式, 得
 $$
-\abs{x_n-c}<2\epsilon \quad (n>N),
+\abs{x_n-c}<2\epsilon\qquad(n>N).
 $$
-这就证明了我们的命题.
+由于 $\epsilon$ 可以任意小, $2\epsilon$ 也可以任意小,
+这就证明了 $x_n\to c$
+\footnote{若一开始以 $\epsilon/2$ 代替 $\epsilon$,
+则上式右端可直接写成 $\epsilon$.
+以后遇到同类情形, 均可作这样的处理.}.
+\end{proof}
 
-\subsection{上极限及下极限}
-这样, 任何数列 $\{x_{n}\}$, 不论它是有界的或无界的, 都有部分极限存在.
-现在我们将指出, 在这些部分极限内必能求出最大的及最小的. 它们即称为数列 $\{x_{n}\}$ 的上极限与下极限, 并各记成
-$$\lmsup{n} x_n \quad \text{及} \quad \lminf{n} x_n.$$
+\subsection{上极限及下极限}\label{subsec:upper_lower_limits}
+由第 \ref{subsec:subsequences_partial_limits} 节和
+\ref{subsec:bolzano_weierstrass_lemma} 节的讨论可知,
+无论数列有界还是无界, 它总有部分极限.
+下面将证明, 在这些部分极限中总能找到最大的和最小的.
+其中的最大者称为\emph{上极限}\index{shangjixian@上极限},
+最小者称为\emph{下极限}\index{xiajixian@下极限}, 分别记作
+$$
+\lmsup{n}x_n\qquad\text{和}\qquad\lminf{n}x_n.
+$$
 
-\begin{theorem}
-    数列 $\{x_{n}\}$ 恒有上极限及下极限存在. 这两限相等是数列有极限存在的必要且充分的条件.
+\begin{theorem}\label{thm:upper_lower_limits_exist_and_characterize_limit}
+每个数列都存在上极限和下极限.
+数列具有通常意义下的极限的充分必要条件是它的上极限与下极限相等
+\footnote{这个定理的证明并不依赖 Bolzano--Weierstrass 引理;
+事实上, 它也包含了该引理的结论.}.
 \end{theorem}
 
 \begin{proof}
-    从考察上极限的问题开始.
-    我们已在前面看到, 若 $\seqset{x}$ 不上有界, 则可以从其内分出部分数列 $\{x_{n_k}\}$, 使
-    $$\limto{k} x_{n_k} = +\infty.$$
-    这样, 在这种情形, $+\infty$ 便是数列的部分极限之一, 显然, 它是一切可能的极限中之最大者, 因此,
-    $$\lmsup{n} x_n = +\infty.$$
+先考察上极限.
+若数列 $\seqset{x}$ 上方无界, 则由第
+\ref{subsec:subsequences_partial_limits} 节的构造,
+可以选出一个趋于 $+\infty$ 的子列.
+因此 $+\infty$ 是原数列的一个部分极限,
+并且显然大于其他一切可能的部分极限, 所以
+$$
+\lmsup{n}x_n=+\infty.
+$$
 
-    今再假定 $\seqset{x}$ 上有界:
-    $$x_n \leqslant M \quad (n=1, 2, \cdots).$$
-    考察 $x_n$ 在 $n>k$ 时的上确界:
-    $$M_k = \sup_{n>k} \{x_n\} = \sup \{x_{k+1}, x_{k+2}, \cdots\} \leqslant M.$$
-    在 $k$ 增大时 $M_k$ 的值只能减小, 因此, 依单调有界收敛定理, 无论如何极限 (在 $k$ 无限增大时)
-    $$\limto{k} M_k$$
-    必存在, 是有限的或等于 $-\infty$.
+现在设数列上有界:
+$$
+x_n\leqslant M\qquad(n=1,2,\ldots).
+$$
+对每个自然数 $k$, 考察尾项集合的上确界
+\begin{equation}\label{eq:tail_supremum_sequence}
+M_k=\sup_{n>k}x_n
+=\sup\bbbrac{x_{k+1},x_{k+2},\ldots}\leqslant M.
+\end{equation}
+随着 $k$ 增大, $M_k$ 只能减小.
+由单调数列的极限定理 [\emph{\ref{subsec:monotone_sequence_limits}}],
+$\limto{k}M_k$ 必定存在, 它或者是有限数, 或者等于 $-\infty$.
 
-    当这极限是 $-\infty$ 时, 情形同样是那么简单.
-    对于任何 $E>0$ 必能求出序号 $k=N$, 使
-    $$M_N < -E.$$
-    但在 $n>N$ 时, 显然, $x_n \leqslant M_N$, 因此, 对于这种 $n$ 更有
-    $$x_n < -E.$$
-    而这就表示有极限
-    $$\limto{n} x_n = -\infty$$
-    存在, 这极限将同时是上极限和下极限.
+先设
+$$
+\limto{k}M_k=-\infty.
+$$
+任给 $E>0$, 存在序号 $N$, 使 $M_N<-E$.
+当 $n>N$ 时, 由式 \eqref{eq:tail_supremum_sequence} 有
+$$
+x_n\leqslant M_N<-E.
+$$
+因此
+$$
+\limto{n}x_n=-\infty.
+$$
+在这种情形, $-\infty$ 同时是数列的上极限和下极限
+\footnote{若数列的通常极限存在, 则它的所有部分极限都与这个极限重合[\emph{\ref{subsec:subsequences_partial_limits}}].}.
 
-    尚待考察最重要的情形, 即有一有限极限
-    $$\limto{k} M_k = M^*$$
-    存在的情形.
-    我们将指出, 这数 $M^*$ 将是 $x_n$ 的上极限.
+下面考察主要情形:
+\begin{equation}\label{eq:finite_tail_supremum_limit}
+\limto{k}M_k=M^*
+\end{equation}
+为有限数. 我们将证明 $M^*$ 就是数列的上极限.
+先从式 \eqref{eq:tail_supremum_sequence} 和
+\eqref{eq:finite_tail_supremum_limit} 得出 $M^*$ 的两个性质.
 
-    为此目的, 我们将先确立数 $M^*$ 的两个特性.
+\myrefparagraph{I.}\label{prop:limsup_eventual_upper_bound}
+{\kaishu 对任意 $\epsilon>0$, 存在序号 $N'$, 使对一切 $n>N'$ 都有
+\begin{equation}\label{eq:limsup_eventual_upper_bound}
+x_n<M^*+\epsilon.
+\end{equation}}
 
-    若任意取数 $\epsilon > 0$, 则必能求出 $k=N'$, 使 $M_{N'} < M^* + \epsilon$, 因为, 在 $n>N'$ 时, $x_n \leqslant M_{N'}$, 所以更有 $x_n < M^* + \epsilon$. 因此,
+事实上, 由 $M_k\to M^*$, 可以选取 $N'$, 使
+$M_{N'}<M^*+\epsilon$; 而当 $n>N'$ 时,
+$x_n\leqslant M_{N'}$, 所以式
+\eqref{eq:limsup_eventual_upper_bound} 成立.
 
-    \emph{$M^*$ 的特性 I}: {\kaishu 对于不论怎样的 $\epsilon > 0$, 必有序号 $N'$ 存在, 使对一切 $n>N'$ 有
-    $$x_n < M^* + \epsilon.$$}
+\myrefparagraph{II.}\label{prop:limsup_arbitrarily_late_lower_approach}
+{\kaishu 对任意 $\epsilon>0$ 和任意序号 $N$,
+总能找到序号 $n'>N$, 使
+\begin{equation}\label{eq:limsup_arbitrarily_late_lower_approach}
+x_{n'}>M^*-\epsilon.
+\end{equation}}
 
-    另一方面, 对于任意的 $\epsilon > 0$ 及任何的 $k$ 必有
-    $$M_k \geqslant M^* > M^* - \epsilon.$$
-    但依上确界的性质, 在序号 $n = k+1, k+2, \cdots$ 的 $x_n$ 各值中间必能求出 $x_{n'}$, 使 $x_{n'} > M^* - \epsilon$. 把任意取的 $k$ 换成 $N$, 便得
+因为对每个 $k$ 都有
+$$
+M_k\geqslant M^*>M^*-\epsilon,
+$$
+由上确界的性质, 在尾项
+$x_{k+1},x_{k+2},\ldots$ 中必能找到一项 $x_{n'}$,
+使 $x_{n'}>M^*-\epsilon$.
+在这里取 $k=N$, 就得到式
+\eqref{eq:limsup_arbitrarily_late_lower_approach}.
 
-    \emph{$M^*$ 的特性 II}: {\kaishu 对于不论怎样的 $\epsilon > 0$ 及序号 $N$, 必能求出 $x_{n'}$, 其序号 $n' > N$, 满足
-    $$x_{n'} > M^* - \epsilon.$$}
+必须注意性质 \ref{prop:limsup_eventual_upper_bound} 与
+\ref{prop:limsup_arbitrarily_late_lower_approach} 的区别.
+前者说明从某一项开始, 所有项毫无例外地满足同一个上界;
+后者只保证有个别项满足相应的下界, 但这样的项可以有任意大的序号.
 
-    必须强调这两种性质的差别.
-    在第一种情形, 一切 $x_n$ 的值, 由某一项开始, 毫无例外地满足着不等式.
-    在第二种情形, 仅是若干个别的 $x_n$ 满足不等式, 但在这些个别的值中间却有序号为任意大的 $x_n$.
+现在证明 $M^*$ 是数列的一个部分极限.
+任取正数列 $\seqset[i]{\epsilon}$, 使 $\epsilon_i\to0$.
+令 $n_1=1$, 并假设已经选出
+$$
+n_1=1<n_2<\cdots<n_{i-1}.
+$$
+由性质 \ref{prop:limsup_eventual_upper_bound}, 对 $\epsilon_i$
+可以找到序号 $N_i$, 使当 $n>N_i$ 时
+$x_n<M^*+\epsilon_i$.
+再在性质 \ref{prop:limsup_arbitrarily_late_lower_approach} 中取
+$$
+N=\max\bbbrac{n_{i-1},N_i},
+$$
+便可选出序号 $n_i>N$, 使
+$x_{n_i}>M^*-\epsilon_i$.
+由于 $n_i>N_i$, 同时也有
+$x_{n_i}<M^*+\epsilon_i$.
+因此
+$$
+\abs{x_{n_i}-M^*}<\epsilon_i
+\qquad(i=2,3,\ldots),
+$$
+并且 $n_i>n_{i-1}$.
+由 $\epsilon_i\to0$ 可知
+$$
+x_{n_i}\to M^*,
+$$
+所以 $M^*$ 确实是原数列的部分极限.
 
-    首先, 根据这些特性, 证明数 $M^*$ 是 $x_n$ 的部分极限.
-    为此, 需要分出收敛于 $M^*$ 的部分数列 $\{x_{n_i}\}$.
+最后证明没有任何部分极限能超过 $M^*$.
+数列上有界已经排除了部分极限 $+\infty$;
+部分极限 $-\infty$ 显然不超过 $M^*$.
+若某个子列满足
+$$
+x_{n_i}\to a,
+$$
+其中 $a$ 为有限部分极限, 则由性质
+\ref{prop:limsup_eventual_upper_bound}, 对任意 $\epsilon>0$,
+当 $i$ 充分大时都有
+$$
+x_{n_i}<M^*+\epsilon.
+$$
+对这个不等式取极限, 得
+$a\leqslant M^*+\epsilon$.
+再由 $\epsilon$ 的任意性可知 $a\leqslant M^*$.
+因此 $M^*$ 是全部部分极限中的最大者, 即
+$$
+M^*=\lmsup{n}x_n.
+$$
 
-    作一正数的数列 $\epsilon_i \to 0$. 设 $n_1 = 1$, 假定序号
-    $$n_1 = 1 < n_2 < \cdots < n_{i-1}$$
-    已选出, 现在说明怎样选取 $n_i$.
-    依特性 I, 在 $\epsilon = \epsilon_i$ 时必能求出对应的序号 $N' = N_i$, 使对一切 $n > N_i$ 有 $x_n < M^* + \epsilon_i$. 今再看特性 II, 仍旧假定 $\epsilon = \epsilon_i$ 并取序号 $n_{i-1}$ 及 $N_i$ 中的最大者作为 $N$; 对于这样的 $\epsilon$ 及 $N$, 由特性 II 所得到的序号 $n'$ 就取作 $n_i$. 那么, 一方面,
-    $$x_{n_i} > M^* - \epsilon_i, $$
-    而另一方面, 因 $n_i > N_i$, 同时必有
-    $$x_{n_i} < M^* + \epsilon_i.$$
-    除此以外, 还需注意 $n_i > n_{i-1}$.
+下极限的存在性可以完全类似地证明.
+若数列下方无界, 则可以选出趋于 $-\infty$ 的子列,
+从而下极限为 $-\infty$.
+还需注意下面两种情形.
 
-    对于用这种方法构成的数列中的元素 $x_{n_i}$ 必有
-    $$\abs{x_{n_i} - M^*} < \epsilon_i \quad (i = 2, 3, \cdots), $$
-    实际上就是 $x_{n_i} \to M^*$.
+若下极限为 $+\infty$, 则数列在通常意义下也趋于 $+\infty$:
+\begin{equation}\label{eq:liminf_positive_infinity_implies_limit}
+\limto{n}x_n=+\infty.
+\end{equation}
+若下极限是有限数 $M_*$,
+$$
+M_*=\lminf{n}x_n,
+$$
+则它具有与 $M^*$ 对称的两个性质.
 
-    最后, 将证明没有一个部分极限能超过 $M^*$.
-    事实上, 设对于某一部分数列 $\{x_{n_i}\}$ 有 $x_{n_i} \to a$, 则 $a$ 就是部分极限之一.
-    依特性 I, 当 $n_i$ 充分大时 (已大于 $N'$), 必有
-    $$x_{n_i} < M^* + \epsilon.$$
-    在这不等式中取极限, 则得 $a \leqslant M^* + \epsilon$, 又因 $\epsilon$ 是任意小, 最后, 即得
-    $$a \leqslant M^*.$$
-    这样, $M^*$ 实际上就成为一切部分极限中之最大的, 即
-    $$M^* = \lmsup{n} x_n.$$
+\myrefparagraph{I.}\label{prop:liminf_eventual_lower_bound}
+{\kaishu 对任意 $\epsilon>0$, 存在序号 $N''$, 使当 $n>N''$ 时
+$$
+x_n>M_*-\epsilon.
+$$}
 
-    类似地可证下极限的存在.
-    不需再重复一切论证, 只注意下列三种情况.
+\myrefparagraph{II.}\label{prop:liminf_arbitrarily_late_upper_approach}
+{\kaishu 对任意 $\epsilon>0$ 和任意序号 $N$,
+总能找到序号 $n''>N$, 使
+$$
+x_{n''}<M_*+\epsilon.
+$$}
 
-    若下极限是 $+\infty$, 则在普通意义下, 有极限
-    $$\limto{n} x_n = +\infty$$
-    存在.
+现在证明定理的后半部分.
+若数列的通常极限（有限或无穷）存在,
+则[\emph{\ref{subsec:subsequences_partial_limits}}]
+它的全部部分极限都与这个极限重合.
+因此, 上极限与下极限必定相等.
 
-    又若下极限是有限数 $M_*$,
-    $$M_* = \lminf{n} x_n, $$
-    则它具有类似于上述的 $M^*$ 的特性.
+反过来, 假设
+\begin{equation}\label{eq:equal_upper_lower_limits}
+\lmsup{n}x_n=\lminf{n}x_n.
+\end{equation}
+若公共值为 $+\infty$, 则
+数列趋于 $+\infty$;
+若公共值为 $-\infty$, 则
+数列趋于 $-\infty$.
 
-    \emph{$M_*$ 的特性 I}:{\kaishu 对于不论怎样的 $\epsilon > 0$, 必有序号 $N''$ 存在, 使当 $n > N''$ 时有
-    $$x_n > M_* - \epsilon.$$}
-
-    \emph{$M_*$ 的特性 II}: {\kaishu 对于不论怎样的 $\epsilon > 0$ 及序号 $N$, 必能求出 $x_{n''}$, 其序号 $n'' > N$, 满足
-    $$x_{n''} < M_* + \epsilon.$$}
-
-    现在来证明定理的后半部. 若在普通意义下说有极限
-    $$\limto{n} x_n$$
-    (有限或无穷) 存在, 则一切可能的部分极限都与它重合, 前述条件的必要性便得证明.
-
-    今假定
-    $$\lmsup{n} x_n = \lminf{n} x_n.$$
-    若它们的公共数值是 $+\infty$ 或 $-\infty$, 则有如我们已看到的, 数列在普通意义下有极限存在, 且就是那一值.
-
-    最后, 设二极限都是有限的:
-    $$M^* = M_* = a.$$
-    则比较 $M^*$ 及 $M_*$ 的特性 I, 依预先指定的 $\epsilon > 0$ 可求出序号 $N$, 使当 $n > N$ 时成立
-    $$a - \epsilon < x_n < a + \epsilon \quad \text{即} \quad \abs{x_n - a} < \epsilon.$$
-    这就说明, $a$ 是 $x_n$ 在普通意义下的极限.
+最后设两个极限都是有限数:
+$$
+M^*=M_*=a.
+$$
+结合性质 \ref{prop:limsup_eventual_upper_bound} 和
+\ref{prop:liminf_eventual_lower_bound}, 对任意 $\epsilon>0$,
+可以找到序号 $N$, 使当 $n>N$ 时
+$$
+a-\epsilon<x_n<a+\epsilon,
+\qquad\text{即}\qquad
+\abs{x_n-a}<\epsilon.
+$$
+所以 $x_n\to a$. 定理得证.
 \end{proof}
 
-注意, 用这定理, Cauchy收敛准则的充分性就能很简单地被证明了.
-就是说 (若仍用原来的记法), 由不等式
-$$x_{n'} - \epsilon < x_n < x_{n'} + \epsilon \quad (n \text{ 及 } n' > N)$$
-立刻可以看出, $x_n$ 的上极限及下极限是有限的, 而且相差不大于 $2\epsilon$, 由于 $\epsilon$ 可任意小, 因此必须重合.
-由此, 立刻推得有一有限极限 (在普通意义下) 存在.
-
-\begin{Exercises}
-    \item 未定.
-\end{Exercises}
-\end{comment}
+利用这个定理, 还可以很简洁地证明 Cauchy 收敛准则的充分性.
+设数列满足 Cauchy 条件. 对任意 $\epsilon>0$, 存在序号 $N$,
+使当 $n>N$ 且 $n'>N$ 时
+$$
+x_{n'}-\epsilon<x_n<x_{n'}+\epsilon.
+$$
+固定一个 $n'>N$, 便可看出数列的上极限和下极限都是有限的, 并且
+$$
+0\leqslant
+\lmsup{n}x_n-\lminf{n}x_n
+\leqslant2\epsilon.
+$$
+由于 $\epsilon$ 可以任意小, 两个极限必定相等.
+于是由前面证明的定理,
+数列具有有限极限.
