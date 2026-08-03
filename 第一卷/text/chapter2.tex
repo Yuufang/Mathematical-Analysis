@@ -203,3 +203,246 @@ $$
 气压自记器得到的气压图, 则表示大气压力在昼夜间的变化.
 函数的表格表示和图形表示在分析中并非始终必须,
 因而这里不再详细展开.
+
+\subsection{函数的解析表示法}\label{subsec:analytic_representation}
+函数的解析式或公式的表示法在数学分析中起着极其重要的作用.
+下面先对这种表示法作几点说明.
+
+\myrefparagraph{1\textdegree}\label{par:analytic_operations}
+首先要说明, 解析式中允许进行哪些运算.
+除初等代数和三角学中已经研究过的算术运算、乘幂、开方、取对数、求三角函数值及其反运算外,
+还要加入我们在第一章中引入的一种新的运算 —— 极限运算.
+随着分析学内容的展开, 还会逐步引入新的运算,
+因此“解析式”或“公式”的完整含义也只能逐步揭示.
+
+\myrefparagraph{2\textdegree}\label{par:natural_domain}
+其次要注意解析式所表示的函数的定义域.
+每一个含有自变量 $x$ 的解析式都有一个自然定义域,
+即使这个解析式具有意义的一切实数 $x$ 所组成的集合
+\footnote{对于任何实数 $x$ 都没有意义的解析式, 这里不加讨论.}.
+
+例如, 表达式 $\dfrac{1}{1+x^2}$ 的自然定义域是全体实数 $\R$;
+$\sqrt{1-x^2}$ 的自然定义域是闭区间 $[-1,1]$,
+而 $\dfrac{1}{\sqrt{1-x^2}}$ 的自然定义域是开区间 $(-1,1)$.
+有时自然定义域由几个彼此分离的区间组成:
+$\sqrt{x^2-1}$ 的自然定义域是 $(-\infty,-1]$ 和 $[1,+\infty)$,
+而 $\dfrac{1}{x^2-1}$ 的自然定义域则是 $(-\infty,-1)$, $(-1,1)$ 和 $(1,+\infty)$.
+
+再考察无穷几何级数的和
+$$
+1+x+x^2+\cdots
+=\lim_{n\to\infty}\brac{1+x+x^2+\cdots+x^{n-1}}
+$$
+若 $\abs{x}<1$, 则我们知道 [\emph{\ref{subsec:25}}, \ref{ex:geometric_series_sum}], 
+它有极限 $\dfrac{1}{1-x}$, 
+而当 $\abs{x}\geqslant1$ 时, 上式中的极限或者等于 $+\infty$, 或者根本不存在.
+因此这个解析式的自然定义域是开区间 $(-1,1)$.
+
+以后我们还会遇到更复杂、更一般的解析式,
+并研究它们在自然定义域内所确定的函数的性质, 即研究解析工具本身.
+不过, 在具体问题中还可能出现另一种情形:
+自变量 $x$ 由于问题本身的性质而被限制在某个变动区域 $\X$ 内,
+即使解析式在 $\X$ 以外仍有意义, 也不能越出这个区域来讨论原问题.
+例如, 在自由落体问题 [\emph{\ref{subsec:functional_relations_examples}}, \ref{ex:free_fall_function}] 中,
+质点从地面以上高 $h$ 处开始下落, 路程由公式
+$$
+s=\frac{gt^2}{2}
+$$
+给出. 这个解析式对于一切实数 $t$ 都有意义,
+但原问题只允许考察
+$$
+0\leqslant t\leqslant T,\qquad T=\sqrt{\frac{2h}{g}}.
+$$
+负的时间没有实际意义; 当 $t>T$ 时, 质点已经落到地面.
+在这里, 解析式只起辅助作用, 函数实际考察的定义域由具体问题限定.
+
+\myrefparagraph{3\textdegree}\label{par:piecewise_analytic_representation}
+最后, 函数未必在整个定义域内由同一个公式给出,
+而是对于变元的某一部分数值用某一公式，对于另一部分数值用另一公式
+例如, 在区间 $(-\infty,+\infty)$ 上定义函数
+$$
+f(x)=
+\begin{cases}
+1, & \abs{x}>1,\\
+-1, & \abs{x}<1,\\
+0, & x=\pm1.
+\end{cases}
+$$
+这里对自变量的不同部分分别使用了不同的公式.
+
+又如, \emph{Dirichlet 函数}\index{Dirichlethanshu@Dirichlet 函数}定义为
+$$
+D(x)=
+\begin{cases}
+1, & x\text{ 是有理数},\\
+0, & x\text{ 是无理数}.
+\end{cases}
+$$
+再如, \emph{符号函数}\index{fuhaohanshu@符号函数}也称为 Kronecker 函数, 记作 $\sgn x$:
+$$
+\sgn x=
+\begin{cases}
+1, & x>0,\\
+-1, & x<0,\\
+0, & x=0.
+\end{cases}
+$$
+
+不过, 由几个公式分段定义的函数与由单一公式定义的函数之间并没有原则上的差别.
+通常, 借助较为复杂的表达式, 可以把分段定义改写成一个公式.
+例如, 利用极限运算, 上面引入的 $f(x)$ 可以写成
+$$
+f(x)=\lim_{n\to\infty}\frac{x^{2n}-1}{x^{2n}+1}.
+$$
+很容易检验, 当 $\abs{x}>1$ 时, $x^{2n}\to+\infty$, 因而
+$$
+\lim_{n\to\infty}\frac{x^{2n}-1}{x^{2n}+1}
+=\lim_{n\to\infty}\frac{1-\dfrac{1}{x^{2n}}}{1+\dfrac{1}{x^{2n}}}=1.
+$$
+当 $\abs{x}<1$ 时, $x^{2n}\to0$, 所以
+$$
+\lim_{n\to\infty}\frac{x^{2n}-1}{x^{2n}+1}=-1.
+$$
+最后, 当 $x=\pm1$ 时, 对每个 $n$ 都有
+$$
+\frac{x^{2n}-1}{x^{2n}+1}=0,
+$$
+取极限后仍得 $0$. 这正好与原来的分段定义完全一致.
+
+\subsection{函数的图像}\label{subsec:function_graph}
+虽然在数学分析中并不用图像来给出函数,
+但经常要借助图像说明函数的性质.
+图像直观而清楚, 是研究函数性质时不可缺少的辅助工具.
+
+\begin{wrapfigure}[7]{l}{0.34\textwidth}
+    \vspace{-0.3cm}
+    \centering
+    \begin{tikzpicture}
+        \draw[-latex] (-0.5, 0) -- (3.2, 0) node[below,scale=0.8] {$x$};
+        \draw[-latex] (0, -0.2) -- (0, 2.5) node[right,scale=0.8] {$y$};
+        \node[below left,scale=0.8] (O) at (0, 0) {$O$};
+
+        \node[below left,scale=0.8] (A) at (0.5, 0.7055) {$A$};
+        \node[above,scale=0.8] (B) at (3, 1.75) {$B$};
+        \node[below right,scale=0.8] (M) at (1.37, 1.2629) {$M$};
+
+        \draw[domain=0.3:3, thick] plot (\x, {ln(\x+1)+0.4});
+
+        \draw[dashed,thick] (0.76, 0) -- (0.76, 0.9653);
+        \draw[dashed,thick] (1.37, 0) -- (1.37, 1.2629);
+        \draw[dashed,thick] (2.26, 0) -- (2.26, 1.5817);
+        \draw[dashed,thick] (0, 0.9653) -- (0.76, 0.9653);
+        \draw[dashed,thick] (0, 1.2629) -- (1.37, 1.2629);
+        \draw[dashed,thick] (0, 1.5817) -- (2.26, 1.5817);
+
+        \draw (0.76, 0.9653) circle (1pt);
+        \draw (1.37, 1.2629) circle (1pt);
+        \draw (2.26, 1.5817) circle (1pt);
+    \end{tikzpicture}
+ \end{wrapfigure}
+设函数 $y=f(x)$ 定义在某个区间 $\X$ 内.
+在平面上取两条互相垂直的坐标轴, 对每一对满足 $x\in\X$、$y=f(x)$ 的数值,
+作横坐标为 $x$、纵坐标为 $y$ 的点 $M(x,y)$.
+当 $x$ 在 $\X$ 内变动时, 所有这些点组成的集合就是函数 $y=f(x)$ 的\emph{图像}.
+在图示的情形中, 这些点画出一条曲线 $AB$;
+这条曲线是函数的几何表示, 而方程 $y=f(x)$ 就称为曲线 $AB$ 的方程.
+
+例如, 函数
+$$
+\begin{aligned}
+y=\pm\sqrt{1-x^2}\quad (\abs{x}\leqslant1),\qquad
+y=\pm\sqrt{x^2-1}\quad (\abs{x}\geqslant1)
+\end{aligned}
+$$
+的图像分别是下方圆和等轴双曲线:
+
+\begin{figure}[htbp]
+    \vspace{-0.7cm}
+    \centering
+    \begin{minipage}[t]{0.44\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=1.45]
+            \draw[-latex] (-1.45,0) -- (1.5,0) node[right,scale=0.8] {$x$};
+            \draw[-latex] (0,-1.35) -- (0,1.45) node[right,scale=0.8] {$y$};
+            \node[below left,scale=0.8] at (0,0) {$O$};
+            \draw[thick] (1,0) arc[start angle=0,end angle=180,radius=1];
+            \draw[dashed,thick] (-1,0) arc[start angle=180,end angle=360,radius=1];
+            \fill (-1,0) circle (1.2pt);
+            \fill (1,0) circle (1.2pt);
+            \node[above right,scale=0.72] at (0.35,0.9) {$y=+\sqrt{1-x^2}$};
+            \node[below right,scale=0.72] at (0.35,-0.9) {$y=-\sqrt{1-x^2}$};
+            \node[below left,scale=0.8] at (-1,0) {$-1$};
+            \node[below right,scale=0.8] at (1,0) {$1$};
+        \end{tikzpicture}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=0.95]
+            \draw[-latex] (-2.65,0) -- (2.7,0) node[right,scale=0.8] {$x$};
+            \draw[-latex] (0,-2.25) -- (0,2.35) node[right,scale=0.8] {$y$};
+            \node[below left,scale=0.8] at (0,0) {$O$};
+            \draw[dashed] (-2.2,-2.2) -- (2.2,2.2);
+            \draw[dashed] (-2.2,2.2) -- (2.2,-2.2);
+            \draw[domain=1:2.45,samples=100,thick] plot (\x,{sqrt(\x*\x-1)});
+            \draw[domain=1:2.45,samples=100,thick] plot (\x,{-sqrt(\x*\x-1)});
+            \draw[domain=-2.45:-1,samples=100,thick] plot (\x,{sqrt(\x*\x-1)});
+            \draw[domain=-2.45:-1,samples=100,thick] plot (\x,{-sqrt(\x*\x-1)});
+            \fill (-1,0) circle (1.2pt);
+            \fill (1,0) circle (1.2pt);
+            \node[above right,scale=0.72] at (1.35,0.7) {$y=+\sqrt{x^2-1}$};
+            \node[below right,scale=0.72] at (1.35,-0.7) {$y=-\sqrt{x^2-1}$};
+            \node[below left,scale=0.8] at (-1,0) {$-1$};
+            \node[below right,scale=0.8] at (1,0) {$1$};
+        \end{tikzpicture}
+    \end{minipage}
+\end{figure}
+
+\begin{wrapfigure}[10]{r}{0.45\textwidth}
+    \vspace{-0.5cm}
+    \centering
+    \begin{tikzpicture}[scale=0.85]
+        \draw[-latex] (-2.65,0) -- (3.55,0) node[right,scale=0.8] {$x$};
+        \draw[-latex] (0,-2.65) -- (0,2.85) node[right,scale=0.8] {$y$};
+        \node[below left,scale=0.8] at (0,0) {$O$};
+        \foreach \x in {-2,-1,1,2,3}{
+            \draw (\x,0.08) -- (\x,-0.08) node[below] {$\x$};
+        }
+        \foreach \k in {-2,-1,0,1,2}{
+            \draw[thick] (\k,\k) -- (\k+1,\k);
+            \fill (\k,\k) circle (1.8pt);
+            \draw[fill=white] (\k+1,\k) circle (1.8pt);
+        }
+        \node[left,scale=0.8] at (0,-2) {$-2$};
+        \node[left,scale=0.8] at (0,-1) {$-1$};
+        \node[left,scale=0.8] at (0,1) {$1$};
+        \node[left,scale=0.8] at (0,2) {$2$};
+        \node[above left,scale=0.8] at (-0.25,2.15) {$y=\floor{x}$};
+    \end{tikzpicture}
+\end{wrapfigure}
+函数图像通常是逐点画出的.
+在区间 $\X$ 内取一系列彼此接近的自变量值,
+依公式 $y=f(x)$ 算出相应的函数值:
+$$
+\begin{array}{c|ccccc}
+x= & x_1 & x_2 & x_3 & \cdots & x_n\\ \hline
+y= & y_1 & y_2 & y_3 & \cdots & y_n
+\end{array}
+$$
+再把点
+$$
+(x_1,y_1),\ (x_2,y_2),\ \ldots,\ (x_n,y_n)
+$$
+画在图上, 用光滑的线段连接作出曲线.
+这样得到的曲线虽然只是所求图像的近似,
+但是曲线画得越光滑, 所取的点越稠密, 它就越准确地表示函数的图像.
+
+必须注意, 虽然常用几何图形来表示函数,
+函数的图像却不一定是通常直观意义下的曲线.
+例如, 取整函数 $y=\floor{x}$ 在每个区间 $[m,m+1)$ ($m$ 取一切整数) 内都保持常值 $m$,
+因而它的图像由一系列左端点属于图像、右端点不属于图像的水平线段组成.
+至于 Dirichlet 函数 $D(x)$,
+它的图像由直线 $y=1$ 上横坐标为有理数的点,
+以及 $x$ 轴上横坐标为无理数的点组成, 这种图像却无法实际画出.
+
+\subsection{几类重要的函数}
