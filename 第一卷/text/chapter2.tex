@@ -3,8 +3,8 @@
 \section{函数概念}\label{sec:function_concept}
 
 
-\subsection{变量及其变动区域}\label{subsec:variables_and_ranges}
-在 \emph{\ref{subsec:22}} 中, 我们已经介绍了变量的一般概念.
+\subsection{变量及其变动区域}\label{subsec:43}
+在 \emref{subsec:22} 中, 我们已经介绍了变量的一般概念.
 设数集 $\X=\{x\}$ 给出了变量 $x$ 在所考察问题中可能取得的全部数值,
 并且其中每一个数值都允许取到,
 这个数集就称为变量 $x$ 的\emph{变动区域}\index{biandongquyu@变动区域},
@@ -12,7 +12,7 @@
 一般来说, 任意数集都可以作为某个变量的变动区域
 \footnote{对数列而言, 仅给出所有可能的取值还不能确定这个数列,
 因为各项的先后次序和重复情况同样是数列的组成部分
-[参见 \emph{\ref{subsec:22}}].}.
+[参见 \emref{subsec:22}].}.
 
 我们已经讲过, 数可以表示为数轴上的点, 因此数集 $\X$ 也可以看成数轴上的一个点集.
 在这种几何解释下, 变量所取的数值通常也称为点.
@@ -26,7 +26,7 @@ $
 \footnote{若把数列看成定义在 $\N$ 上的函数,
 则应当区分它的定义域 $\N$ 与它实际取得的值域.
 本书以后讨论数列时, 不再使用“数列的变动区域”这一说法
-[参见 \emph{\ref{subsec:function_definition}}].}
+[参见 \emref{subsec:45}].}
 $
 \left\{0,1,\dfrac12,\dfrac13,\ldots\right\}.
 $
@@ -57,7 +57,7 @@ $(a,+\infty)$ 表示满足 $x>a$ 的全体实数,
 $(-\infty,b]$ 表示满足 $x\leqslant b$ 的全体实数.
 在数轴上, 无穷区间表示为向两端无限延伸的直线, 或向一端无限延伸的射线.
 
-\subsection{变量间的函数关系，例题}\label{subsec:functional_relations_examples}
+\subsection{变量间的函数关系，例题}\label{subsec:44}
 数学分析主要研究的不是某一个变量的独立变化,
 而是两个或多个变量同时变化时彼此之间的关系.
 这里先考察两个变量的最简单情形.
@@ -120,7 +120,7 @@ $$
 它们通常意义下只能选取正的情况.
 
 
-\subsection{函数概念的定义}\label{subsec:function_definition}
+\subsection{函数概念的定义}\label{subsec:45}
 现在我们抽去上述各个量的具体物理意义, 来给出函数概念的一般定义.
 
 {\kaishu 设 $\X,\Y$ 是两个给定的数集,
@@ -162,7 +162,7 @@ $$
 
 某些情形下, 也会把自变量写成下标,
 数列的记号 $x_n$ 就属于这种形式, 它是自变量 $n$ 的函数, 而 $n$ 则取值于自然数集 $\N$.
-类似地 $N_\epsilon$ 的记法 [\emph{\ref{subsec:23}}] 表示序号 $N$ 依赖着 $\epsilon$, 等等.
+类似地 $N_\epsilon$ 的记法 [\emref{subsec:23}] 表示序号 $N$ 依赖着 $\epsilon$, 等等.
 
 若要指出函数 $f$ 对应于某个特定自变量值 $x_0$ 的函数值,
 就写成 $f(x_0)$.
@@ -179,11 +179,11 @@ $$
 最简单也最常用的方式,
 是用\emph{解析式}\index{jiexishi@解析式}或\emph{公式}\index{gongshi@公式}说明应对 $x$ 作哪些运算才能得到 $y$.
 这种\emph{解析表示法}\index{jiexibiaoshifa@解析表示法}是数学分析中最重要的方法 (我们将在下一小节讨论),
-我们在 \emph{\ref{subsec:functional_relations_examples}} 中讲述的四个例题都采用了这种解析表示.
+我们在 \emref{subsec:44} 中讲述的四个例题都采用了这种解析表示.
 
 然而, 解析式并不是表示函数的唯一方法, 在数学内也有很多函数是无法用公式来定义的.
 例如, 常用的取整函数 $\floor{x}$
-\footnote{参见 \emph{\ref{subsec:25}} 中例 \ref{ex:infinitesimal_basic_sequences} 的脚注.},
+\footnote{参见 \emref{subsec:25} 中例 \ref{ex:infinitesimal_basic_sequences} 的脚注.},
 它就无法给出一个单一的算式.
 
 还有许多只在自然数上取值的“算术函数,
@@ -204,7 +204,7 @@ $$
 函数的表格表示和图形表示在分析中并非始终必须,
 因而这里不再详细展开.
 
-\subsection{函数的解析表示法}\label{subsec:analytic_representation}
+\subsection{函数的解析表示法}\label{subsec:46}
 函数的解析式或公式的表示法在数学分析中起着极其重要的作用.
 下面先对这种表示法作几点说明.
 
@@ -233,8 +233,8 @@ $$
 1+x+x^2+\cdots
 =\lim_{n\to\infty}\brac{1+x+x^2+\cdots+x^{n-1}}
 $$
-若 $\abs{x}<1$, 则我们知道 [\emph{\ref{subsec:25}}, \ref{ex:geometric_series_sum}], 
-它有极限 $\dfrac{1}{1-x}$, 
+若 $\abs{x}<1$, 则我们知道 [\emref{subsec:25}, \ref{ex:geometric_series_sum}],
+它有极限 $\dfrac{1}{1-x}$,
 而当 $\abs{x}\geqslant1$ 时, 上式中的极限或者等于 $+\infty$, 或者根本不存在.
 因此这个解析式的自然定义域是开区间 $(-1,1)$.
 
@@ -243,7 +243,7 @@ $$
 不过, 在具体问题中还可能出现另一种情形:
 自变量 $x$ 由于问题本身的性质而被限制在某个变动区域 $\X$ 内,
 即使解析式在 $\X$ 以外仍有意义, 也不能越出这个区域来讨论原问题.
-例如, 在自由落体问题 [\emph{\ref{subsec:functional_relations_examples}}, \ref{ex:free_fall_function}] 中,
+例如, 在自由落体问题 [\emref{subsec:44}, \ref{ex:free_fall_function}] 中,
 质点从地面以上高 $h$ 处开始下落, 路程由公式
 $$
 s=\frac{gt^2}{2}
@@ -309,7 +309,7 @@ $$
 $$
 取极限后仍得 $0$. 这正好与原来的分段定义完全一致.
 
-\subsection{函数的图像}\label{subsec:function_graph}
+\subsection{函数的图像}\label{subsec:47}
 虽然在数学分析中并不用图像来给出函数,
 但经常要借助图像说明函数的性质.
 图像直观而清楚, 是研究函数性质时不可缺少的辅助工具.
@@ -335,9 +335,9 @@ $$
         \draw[dashed,thick] (0, 1.2629) -- (1.37, 1.2629);
         \draw[dashed,thick] (0, 1.5817) -- (2.26, 1.5817);
 
-        \draw (0.76, 0.9653) circle (1pt);
-        \draw (1.37, 1.2629) circle (1pt);
-        \draw (2.26, 1.5817) circle (1pt);
+        \draw[fill=white] (0.76, 0.9653) circle (1.5pt);
+        \draw[fill=white] (1.37, 1.2629) circle (1.5pt);
+        \draw[fill=white] (2.26, 1.5817) circle (1.5pt);
     \end{tikzpicture}
  \end{wrapfigure}
 设函数 $y=f(x)$ 定义在某个区间 $\X$ 内.
@@ -388,8 +388,8 @@ $$
             \draw[domain=1:2.45,samples=100,thick] plot (\x,{-sqrt(\x*\x-1)});
             \draw[domain=-2.45:-1,samples=100,thick] plot (\x,{sqrt(\x*\x-1)});
             \draw[domain=-2.45:-1,samples=100,thick] plot (\x,{-sqrt(\x*\x-1)});
-            \fill (-1,0) circle (1.2pt);
-            \fill (1,0) circle (1.2pt);
+            \fill (-1,0) circle (1.5pt);
+            \fill (1,0) circle (1.5pt);
             \node[above right,scale=0.72] at (1.35,0.7) {$y=+\sqrt{x^2-1}$};
             \node[below right,scale=0.72] at (1.35,-0.7) {$y=-\sqrt{x^2-1}$};
             \node[below left,scale=0.8] at (-1,0) {$-1$};
@@ -445,4 +445,658 @@ $$
 它的图像由直线 $y=1$ 上横坐标为有理数的点,
 以及 $x$ 轴上横坐标为无理数的点组成, 这种图像却无法实际画出.
 
-\subsection{几类重要的函数}
+\subsection{几类最重要的函数}\label{subsec:48}
+这里列举几类最重要的函数, 它们通常称为\emph{初等函数}\index{chudenghanshu@初等函数}.
+
+\myrefparagraph{1\textdegree}\label{par:rational_functions}
+\emph{有理函数}\index{youlihanshu@有理函数}包括以下两类.
+形如
+$$
+y=a_0x^n+a_1x^{n-1}+\cdots+a_{n-1}x+a_n,
+\qquad a_0,a_1,\ldots,a_n\text{ 为常数},
+$$
+的函数称为\emph{有理整函数}. 两个这样的多项式之比
+$$
+y=\frac{a_0x^n+a_1x^{n-1}+\cdots+a_{n-1}x+a_n}
+{b_0x^m+b_1x^{m-1}+\cdots+b_{m-1}x+b_m}
+$$
+称为\emph{有理分式函数}. 它对于除去使分母为零的 $x$ 以外的一切数值都有意义.
+
+例如, 下图给出了函数 $y=ax^2$ 在系数 $a$ 取各种不同数值时的图像 (抛物线),
+以及函数 $y=\dfrac{a}{x}$ 在系数 $a$ 取各种不同数值时的图像 (等轴双曲线).
+\begin{figure}[htbp]
+    \vspace{-0.5cm}
+    \centering
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \draw[-latex] (-2.5, 0) -- (2.5, 0) node[below,scale=0.8] {$x$};
+            \draw[-latex] (0, -0.2) -- (0, 4.2) node[above,scale=0.8] {$y$};
+            \node[below left] (O) at (0, 0) {$O$};
+
+            \draw[domain=-2.5:2.5, thick] plot (\x, {0.125 * \x*\x});
+            \draw[domain=-2.5:2.5, thick] plot (\x, {0.25 * \x*\x});
+            \draw[domain=-2.5:2.5, thick] plot (\x, {0.5 * \x*\x});
+            \draw[domain=-2:2, thick] plot (\x, {1 * \x*\x});
+            \draw[domain=-1.414:1.414, thick] plot (\x, {2 * \x*\x});
+            \draw[domain=-1:1, thick] plot (\x, {4 * \x*\x});
+            \draw[domain=-0.707:0.707, thick] plot (\x, {8 * \x*\x});
+
+            \node[right,scale=0.8] (A) at (2.5, 0.125*2.5*2.5) {$\dfrac{1}{8}$};
+            \node[right,scale=0.8] (B) at (2.5, 0.25*2.5*2.5) {$\dfrac{1}{4}$};
+            \node[right,scale=0.8] (C) at (2.5, 0.5*2.5*2.5) {$\dfrac{1}{2}$};
+            \node[right,scale=0.8] (D) at (2, 1*2*2) {$1$};
+            \node[above,scale=0.8] (E) at (1.414, 4) {$2$};
+            \node[above,scale=0.8] (F) at (1, 4) {$4$};
+            \node[above,scale=0.8] (G) at (0.707, 4) {$8$};
+            \node[above,scale=0.8] (f) at (-2, 4) {$y=ax^2$};
+        \end{tikzpicture}
+    \end{minipage}
+    \begin{minipage}
+        [t]{0.45\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \draw[->] (-2.1, 0) -- (2.1, 0) node[below,scale=0.8] {$x$};
+            \draw[->] (0, -2.1) -- (0, 2.1) node[above,scale=0.8] {$y$};
+            \node[below left,scale=0.8] (O) at (0, 0) {$O$};
+
+            \draw[domain=-2:-0.5, thick] plot (\x, {1/\x});
+            \draw[domain=0.5:2, thick] plot (\x, {1/\x});
+            \draw[domain=-2:-0.25, thick] plot (\x, {1/(2*\x)});
+            \draw[domain=0.25:2, thick] plot (\x, {1/(2*\x)});
+            \draw[domain=-2:-1, thick] plot (\x, {2/\x});
+            \draw[domain=1:2, thick] plot (\x, {2/\x});
+            \draw[dashed, domain=-2:-0.5, thick] plot (\x, {-1/\x});
+            \draw[dashed, domain=0.5:2, thick] plot (\x, {-1/\x});
+            \draw[dashed, domain=-2:-0.25, thick] plot (\x, {-1/(2*\x)});
+            \draw[dashed, domain=0.25:2, thick] plot (\x, {-1/(2*\x)});
+            \draw[dashed, domain=-2:-1, thick] plot (\x, {-2/\x});
+            \draw[dashed, domain=1:2, thick] plot (\x, {-2/\x});
+
+            \node[above right,scale=0.8] (A) at (1, 1) {$1$};
+            \node[above left,scale=0.8] (B) at (-1, 1) {$-1$};
+            \node[below left,scale=0.8] (C) at (0.707, 0.707) {$\frac{1}{2}$};
+            \node[below right,scale=0.8] (D) at (-0.707, 0.707) {$-\frac{1}{2}$};
+            \node[above right,scale=0.8] (E) at (1.414, 1.414) {$2$};
+            \node[above left,scale=0.8] (F) at (-1.414, 1.414) {$-2$};
+            \node[above,scale=0.8] (f) at (-1, 2) {$y = \dfrac{a}{x}$};
+        \end{tikzpicture}
+    \end{minipage}
+\end{figure}
+
+\myrefparagraph{2\textdegree}\label{par:power_functions}
+形如
+$$
+y=x^\mu
+$$
+的函数称为\emph{幂函数}\index{mihanshu@幂函数}, 其中 $\mu$ 是任意实数.
+当 $\mu$ 是整数时, 幂函数就是有理函数.
+当 $\mu$ 是分数时, 得到根式. 例如, 若 $m$ 是自然数, 则
+$$
+y=x^{1/m}=\sqrt[m]{x}.
+$$
+若 $m$ 是奇数, 这个函数对于一切实数 $x$ 都有意义;
+若 $m$ 是偶数, 并且只考虑根式的算术值, 则它只对 $x\geqslant0$ 有意义.
+最后, 若 $\mu$ 是无理数, 就必须假定 $x>0$;
+只有在 $\mu>0$ 时, 才可以再允许 $x=0$.
+
+下图给出了幂函数在 $\mu$ 取各种不同数值时的图像.
+\begin{figure}[htbp]
+    \vspace{-0.3cm}
+    \centering
+    \begin{tikzpicture}[scale=0.9]
+        \draw[-latex] (-0.2, 0) -- (3.2, 0) node[below,scale=0.8] {$x$};
+        \draw[-latex] (0, -0.2) -- (0, 3.2) node[above,scale=0.8] {$y$};
+        \node[below left] (O) at (0, 0) {$O$};
+        \draw[dashed, domain=0:3] plot (\x, \x);
+
+        \draw[domain=0:3, thick] plot (\x, {\x^(2/3)});
+        \draw[domain=0:3, thick] plot (\x, {\x^(1/2)});
+        \draw[domain=0:3, thick] plot (\x, {\x^(1/3)});
+        \draw[domain=0:3, thick] plot (\x, {\x^(1/4)});
+        \draw[domain=0:2.0801, thick] plot (\x, {\x^(3/2)});
+        \draw[domain=0:1.7321, thick] plot (\x, {\x^(2)});
+        \draw[domain=0:1.4422, thick] plot (\x, {\x^(3)});
+        \draw[domain=0:1.3161, thick] plot (\x, {\x^(4)});
+
+        \node[below right, scale=0.5] (A) at (3, 1.3161) {$1/4$};
+        \node[right, scale=0.5] (B) at (3, 1.4422) {$1/3$};
+        \node[right, scale=0.5] (C) at (3, 1.7321) {$1/2$};
+        \node[right, scale=0.5] (D) at (3, 2.0801) {$3/2$};
+        \node[above, scale=0.5] (E) at (1.7321, 3) {$2$};
+        \node[above, scale=0.5] (F) at (1.4422, 3) {$3$};
+        \node[above left, scale=0.5] (G) at (1.3161, 3) {$4$};
+        \node[above right, scale=0.5] (D) at (2.0801, 3) {$2/3$};
+
+        \node[scale=0.8] (f) at (0.6, 2.5) {$y = x^\mu$};
+    \end{tikzpicture}
+    \hfil
+    \begin{tikzpicture}[scale=0.9]
+        \draw[-latex] (-0.2, 0) -- (3.2, 0) node[below,scale=0.8] {$x$};
+        \draw[-latex] (0, -0.2) -- (0, 3.2) node[above,scale=0.8] {$y$};
+        \node[below left] (O) at (0, 0) {$O$};
+        \draw[dashed, domain=0:3] plot (\x, \x);
+
+        \draw[domain=0.1111:3, thick] plot (\x, {\x^(-1/2)});
+        \draw[domain=0.3333:3, thick] plot (\x, {\x^(-1)});
+        \draw[domain=0.5774:3, thick] plot (\x, {\x^(-2)});
+        \draw[domain=0.6934:3, thick] plot (\x, {\x^(-3)});
+
+        \node[right, scale=0.5] (A) at (3, 0.1111) {$-1/2$};
+        \node[right, scale=0.5] (B) at (3, 0.3333) {$-1$};
+        \node[right, scale=0.5] (C) at (3, 0.5774) {$-2$};
+        \node[right, scale=0.5] (D) at (0.6934, 3) {$-3$};
+
+        \node[scale=0.8] (f) at (2.5, 2.5) {$y = x^\mu$};
+    \end{tikzpicture}
+\end{figure}
+
+\myrefparagraph{3\textdegree}\label{par:exponential_functions}
+形如
+$$
+y=a^x
+$$
+的函数称为\emph{指数函数}\index{zhishuhanshu@指数函数},
+其中 $a$ 是异于 $1$ 的正数, $x$ 可以取任意实数值.
+下图给出了指数函数在 $a$ 取各种不同数值时的图像.
+
+\myrefparagraph{4\textdegree}\label{par:logarithmic_functions}
+形如
+$$
+y=\log_a x
+$$
+的函数称为\emph{对数函数}\index{duishuhanshu@对数函数},
+其中 $a$ 同样是异于 $1$ 的正数, 而 $x$ 只能取正值.
+下图给出了对数函数在 $a$ 取各种不同数值时的图像.
+
+\begin{figure}[htbp]
+    \vspace{-0.3cm}
+    \centering
+    \begin{tikzpicture}[scale=0.4]
+        \draw[-latex] (-3.2, 0) -- (3.2, 0) node[below,scale=0.8] {$x$};
+        \draw[-latex] (0, 0) -- (0, 9) node[above,scale=0.8] {$y$};
+        \node[below,scale=0.8] (O) at (0, 0) {$O$};
+
+        \draw[domain=-2.5:2.5, thick] plot (\x, {2^\x});
+        \draw[domain=-2.5:1, thick] plot (\x, {8^\x});
+        \draw[domain=-2.5:2.0794, thick] plot (\x, {exp(\x)});
+        \draw[dashed, domain=-2.5:2.5, thick] plot (\x, {2^(-\x)});
+        \draw[dashed, domain=-1:2.5, thick] plot (\x, {8^(-\x)});
+        \draw[dashed, domain=-2.0794:2.5, thick] plot (\x, {exp(-\x)});
+
+        \node[right,scale=0.8] (A) at (2.5, 2^2.5) {$2^x$};
+        \node[above,scale=0.8] (B) at (1, 8) {$8^x$};
+        \node[right,scale=0.8] (C) at (2.0794, 8) {$\e^x$};
+        \node[left,scale=0.8] (D) at (-2.5, 5.6569) {$\brac{\dfrac{1}{2}}^x$};
+        \node[left,scale=0.8] (E) at (-2.0794, 8) {$\brac{\dfrac{1}{\e}}^x$};
+        \node[above,scale=0.8] (F) at (-1, 8) {$\brac{\dfrac{1}{8}}^x$};
+    \end{tikzpicture}
+    \hfil
+    \begin{tikzpicture}[scale=0.6]
+        \draw[-latex] (0, 0) -- (9, 0) node[below,scale=0.8] {$x$};
+        \draw[-latex] (0, -2.7) -- (0, 2.7) node[above,scale=0.8] {$y$};
+        \node[below left,scale=0.8] (O) at (0, 0) {$O$};
+
+        \draw[domain=1:5.6569, thick] plot (\x, {ln(\x)/ln(2)});
+        \draw[domain=1:8, thick] plot (\x, {ln(\x)/ln(8)});
+        \draw[domain=1:8, thick] plot (\x, {ln(\x)});
+        \draw[domain=0.1768:1, thick] plot (\x, {-ln(\x)/ln(1/2)});
+        \draw[domain=0.125:1, thick] plot (\x, {-ln(\x)/ln(1/8)});
+        \draw[domain=0.1353:1, thick] plot (\x, {-ln(\x)/ln(1/e)});
+        \draw[dashed, domain=0.1768:5.6569, thick] plot (\x, {ln(\x)/ln(1/2)});
+        \draw[dashed, domain=0.125:8, thick] plot (\x, {ln(\x)/ln(1/8)});
+        \draw[dashed, domain=0.1353:8, thick] plot (\x, {ln(\x)/ln(1/e)});
+
+        \node[right,scale=0.8] (A) at (5.6569, 2.5) {$\log_2 x$};
+        \node[right,scale=0.8] (B) at (8, 1) {$\log_8 x$};
+        \node[right,scale=0.8] (C) at (8, 2.0794) {$\ln x$};
+        \node[right,scale=0.8] (D) at (5.6569, -2.5) {$\log_{\frac{1}{2}} x$};
+        \node[right,scale=0.8] (E) at (8, -1) {$\log_{\frac{1}{8}} x$};
+        \node[right,scale=0.8] (F) at (8, -2.0794) {$\log_{\frac{1}{e}} x$};
+    \end{tikzpicture}
+\end{figure}
+
+\myrefparagraph{5\textdegree}\label{par:trigonometric_functions}
+\emph{三角函数}\index{sanjiaohanshu@三角函数}包括
+\begin{align*}
+    &y=\sin x,\qquad y=\cos x,\\
+    &y=\tan x,\qquad y=\cot x,\\
+    &y=\sec x,\qquad y=\csc x.
+\end{align*}
+在没有特别说明时, {\kaishu 三角函数的变元作为角度来考察, 总是用弧度表示}.
+对于 $\tan x$ 和 $\sec x$, 要从定义域中除去
+$$
+\frac{(2k+1)\pi}{2}\qquad(k \text{是整数})
+$$
+这些数值; 对于 $\cot x$ 和 $\csc x$, 则要除去
+$$
+k\pi\qquad(k \text{是整数}).
+$$
+下图给出了 $y=\sin x$、$y=\cos x$ 以及 $y=\tan x$、$y=\cot x$ 的图像.
+正弦函数的图像通常称为正弦曲线.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+        \draw[-latex] (-1.8, 0) -- (8.1, 0) node[below,scale=0.8] {$x$};
+        \draw[-latex] (0, -1.2) -- (0, 1.5) node[right,scale=0.8] {$y$};
+        \node[below right,scale=0.8] (O) at (0, 0) {$O$};
+
+        \draw[domain=-1.5708:7.8540, smooth, thick] plot (\x, {sin(\x r)});
+        \draw[dashed, domain=-1.5708:7.8540, thick] plot (\x, {cos(\x r)});
+
+        \node[below right,scale=0.8] (A) at (6.28, 0) {$\sin x$};
+        \node[above left,scale=0.8] (B) at (4.7124, 0) {$\cos x$};
+    \end{tikzpicture}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+    \begin{tikzpicture}[scale=0.62]
+        \draw[-latex] (-1.8, 0) -- (8.1, 0) node[below,scale=0.8] {$x$};
+        \draw[-latex] (0, -3.2) -- (0, 3.2) node[right,scale=0.8] {$y$};
+        \node[above left,scale=0.8] (O) at (0, 0) {$O$};
+
+        \draw[domain=-1.2490:1.2490, smooth, thick] plot (\x, {tan(\x r)});
+        \draw[domain=1.8925:4.3906, smooth, thick] plot (\x, {tan(\x r)});
+        \draw[domain=5.0342:7.5322, smooth, thick] plot (\x, {tan(\x r)});
+        \draw[dashed, domain=-1.5708:-0.3218, thick] plot (\x, {cot(\x r)});
+        \draw[dashed, domain=0.3218:2.8198, thick] plot (\x, {cot(\x r)});
+        \draw[dashed, domain=3.4634:5.9614, thick] plot (\x, {cot(\x r)});
+        \draw[dashed, domain=6.6050:7.8540, thick] plot (\x, {cot(\x r)});
+
+        \node[below right,scale=0.8] (A) at (3.14, 0) {$\tan x$};
+        \node[below left,scale=0.8] (B) at (1.5708, 0) {$\cot x$};
+    \end{tikzpicture}
+    \hfill
+    \begin{tikzpicture}[scale=0.62]
+        \draw[-latex] (-5, 0) -- (5, 0) node[below,scale=0.8] {$x$};
+        \draw[-latex] (0, -3.2) -- (0, 3.2) node[right,scale=0.8] {$y$};
+        \node[below right,scale=0.8] (O) at (0, 0) {$O$};
+
+        \draw[domain=-1.2310:1.2310, smooth, thick] plot (\x, {sec(\x r)});
+        \draw[domain=1.8746:4.3726, smooth, thick] plot (\x, {sec(\x r)});
+        \draw[domain=-1.8746:-4.3726, smooth, thick] plot (\x, {sec(\x r)});
+        \draw[dashed, domain=-4.7124:-3.4814, thick] plot (\x, {1/sin(\x r)});
+        \draw[dashed, domain=-2.8018:-0.3398, thick] plot (\x, {1/sin(\x r)});
+        \draw[dashed, domain=0.3398:2.8018, thick] plot (\x, {1/sin(\x r)});
+        \draw[dashed, domain=4.7124:3.4814, thick] plot (\x, {1/sin(\x r)});
+
+        \node[below left,scale=0.8] (A) at (0, 1) {$\sec x$};
+        \node[below right,scale=0.8] (B) at (1.57, 1) {$\csc x$};
+    \end{tikzpicture}
+\end{figure}
+
+另外, 特别是在工程问题中, 还有一类很有用的函数.
+
+\myrefparagraph{6\textdegree}\label{par:hyperbolic_functions}
+函数
+\begin{gather*}
+\sinh x=\frac{\e^x-\e^{-x}}{2},\qquad
+\cosh x=\frac{\e^x+\e^{-x}}{2},\\
+\tanh x=\frac{\sinh x}{\cosh x}
+=\frac{\e^x-\e^{-x}}{\e^x+\e^{-x}},\qquad
+\coth x=\frac{\cosh x}{\sinh x}
+=\frac{\e^x+\e^{-x}}{\e^x-\e^{-x}}
+\end{gather*}
+分别称为\emph{双曲正弦}、\emph{双曲余弦}、\emph{双曲正切}和\emph{双曲余切},
+统称为\emph{双曲函数}\index{shuangquhanshu@双曲函数}.
+除双曲余切在 $x=0$ 时没有意义外, 这些函数对于一切实数 $x$ 都有意义.
+它们与三角函数十分相似.
+
+例如, 有下列公式 (注意其中的符号):
+$$
+\begin{aligned}
+\cosh(x\pm y)&=\cosh x\cosh y\pm\sinh x\sinh y,\\
+\sinh(x\pm y)&=\sinh x\cosh y\pm\cosh x\sinh y.
+\end{aligned}
+$$
+由此, 令 $y=x$, 可得
+$$
+\cosh^2x-\sinh^2x=1,\qquad
+\cosh2x=\cosh^2x+\sinh^2x,\qquad
+\sinh2x=2\sinh x\cosh x.
+$$
+显然, 加法公式中的第一个等式可直接验证:
+$$
+\frac{\e^{x+y}+\e^{-x-y}}{2}
+=\frac{\e^x+\e^{-x}}{2}\cdot\frac{\e^y+\e^{-y}}{2}
++\frac{\e^x-\e^{-x}}{2}\cdot\frac{\e^y-\e^{-y}}{2}.
+$$
+其余公式也可以同样地验证. 下图给出了双曲函数的图像.
+
+\begin{figure}[!h]
+    \centering
+    \begin{tikzpicture}[scale=0.8]
+        \draw[-latex] (-3, 0) -- (3, 0) node[below,scale=0.8] {$x$};
+        \draw[-latex] (0, -2.2) -- (0, 3) node[right,scale=0.8] {$y$};
+        \node[below right,scale=0.8] (O) at (0, 0) {$O$};
+
+        \draw[domain=-1.7628:1.7628, thick] plot (\x, {(e^(\x)+e^(-\x))/2});
+        \draw[domain=-1.4436:1.8185, thick] plot (\x, {(e^(\x)-e^(-\x))/2});
+
+        \node[below left,scale=0.8] (A) at (0, 1) {$\cosh x$};
+        \node[above right,scale=0.8] (B) at (0.3, 0) {$\sinh x$};
+    \end{tikzpicture}
+    \hfil
+    \begin{tikzpicture}[scale=0.8]
+        \draw[-latex] (-3, 0) -- (3, 0) node[below,scale=0.8] {$x$};
+        \draw[-latex] (0, -2.7) -- (0, 2.7) node[right,scale=0.8] {$y$};
+        \node[below right,scale=0.8] (O) at (0, 0) {$O$};
+
+        \draw[domain=0.4237:2.5, thick]  plot (\x, {(e^(\x)+e^(-\x))/(e^(\x)-e^(-\x))});
+        \draw[domain=-2.5:-0.4237, thick]  plot (\x, {(e^(\x)+e^(-\x))/(e^(\x)-e^(-\x))});
+        \draw[domain=-2.5:2.5, thick]  plot (\x, {(e^(\x)-e^(-\x))/(e^(\x)+e^(-\x))});
+
+        \node[above left,scale=0.8] (A) at (0, 0) {$\tanh x$};
+        \node[above right,scale=0.8] (B) at (1, 1.313) {$\coth x$};
+    \end{tikzpicture}
+\end{figure}
+
+\subsection{反函数的概念}\label{subsec:49}
+在讨论反三角函数之前, 先对反函数作一个总的说明.
+
+假设在某一个区域内给定函数 $y=f(x)$, 并设当 $x$ 在区域 $\X$ 变动时,
+函数值所成的集合为 $\Y$ (实际情况中 $\X$ 和 $\Y$ 通常都是区间).
+现在从 $\Y$ 中任取一个数值 $y=y_0$,
+则在 $\X$ 中必能求出一个或几个数值 $x=x_0$, 使得
+$$
+f(x_0)=y_0.
+$$
+因此, $\Y$ 中的每个 $y$ 都与 $\X$ 中的一个或几个 $x$ 相对应.
+那么我们将由此确定的、以 $\Y$ 为定义域的单值或多值函数 $x=g(y)$,
+称为函数 $y=f(x)$ 的\emph{反函数}\index{fanhanshu@反函数}
+\footnote{若函数 $f$ 的反函数是单值的, 就称函数 $f$ 是\emph{可逆的}.
+通常谈到反函数时, 总是假定它是单值的.}.
+
+下面考察几个例子.
+
+\myrefparagraph{1)}\label{ex:inverse_exponential_function}
+设 $y=a^x$ ($a>1$), 其中 $x$ 在区间 $(-\infty,+\infty)$ 内变动.
+函数值 $y$ 充满区间 $(0,+\infty)$, 并且对于其中每个 $y$,
+由对数的定义 [参见 \emref{subsec:20}] 可知, 只有一个确定的 $x=\log_a y$.
+因此, 指数函数的反函数是单值的, 即对数函数.
+
+\myrefparagraph{2)}\label{ex:inverse_square_function}
+对于函数 $y=x^2$, 若 $x$ 在 $(-\infty,+\infty)$ 内变动,
+则对应于值域 $[0,+\infty)$ 中的每个 $y$, 都有 $x=\pm\sqrt{y}$.
+所以它的反函数是双值的. 通常把这个双值函数分成两个单值的支
+$x=+\sqrt{y}$ 和 $x=-\sqrt{y}$.
+若把原函数的定义域分别限制在 $[0,+\infty)$ 和 $(-\infty,0]$,
+这两个单值支便分别成为函数 $y=x^2$ 的反函数
+\footnote{关于反函数的存在性和单值性, 后文还会重新讨论.}.
+
+\myrefparagraph{3)}\label{ex:inverse_hyperbolic_cosine}
+类似的, 设 $y=\cosh x$, 其中 $x$ 仍在 $(-\infty,+\infty)$ 内变动.
+由方程
+$$
+\frac{\e^x+\e^{-x}}{2}=y,
+$$
+得到关于 $\e^x$ 的二次方程
+$$
+\e^{2x}-2y\e^x+1=0.
+$$
+当 $y\geqslant1$ 时, 它给出两个数值
+$$
+\e^x=y\pm\sqrt{y^2-1},
+$$
+因而
+$$
+x=\ln\brac{y\pm\sqrt{y^2-1}}.
+$$
+这个反函数仍是双值的. 它分成两个单值支,
+分别对应于 $x$ 从 $0$ 变到 $+\infty$, 以及从 $-\infty$ 变到 $0$.
+
+\myrefparagraph{4)}\label{ex:inverse_hyperbolic_sine}
+又若 $y=\sinh x$. 对任意实数 $y$, 我们只能解出一个正数值
+$$
+\e^x=y+\sqrt{y^2+1},
+$$
+因为另一个根 $y-\sqrt{y^2+1}$ 是负数, 必须舍去.
+因此
+$$
+x=\ln\brac{y+\sqrt{y^2+1}},
+$$
+这里的反函数是单值的.
+
+\begin{wrapfigure}[7]{r}{0.28\textwidth}
+    \begin{tikzpicture}
+        \draw[-latex] (-0.5, 0) -- (2.5, 0) node[below,scale=0.8] {$x$};
+        \draw[-latex] (0, -0.5) -- (0, 2.5) node[right,scale=0.8] {$y$};
+        \node[below left,scale=0.8] (O) at (0, 0) {$O$};
+        \draw[domain=0:2.5] plot (\x, {\x});
+
+        \draw[domain=0:2, thick] plot (\x, {sqrt(\x^2+1)});
+        \draw[dashed, domain=1:2.23, thick] plot (\x, {sqrt(\x^2-1)});
+
+        \draw[dashed,thick] (0.75,1.25)--(1.25,0.75);
+        \draw[fill=white] (0.75,1.25) circle (1.5pt);
+        \draw[fill=white] (1.25,0.75) circle (1.5pt);
+    \end{tikzpicture}
+\end{wrapfigure}
+观察函数 $y=f(x)$ 的图像, 很容易判断它的反函数 $x=g(y)$ 是否为单值函数.
+若任意一条平行于 $x$ 轴的直线与图像至多相交于一点, 反函数就是单值的;
+若某条这样的直线与图像相交于两点或更多点, 反函数就是多值的.
+在后一种情形中, 还可以按照图像把 $x$ 的变动区域分成几部分,
+使每一部分分别对应一个单值支. 例如, 对抛物线 $y=x^2$,
+只需分别考察它的右半支和左半支即可.
+
+若 $x=g(y)$ 是 $y=f(x)$ 的反函数, 则这两个关系的图像本来就是重合的.
+不过, 也可以仍用字母 $x$ 表示反函数的变元, 把反函数写成 $y=g(x)$.
+这时坐标轴仍保持原来的位置, 而 $x$ 轴与 $y$ 轴所承担的角色互换了.
+因此, $y=g(x)$ 的图像可由 $y=f(x)$ 的图像关于直线 $y=x$ 对称得到.
+上面的指数函数与对数函数图像正是这样互相对应的;
+幂函数图像关于第一象限角平分线的对称性也可由同一理由解释.
+
+\subsection{反三角函数}\label{subsec:50}
+作为 \emref{subsec:48} 中初等函数种类的补充, 现在再考察以下函数.
+
+\myrefparagraph{7\textdegree}\label{par:inverse_trigonometric_functions}
+\emph{反三角函数}\index{fansanjiaohanshu@反三角函数}包括
+\begin{gather*}
+y=\arcsin x,\qquad y=\arccos x,\qquad y=\arctan x,\\
+y=\operatorname{arccot}x,\qquad y=\operatorname{arcsec}x,\qquad y=\operatorname{arccsc}x.
+\end{gather*}
+如同在 \emref{subsec:48} 的三角函数中所约定的那样,
+反三角函数的值作为角或弧度来考察时, 也总是用弧度表示.
+
+\begin{wrapfigure}{r}{0.25\textwidth}
+    \vspace{-1.2cm}
+    \begin{tikzpicture}
+        \draw[-latex] (-1.5, 0) -- (1.5, 0) node[below,scale=0.8] {$x$};
+        \draw[-latex] (0, -1.8) -- (0, 8) node[right,scale=0.8] {$y$};
+        \node[above left,scale=0.8] (O) at (0, 0) {$O$};
+
+        \draw[domain=-1:1, smooth, thick] plot (\x, {rad(asin(\x))});
+        \draw[dashed, domain=-1:1, smooth, thick] plot (\x, {-rad(asin(\x))+ pi});
+        \draw[dashed, domain=-1:1, smooth, thick] plot (\x, {rad(asin(\x))+ 2*pi});
+
+        \draw[dashed] (1, pi/2) -- (0, pi/2);
+        \draw[dashed] (-1, -pi/2) -- (0, -pi/2);
+        \draw[dashed] (1, pi/2) -- (1, 0);
+        \draw[dashed] (-1, -pi/2) -- (-1, 0);
+
+        \node[below,scale=0.8] (A) at (1, 0) {$1$};
+        \node[left,scale=0.8] (B) at (0, pi/2) {$\frac{\pi}{2}$};
+        \node[above,scale=0.8] (C) at (-1, 0) {$-1$};
+        \node[right,scale=0.8] (D) at (0, -pi/2) {$-\frac{\pi}{2}$};
+    \end{tikzpicture}
+\end{wrapfigure}
+先考察反正弦函数. 函数 $y=\sin x$ 定义在 $(-\infty,+\infty)$ 上,
+值域为 $[-1,1]$. 任意一条平行于 $x$ 轴并与正弦曲线相交的直线,
+都有无穷多个交点. 换言之, 对于 $[-1,1]$ 中的每个 $y$,
+都有无穷多个 $x$ 满足 $y=\sin x$. 因此它的反函数
+$$
+x=\operatorname{Arcsin}y
+$$
+是无穷多值的.
+
+通常只考察正弦函数在闭区间
+$\bbrac{-\dfrac{\pi}{2},\dfrac{\pi}{2}}$ 上的一个支.
+在这个区间内, 对每个 $y\in[-1,1]$ 只有一个 $x$ 与之对应, 记作
+$$
+x=\arcsin y,
+$$
+并称为反正弦函数的\emph{主值}.
+把正弦曲线关于第一象限角平分线对称, 就得到图中多值函数
+$y=\operatorname{Arcsin}x$ 的图像; 其中主值支 $y=\arcsin x$ 用实线表示, 并满足
+$$
+-\frac{\pi}{2}\leqslant\arcsin x\leqslant\frac{\pi}{2}.
+$$
+
+由初等三角学可知, 反正弦函数的全部数值可写成
+$$
+\begin{aligned}
+\operatorname{Arcsin}x&=\arcsin x+2k\pi,\\
+\operatorname{Arcsin}x&=(2k+1)\pi-\arcsin x,
+\qquad k\in\Z.
+\end{aligned}
+$$
+
+再由正弦的加法公式
+$$
+\sin(\alpha+\beta)=\sin\alpha\cos\beta+\cos\alpha\sin\beta
+$$
+可以得到反正弦函数的加法公式. 设
+$$
+\alpha=\arcsin x,\qquad\beta=\arcsin y,
+\qquad -1\leqslant x,y\leqslant1.
+$$
+则
+$$
+\sin\alpha=x,\qquad \sin\beta=y,
+$$
+并且由于 $\alpha,\beta\in\bbrac{-\dfrac{\pi}{2},\dfrac{\pi}{2}}$,
+根号前都应取正号:
+$$
+\cos\alpha=\sqrt{1-x^2},\qquad
+\cos\beta=\sqrt{1-y^2}.
+$$
+因此
+$$
+\alpha+\beta
+=\operatorname{Arcsin}\brac{x\sqrt{1-y^2}+y\sqrt{1-x^2}}.
+$$
+当 $\alpha+\beta$ 仍在
+$\bbrac{-\dfrac{\pi}{2},\dfrac{\pi}{2}}$ 内时, 可将它写成主值形式
+$$
+\arcsin x+\arcsin y
+=\arcsin\brac{x\sqrt{1-y^2}+y\sqrt{1-x^2}}.
+$$
+若 $x$ 与 $y$ 异号, 这个条件自动满足;
+若它们同号, 这个条件等价于 $x^2+y^2\leqslant1$.
+
+同样, 函数 $y=\cos x$ 的反函数
+$$
+y=\operatorname{Arccos}x,\qquad -1\leqslant x\leqslant1,
+$$
+也是无穷多值的. 附加条件
+$$
+0\leqslant\arccos x\leqslant\pi
+$$
+便分出它的单值主支. 由恒等式
+$\sin x=\cos\brac{\dfrac{\pi}{2}-x}$ 可知
+$$
+\arcsin x+\arccos x=\frac{\pi}{2}.
+$$
+反余弦函数的全部数值可由主值表示为
+$$
+\operatorname{Arccos}x=2k\pi\pm\arccos x,\qquad k\in\Z.
+$$
+
+再考察函数 $y=\tan x$. 它对于除去
+$x=\dfrac{(2k+1)\pi}{2}$ ($k\in\Z$) 以外的一切实数都有意义,
+值域为 $(-\infty,+\infty)$. 对于任意一个函数值 $y$,
+都有无穷多个 $x$ 与之对应, 因而反函数
+$x=\operatorname{Arctan}y$ 是无穷多值的.
+取正切函数在 $\brac{-\dfrac{\pi}{2},\dfrac{\pi}{2}}$ 上的一支,
+便得到反正切函数的主值, 它满足
+$$
+-\frac{\pi}{2}<\arctan x<\frac{\pi}{2}.
+$$
+反正切函数的全部数值为
+$$
+\operatorname{Arctan}x=\arctan x+k\pi,\qquad k\in\Z.
+$$
+下图画出了多值函数 $y=\operatorname{Arctan}x$ 及其主值支的图像.
+它就是把函数 $y=\tan x$ 的图像绕第一象限角的对角线旋转 180\textdegree 而得出的.
+
+\begin{figure}[!h]
+    \vspace{-1cm}
+    \centering
+    \begin{tikzpicture}[scale=0.8]
+        \draw[-latex] (-6.5, 0) -- (6.5, 0) node[below,scale=0.8] {$x$};
+        \draw[-latex] (0, -1.5) -- (0, 5) node[right,scale=0.8] {$y$};
+        \node[below right,scale=0.8] (O) at (0, 0) {$O$};
+        \draw[dashed] (-6, pi/2) -- (6, pi/2);
+
+        \draw[domain=-6:6, smooth, thick] plot (\x, {rad(atan(\x))});
+        \draw[dashed, domain=-6:6, smooth, thick] plot (\x, {rad(atan(\x))+ pi});
+
+        \node[above right,scale=0.8] (A) at (0, pi/2) {$\frac{\pi}{2}$};
+    \end{tikzpicture}
+\end{figure}
+
+正切的加法公式
+$$
+\tan(\alpha+\beta)
+=\frac{\tan\alpha+\tan\beta}{1-\tan\alpha\tan\beta}
+$$
+同样可以用来推导反正切函数的加法公式. 设
+$$
+\alpha=\arctan x,\qquad\beta=\arctan y.
+$$
+当 $xy\ne1$ 时,
+$$
+\tan(\alpha+\beta)=\frac{x+y}{1-xy},
+$$
+因而
+$$
+\alpha+\beta
+=\operatorname{Arctan}\frac{x+y}{1-xy}.
+$$
+若还要求 $-\dfrac{\pi}{2}<\alpha+\beta<\dfrac{\pi}{2}$,
+也就是 $xy<1$, 便得到主值形式
+$$
+\arctan x+\arctan y
+=\arctan\frac{x+y}{1-xy}.
+$$
+
+反正切函数与反正弦函数之间还有直接的关系:
+$$
+\begin{aligned}
+\arctan x&=\arcsin\frac{x}{\sqrt{1+x^2}}
+&&(-\infty<x<+\infty),\\
+\arcsin x&=\arctan\frac{x}{\sqrt{1-x^2}}
+&&(-1<x<1).
+\end{aligned}
+$$
+例如, 令 $\alpha=\arctan x$, 则 $\tan\alpha=x$ 且
+$-\dfrac{\pi}{2}<\alpha<\dfrac{\pi}{2}$. 于是
+$$
+\sin\alpha
+=\frac{\tan\alpha}{\sqrt{1+\tan^2\alpha}}
+=\frac{x}{\sqrt{1+x^2}}.
+$$
+由于根号前应取正号, 自然得到
+$\alpha=\arcsin\dfrac{x}{\sqrt{1+x^2}}$.
+
+再看多值函数 $\operatorname{Arccot}x$ ($-\infty<x<+\infty$).
+它的主值由不等式
+$$
+0<\operatorname{arccot}x<\pi
+$$
+确定, 并且与反正切函数的主值满足
+$$
+\operatorname{arccot}x=\frac{\pi}{2}-\arctan x.
+$$
+反余切函数的其余数值为
+$$
+\operatorname{Arccot}x=\operatorname{arccot}x+k\pi,\qquad k\in\Z.
+$$
+
+至于反正割函数和反余割函数, 它们的定义域同为
+$$
+(-\infty,-1]\cup[1,+\infty),
+$$
+这里不再展开, 留给读者自行分析.
