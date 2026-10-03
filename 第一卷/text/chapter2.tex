@@ -1153,3 +1153,207 @@ $$
 
 以后, 当我们掌握无穷级数、积分等更复杂的分析工具后,
 还会引入另一些在分析学中同样重要、但已经超出初等函数范围的函数.
+
+\section{函数极限}
+\subsection{函数极限的定义}\label{subsec:52}
+我们接下来继续考察数集 $\X=\{x\}$,
+{\kaishu 若在点 $a$ 的任意近处都有 $\X$ 中异于 $a$ 的数值,
+则称 $a$ 为数集 $\X$ 的\emph{聚点}\index{judian@聚点}}.
+
+为了准确地表述这个定义, 先引入点 $a$ 的\emph{邻域}\index{linyu@邻域}的概念:
+以 $a$ 为中心的开区间 $(a-\delta,a+\delta)$ 称为点 $a$ 的邻域.
+于是, 聚点的定义可以表述为:
+{\kaishu 若点 $a$ 的任一邻域内都含有 $\X$ 中异于 $a$ 的数值,
+则 $a$ 是数集 $\X$ 的聚点.}
+根据定义, 聚点本身可以属于 $\X$, 也可以不属于 $\X$.
+
+设函数 $f(x)$ 定义在数集 $\X$ 上, 且 $a$ 是 $\X$ 的聚点.
+我们所关心的是当 $x$ 接近于 $a$ 时函数 $f(x)$ 的性态.
+与数列极限的定义相仿, 可以给出如下定义:
+
+{\kaishu 若对于任意数 $\epsilon>0$, 都存在数 $\delta>0$,
+使得对一切取自 $\X$ 且异于 $a$ 的 $x$, 只要 $\abs{x-a}<\delta$, 就有
+\begin{equation}\label{eq:function_limit_finite}
+\abs{f(x)-A}<\epsilon,
+\end{equation}
+则称当 $x$ 趋向于 $a$ 时 (或在点 $a$ 处), 函数 $f(x)$ 以数 $A$ 为极限.}
+这里所要求的 $x$ 值必定存在,
+因为 $a$ 是 $\X$ 的聚点, 它的任一邻域内都有 $\X$ 中异于 $a$ 的数值.
+这一事实记成
+\begin{equation}\label{eq:function_limit_notation}
+\lim_{x\to a}f(x)=A.
+\end{equation}
+也可以写成 $f(x)\to A\ (x\to a)$.
+
+设数集 $\X$ 仅在 $a$ 的右边任意近处含有异于 $a$ 的数值,
+这时称 $a$ 为 $\X$ 的\emph{右聚点}.
+若把上面的定义限制在 $x>a$ 的数值上,
+所得极限称为当 $x$ 从右边趋向于 $a$ 时函数 $f(x)$ 的极限,
+或简称为点 $a$ 处的\emph{右极限}\index{youjixian@右极限}, 记成
+$$
+\lim_{x\to a^+}f(x)
+\qquad\text{或}\qquad
+f(a^+).
+$$
+类似地可以定义\emph{左聚点},
+以及当 $x$ 从左边趋向于 $a$ 时函数 $f(x)$ 的极限,
+或点 $a$ 处的\emph{左极限}\index{zuojixian@左极限}:
+$$
+\lim_{x\to a^-}f(x)
+\qquad\text{或}\qquad
+f(a^-).
+$$
+
+若点 $a$ 同时为 $\X$ 的右聚点和左聚点,
+则极限存在的充分必要条件是右极限和左极限都存在且彼此相等:
+$$
+\lim_{x\to a^+}f(x)=\lim_{x\to a^-}f(x)=A.
+$$
+
+当 $x$ 趋向于有限极限 $a$ 时, 函数还可以有无穷极限.
+具体地说, {\kaishu 若对于任意数 $E>0$, 都存在数 $\delta>0$,
+使得对一切取自 $\X$ 且异于 $a$ 的 $x$, 只要 $\abs{x-a}<\delta$, 就有
+\begin{equation}\label{eq:function_limit_infinite_at_finite_point}
+f(x)>E
+\qquad\bigl(f(x)<-E\bigr),
+\end{equation}
+则称当 $x$ 趋向于 $a$ 时 (或在点 $a$ 处),
+函数 $f(x)$ 以 $+\infty$ (或 $-\infty$) 为极限, 记成
+$$
+\lim_{x\to a}f(x)=+\infty
+\qquad\left(\lim_{x\to a}f(x)=-\infty\right).
+$$}
+仿照上面对单侧极限的定义, 还可以定义有限点处的单侧无穷极限.
+
+现在把聚点的概念扩充到无穷情形.
+{\kaishu 若数集 $\X$ 含有任意大的正值 (或绝对值任意大的负值),
+则称 $+\infty$ (或 $-\infty$) 为 $\X$ 的聚点.}
+在这种情况下, {\kaishu 若对于任意数 $\epsilon>0$, 都存在数 $\Delta>0$,
+使得对一切取自 $\X$ 的 $x$, 只要 $x>\Delta$ (或 $x<-\Delta$), 就有
+\begin{equation}\label{eq:function_limit_at_infinity}
+\abs{f(x)-A}<\epsilon,
+\end{equation}
+则称当 $x$ 趋向于 $+\infty$ (或 $-\infty$) 时函数 $f(x)$ 有极限 $A$, 记成
+\begin{equation}\label{eq:function_limit_at_infinity_notation}
+\lim_{x\to+\infty}f(x)=A
+\qquad\left(\lim_{x\to-\infty}f(x)=A\right).
+\end{equation}}
+上面的定义也很容易改述为 $A=+\infty$ 或 $A=-\infty$ 的情形.
+
+所有这些定义的本质都是同一件事:
+只要自变量 $x$ 充分“接近”它自己的极限 $a$,
+函数 $f(x)$ 就可以任意“接近”它的极限 $A$.
+变量接近有限极限, 是指二者之差的绝对值很小;
+变量接近无穷极限, 是指变量本身的绝对值很大;
+若所说的是带有确定符号的无穷, 还要保持相应的符号.
+显然, 在上述各种情形中, $\delta$ (或 $\Delta$) 都依赖于 $\epsilon$ (或 $E$).
+
+最后注意, 当函数 $f(x)$ 趋向于 $0$ 时, 称它为\emph{无穷小};
+当 $f(x)$ 趋向于无穷时, 称它为\emph{无穷大}.
+若后一种情形发生在 $x\to a$ 时, 也称函数在点 $a$ 处成为无穷大.
+
+\subsection{变为数列的情形}\label{subsec:53}
+若把数列看作以自然数 $n$ 为自变量的函数,
+那么当 $n\to+\infty$ 时, 依照 \emref{subsec:52} 所定义的函数极限,
+显然与 \emref{subsec:23} 和 \emref{subsec:27} 中所定义的数列极限相一致;
+只是在数列极限的定义中, 序号 $N$ 承担了这里数 $\Delta$ 的作用.
+因此, {\kaishu 数列极限是函数极限的特殊情形.}
+反过来, 在某种意义上, 函数极限也可以归结为数列极限.
+
+设数集 $\X=\{x\}$ 有聚点 $a$,
+其中 $a$ 可以是有限数, 也可以是 $+\infty$ 或 $-\infty$.
+我们可以用无数种方法从 $\X$ 中取出一个以 $a$ 为极限的数列.
+例如, 当 $a$ 有限时, 任取趋于零的正数列 $\seqset{\delta}$,
+由聚点的定义, 对每个 $n$ 都能在邻域 $(a-\delta_n,a+\delta_n)$ 内
+取到 $\X$ 中异于 $a$ 的数 $x_n$,
+于是我们选取数列
+\begin{equation}\label{eq:domain_sequence_approaching_cluster_point}
+x_1,x_2,\ldots,x_n,\ldots.
+\end{equation}
+它满足 $\abs{x_n-a}<\delta_n$, 从而 $x_n\to a$.
+若 $a=+\infty$ (或 $a=-\infty$), 任取趋于 $+\infty$ 的正数列 $\seqset{\Delta}$,
+并在 $\X$ 中选取 $x_n>\Delta_n$ (或 $x_n<-\Delta_n$),
+便有 $x_n\to+\infty$ (或 $x_n\to-\infty$).
+
+与数列 \eqref{eq:domain_sequence_approaching_cluster_point} 对应的是函数值数列
+\begin{equation}\label{eq:function_value_sequence}
+f(x_1),f(x_2),\ldots,f(x_n),\ldots.
+\end{equation}
+对于这个数列, 我们可以说明:
+{\kaishu
+函数 $f(x)$ 当 $x\to a$ 时以 $A$ 为极限的充分必要条件是:
+对于任意从 $\X$ 中取出的、以 $a$ 为极限的数列 $\seqset{x}$
+(当 $a$ 有限时, 各项都异于 $a$),
+相应的函数值数列 $\bbbrac{f(x_n)}$ 都以 $A$ 为极限.}
+
+先看正命题的情况.
+以下以 $a$ 和 $A$ 都是有限数的情形为例.
+给定任意数 $\epsilon>0$, 由函数极限的定义,
+可以取到相应的数 $\delta>0$.
+又因为 $x_n\to a$, 所以存在序号 $N$,
+使得当 $n>N$ 时有 $\abs{x_n-a}<\delta$.
+根据 \eqref{eq:function_limit_finite}, 便有
+$$
+\abs{f(x_n)-A}<\epsilon.
+$$
+因此, 函数值数列 $\bbbrac{f(x_n)}$ 收敛于 $A$.
+
+再证逆命题. 仍只写出 $a$ 和 $A$ 都是有限数的情形.
+假定 $A$ 不是函数 $f(x)$ 当 $x\to a$ 时的极限.
+那么存在某个数 $\epsilon>0$, 使得无论 $\delta>0$ 怎样选取,
+总能在 $\X$ 中找到一个异于 $a$ 的数 $x'$, 满足
+$$
+\abs{x'-a}<\delta,
+\qquad
+\abs{f(x')-A}\geq\epsilon.
+$$
+取一个趋于零的正数列 $\seqset{\delta}$.
+对每个 $\delta_n$, 依上面的结论选取 $x_n'\in\X$, 使
+$$
+\abs{x_n'-a}<\delta_n,
+\qquad
+\abs{f(x_n')-A}\geq\epsilon.
+$$
+于是 $x_n'\to a$.
+按照定理的假设, 相应的函数值数列 $\bbbrac{f(x_n')}$ 应当趋于 $A$;
+但对一切 $n$ 都有 $\abs{f(x_n')-A}\geq\epsilon$, 这是不可能的.
+所得矛盾证明了逆命题.
+对于 $a$ 或 $A$ 为无穷的情形, 只需把上述不等式换成
+\emref{subsec:52} 中相应的定义条件, 证明完全相同.
+
+这样, 我们实际上得到了函数极限概念的第二种定义.
+在 \emref{subsec:52} 中, 它是用“$\epsilon$--$\delta$ 的语言”表述的;
+现在又可以用“数列的语言”表述为:
+对于任意从 $\X$ 中取出的、以 $a$ 为极限的数列 $\seqset{x}$
+(当 $a$ 有限时, 各项都异于 $a$),
+相应的函数值数列 $\bbbrac{f(x_n)}$ 都以同一个数 $A$ 为极限.
+
+最后还要说明, 上述函数值数列的极限必定是唯一的.
+假设存在两个都趋于 $a$ 的数列
+$$
+x_1',x_2',\ldots,x_n',\ldots
+\qquad\text{和}\qquad
+x_1'',x_2'',\ldots,x_n'',\ldots,
+$$
+而相应的函数值数列分别满足
+$$
+f(x_n')\to A',
+\qquad
+f(x_n'')\to A'',
+\qquad
+A'\ne A''.
+$$
+把这两个数列的各项交错排列, 得到新数列
+$$
+x_1',x_1'',x_2',x_2'',\ldots,x_n',x_n'',\ldots.
+$$
+这个数列仍趋于 $a$, 因为当 $n$ 充分大时,
+$x_n'$ 和 $x_n''$ 都可以任意接近 $a$.
+然而, 相应的函数值数列
+$$
+f(x_1'),f(x_1''),f(x_2'),f(x_2''),\ldots,f(x_n'),f(x_n''),\ldots
+$$
+不可能有极限:
+它的奇数项子列趋于 $A'$, 偶数项子列趋于 $A''$,
+这与收敛数列的一切子列都趋于同一极限的结论 [\emref{subsec:40}] 矛盾.
+因此, 对应于所有趋于 $a$ 的数列, 所得函数值数列的极限必定相同.
