@@ -1095,10 +1095,7 @@ $$
 \operatorname{Arccot}x=\operatorname{arccot}x+k\pi,\qquad k\in\Z.
 $$
 
-至于反正割函数和反余割函数, 它们的定义域同为
-$$
-(-\infty,-1]\cup[1,+\infty),
-$$
+至于反正割函数和反余割函数, 它们的定义域同为 $(-\infty,-1]$ 和 $[1,+\infty)$,
 这里不再展开, 留给读者自行分析.
 
 \subsection{函数的复合·总结}\label{subsec:51}
@@ -1113,7 +1110,7 @@ $$
 也都是由较简单的函数复合而成的.
 
 一般地, 设函数 $y=f(x)$ 在区域 $\X=\{x\}$ 内有定义,
-并且它的值全部包含在区域 $\Y=\{y\}$ 内;
+并且它的值全部包含在区域 $\Y=\{y\}$ 内.
 再设函数 $z=\varphi(y)$ 在区域 $\Y$ 内有定义.
 这时, 变量 $z$ 以 $y$ 为媒介成为 $x$ 的函数, 记作
 $$
@@ -1126,7 +1123,7 @@ $y=f(x)$, 再按照 $\varphi$ 所表示的规律求出相应的 $z=\varphi(y)$,
 这个过程称为函数的复合.
 
 要求函数 $f(x)$ 的一切值都不超出函数 $\varphi(y)$ 的定义域,
-这一条件十分重要; 若忽略它, 就可能得到没有意义的表达式.
+这一条件十分重要, 若忽略它, 就可能得到没有意义的表达式.
 例如, 设 $z=\ln y$, $y=\sin x$, 则只能考虑满足
 $\sin x>0$ 的那些 $x$ 值, 否则表达式 $\ln(\sin x)$ 没有意义.
 
@@ -1148,8 +1145,7 @@ $$
 那些函数里最简单的一类: 首先是 \emref{subsec:48} 和
 \emref{subsec:50} 中列举的七类初等函数; 其次是由它们经过四则运算
 及有限次复合得到的函数.
-这些函数都可以用初等函数的有限形式来表示, 有时也把它们统称为
-\emph{初等函数}.
+这些函数都可以用初等函数的有限形式来表示, 有时也把它们统称为\emph{初等函数}.
 
 以后, 当我们掌握无穷级数、积分等更复杂的分析工具后,
 还会引入另一些在分析学中同样重要、但已经超出初等函数范围的函数.
@@ -1357,3 +1353,449 @@ $$
 它的奇数项子列趋于 $A'$, 偶数项子列趋于 $A''$,
 这与收敛数列的一切子列都趋于同一极限的结论 [\emref{subsec:40}] 矛盾.
 因此, 对应于所有趋于 $a$ 的数列, 所得函数值数列的极限必定相同.
+
+\subsection{例题}\label{subsec:54}
+\myrefparagraph{1)}\label{ex:exponential_limits_at_infinity}
+证明当 $a>1$ 时,
+$$
+\lim_{x\to+\infty}a^x=+\infty.
+$$
+任取 $E>0$, 只需选取 $\Delta=\max\{1,\log_a E\}$,
+便可由 $x>\Delta$ 推得 $a^x>E$, 这就证明了所要求的关系式
+\footnote{在 \emref{subsec:27} 中, 我们已经得到较特殊的结果
+$\lim\limits_{n\to+\infty}a^n=+\infty\ (a>1)$.}.
+
+类似地可以证明
+$$
+\lim_{x\to-\infty}a^x=0\qquad(a>1).
+$$
+事实上, 只需考察 $0<\epsilon<1$ 的情形.
+取 $\Delta=\log_a\dfrac1\epsilon=-\log_a\epsilon>0$,
+则当 $x<-\Delta$ 时, 必有 $0<a^x<\epsilon$.
+若 $0<a<1$, 利用 $a^x=\brac{\dfrac1a}^{-x}$, 就得到
+$$
+\lim_{x\to+\infty}a^x=0,
+\qquad
+\lim_{x\to-\infty}a^x=+\infty.
+$$
+
+\myrefparagraph{2)}\label{ex:logarithmic_limits_at_endpoints}
+证明当 $a>1$ 时,
+$$
+\lim_{x\to+\infty}\log_a x=+\infty,
+\qquad
+\lim_{x\to0^+}\log_a x=-\infty.
+$$
+任取 $E>0$. 当 $x>a^E$ 时, 有 $\log_a x>E$;
+当 $0<x<a^{-E}$ 时, 有 $\log_a x<-E$.
+这就分别证明了上面的两个关系式.
+
+\myrefparagraph{3)}\label{ex:arctangent_limits_at_infinity}
+再证明
+$$
+\lim_{x\to+\infty}\arctan x=\frac\pi2,
+\qquad
+\lim_{x\to-\infty}\arctan x=-\frac\pi2.
+$$
+先看第一个极限. 对任意 $0<\epsilon<\dfrac\pi2$,
+只要取 $x>\tan\brac{\dfrac\pi2-\epsilon}$, 就有
+$\arctan x>\dfrac\pi2-\epsilon$, 于是
+$$
+0<\frac\pi2-\arctan x<\epsilon.
+$$
+这就证明了第一个极限. 再利用反正切函数的奇性, 即可得到第二个极限.
+
+\myrefparagraph{4)}\label{ex:exponential_over_real_variable}
+关系式
+$$
+\lim_{x\to+\infty}\frac{a^x}{x}=+\infty\qquad(a>1)
+$$
+是一个更细致的例子. 我们在 \emref{subsec:32} 的例
+\ref{ex:exponential_dominates_power} 中已经遇到它的特例:
+$$
+\lim_{n\to+\infty}\frac{a^n}{n}=+\infty
+\qquad \text{或} \qquad
+\lim_{n\to+\infty}\frac{a^n}{n+1}=+\infty.
+$$
+因此, 对任意给定的 $E>0$, 可以求出自然数 $N$,
+使得当 $n>N$ 时有 $\dfrac{a^n}{n+1}>E$.
+现在设 $x>N+1$, 并令 $n=\floor{x}$, 则
+$$
+n>N,\qquad n\leqslant x<n+1,
+$$
+因而
+$$
+\frac{a^x}{x}>\frac{a^n}{n+1}>E.
+$$
+这就证明了所要求的关系式.
+与之前类似, 还可以得到
+$$
+\lim_{x\to+\infty}\frac{a^x}{x^k}=+\infty
+\qquad(a>1,\ k>0).
+$$
+
+\myrefparagraph{5)}\label{ex:logarithm_over_real_power}
+类似地, 根据 \emref{subsec:32} 的例 \ref{ex:log_over_n_limit} 中的结果
+$$
+\lim_{n\to+\infty}\frac{\log_a n}{n}=0\qquad(a>1),
+$$
+可以建立更一般的关系式
+$$
+\lim_{x\to+\infty}\frac{\log_a x}{x}=0\qquad(a>1),
+$$
+其中 $x$ 可以取任意正实数; 从自然数到实数的推广可以用例
+\ref{ex:exponential_over_real_variable} 中同样的取整方法完成.
+
+把这里的 $x$ 换成 $x^k\ (k>0)$, 还可以证明
+$$
+\lim_{x\to+\infty}\frac{\log_a x}{x^k}=0
+\qquad(a>1,\ k>0).
+$$
+具体地说, 任取 $\epsilon>0$, 根据前面的极限, 可以选取 $\Delta>0$,
+使得当 $u>\Delta$ 时有 $\dfrac{\log_a u}{u}<k\epsilon$.
+若 $x>\Delta^{1/k}$, 则 $x^k>\Delta$, 因而
+$$
+\frac{\log_a x}{x^k}
+=\frac1k\cdot\frac{\log_a(x^k)}{x^k}<\epsilon.
+$$
+最后, 把 $x$ 换成 $\dfrac1x$, 就得到
+$$
+\lim_{x\to0^+}x^k\log_a x=0\qquad(a>1,\ k>0).
+$$
+
+\myrefparagraph{6)}\label{ex:exponential_limit_at_zero}
+由 \emref{subsec:25} 的例 \ref{ex:nth_root_constant_supplement} 中已经证明的关系式
+$$
+\lim_{n\to+\infty}a^{1/n}=1\qquad(a>0),
+$$
+可以得到更一般的关系式
+$$
+\lim_{x\to0}a^x=1\qquad(a>0).
+$$
+注意到 $a^{-1/n}=\dfrac1{a^{1/n}}\to1$.
+先设 $a>1$. 任取 $\epsilon>0$, 可以求出自然数 $n_0$, 使得
+$$
+1-\epsilon<a^{-1/n_0}<a^{1/n_0}<1+\epsilon.
+$$
+当 $\abs{x}<\dfrac1{n_0}$ 时, 由幂的单调性得到
+$$
+a^{-1/n_0}<a^x<a^{1/n_0},
+$$
+于是 $1-\epsilon<a^x<1+\epsilon$, 即 $\abs{a^x-1}<\epsilon$.
+若 $0<a<1$, 对 $\dfrac1a>1$ 应用上述结果, 并利用
+$a^x=\brac{\dfrac1a}^{-x}$ 即可; $a=1$ 的情形则是直接的.
+
+\myrefparagraph{7)}\label{ex:sine_over_argument_limit}
+现在建立一个十分重要的结果:
+\begin{equation}\label{eq:sine_over_argument_limit}
+\lim_{x\to0}\frac{\sin x}{x}=1.
+\end{equation}
+首先证明下面的辅助不等式:
+\begin{equation}\label{eq:sine_angle_tangent_inequality}
+\sin x<x<\tan x\qquad\left(0<x<\frac\pi2\right).
+\end{equation}
+
+\begin{wrapfigure}{l}{0.27\textwidth}
+    \vspace{-1.5cm}
+    \begin{tikzpicture}[scale=1.45]
+        \draw[thick] (0,0) circle (1);
+        \draw[thick] (0,0) -- (1,0) -- (1,1.19175) -- (0,0);
+        \draw[thick] (1,0) -- (0.64279,0.76604);
+        \draw[thick] (0.22,0) arc[start angle=0,end angle=50,radius=0.22];
+        \node[below left,scale=0.9] at (0,0) {$O$};
+        \node[below right,scale=0.9] at (1,0) {$A$};
+        \node[above left,scale=0.9] at (0.71,0.8) {$B$};
+        \node[above,scale=0.9] at (1,1.19175) {$C$};
+        \node[left,scale=0.9] at (0.34,0.40) {$R$};
+        \node[right,scale=0.9] at (0.22,0.12) {$x$};
+    \end{tikzpicture}
+\end{wrapfigure}
+为此, 考察半径为 $R$ 的圆内的锐角 $AOB$, 弦 $AB$,
+以及圆在点 $A$ 处的切线 $AC$.
+这里的面积关系为\footnote{这里应用了中学几何中关于这些图形面积的知识.}:
+$$
+\triangle AOB\text{ 的面积}
+<\text{扇形 }AOB\text{ 的面积}
+<\triangle AOC\text{ 的面积}
+$$
+若用 $x$ 表示角 $AOB$ 的弧度, 则弧 $AB$ 的长为 $Rx$,
+上面的面积关系可以写成
+$$
+\frac12R^2\sin x<\frac12R^2x<\frac12R^2\tan x.
+$$
+约去 $\dfrac12R^2$, 就得到 \eqref{eq:sine_angle_tangent_inequality}.
+
+
+
+在 $0<x<\dfrac\pi2$ 的条件下, 用
+\eqref{eq:sine_angle_tangent_inequality} 的各项去除 $\sin x$, 得
+$$
+1>\frac{\sin x}{x}>\cos x,
+\qquad
+0<1-\frac{\sin x}{x}<1-\cos x.
+$$
+又因为
+$$
+1-\cos x=2\sin^2\frac x2<2\sin\frac x2<x,
+$$
+所以
+$$
+0<1-\frac{\sin x}{x}<x.
+$$
+改变 $x$ 的符号时, $\dfrac{\sin x}{x}$ 不变.
+因此, 对一切满足 $0<\abs{x}<\dfrac\pi2$ 的 $x$, 都有
+$$
+\abs{\frac{\sin x}{x}-1}<\abs{x}.
+$$
+任取 $\epsilon>0$, 只需选取 $\delta=\min\{\epsilon,\dfrac\pi2\}$,
+便可由 $0<\abs{x}<\delta$ 推得
+$$
+\abs{\frac{\sin x}{x}-1}<\epsilon.
+$$
+按照函数极限的定义 [\emref{subsec:52}], 这就证明了
+\eqref{eq:sine_over_argument_limit}.
+
+按照 \emref{subsec:53} 的数列判据, 这一结果也就是说:
+对任意趋于零且各项都不为零的数列 $\seqset{x}$,
+相应的数列 $\bbbrac{\dfrac{\sin x_n}{x_n}}$ 总趋于 $1$.
+我们应用这一事实来求极限
+$$
+\lim_{n\to+\infty}\cos\frac\varphi2\cdot\cos\frac\varphi{2^2}
+\cdots\cos\frac\varphi{2^n},
+$$
+其中 $\varphi$ 是任意异于零的实数. 反复应用正弦的倍角公式, 得
+$$
+\begin{aligned}
+\sin\varphi
+&=2\cos\frac\varphi2\cdot\sin\frac\varphi2\\
+&=2^2\cos\frac\varphi2\cdot\cos\frac\varphi{2^2}
+\cdot\sin\frac\varphi{2^2}=\cdots\\
+&=2^n\cos\frac\varphi2\cdot\cos\frac\varphi{2^2}
+\cdots\cos\frac\varphi{2^n}\cdot\sin\frac\varphi{2^n}.
+\end{aligned}
+$$
+当 $n$ 充分大时, $0<\abs{\varphi/2^n}<\pi$, 分母中的正弦不为零,
+于是所求乘积可以写成
+$$
+\frac{\sin\varphi}{2^n\sin(\varphi/2^n)}
+=\frac{\sin\varphi}{\varphi}\cdot
+\frac{\varphi/2^n}{\sin(\varphi/2^n)}.
+$$
+因为 $x_n=\dfrac\varphi{2^n}\to0$, 根据上面的结论,
+$\dfrac{\sin(\varphi/2^n)}{\varphi/2^n}\to1$, 所以
+$$
+\lim_{n\to+\infty}\cos\frac\varphi2\cdot\cos\frac\varphi{2^2}
+\cdots\cos\frac\varphi{2^n}=\frac{\sin\varphi}{\varphi}.
+$$
+
+\myrefparagraph{8)}\label{ex:e_limit_for_real_variable}
+再研究另一个十分重要的极限. 在 \emref{subsec:36} 中,
+我们用数列极限定义了数 $\e$:
+$$
+\e=\lim_{n\to+\infty}\brac{1+\frac1n}^n.
+$$
+现在要建立更一般的结果:
+\begin{equation}\label{eq:e_limit_at_positive_infinity}
+\lim_{x\to+\infty}\brac{1+\frac1x}^x=\e,
+\end{equation}
+以及
+\begin{equation}\label{eq:e_limit_at_negative_infinity}
+\lim_{x\to-\infty}\brac{1+\frac1x}^x=\e.
+\end{equation}
+这次应用 \emref{subsec:53} 中的数列判据.
+首先注意到, 对任意趋于 $+\infty$ 的自然数列 $\seqset[k]{n}$,
+数列极限的定义都给出
+$$
+\brac{1+\frac1{n_k}}^{n_k}\to\e.
+$$
+任取实数列 $\seqset[k]{x}$, 使 $x_k\to+\infty$;
+略去有限个初始项后, 可以假定一切 $x_k>1$.
+令 $n_k=\floor{x_k}$, 则
+$$
+n_k\leqslant x_k<n_k+1,\qquad n_k\to+\infty,
+$$
+从而
+$$
+\frac1{n_k+1}<\frac1{x_k}\leqslant\frac1{n_k}.
+$$
+由幂对底数和正指数的单调性, 得
+$$
+\brac{1+\frac1{n_k+1}}^{n_k}
+<\brac{1+\frac1{x_k}}^{x_k}
+<\brac{1+\frac1{n_k}}^{n_k+1}.
+$$
+两端的式子分别可以改写为
+$$
+\brac{1+\frac1{n_k+1}}^{n_k}
+=\frac{\brac{1+\dfrac1{n_k+1}}^{n_k+1}}{1+\dfrac1{n_k+1}},
+$$
+以及
+$$
+\brac{1+\frac1{n_k}}^{n_k+1}
+=\brac{1+\frac1{n_k}}^{n_k}\brac{1+\frac1{n_k}}.
+$$
+它们的极限都是 $\e$. 根据数列的夹逼准则
+[\emref{subsec:28}, \ref{thm:sequence_squeeze}], 中间的式子也趋于 $\e$.
+由于 $\seqset[k]{x}$ 是任意选取的,
+\eqref{eq:e_limit_at_positive_infinity} 就由数列判据得到证明.
+
+为了证明 \eqref{eq:e_limit_at_negative_infinity}, 任取 $x_k\to-\infty$,
+并略去有限个初始项, 使一切 $x_k<-1$.
+令 $x_k=-y_k$, 则 $y_k\to+\infty$, 且 $y_k>1$.
+于是
+$$
+\begin{aligned}
+\brac{1+\frac1{x_k}}^{x_k}
+&=\brac{1-\frac1{y_k}}^{-y_k}
+=\brac{\frac{y_k}{y_k-1}}^{y_k}\\
+&=\brac{1+\frac1{y_k-1}}^{y_k-1}
+\brac{1+\frac1{y_k-1}}.
+\end{aligned}
+$$
+根据刚证明的结果, 最后一个式子的第一因子趋于 $\e$,
+第二因子趋于 $1$, 因而整个式子趋于 $\e$.
+再由数列判据, 就得到 \eqref{eq:e_limit_at_negative_infinity}.
+
+把 $x$ 换成 $\dfrac1\alpha$, 当 $\alpha$ 从右或从左趋于零时,
+$x$ 分别趋于 $+\infty$ 或 $-\infty$.
+因此, 上面的两个公式可以合写成
+\begin{equation}\label{eq:e_limit_at_zero}
+\lim_{\alpha\to0}(1+\alpha)^{1/\alpha}=\e.
+\end{equation}
+这个值得注意的结果是数 $\e$ 的各种应用的基础.
+同样, 若 $\varphi(x)\to+\infty\ (x\to+\infty)$,
+将 $\varphi(x)$ 代入 \eqref{eq:e_limit_at_positive_infinity} 中的变量, 也有
+$$
+\lim_{x\to+\infty}\brac{1+\frac1{\varphi(x)}}^{\varphi(x)}=\e.
+$$
+这里并不需要另加 $\varphi$ 单调递增的条件.
+
+\myrefparagraph{9)}\label{ex:oscillating_sine_no_limit}
+再举一个函数极限不存在的例子. 函数 $\sin x$ 在
+$x\to+\infty$ 或 $x\to-\infty$ 时都没有极限.
+按照数列判据来证明最为简单. 注意到两个数列
+$$
+\bbbrac{\brac{2n-\frac12}\pi},
+\qquad
+\bbbrac{\brac{2n+\frac12}\pi}\qquad(n=1,2,\ldots)
+$$
+都趋于 $+\infty$, 而相应的函数值分别满足
+$$
+\sin\brac{2n-\frac12}\pi=-1\to-1,
+\qquad
+\sin\brac{2n+\frac12}\pi=1\to1.
+$$
+由于所得极限不同, $\sin x$ 在 $x\to+\infty$ 时没有极限.
+利用正弦函数的奇性, 对这两个数列取相反数,
+也就证明了 $x\to-\infty$ 时极限不存在.
+
+还可以只取一个趋于 $+\infty$ 的数列
+$\bbbrac{\brac{n+\dfrac12}\pi}$, 因为相应的函数值
+$$
+\sin\brac{n+\frac12}\pi=(-1)^n\qquad(n=1,2,\ldots)
+$$
+根本没有极限. 从正弦曲线不断振荡的特性来看, 这一结果也是直观的.
+
+类似地, 函数 $\sin\dfrac1\alpha$ 在 $\alpha$ 从右或从左趋于零时,
+极限也不存在. 这只是前面例子的另一种形式:
+令 $x=\dfrac1\alpha$, 则 $\alpha\to0^+$ 或 $\alpha\to0^-$
+分别对应于 $x\to+\infty$ 或 $x\to-\infty$.
+
+为了便于作图, 将字母 $\alpha$ 换成通常用作横坐标的 $x$,
+考察函数 $y=\sin\dfrac1x\ (x\ne0)$ 在
+$\left[-\dfrac2\pi,\dfrac2\pi\right]$ 内的图像.
+依次减小到零的 $x$ 值
+$$
+\frac2\pi,\ \frac1\pi,\ \frac2{3\pi},\ \frac1{2\pi},\
+\frac2{5\pi},\ \frac1{3\pi},\ \frac2{7\pi},\ \ldots,\
+\frac2{(2n-1)\pi},\ \frac1{n\pi},\ \frac2{(2n+1)\pi},\ \ldots
+$$
+对应于不断增大的 $\dfrac1x$ 值
+$$
+\frac\pi2,\ \pi,\ \frac{3\pi}2,\ 2\pi,\ \frac{5\pi}2,\
+3\pi,\ \frac{7\pi}2,\ \ldots,\
+\frac{(2n-1)\pi}2,\ n\pi,\ \frac{(2n+1)\pi}2,\ \ldots.
+$$
+当 $x$ 依次减小时, 在相邻数值之间的各区间内,
+$\sin\dfrac1x$ 交替地由 $1$ 减到 $0$, 再由 $0$ 减到 $-1$,
+然后由 $-1$ 增到 $0$, 再由 $0$ 增到 $1$, 如此继续下去.
+所以它也有无穷多次振荡. 不过, $\sin x$ 的振荡分布在无穷区间内,
+而 $\sin\dfrac1x$ 的振荡出现在有限区间内, 并聚集于零点附近.
+下图只能画出其中有限次振荡.
+由于 $x$ 变号时函数值也变号, 图像关于原点对称.
+
+\begin{figure}[!h]
+    \centering
+    \begin{tikzpicture}[x=7cm,y=1.15cm]
+        \draw[-latex,scale=0.8] (-0.85,0) -- (0.85,0) node[right] {$x$};
+        \draw[-latex,scale=0.8] (0,-1.3) -- (0,1.5) node[right] {$y$};
+        \draw[dashed] ({2/pi},0) -- ({2/pi},1);
+        \draw[dashed] ({2/(3*pi)},0) -- ({2/(3*pi)},-1);
+        \draw[dashed] ({-2/pi},0) -- ({-2/pi},-1);
+        \draw[dashed] ({-2/(3*pi)},0) -- ({-2/(3*pi)},1);
+        \draw[thick] plot[variable=\t,domain=pi/2:10*pi,samples=330]
+            ({1/\t},{sin(\t r)});
+        \draw[thick] plot[variable=\t,domain=pi/2:10*pi,samples=330]
+            ({-1/\t},{-sin(\t r)});
+        \node[below,scale=0.8] at ({2/pi},0) {$\dfrac2\pi$};
+        \node[below right,scale=0.8] at ({1/pi},0) {$\dfrac1\pi$};
+        \node[above right,scale=0.8] at ({2/(3*pi)},0) {$\dfrac2{3\pi}$};
+        \node[above,scale=0.8] at ({2/(3*pi)},0.45) {$\dfrac1{2\pi}$};
+        \draw ({2/(3*pi)},0.45) -- ({1/(2*pi)},0);
+        \node[above,scale=0.8] at ({-2/pi},0) {$-\dfrac2\pi$};
+        \node[above left,scale=0.8] at ({-1/pi},0) {$-\dfrac1\pi$};
+        \node[below left,scale=0.8] at ({-2/(3*pi)},0) {$-\dfrac2{3\pi}$};
+        \node[below,scale=0.8] at ({-2/(3*pi)},-0.45) {$-\dfrac1{2\pi}$};
+        \draw ({-2/(3*pi)+0.01},-0.45) -- ({-1/(2*pi)},0);
+        \node[scale=0.8] at (0.55,1.3) {$y=\sin\dfrac1x$};
+    \end{tikzpicture}
+
+\end{figure}
+
+\myrefparagraph{10)}\label{ex:damped_sine_limit_at_zero}
+若考察函数 $x\sin\dfrac1x\ (x\ne0)$,
+它与刚才研究的函数只相差一个因子 $x$, 这次在 $x\to0$ 时就有极限:
+$$
+\lim_{x\to0}x\sin\frac1x=0.
+$$
+这由不等式
+$$
+\abs{x\sin\frac1x}\leqslant\abs{x}
+$$
+就可以看出. 任取 $\epsilon>0$, 取 $\delta=\epsilon$,
+便可由 $0<\abs{x}<\delta$ 推得 $\abs{x\sin\dfrac1x}<\epsilon$.
+
+在 $x$ 接近于零时, 函数仍发生无穷多次振荡,
+但振幅由于因子 $x$ 而逐渐减小并趋于零.
+它的图像夹在两条坐标角的平分线 $y=x$ 和 $y=-x$ 之间.
+
+\begin{figure}[!h]
+    \centering
+    \begin{tikzpicture}[xscale=4,yscale=2]
+        \draw[-latex] (-1.1,0) -- (1.1,0) node[right,scale=0.8] {$x$};
+        \draw[-latex] (0,-0.9) -- (0,1.25) node[left,scale=0.8] {$y$};
+        \draw (1,1) -- (-0.7,-0.7) node[left,scale=0.8] {$y=x$};
+        \draw (-1,1) -- (0.7,-0.7) node[right,scale=0.8] {$y=-x$};
+        \draw[thick] plot[variable=\t,domain=1:10*pi,samples=450]
+            ({1/\t},{sin(\t r)/\t});
+        \draw[thick] plot[variable=\t,domain=1:10*pi,samples=450]
+            ({-1/\t},{sin(\t r)/\t});
+        \node[scale=0.8] at (0.55,1) {$y=x\sin\dfrac1x$};
+    \end{tikzpicture}
+\end{figure}
+
+\begin{remark}
+上面的三个极限
+$$
+\lim_{x\to0}\frac{\sin x}{x}=1,\qquad
+\lim_{x\to0}(1+x)^{1/x}=\e,\qquad
+\lim_{x\to0}x\sin\frac1x=0
+$$
+有一个共同特点: 所考察的函数在 $x=0$ 处都没有定义,
+但这并不影响我们讨论它们在 $x\to0$ 时的极限.
+按照 \emref{subsec:52} 中的定义, 求极限时并不考察 $x=0$ 处的函数值.
+若需要, 我们可以把这三个函数在零点处分别补定义为 $1$、$\e$ 和 $0$,
+从而把零点加入各自的定义域, 同时也不改变上面的极限.
+其中 $(1+x)^{1/x}$ 在零点附近仍需满足 $1+x>0$,
+补入零点并不能把它变成整个 $\R$ 上的函数.
+\end{remark}
