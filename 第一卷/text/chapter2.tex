@@ -1799,3 +1799,344 @@ $$
 其中 $(1+x)^{1/x}$ 在零点附近仍需满足 $1+x>0$,
 补入零点并不能把它变成整个 $\R$ 上的函数.
 \end{remark}
+
+\subsection{极限理论的推广}\label{subsec:55}
+在第一章中, 我们已经建立了数列极限的一系列基本性质.
+现在自然要问: 怎样把这些结论推广到这里所考察的一般函数极限?
+有两条路径可以采用.
+
+I. 首先, 可以把以前的命题改述为函数极限的形式, 再按照极限定义证明.
+以 \emref{subsec:26} 的命题 \ref{prop:eventual_order_from_limit} 为例.
+设函数 $f(x)$ 定义在以 $a$ 为聚点的数集 $\X$ 上
+\footnote{这里的 $a$ 也可以是无穷; 为使叙述明确, 以下先写出 $a$ 为有限数的情形.}.
+
+\myrefparagraph{1\textdegree}\label{prop:function_eventual_order_from_limit}
+{\kaishu 若当 $x\to a$ 时, 函数 $f(x)$ 有有限极限 $A$,
+且 $A>p$ (或 $A<q$), 则对于 $\X$ 中充分接近于 $a$ 而异于 $a$ 的 $x$, 有
+\begin{equation}\label{eq:function_eventual_order}
+f(x)>p\qquad\text{(或 }f(x)<q\text{)}.
+\end{equation}}
+
+事实上, 选取正数 $\epsilon<A-p$ (或 $\epsilon<q-A$), 就有
+$$
+A-\epsilon>p\qquad\text{(或 }A+\epsilon<q\text{)}.
+$$
+由极限定义, 对于这个 $\epsilon$ 可以找到 $\delta>0$,
+使一切取自 $\X$ 且满足 $0<\abs{x-a}<\delta$ 的 $x$ 都有
+$$
+A-\epsilon<f(x)<A+\epsilon.
+$$
+于是 \eqref{eq:function_eventual_order} 对这些 $x$ 成立.
+可见, 证明中并不需要引入新的想法.
+
+同样可以由此得到 \emref{subsec:26} 中命题
+\ref{prop:eventual_sign_preservation}、\ref{prop:convergent_sequence_away_from_zero}
+和 \ref{prop:limit_uniqueness} 的相应结论.
+例如, 在命题 \ref{prop:function_eventual_order_from_limit} 中令 $p=0$ (或 $q=0$), 就得到:
+
+\myrefparagraph{2\textdegree}\label{prop:function_eventual_sign_preservation}
+{\kaishu 若当 $x\to a$ 时, 函数 $f(x)$ 有有限的正 (或负) 极限,
+则对于 $\X$ 中充分接近于 $a$ 而异于 $a$ 的 $x$, 函数值也为正 (或负).}
+这就是函数极限的\emph{保号性}\index{baohaoxing@保号性}.
+
+与数列的有界性相应的结论也成立, 但只能表述为较弱的形式:
+
+\myrefparagraph{4\textdegree}\label{prop:function_bounded_near_limit_point}
+{\kaishu 若当 $x\to a$ 时, 函数 $f(x)$ 有有限极限,
+则它对于 $\X$ 中充分接近于 $a$ 而异于 $a$ 的 $x$ 有界, 即存在常数 $M'>0$ 和 $\delta>0$, 使
+$$
+\abs{f(x)}\leq M'\qquad (x\in\X,\ 0<\abs{x-a}<\delta).
+$$}
+
+回想数列的情形, 我们最初也只是对于 $n>N$ 得到 $\abs{x_n}\leq M'$.
+但不满足这个估计的项至多只有有限项, 所以只需增大 $M'$, 就能使数列的所有项都有界.
+对于一般函数, 不能这样推论: 使 $\abs{f(x)}>M'$ 的 $x$ 值可能有无穷多个.
+例如, 函数
+$$
+f(x)=\frac1x\qquad (x>0)
+$$
+在 $x\to1$ 时趋于 $1$; 当 $\abs{x-1}<\dfrac12$ 时, 有 $f(x)<2$.
+然而, 它在整个定义域 $(0,+\infty)$ 上并不有界.
+
+II. 叙述其他结论以前, 先约定: 若结论中涉及等式、不等式或算术运算,
+那么两个或几个定义在同一数集 $\X$ 上的函数 $f(x),g(x),\ldots$,
+总在同一个 $x$ 值处取值, 再作比较或运算.
+
+这些定理都可以仿照数列的情形重新证明, 但实际上没有必要逐一重复.
+根据 \emref{subsec:53} 的数列判据, 可以直接把函数极限的问题归结为数列极限.
+以 \emref{subsec:30} 中关于和、差、积与商的定理为例.
+设 $f(x)$ 和 $g(x)$ 定义在以 $a$ 为聚点的数集 $\X$ 上, 并且
+$$
+\lim_{x\to a}f(x)=A,\qquad \lim_{x\to a}g(x)=B,
+$$
+其中 $A,B$ 都是有限数. 则函数
+\begin{equation}\label{eq:function_arithmetic_expressions}
+f(x)\pm g(x),\qquad f(x)g(x),\qquad \frac{f(x)}{g(x)}
+\end{equation}
+也有有限极限, 分别为
+$$
+A\pm B,\qquad AB,\qquad \frac AB.
+$$
+对于商, 必须假定 $B\neq0$
+\footnote{与数列的情形一样, 由 $B\neq0$ 可知, 当 $x$ 充分接近于 $a$ 而异于 $a$ 时,
+$g(x)\neq0$, 所以这时商 $\dfrac{f(x)}{g(x)}$ 有意义.}.
+
+用数列的语言表述上述两个极限: 若 $\seqset{x}$ 是任意取自 $\X$、趋于 $a$ 的数列
+(当 $a$ 有限时, 各项都异于 $a$), 则
+$$
+f(x_n)\to A,\qquad g(x_n)\to B.
+$$
+把已经证明的数列算术运算定理应用于这两个数列, 就有
+$$
+\lim_{n\to+\infty}\brac{f(x_n)\pm g(x_n)}=A\pm B,\quad
+\lim_{n\to+\infty}f(x_n)g(x_n)=AB,\quad
+\lim_{n\to+\infty}\frac{f(x_n)}{g(x_n)}=\frac AB.
+$$
+对于商, 只需从分母非零的某一项开始考察.
+再应用数列判据, 这些关系正好给出了 \eqref{eq:function_arithmetic_expressions} 中各函数的极限.
+
+\emref{subsec:31} 中关于\emph{未定式}\index{weidingshi@未定式}的讨论也相应地推广到一般函数的情形.
+我们仍用约定的记号
+$$
+\frac00,\qquad \frac\infty\infty,\qquad 0\cdot\infty,\qquad \infty-\infty
+$$
+表示这些类型. 要确定未定式, 仅知道 $f(x)$ 和 $g(x)$ 的极限还不够,
+必须考虑它们怎样随 $x$ 变化.
+在 \emref{subsec:54} 的例 \ref{ex:exponential_over_real_variable}、\ref{ex:logarithm_over_real_power} 中,
+我们已经遇到了 $\dfrac\infty\infty$ 型与 $0\cdot\infty$ 型未定式;
+在例 \ref{ex:sine_over_argument_limit} 中, 又遇到了 $\dfrac00$ 型未定式.
+下一小节还将给出一些例题, 应用极限理论中最简单的定理.
+以后在第四章中, 我们还会回到这个问题, 用微分学给出确定未定式的一般方法.
+
+\subsection{例题}\label{subsec:56}
+\myrefparagraph{1)}\label{ex:function_polynomial_limit_at_infinity}
+把 \emref{subsec:32} 中的例 \ref{ex:polynomial_limit} 推广到一般实变量的情形.
+设
+$$
+p(x)=a_0x^k+a_1x^{k-1}+\cdots+a_{k-1}x+a_k,
+$$
+其中 $k$ 是正整数, 各系数为实常数, 且 $a_0\neq0$.
+分别考察 $x\to+\infty$ 与 $x\to-\infty$ 时的极限.
+提出最高次幂, 得
+$$
+p(x)=x^k\brac{a_0+\frac{a_1}{x}+\cdots+\frac{a_k}{x^k}}.
+$$
+括号内的式子趋于 $a_0$, 因而可以确定原来的 $\infty-\infty$ 型未定式:
+$$
+\lim_{x\to\pm\infty}p(x)=\pm\infty.
+$$
+这里右边的符号须分别确定: 当 $k$ 为偶数时, 两个方向的无穷极限都由 $a_0$ 的符号决定;
+当 $k$ 为奇数时, 还要计入 $x$ 的符号.
+
+\myrefparagraph{2)}\label{ex:function_rational_polynomial_limit_at_infinity}
+再设
+$$
+q(x)=b_0x^l+b_1x^{l-1}+\cdots+b_{l-1}x+b_l,
+$$
+其中 $l$ 是正整数, 各系数为实常数, 且 $b_0\neq0$. 仿照上一例, 有
+$$
+\frac{p(x)}{q(x)}
+=x^{k-l}\frac{a_0+\dfrac{a_1}{x}+\cdots+\dfrac{a_k}{x^k}}
+{b_0+\dfrac{b_1}{x}+\cdots+\dfrac{b_l}{x^l}}.
+$$
+右边第二个乘数趋于 $\dfrac{a_0}{b_0}$, 而分母对于充分大的 $\abs{x}$ 非零.
+所以这一 $\dfrac\infty\infty$ 型未定式的极限为
+$$
+\lim_{x\to\pm\infty}\frac{p(x)}{q(x)}
+=\begin{cases}
+\pm\infty, & k>l,\\[2pt]
+\dfrac{a_0}{b_0}, & k=l,\\[4pt]
+0, & k<l.
+\end{cases}
+$$
+在 $k>l$ 时, 无穷极限的符号由 $a_0/b_0$ 的符号决定;
+若 $k-l$ 为奇数, 还要计入 $x$ 的符号.
+
+\myrefparagraph{3)}\label{ex:rational_power_increment_limit}\label{Newton_equation}
+下面证明: 对任意正有理数 $r$
+\footnote{以后还将把这一公式推广到任意实指数的情形.}, 有
+\begin{equation}\label{eq:rational_power_increment_limit}
+\lim_{x\to0}\frac{(1+x)^r-1}{x}=r.
+\end{equation}
+这是一个 $\dfrac00$ 型未定式; 在零点附近取 $1+x>0$.
+
+先考察 $r=n$ 为自然数的情形. 由 Newton 二项式定理,
+$$
+\frac{(1+x)^n-1}{x}
+=\sum_{j=1}^{n}\binom nj x^{j-1}
+=n+\sum_{j=2}^{n}\binom nj x^{j-1}.
+$$
+除常数项 $n$ 外, 其余各项都在 $x\to0$ 时趋于零 (当 $n=1$ 时, 后一个和为空).
+因此
+$$
+\lim_{x\to0}\frac{(1+x)^n-1}{x}=n.
+$$
+
+再令 $r=1/m$, 其中 $m$ 是自然数, 并作代换
+$$
+y=\sqrt[m]{1+x}-1,\qquad x=(1+y)^m-1.
+$$
+当 $\abs{x}<1$ 时,
+$$
+1-\abs{x}\leq\sqrt[m]{1+x}\leq1+\abs{x},
+$$
+所以 $\sqrt[m]{1+x}\to1$, 从而 $y\to0$.
+当 $x\neq0$ 时, 也有 $y\neq0$.
+根据刚刚证明的自然数指数情形和商的极限定理,
+$$
+\lim_{x\to0}\frac{\sqrt[m]{1+x}-1}{x}
+=\lim_{y\to0}\frac{y}{(1+y)^m-1}
+=\frac1m.
+$$
+
+最后, 对一般的正有理数 $r=n/m$, 仍用这个代换 $y$, 得
+$$
+\frac{(1+x)^{n/m}-1}{x}
+=\frac{(1+y)^n-1}{(1+y)^m-1}
+=\frac{(1+y)^n-1}{y}\cdot\frac{y}{(1+y)^m-1} \to \frac{n}{m}.
+$$
+
+\myrefparagraph{4)}\label{ex:root_second_order_increment_limit}
+求极限
+$$
+\lim_{x\to0}\frac{\sqrt[m]{1+x}-1-\dfrac xm}{x^2},
+$$
+其中 $m$ 是自然数.
+仍令 $y=\sqrt[m]{1+x}-1$, 对于 $m\geq2$ 有
+$$
+\frac{y-\dfrac1m\bbrac{(1+y)^m-1}}{\bbrac{(1+y)^m-1}^2}
+=\frac{-\dfrac1m\displaystyle\sum_{j=2}^{m}\binom mj y^{j-2}}
+{\left(\displaystyle\sum_{j=1}^{m}\binom mj y^{j-1}\right)^2}\\
+\longrightarrow-\frac{m-1}{2m^2}.
+$$
+当 $m=1$ 时, 原式恒为零, 也符合这个结果.
+
+\myrefparagraph{5)}\label{ex:trigonometric_limit_applications}
+\emref{subsec:54} 的例 \ref{ex:sine_over_argument_limit} 中得到的极限
+\eqref{eq:sine_over_argument_limit}, 即
+$$
+\lim_{x\to0}\frac{\sin x}{x}=1,
+$$
+经常用于求其他极限.
+
+\myrefparagraph{a)}\label{ex:one_minus_cosine_limit}
+求 $\dfrac00$ 型未定式
+$$
+\lim_{x\to0}\frac{1-\cos x}{x^2}.
+$$
+利用半角公式,
+$$
+\frac{1-\cos x}{x^2}
+=\frac{2\sin^2(x/2)}{x^2}
+=\frac12\brac{\frac{\sin(x/2)}{x/2}}^2 \to \frac{1}{2}
+$$
+
+\myrefparagraph{b)}\label{ex:tangent_minus_sine_limit}
+求另一个 $\dfrac00$ 型未定式
+$$
+\lim_{x\to0}\frac{\tan x-\sin x}{x^3}.
+$$
+把它变形为
+$$
+\frac{\tan x-\sin x}{x^3}
+=\frac1{\cos x}\cdot\frac{\sin x}{x}\cdot\frac{1-\cos x}{x^2}\to \frac{1}{2}.
+$$
+
+\myrefparagraph{c)}\label{ex:secant_minus_tangent_limit}
+求 $\infty-\infty$ 型未定式
+$$
+\lim_{x\to\pi/2}(\sec x-\tan x).
+$$
+令 $\alpha=\dfrac\pi2-x$. 当 $x\to\dfrac\pi2$ 时, $\alpha\to0$, 并且
+$$
+\begin{aligned}
+\sec x-\tan x
+&=\csc\alpha-\cot\alpha
+=\frac{1-\cos\alpha}{\sin\alpha}\\
+&=\frac{1-\cos\alpha}{\alpha^2}\cdot
+\frac{\alpha}{\sin\alpha}\cdot\alpha\longrightarrow0.
+\end{aligned}
+$$
+这就得到所求的极限 $0$.
+
+\subsection{单调函数的极限}\label{subsec:57}
+关于函数极限
+$$
+\lim_{x\to a}f(x)
+$$
+的存在问题, 对于某些特殊类型的函数, 判断起来特别简单.
+单调函数就是其中的一类, 它与前面考察的单调数列 [\emref{subsec:34}] 相对应.
+
+设函数 $f(x)$ 定义在数集 $\X=\{x\}$ 上.
+{\kaishu 若对于 $\X$ 中任意两个数 $x$ 与 $x'$, 由 $x'>x$ 总能推出
+$$
+f(x')>f(x)\qquad\bigl(f(x')<f(x)\bigr),
+$$
+则称 $f(x)$ 为这个数集上的\emph{增函数}
+(或\emph{减函数}),
+也称为严格递增函数 (或严格递减函数).}
+
+{\kaishu 若由 $x'>x$ 总能推出
+$$
+f(x')\geq f(x)\qquad\bigl(f(x')\leq f(x)\bigr),
+$$
+则称 $f(x)$ 为\emph{不减函数}\index{bujianhanshu@不减函数}
+(或\emph{不增函数}\index{buzenghanshu@不增函数}).}
+在这种情况下, 有时也称它为广义增函数 (或广义减函数).
+这些函数统称为\emph{单调函数}\index{dandiao@单调函数}.
+
+对于单调函数, 有一个与单调数列的极限定理完全相仿的重要定理.
+
+\begin{theorem}\label{thm:monotone_function_limit}
+设函数 $f(x)$ 在数集 $\X$ 上单调不减.
+数集 $\X$ 以大于其中一切 $x$ 值的 $a$ 为聚点,
+其中 $a$ 可以是有限数, 也可以是 $+\infty$.
+若 $f(x)$ 上有界, 即存在常数 $M$, 使
+$$
+f(x)\leq M\qquad(x\in\X),
+$$
+则当 $x\to a$ 时, 函数有有限极限; 若它不上有界, 则 $f(x)\to+\infty$.
+\end{theorem}
+
+\begin{proof}
+先设 $f(x)$ 上有界.
+它的值集 $\bbbrac{f(x):x\in\X}$ 便有有限的上确界
+$$
+A=\sup\bbbrac{f(x):x\in\X}
+$$
+[\emref{subsec:11}]. 我们将证明 $A$ 就是所求的极限.
+
+任给 $\epsilon>0$, 由上确界的性质, 可以找到 $x'\in\X$, 使
+$$
+f(x')>A-\epsilon.
+$$
+由函数的单调性, 对于 $\X$ 中一切满足 $x>x'$ 的 $x$, 都有
+$$
+A-\epsilon<f(x')\leq f(x)\leq A<A+\epsilon,
+$$
+因而
+$$
+\abs{f(x)-A}<\epsilon.
+$$
+当 $a$ 有限时, 取 $\delta=a-x'>0$.
+由 $x<a$ 可知, $0<\abs{x-a}<\delta$ 保证 $x>x'$.
+当 $a=+\infty$ 时, 取 $\Delta=\max\bbbrac{1,x'}>0$ 即可.
+这就证明了 $f(x)\to A$.
+
+再设 $f(x)$ 不上有界. 任给 $E>0$, 总能找到 $x'\in\X$, 使 $f(x')>E$.
+由单调性, 对于 $\X$ 中一切满足 $x>x'$ 的 $x$, 都有
+$$
+f(x)\geq f(x')>E.
+$$
+仍按上面的方式选取 $\delta$ 或 $\Delta$, 就由定义得到 $f(x)\to+\infty$.
+\end{proof}
+
+我们可以把这一定理改述为 $a$ 小于 $\X$ 中一切 $x$ 值的情形,
+以及函数单调不增的情形, 并仿照上面的论证给出证明.
+
+前面的单调数列极限定理 [\emref{subsec:34}] 正是这一定理的特殊情形.
+在那里, 序号 $n$ 就是自变量, 而以 $+\infty$ 为聚点的自然数集 $\N$ 就是定义域.
+
+通常遇到的单调函数, 其定义域是整个区间 $[a',a)$,
+其中 $a'<a$, 而 $a$ 可以是有限数或 $+\infty$;
+也可以是区间 $(a,a']$, 其中 $a'>a$, 而 $a$ 可以是有限数或 $-\infty$.
