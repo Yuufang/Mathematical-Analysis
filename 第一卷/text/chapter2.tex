@@ -2140,3 +2140,276 @@ $$
 通常遇到的单调函数, 其定义域是整个区间 $[a',a)$,
 其中 $a'<a$, 而 $a$ 可以是有限数或 $+\infty$;
 也可以是区间 $(a,a']$, 其中 $a'>a$, 而 $a$ 可以是有限数或 $-\infty$.
+
+\subsection{函数极限的 Cauchy 收敛准则}\label{subsec:58}
+设函数 $f(x)$ 定义在以 $a$ 为聚点的数集 $\X$ 上,
+其中 $a$ 可以是有限数, 也可以是无穷.
+与数列的情形 [\emref{subsec:39}] 一样,
+我们可以建立当 $x\to a$ 时函数具有有限极限的判定法.
+这就是函数极限的\emph{Cauchy 收敛准则}\index{cauchyshoulianzhunze@Cauchy 收敛准则}.
+
+\begin{theorem}\label{thm:function_cauchy_criterion}
+当 $a$ 有限时, 函数 $f(x)$ 当 $x\to a$ 时具有有限极限的充分必要条件是:
+对于任意 $\epsilon>0$, 都存在 $\delta>0$, 使对任意 $x,x'\in\X$, 只要
+$$
+0<\abs{x-a}<\delta,\qquad 0<\abs{x'-a}<\delta,
+$$
+就有
+$$
+\abs{f(x)-f(x')}<\epsilon.
+$$
+
+当 $a=+\infty$ (或 $a=-\infty$) 时, 相应的条件是:
+对于任意 $\epsilon>0$, 都存在 $\Delta>0$, 使对任意 $x,x'\in\X$,
+只要分别满足
+$$
+x>\Delta,\quad x'>\Delta (\text{或}\ x<-\Delta,\quad x'<-\Delta),
+$$
+就有 $\abs{f(x)-f(x')}<\epsilon$.
+\end{theorem}
+
+\begin{proof}
+先在 $a$ 有限的假定下进行证明.
+
+\emph{必要性.}
+设函数有有限极限
+$$
+\lim_{x\to a}f(x)=A.
+$$
+任给 $\epsilon>0$, 根据极限定义, 对数 $\dfrac{\epsilon}{2}$ 可以取到 $\delta>0$,
+使一切 $x\in\X$ 只要满足 $0<\abs{x-a}<\delta$, 就有
+$$
+\abs{f(x)-A}<\frac{\epsilon}{2}.
+$$
+若 $x'\in\X$ 也满足 $0<\abs{x'-a}<\delta$, 则又有
+$$
+\abs{A-f(x')}<\frac{\epsilon}{2}.
+$$
+因此, 对于同时满足这两个邻域条件的 $x$ 和 $x'$, 有
+$$
+\abs{f(x)-f(x')}
+=\abs{\brac{f(x)-A}+\brac{A-f(x')}}
+\leq\abs{f(x)-A}+\abs{A-f(x')}<\epsilon.
+$$
+
+\emph{充分性.}
+可以仿照数列收敛原理 [\emref{subsec:39}] 的证明重新论证.
+不过, 借助 \emref{subsec:53} 中用数列语言表述的函数极限判据,
+可以直接把问题归结为已经证明的数列情形.
+
+设定理中的条件成立.
+任取一个各项都属于 $\X$ 且异于 $a$、收敛于 $a$ 的数列 $\seqset{x}$.
+给定 $\epsilon>0$, 先由定理的条件取到 $\delta>0$.
+因为 $x_n\to a$, 所以存在序号 $N$, 使当 $n>N$ 时有 $0<\abs{x_n-a}<\delta$.
+对于任意两个序号 $n>N$ 和 $n'>N$, 便同时有
+$$
+0<\abs{x_n-a}<\delta,\qquad 0<\abs{x_{n'}-a}<\delta.
+$$
+根据 $\delta$ 的选择, 得到
+$$
+\abs{f(x_n)-f(x_{n'})}<\epsilon.
+$$
+这表明函数值数列 $\bbbrac{f(x_n)}$ 满足 Cauchy 条件.
+由数列的收敛原理, 它有有限极限.
+
+上述结论对于任意取自 $\X$、各项异于 $a$ 且趋于 $a$ 的数列都成立.
+根据 \emref{subsec:53} 最后的交错排列论证, 所有这些函数值数列的有限极限必定相同.
+再应用那里的函数极限判据, 就得到 $f(x)$ 当 $x\to a$ 时有有限极限.
+
+当 $a=+\infty$ 或 $a=-\infty$ 时,
+只需把上述邻域条件分别换为 $x>\Delta$ 或 $x<-\Delta$ 及相应的数列条件,
+其余论证相同.
+\end{proof}
+
+上述条件的充分性也可以借助 Bolzano--Weierstrass 引理证明,
+方法与 \emref{subsec:41} 最后对数列 Cauchy 收敛准则的证明相仿.
+
+\subsection{函数的上极限及下极限}\label{subsec:59}
+当 $x\to a$ 时, 即使 $f(x)$ 没有确定的极限,
+对于某个趋于 $a$ 的数列 $\seqset{x}$,
+函数值数列仍可能有极限
+$$
+\lim_{n\to+\infty}f(x_n).
+$$
+这样的极限称为函数在 $x\to a$ 时的\emph{部分极限}\index{bufenjixian@部分极限}.
+
+例如, 当 $x\to+\infty$ 或 $x\to-\infty$ 时, 函数 $\sin x$ 的部分极限构成整个区间 $[-1,1]$.
+当 $x\to0$ 时, 函数 $\sin\dfrac1x$ 的部分极限也构成同一区间.
+
+在函数的全部部分极限中, 总能找到最大的和最小的.
+{\kaishu 其中的最大者称为函数的\emph{上极限}\index{shangjixian@上极限},
+最小者称为函数的\emph{下极限}\index{xiajixian@下极限}}, 分别记作
+$$
+\lmsup[a]{x}f(x)\qquad\text{和}\qquad\lminf[a]{x}f(x).
+$$
+{\kaishu 函数在 $x\to a$ 时具有通常意义下的极限 (有限或无穷) 的充分必要条件是:
+它的上极限与下极限相等.}
+
+这里仅叙述这一定理, 不再给出证明.
+若要证明它, 只需按照 \emref{subsec:42} 中讨论数列上极限与下极限的次序进行.
+
+\section{无穷小与无穷大的分阶}\label{sec:orders_of_infinitesimals_and_infinities}
+\subsection{无穷小的比较}\label{subsec:60}
+在研究某个问题时, 常须同时考察若干无穷小量
+$$
+\alpha,\quad\beta,\quad\gamma.
+$$
+一般说来, 它们是同一变量 $x$ 的函数,
+当 $x\to a$ 时都趋于零, 其中 $a$ 可以是有限数或 $+\infty$、$-\infty$.
+
+虽然这些量都趋于零, 但它们接近零的方式可能不同.
+比较两个无穷小 $\alpha$ 和 $\beta$, 可以考察它们比值的变化
+\footnote{凡在比式中用作分母的量, 都假定当 $x$ 在定义域内充分接近 $a$ 时不等于零;
+若 $a$ 有限, 还须排除 $x=a$.}.
+为此, 引入下面两个定义.
+
+\myrefparagraph{I.}\label{def:same_order_infinitesimals}
+{\kaishu 若比值 $\dfrac\beta\alpha$ (倒数 $\dfrac\alpha\beta$ 也一样) 有异于零的有限极限,
+则称 $\alpha$ 与 $\beta$ 为\emph{同阶无穷小}\index{tongjiewuqiongxiao@同阶无穷小}.}
+
+\myrefparagraph{II.}\label{def:higher_order_infinitesimal}
+{\kaishu 若比值 $\dfrac\beta\alpha$ 趋于零,
+则称 $\beta$ 为比 $\alpha$ \emph{高阶的无穷小}\index{gaojiewuqiongxiao@高阶无穷小},
+而 $\alpha$ 为比 $\beta$ \emph{低阶的无穷小}\index{dijiewuqiongxiao@低阶无穷小}.}
+在倒数也最终有定义时, $\dfrac\alpha\beta$ 成为无穷大,
+即 $\abs{\dfrac\alpha\beta}\to+\infty$.
+
+例如, 在 [\emref{subsec:54}, 例 \ref{ex:sine_over_argument_limit};
+\emref{subsec:56}, 例 \ref{ex:rational_power_increment_limit}] 中我们知道
+$$
+\lim_{x\to0}\frac{\sin x}{x}=1,\qquad
+\lim_{x\to0}\frac{\sqrt[m]{1+x}-1}{x}=\frac1m,
+$$
+所以当 $x\to0$ 时, 取 $\alpha=x$, 则
+$$
+\sin x,\quad\tan x,\quad\sqrt[m]{1+x}-1
+$$
+都是与 $x$ 同阶的无穷小, 其中 $m$ 是自然数.
+反之, 无穷小
+\begin{equation}\label{eq:higher_order_than_x_examples}
+\sqrt[m]{1+x}-1-\frac xm,\qquad1-\cos x,\qquad\tan x-\sin x
+\end{equation}
+都是比 $x$ 高阶的无穷小
+[\emref{subsec:56}, 例 \ref{ex:root_second_order_increment_limit}
+及例 \ref{ex:trigonometric_limit_applications} 的
+\ref{ex:one_minus_cosine_limit}、\ref{ex:tangent_minus_sine_limit}].
+
+当然, 两个无穷小的比值也可能没有任何极限.
+例如, 当 $x\to0$ 时, 取
+$$
+\alpha=x,\qquad\beta=x\sin\frac1x
+$$
+[\emref{subsec:54}, 例 \ref{ex:oscillating_sine_no_limit}、\ref{ex:damped_sine_limit_at_zero}].
+它们都是无穷小, 但比值 $\dfrac\beta\alpha=\sin\dfrac1x$ 没有极限.
+在这种情况下, 就说这两个无穷小\emph{不能比较}.
+
+若无穷小 $\beta$ 比无穷小 $\alpha$ 高阶, 就把这一关系记作
+$$
+\beta=o(\alpha).
+$$
+例如, 可以写
+$$
+1-\cos x=o(x),\qquad\tan x-\sin x=o(x).
+$$
+因此, $o(\alpha)$ 可以作为比 $\alpha$ 高阶的无穷小的通用记号\index{ojihao@$o$ 记号}.
+以后我们就采用这种方便的记法.
+同样, $o(1)$ 表示在所考察的极限过程中趋于零的量.
+
+\subsection{无穷小的尺度}\label{subsec:61}
+有时为了更精确地比较无穷小的性态, 需要用数字来表达它们的\emph{阶}.
+在这种情况下, 我们先从所研究的无穷小中选出一个 $\alpha$ 作为“标准”,
+称它为\emph{基本无穷小}\index{jibenwuqiongxiao@基本无穷小}\label{def:basic_infinitesimal}.
+基本无穷小的选取在某种程度上是任意的, 但通常选取最简单的一个.
+
+例如, 设所考察的量都是 $x$ 的函数, 并在 $x\to a$ 时成为无穷小.
+根据 $a$ 是零、异于零的有限数或无穷, 自然可以依次选取
+$$
+x,\qquad x-a,\qquad\frac1x
+$$
+作为基本无穷小.
+
+其次, 设选取的基本无穷小 $\alpha>0$,
+用它的各种正指数幂 $\alpha^k\ (k>0)$ 组成一个尺度,
+来比较性质更为复杂的无穷小
+\footnote{当 $k>0$ 时, $\alpha^k$ 随着 $\alpha$ 同时成为无穷小.}.
+
+\myrefparagraph{III.}\label{def:order_of_infinitesimal}
+{\kaishu 若 $\beta$ 与 $\alpha^k\ (k>0)$ 是同阶无穷小,
+即比值 $\dfrac\beta{\alpha^k}$ 有异于零的有限极限,
+则称 $\beta$ 为关于基本无穷小 $\alpha$ 的
+\emph{$k$ 阶无穷小}\index{wuqiongxiaodejie@无穷小的阶}.}
+
+例如, 在 $x\to0^+$ 时取 $\alpha=x$.
+\eqref{eq:higher_order_than_x_examples} 中的三个无穷小都比 $x$ 高阶,
+现在可以把这一关系说得更准确.
+根据 \emref{subsec:56} 的例 \ref{ex:root_second_order_increment_limit}
+及例 \ref{ex:trigonometric_limit_applications} 的
+\ref{ex:one_minus_cosine_limit}、\ref{ex:tangent_minus_sine_limit}, 我们有
+$$
+\lim_{x\to0}\frac{\sqrt[m]{1+x}-1-\dfrac xm}{x^2}
+=-\frac{m-1}{2m^2},\quad
+\lim_{x\to0}\frac{1-\cos x}{x^2}=\frac12,\quad
+\lim_{x\to0}\frac{\tan x-\sin x}{x^3}=\frac12.
+$$
+因此, 当自然数 $m>1$ 时, 前两个是关于 $x$ 的二阶无穷小,
+最后一个是三阶无穷小.
+
+再看一个更复杂的例子.
+考察
+$$
+\beta=\sqrt{x+1}+\sqrt{x-1}-2\sqrt{x}\qquad(x>1).
+$$
+当 $x\to+\infty$ 时, 把它写成
+$$
+\beta=(\sqrt{x+1}-\sqrt{x})-(\sqrt{x}-\sqrt{x-1})=\frac1{\sqrt{x+1}+\sqrt{x}}-\frac1{\sqrt{x}+\sqrt{x-1}},
+$$
+就看出它是无穷小. 继续有理化, 得
+$$
+\begin{aligned}
+\beta&=\frac{\sqrt{x-1}-\sqrt{x+1}}
+{(\sqrt{x+1}+\sqrt{x})(\sqrt{x}+\sqrt{x-1})}\\
+&=\frac{-2}
+{(\sqrt{x+1}+\sqrt{x})(\sqrt{x}+\sqrt{x-1})(\sqrt{x-1}+\sqrt{x+1})}.
+\end{aligned}
+$$
+取基本无穷小 $\alpha=\dfrac1x$, 于是
+\begin{equation}\label{eq:radical_difference_order_three_halves}
+\begin{aligned}
+\lim_{x\to+\infty}\frac\beta{\alpha^{3/2}}
+&=\lim_{x\to+\infty}\frac{-2(\sqrt{x})^3}
+{(\sqrt{x+1}+\sqrt{x})(\sqrt{x}+\sqrt{x-1})(\sqrt{x-1}+\sqrt{x+1})}\\
+&=\lim_{x\to+\infty}\frac{-2}
+{\brac{\sqrt{1+\dfrac1x}+1}\brac{1+\sqrt{1-\dfrac1x}}}
+\cdot\lim_{x\to+\infty}\frac1{\sqrt{1-\dfrac1x}+\sqrt{1+\dfrac1x}}\\
+&=-\frac14.
+\end{aligned}
+\end{equation}
+所以 $\beta$ 是关于 $\alpha=\dfrac1x$ 的 $\dfrac32$ 阶无穷小
+\footnote{这里用了 $\displaystyle\lim_{u\to0}\sqrt{1+u}=1$.
+这一结果已在 \emref{subsec:56} 的例 \ref{ex:rational_power_increment_limit}
+中对任意自然数次根式证明.}.
+
+当然, 并非每一个无穷小 $\beta$ 都有确定的阶数,
+即使它与所有幂 $\alpha^k$ 都能比较, 但都没有异于零的有限极限存在.
+下面两个例子可由 \emref{subsec:54} 的例
+\ref{ex:exponential_over_real_variable}、\ref{ex:logarithm_over_real_power} 得到.
+当 $a>1$、$k>0$ 时,
+\begin{equation}\label{eq:exponential_logarithm_vs_powers}
+\lim_{x\to+\infty}\frac{a^x}{x^k}=+\infty,\qquad
+\lim_{x\to+\infty}\frac{\log_a x}{x^k}=0.
+\end{equation}
+取倒数, 就有
+$$
+\lim_{x\to+\infty}\frac{x^k}{a^x}=0,\qquad
+\lim_{x\to+\infty}\frac{x^k}{\log_a x}=+\infty.
+$$
+再把这里的 $x$ 换成 $\dfrac1x$, 并在第一式中令 $a=\dfrac1c$, 其中 $0<c<1$,
+得到
+$$
+\lim_{x\to0^+}\frac{c^{1/x}}{x^k}=0,\qquad
+\lim_{x\to0^+}\frac{\dfrac1{\log_a(1/x)}}{x^k}=+\infty.
+$$
+这就是说, 当 $x\to0^+$ 时,
+$c^{1/x}\ (0<c<1)$ 是比一切幂 $x^k\ (k>0)$ 都高阶的无穷小,
+而 $\dfrac1{\log_a(1/x)}\ (a>1)$ 是比一切这样的幂都低阶的无穷小.
+它们都不能按照上述定义赋予一个确定的阶数.
