@@ -2413,3 +2413,206 @@ $$
 $c^{1/x}\ (0<c<1)$ 是比一切幂 $x^k\ (k>0)$ 都高阶的无穷小,
 而 $\dfrac1{\log_a(1/x)}\ (a>1)$ 是比一切这样的幂都低阶的无穷小.
 它们都不能按照上述定义赋予一个确定的阶数.
+
+\subsection{等价无穷小}\label{subsec:62}
+现在讨论同阶无穷小的一种非常重要的特殊情形.
+以下各量都在同一极限过程中比较, 并沿用 \emref{subsec:60} 中对分母的约定.
+
+\myrefparagraph{IV.}\label{def:equivalent_infinitesimals}
+{\kaishu 若两个无穷小 $\alpha$ 与 $\beta$ 的差 $\gamma=\beta-\alpha$
+比它们中的任何一个都高阶, 即
+$$
+\gamma=o(\alpha),\qquad\gamma=o(\beta),
+$$
+则称 $\alpha$ 与 $\beta$ 为\emph{等价无穷小}\index{dengjiawuqiongxiao@等价无穷小},
+记作 $\alpha\sim\beta$.}
+
+其实, 只需 $\gamma$ 比这两个无穷小中的一个高阶就够了.
+例如, 若 $\gamma=o(\alpha)$, 则由 $\beta=\alpha+\gamma$ 得
+$$
+\frac\gamma\beta
+=\frac\gamma{\alpha+\gamma}
+=\frac{\gamma/\alpha}{1+\gamma/\alpha}\longrightarrow0,
+$$
+所以也有 $\gamma=o(\beta)$.
+
+考察两个等价无穷小 $\alpha$ 与 $\beta$,
+设 $\beta=\alpha+\gamma$, 其中 $\gamma=o(\alpha)$.
+若采用近似等式 $\beta\approx\alpha$
+\footnote{符号 $\approx$ 表示近似等式.},
+则当这两个量趋于零时, 由这一替换产生的绝对误差 $\abs{\gamma}$ 趋于零,
+相对误差 $\abs{\dfrac\gamma\alpha}$ 也趋于零.
+因此, 当 $\alpha$ 与 $\beta$ 充分接近零时,
+这个近似等式可以达到任意高的相对精度.
+在近似计算中, 便可以把复杂的无穷小换成与它等价的简单无穷小.
+
+下面建立一个有用的判别方法, 它也可以作为等价无穷小的另一个定义.
+
+{\kaishu
+两个无穷小 $\alpha$ 与 $\beta$ 等价的充分必要条件是
+$$
+\lim\frac\beta\alpha=1.
+$$
+}
+
+\begin{proof}
+先设这个极限成立. 令
+$$
+\delta=\frac\beta\alpha-1\longrightarrow0,
+$$
+则 $\gamma=\beta-\alpha=\delta\alpha$,
+从而 $\dfrac\gamma\alpha=\delta\to0$.
+所以 $\gamma=o(\alpha)$, $\alpha$ 与 $\beta$ 等价.
+
+反过来, 若 $\alpha$ 与 $\beta$ 等价,
+则 $\gamma=\beta-\alpha=o(\alpha)$, 因而
+$$
+\frac\beta\alpha-1=\frac\gamma\alpha\longrightarrow0.
+$$
+这就得到 $\dfrac\beta\alpha\to1$, 证明了必要性.
+\end{proof}
+
+用这个判别方法, 立即看出, 当 $x\to0$ 时,
+$\sin x$ 与 $\tan x$ 都和 $x$ 等价,
+而 $\sqrt[m]{1+x}-1$ 与 $\dfrac xm$ 等价, 其中 $m$ 是自然数.
+这些结论已在 \emref{subsec:54} 的例 \ref{ex:sine_over_argument_limit}
+和 \emref{subsec:56} 的例 \ref{ex:rational_power_increment_limit} 中得到,
+正切的情形见 \emref{subsec:60}.
+由此得到近似公式
+$$
+\begin{gathered}
+\sin x\approx x,\qquad\tan x\approx x,\\
+\sqrt[m]{1+x}-1\approx\frac xm,
+\qquad\text{特别地},\quad\sqrt{1+x}-1\approx\frac x2.
+\end{gathered}
+$$
+
+等价无穷小的这个性质还可以用于求 $\dfrac00$ 型未定式的极限.
+{\kaishu 在无穷小比值 $\dfrac\beta\alpha$ 中,
+分子与分母都可以换成与它们等价的无穷小,
+而极限的存在与数值不变.}
+
+这样, 若能把替换后的无穷小选取得足够简单, 问题便会大为简化.
+例如, 当 $x\to0$ 时,
+$$
+\sqrt{1+x+x^2}-1\sim\frac12(x+x^2),\qquad\sin2x\sim2x,
+$$
+于是
+$$
+\lim_{x\to0}\frac{\sqrt{1+x+x^2}-1}{\sin2x}
+=\lim_{x\to0}\frac{\dfrac12(x+x^2)}{2x}=\frac14.
+$$
+
+由上面的性质还可以推得:
+{\kaishu 都与第三个无穷小等价的两个无穷小, 彼此也等价.}
+
+\subsection{主部的分出}\label{subsec:63}
+若选定 $\alpha$ 为基本无穷小, 则形如 $c\alpha^k$ 的量自然可以看作最简单的无穷小,
+其中 $c$ 是异于零的有限常数, $k>0$.
+在使用任意正指数幂时, 仍按 \emref{subsec:61} 中的约定取 $\alpha>0$;
+以下各量都在同一极限过程中比较.
+
+设 $\beta$ 是关于 $\alpha$ 的 $k$ 阶无穷小, 即
+$$
+\lim\frac{\beta}{\alpha^k}=c.
+$$
+于是
+$$
+\lim\frac{\beta}{c\alpha^k}=1.
+$$
+根据 \emref{subsec:62} 的判别方法, $\beta$ 与 $c\alpha^k$ 等价:
+$\beta\sim c\alpha^k$.
+
+{\kaishu 与给定的无穷小 $\beta$ 等价的这个最简单的无穷小 $c\alpha^k$,
+称为 $\beta$ 的\emph{主部}\index{zhubu@主部} (或\emph{主项}\index{zhuxiang@主项}).}
+\label{def:principal_part_infinitesimal}
+
+利用前面已得到的结果, 可以分出一些无穷小的主部.
+例如, 在 $x\to0$ 时以 $\alpha=x$ 为基本无穷小, 就有[\emref{subsec:56}, 例 \ref{ex:trigonometric_limit_applications} 的
+\ref{ex:one_minus_cosine_limit}、\ref{ex:tangent_minus_sine_limit}]
+$$
+1-\cos x\sim\frac12x^2,\qquad
+\tan x-\sin x\sim\frac12x^3.
+$$
+
+若 $x\to+\infty$, 采用 $\alpha=\dfrac1x$ 作为基本无穷小,
+则由 \eqref{eq:radical_difference_order_three_halves} 得
+$$
+\sqrt{x+1}+\sqrt{x-1}-2\sqrt{x}
+\sim-\frac14\brac{\frac1x}^{3/2}.
+$$
+
+同时, 这些结果又可以用来建立近似公式.
+设
+$
+\beta\sim c\alpha^k$,
+即
+$
+\beta=c\alpha^k+\gamma,
+$
+其中 $\gamma=o(\alpha^k)$.
+如果余项 $\gamma$ 也能分出主部, 就可以继续写成
+$
+\gamma=c'\alpha^{k'}+\delta,
+$
+其中 $k'>k$, $\delta=o(\alpha^{k'})$.
+这样便从 $\beta$ 中分出了两个阶数依次增大的主项.
+依次类推.
+
+例如, 当 $x\to0$ 时, 设
+$$
+\sqrt[m]{1+x}-1=\frac xm+\gamma,
+$$
+其中 $m$ 是自然数.
+由 \emref{subsec:56} 的例 \ref{ex:root_second_order_increment_limit}, 已知
+$$
+\lim_{x\to0}\frac\gamma{x^2}=-\frac{m-1}{2m^2}.
+$$
+当 $m>1$ 时, $\gamma$ 的主部是 $-\dfrac{m-1}{2m^2}x^2$.
+因此
+\begin{equation}\label{eq:root_increment_second_order_expansion}
+\sqrt[m]{1+x}-1=\frac xm-\frac{m-1}{2m^2}x^2+o(x^2).
+\end{equation}
+当 $m=1$ 时, $\gamma$ 恒为零, 上式仍然成立, 但这时不把零项称为 $\gamma$ 的主部.
+特别地, 取 $m=2$, 得
+$$
+\sqrt{1+x}-1=\frac12x-\frac18x^2+o(x^2).
+$$
+
+如果各次余项仍能分出主部, 这个逐次分出更高阶主项的过程便可继续进行.
+本节只建立主部的一般概念, 并用少数例子加以说明.
+以后讨论微分与函数展开时, 我们还会介绍分出主部及更高阶主项的系统方法.
+% 原书在此参看第 104、124 小节; 后文尚未启用, 暂以主题文字保留这一前瞻说明.
+
+最后, 再讨论两个无穷小相加时的情形.
+若 $\beta$ 与 $\gamma$ 的主部分别是 $c\alpha^k$ 与 $c'\alpha^{k'}$,
+那么它们的和 $\beta+\gamma$ 的主部怎样确定呢?
+
+当 $k\neq k'$ 时, 较高阶的项相对于较低阶的项是高阶无穷小,
+所以和的主部就是 $c\alpha^k$ 与 $c'\alpha^{k'}$ 中指数较小的那一项.
+当 $k=k'$ 时, 有
+$$
+\beta+\gamma=(c+c')\alpha^k+o(\alpha^k).
+$$
+{\kaishu 若 $c+c'\neq0$, 和的主部就是 $(c+c')\alpha^k$.}
+但若两个主部相消, 即 $c+c'=0$, 则只能得到
+$\beta+\gamma=o(\alpha^k)$.
+这时, 和比每个加数都高阶, 需要继续考察更高阶项.
+
+例如, 在 $x\to0$ 时, 两个无穷小
+$$
+\beta=\sqrt{1+x}-1\sim\frac12x,\qquad
+\gamma=\sqrt{1-x}-1\sim-\frac12x
+$$
+的主部恰好相消.
+由 \eqref{eq:root_increment_second_order_expansion}, 再分出更高阶的主项, 得
+$$
+\beta=\frac12x-\frac18x^2+o(x^2),\qquad
+\gamma=-\frac12x-\frac18x^2+o(x^2).
+$$
+于是
+\begin{equation}\label{eq:principal_part_cancellation_example}
+\beta+\gamma=\sqrt{1+x}+\sqrt{1-x}-2
+=-\frac14x^2+o(x^2).
+\end{equation}
+所以 $\beta+\gamma$ 是二阶无穷小, 它的主部为 $-\dfrac14x^2$.
