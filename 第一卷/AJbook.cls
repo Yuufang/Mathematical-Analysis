@@ -44,6 +44,7 @@
 % 数学公式与符号支持
 \RequirePackage[nointlimits]{amsmath}   % 核心数学环境 (积分上下限置于积分号上下)
 \RequirePackage{amssymb}                % 扩展数学符号库
+\RequirePackage{yhmath}
 \RequirePackage[centercolon]{mathtools} % 增强 amsmath，提供更多数学工具 (冒号垂直居中)
 
 % 实用工具宏包

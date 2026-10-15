@@ -50,6 +50,12 @@
 
 \usepackage{myarrows}				% 使用自定义的可伸缩箭头
 \usepackage{mycommand}				% 引入自定义的惯用的命令
+\makeatletter
+\newcommand{\mywraprefparagraph}[1]{%
+    \par\leavevmode\phantomsection{#1}\quad
+    \protected@edef\@currentlabel{#1}%
+}
+\makeatother
 \counterwithin{equation}{chapter} 	% 公式在每章开始时重新计数
 \renewcommand{\theequation}{\arabic{equation}} % 公式编号只显示本章内序号
 

@@ -1605,9 +1605,9 @@ $$
 这次应用 \emref{subsec:53} 中的数列判据.
 首先注意到, 对任意趋于 $+\infty$ 的自然数列 $\seqset[k]{n}$,
 数列极限的定义都给出
-$$
+\begin{equation}
 \brac{1+\frac1{n_k}}^{n_k}\to\e.
-$$
+\end{equation}
 任取实数列 $\seqset[k]{x}$, 使 $x_k\to+\infty$;
 略去有限个初始项后, 可以假定一切 $x_k>1$.
 令 $n_k=\floor{x_k}$, 则
@@ -1955,9 +1955,9 @@ $$
 \myrefparagraph{3)}\label{ex:rational_power_increment_limit}\label{Newton_equation}
 下面证明: 对任意正有理数 $r$
 \footnote{以后还将把这一公式推广到任意实指数的情形.}, 有
-\begin{equation}\label{eq:rational_power_increment_limit}
+$$
 \lim_{x\to0}\frac{(1+x)^r-1}{x}=r.
-\end{equation}
+$$
 这是一个 $\dfrac00$ 型未定式; 在零点附近取 $1+x>0$.
 
 先考察 $r=n$ 为自然数的情形. 由 Newton 二项式定理,
@@ -2616,3 +2616,239 @@ $$
 =-\frac14x^2+o(x^2).
 \end{equation}
 所以 $\beta+\gamma$ 是二阶无穷小, 它的主部为 $-\dfrac14x^2$.
+
+\subsection{应用题}\label{subsec:64}
+下面举几个应用题, 说明前面关于等价无穷小和主部的结果怎样用于近似计算.
+
+\begin{wrapfigure}[7]{r}{0.52\textwidth}
+    \centering
+        \begin{tikzpicture}
+            \draw[dashed] (-0.3,0)--(6.3,0);
+            \draw[thick]
+                (0,0.5)--(2,-0.5)--(4,0.5)--(6,-0.5);
+            \draw[dashed] (0,0)--(0,0.5);
+            \draw[dashed] (2,0)--(2,-0.5);
+            \draw[dashed] (4,0.5)--(4,0);
+            \draw[dashed] (6,-0.5)--(6,0);
+
+            \node[left,scale=0.8]
+                at (0,0.25) {$\lambda$};
+            \node[right,scale=0.8]
+                at (2,-0.25) {$\lambda$};
+            \node[above,scale=0.8]
+                at (0.55,0.38) {$\dfrac l2$};
+            \node[below,scale=0.8]
+                at (1.45,-0.38) {$\dfrac l2$};
+        \end{tikzpicture}
+\end{wrapfigure}
+\mywraprefparagraph{1)}\label{ex:measuring_ruler_alignment_error}
+用一把长为 $l$ 米的尺测量某处的直线距离.
+如果放尺时没有准确地沿着所测的直线,
+测得的长度便会比实际距离大一些.
+现在考察最不利的情形: 各次放尺形成锯齿形,
+尺的两端交替地偏在直线的两侧,
+离开直线的距离都是 $\lambda$ 米, 见右图.
+试估计由此产生的误差.
+
+每放下一次尺, 绝对误差等于尺长 $l$ 与它在所测直线上的投影长度之差.
+由图中的直角三角形, 这个投影的长度为
+$$
+2\sqrt{\brac{\frac l2}^2-\lambda^2}
+=l\sqrt{1-\frac{4\lambda^2}{l^2}}.
+$$
+这里 $0\leq\lambda<l/2$, 并且假定 $\lambda$ 比 $l$ 小得多.
+应用 \emref{subsec:62} 中的近似公式
+$$
+\sqrt{1+x}\approx1+\frac x2,
+$$
+取 $x=-\dfrac{4\lambda^2}{l^2}$, 就可以把投影长度近似写成
+$$
+l\brac{1-\frac{2\lambda^2}{l^2}}
+=l-\frac{2\lambda^2}{l}.
+$$
+因此, 每次放尺的绝对误差近似为 $\dfrac{2\lambda^2}{l}$,
+相对误差近似为 $\dfrac{2\lambda^2}{l^2}$.
+各次放尺的误差按同样的比例累积, 所以这个相对误差不随所测距离的长短而改变.
+
+若要求相对误差小于 $\delta$, 按这个近似估计, 应有
+$$
+\frac{2\lambda^2}{l^2}<\delta,
+\qquad\text{即}\qquad
+\lambda<l\sqrt{\frac\delta2}.
+$$
+例如, 用 $2$ 米长的尺测量时, 要达到 $0.001$ 的相对精度,
+偏差 $\lambda$ 约须限制在
+$
+2\sqrt{0.0005}\approx0.0447\text{ 米}\approx4.5\text{ 厘米}
+$
+以内.
+
+\myrefparagraph{2)}\label{ex:open_belt_length}
+求一条开接皮带的长度 $l$.
+它套在两个互不相交的皮带轮上, 两轮的半径分别为 $R$ 与 $r$,
+其中 $R\geq r>0$, 轮心 $O$ 与 $o$ 之间的距离为 $d$.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+        \pgfmathsetmacro{\beltangle}{asin((1.6-0.7)/4.4)}
+        \coordinate (O) at (0,0);
+        \coordinate (o) at (4.4,0);
+        \coordinate (A) at (-1.6,0);
+        \coordinate (a) at (5.1,0);
+        \coordinate (B) at (0,1.6);
+        \coordinate (b) at (4.4,0.7);
+        \coordinate (C) at ({1.6*sin(\beltangle)},{1.6*cos(\beltangle)});
+        \coordinate (c) at ({4.4+0.7*sin(\beltangle)},{0.7*cos(\beltangle)});
+        \coordinate (D) at ({0.9*sin(\beltangle)},{0.9*cos(\beltangle)});
+        \coordinate (Cbottom) at ({1.6*sin(\beltangle)},{-1.6*cos(\beltangle)});
+        \coordinate (cbottom) at ({4.4+0.7*sin(\beltangle)},{-0.7*cos(\beltangle)});
+        \draw[thick] (O) circle (1.6);
+        \draw[thick] (o) circle (0.7);
+        \draw[thick] (C)--(c);
+        \draw[thick] (Cbottom)--(cbottom);
+        \draw[dashed] (-1.6,0)--(5.1,0);
+        \draw[dashed] (0,-0.2)--(0,1.85);
+        \draw[dashed] (4.4,-0.2)--(4.4,1.0);
+        \draw (O)--(C);
+        \draw (o)--(c);
+        \draw (D)--(o);
+        \draw ({0.56*sin(\beltangle)},{0.56*cos(\beltangle)})
+            arc[start angle={90-\beltangle},end angle=90,radius=0.56];
+        \draw (0.058,0.557)--(-0.25,0.6);
+        \node[left,scale=0.8] at (-0.25,0.6) {$\alpha$};
+        \draw[dashed] (0,-0.2)--(0,-2.05);
+        \draw[dashed] (4.4,-0.2)--(4.4,-2.05);
+        \draw[latex-latex] (0,-1.9)--(4.4,-1.9)
+            node[midway,below,scale=0.8] {$d$};
+        \node[left,scale=0.8] at (0,1.1) {$R$};
+        \node[left,scale=0.8] at (4.4,0.4) {$r$};
+        \foreach \point in {O,o,A,a,B,b,C,c,D}{
+            \fill (\point) circle (1.2pt);
+        }
+        \node[below left,scale=0.8] at (O) {$O$};
+        \node[below right,scale=0.8] at (o) {$o$};
+        \node[left,scale=0.8] at (A) {$A$};
+        \node[right,scale=0.8] at (a) {$a$};
+        \node[above left,scale=0.8] at (B) {$B$};
+        \node[above left,scale=0.8] at (b) {$b$};
+        \node[above right,scale=0.8] at (C) {$C$};
+        \node[above right,scale=0.8] at (c) {$c$};
+        \draw (D)--(0.47,1.08);
+        \node[right,scale=0.8] at (0.47,1.08) {$D$};
+    \end{tikzpicture}
+\end{figure}
+
+图中 $C,c$ 是上侧公切线与两轮的切点, $B,b$ 分别在两轮心的正上方.
+从 $o$ 向半径 $OC$ 作垂线, 垂足为 $D$.
+设相等的角 $\angle BOC$ 与 $\angle boc$ 的弧度为 $\alpha$.
+上半条皮带由两段圆弧 $\wideparen{AC}$、$\wideparen{ca}$ 和线段 $Cc$ 组成, 所以
+$$
+\frac l2=\wideparen{AC}+Cc+\wideparen{ca}.
+$$
+两段圆弧的长度分别为
+$$
+\wideparen{AC}=R\brac{\frac\pi2+\alpha},
+\qquad
+\wideparen{ca}=r\brac{\frac\pi2-\alpha}.
+$$
+又因为 $OD=R-r$, 由直角三角形 $ODo$ 得
+$$
+Cc=Do=\sqrt{d^2-(R-r)^2}.
+$$
+于是皮带长度的精确公式为
+$$
+l=\pi(R+r)+2\alpha(R-r)+2\sqrt{d^2-(R-r)^2}.
+$$
+
+为了化简这个公式, 假定 $R-r$ 比 $d$ 小得多.
+由图中的几何关系及 $\sin\alpha\sim\alpha$, 有
+$$
+\alpha\approx\sin\alpha=\frac{OD}{Oo}=\frac{R-r}{d}.
+$$
+在同一假定下, 应用前面的根式近似公式, 又有
+$$
+\sqrt{d^2-(R-r)^2}
+=d\sqrt{1-\brac{\frac{R-r}{d}}^2}
+\approx d\bbrac{1-\frac12\brac{\frac{R-r}{d}}^2}.
+$$
+最后整理便得
+$$
+l\approx\pi(R+r)+2d+\frac{(R-r)^2}{d}.
+$$
+
+\begingroup
+\setlength{\parskip}{0pt}
+
+\begin{wrapfigure}[8]{r}{0.43\textwidth}
+    \vspace{-0.5cm}
+    \centering
+    \begin{tikzpicture}
+        \coordinate (O) at (0,-2.6);
+        \coordinate (A) at (-2.12132,-0.47868);
+        \coordinate (B) at (0,0.4);
+        \coordinate (C) at (2.12132,-0.47868);
+        \coordinate (B1) at (-1.14805,0.17164);
+        \coordinate (D) at (0,-0.47868);
+        \coordinate (D1) at (-1.06066,-0.03934);
+        \draw[thick] (A) arc[start angle=135,end angle=45,radius=3];
+        \draw[thick] (A)--(C);
+        \draw (A)--(B);
+        \draw (O)--(A) node[midway,left,scale=0.8] {$r$};
+        \draw (O)--(B);
+        \draw (O)--(B1);
+        \draw[dashed] (B)--(1,0.4);
+        \draw[dashed] (B)--(0.5,0.60711);
+        \draw[dashed] (B1)--(0.4,0.81286);
+        \draw (0,-2.18) arc[start angle=90,end angle=135,radius=0.42];
+        \node[scale=0.8] at (-0.36,-2.13) {$\varphi$};
+        \draw[dashed] (B)--(0.35,0.4);
+        \draw[dashed] (D)--(0.35,-0.47868);
+        \draw[latex-latex] (1,-0.47868)--(1,0.4)
+            node[midway,right,scale=0.8] {$f$};
+        \node[scale=0.8] at (0.6,0.7) {$f_1$};
+        \foreach \point in {O,A,B,C,B1,D,D1}{
+            \fill (\point) circle (1.2pt);
+        }
+        \node[below,scale=0.8] at (O) {$O$};
+        \node[left,scale=0.8] at (A) {$A$};
+        \node[below right,scale=0.8] at (B) {$B$};
+        \node[right,scale=0.8] at (C) {$C$};
+        \node[above left,scale=0.8] at (B1) {$B_1$};
+        \node[below right,scale=0.8] at (D) {$D$};
+        \node[below right,scale=0.8] at (D1) {$D_1$};
+    \end{tikzpicture}
+\end{wrapfigure}
+\mywraprefparagraph{3)}\label{ex:half_arc_sagitta_ratio}
+在分割圆弧时, 下面的问题很有用:
+求圆弧 $ABC$ 的弓高 (也称为矢) $f=DB$,
+与其半弧 $AB_1B$ 的弓高 $f_1=D_1B_1$ 的比值.
+
+这里 $B$ 是圆弧 $ABC$ 的中点, $B_1$ 是半弧 $AB$ 的中点;
+$D,D_1$ 分别是弦 $AC,AB$ 的中点.
+设圆的半径为 $r$, $\angle AOB$ 的弧度为 $\varphi$, 则 $\angle AOB_1$ 的弧度为 $\dfrac\varphi2$.
+由图可得
+$$
+f=r(1-\cos\varphi),
+\qquad
+f_1=r\brac{1-\cos\frac\varphi2}.
+$$
+所以, 所求的比值为
+$$
+\frac f{f_1}
+=\frac{1-\cos\varphi}{1-\cos\dfrac\varphi2}.
+$$
+
+为了得到便于实际使用的近似值, 我们求这个比值在 $\varphi\to0^+$ 时的极限.
+由 \emref{subsec:63} 中的结果, 分子和分母可以分别换成它们的主部,
+于是
+$$
+\lim_{\varphi\to0^+}\frac f{f_1}
+=\lim_{\varphi\to0^+}
+\frac{\dfrac12\varphi^2}{\dfrac12\brac{\dfrac\varphi2}^2}
+=4.
+$$
+因此, 当圆弧对应的中心角较小时, 它的弓高近似为半弧弓高的四倍.
+只要已知一段圆弧的两个端点及其中点, 就可以利用这个关系逐次近似确定许多中间点.
+\par
+\endgroup
