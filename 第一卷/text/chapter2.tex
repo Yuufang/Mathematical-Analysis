@@ -2852,3 +2852,40 @@ $$
 只要已知一段圆弧的两个端点及其中点, 就可以利用这个关系逐次近似确定许多中间点.
 \par
 \endgroup
+
+\subsection{无穷大的分阶}\label{subsec:65}
+对于无穷大量, 也可以像 \emref{subsec:60} 中对无穷小量所做的那样进行比较.
+设 $y$ 与 $z$ 都是同一变量 $x$ 的函数, 在 $x\to a$ 时成为无穷大,
+其中 $a$ 可以是有限数或 $+\infty$、$-\infty$.
+这里仍按无穷大的定义理解, 即 $\abs{y}$ 与 $\abs{z}$ 都趋于 $+\infty$.
+
+\myrefparagraph{I.}\label{def:same_order_infinities}
+{\kaishu 若比值 $\dfrac zy$ 有异于零的有限极限,
+则称 $y$ 与 $z$ 为\emph{同阶无穷大}\index{tongjiewuqiongda@同阶无穷大}.
+这时, 倒数 $\dfrac yz$ 同样也有异于零的有限极限.}
+
+\myrefparagraph{II.}\label{def:higher_order_infinity}
+{\kaishu 若比值 $\dfrac zy$ 成为无穷大, 即 $\abs{\dfrac zy}\to+\infty$,
+则称 $z$ 为比 $y$ \emph{高阶的无穷大}\index{gaojiewuqiongda@高阶无穷大},
+而 $y$ 为比 $z$ \emph{低阶的无穷大}\index{dijiewuqiongda@低阶无穷大}.}
+这时, 倒数 $\dfrac yz$ 趋于零.
+
+若比值 $\dfrac zy$ 既没有有限极限, 也不成为无穷大,
+就说这两个无穷大不能比较.
+
+在同时考察一系列无穷大量时, 可以选取其中一个 $y$ 作为\emph{基本无穷大}\index{jibenwuqiongda@基本无穷大}\label{def:basic_infinity},
+再把其余的量与 $y$ 的幂比较.
+例如, 当 $x\to+\infty$ 或 $x\to-\infty$ 时, 通常取 $y=\abs{x}$;
+当 $x$ 趋于有限数 $a$ 时, 通常取 $y=\dfrac1{\abs{x-a}}$.
+为使任意正实数指数的幂都有意义, 以下取正值的基本无穷大 $y$.
+
+\myrefparagraph{III.}\label{def:order_of_infinity}
+{\kaishu 若 $z$ 与 $y^k\ (k>0)$ 是同阶无穷大,
+即比值 $\dfrac z{y^k}$ 有异于零的有限极限,
+则称 $z$ 为关于基本无穷大 $y$ 的
+\emph{$k$ 阶无穷大}\index{wuqiongdadejie@无穷大的阶}.}
+
+把前面考察过的无穷小量换成它们的倒数, 就容易得到无穷大分阶的例子.
+这里仅指出, 当 $x\to+\infty$ 时, $a^x\ (a>1)$ 是比任何幂 $x^k\ (k>0)$
+都高阶的无穷大, 而 $\log_a x\ (a>1)$ 是比任何这样的幂都低阶的无穷大.
+这正是 \emref{subsec:61} 中 \eqref{eq:exponential_logarithm_vs_powers} 的结论.
