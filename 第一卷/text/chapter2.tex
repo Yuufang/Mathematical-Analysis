@@ -2617,6 +2617,7 @@ $$
 \end{equation}
 所以 $\beta+\gamma$ 是二阶无穷小, 它的主部为 $-\dfrac14x^2$.
 
+\raggedbottom
 \subsection{应用题}\label{subsec:64}
 下面举几个应用题, 说明前面关于等价无穷小和主部的结果怎样用于近似计算.
 
@@ -2777,9 +2778,6 @@ $$
 l\approx\pi(R+r)+2d+\frac{(R-r)^2}{d}.
 $$
 
-\begingroup
-\setlength{\parskip}{0pt}
-
 \begin{wrapfigure}[8]{r}{0.43\textwidth}
     \vspace{-0.5cm}
     \centering
@@ -2850,9 +2848,8 @@ $$
 $$
 因此, 当圆弧对应的中心角较小时, 它的弓高近似为半弧弓高的四倍.
 只要已知一段圆弧的两个端点及其中点, 就可以利用这个关系逐次近似确定许多中间点.
-\par
-\endgroup
 
+\flushbottom
 \subsection{无穷大的分阶}\label{subsec:65}
 对于无穷大量, 也可以像 \emref{subsec:60} 中对无穷小量所做的那样进行比较.
 设 $y$ 与 $z$ 都是同一变量 $x$ 的函数, 在 $x\to a$ 时成为无穷大,
@@ -3369,3 +3366,527 @@ $$
 若 $x_0$ 是有理数, 则 $R(x_0)>0$, 不等于相应的极限.
 所以, 函数在每个有理内点的两方都有第一类间断;
 在端点 $0$ 和 $1$ 处, 则分别有第一类右间断和左间断.
+
+\subsection{单调函数的连续性及间断}\label{subsec:71}
+考察定义在区间 $\X$ 上的单调函数 $f(x)$
+\footnote{这区间可以是有限的, 也可以是无穷的; 可以是闭的、开的或一端开的.}.
+这里的单调性包括广义的单调性, 即单调不减或单调不增
+[\emref{subsec:57}]. 关于这种函数, 有下面的定理.
+
+\myrefparagraph{1\textdegree}\label{thm:monotone_discontinuity}
+{\kaishu 单调函数 $f(x)$ 在区间 $\X$ 内若有间断,
+只能有第一类间断, 即跃度.}
+
+先设 $f(x)$ 单调不减.
+取 $x_0\in\X$, 并设它不是区间的左端点.
+在 $x_0$ 左方的部分区间上, $f(x)$ 仍单调不减, 而且有上界 $f(x_0)$.
+应用 \emref{subsec:57} 中关于单调函数的极限定理, 可知存在有限的极限
+$$
+f(x_0^-)=\lim_{x\to x_0^-}f(x)\leq f(x_0).
+$$
+若 $f(x_0^-)=f(x_0)$, 则函数在点 $x_0$ 左连续;
+若 $f(x_0^-)<f(x_0)$, 则有第一类左间断, 即跃度.
+
+若 $x_0$ 不是区间的右端点, 则在它右方的部分区间上,
+函数仍单调不减, 而且有下界 $f(x_0)$.
+由同一极限定理, 存在有限的极限
+$$
+f(x_0^+)=\lim_{x\to x_0^+}f(x)\geq f(x_0).
+$$
+根据它是否等于 $f(x_0)$, 函数在这点右连续或有第一类右间断.
+对于单调不增的函数, 对 $-f(x)$ 应用上述论证, 就得到相同的结论.
+在属于 $\X$ 的端点处, 只考察定义区间内一侧的连续性或间断.
+
+由此可以建立一个便于应用的单调函数连续性判据
+\index{dandiao@单调函数!lianxuxingpanju@连续性判据}.
+
+\myrefparagraph{2\textdegree}\label{thm:monotone_interval_range_continuity}
+{\kaishu 若函数 $f(x)$ 在区间 $\X$ 上单调,
+它的所有函数值都属于区间 $\Y$, 并且取遍 $\Y$
+(即 $\Y$ 中每个数 $y$ 都至少有一次被取作函数值),
+则 $f(x)$ 在 $\X$ 上连续}
+\footnote{函数的值集填满区间 $\Y$ 在这里是单调函数连续的充分条件;
+后面还将证明它也是必要条件.}.
+
+仍先设 $f(x)$ 单调不减. 假定它在某点 $x_0\in\X$ 左间断.
+由刚才的结论, 存在有限的极限, 并且
+$$
+f(x_0^-)<f(x_0).
+$$
+当 $x<x_0$ 时, 有 $f(x)\leq f(x_0^-)$;
+当 $x\geq x_0$ 时, 有 $f(x)\geq f(x_0)$.
+所以函数不能取到任何介于 $f(x_0^-)$ 与 $f(x_0)$ 之间的数值 $y$.
+但在 $x_0$ 左方任取一点 $x_1\in\X$,
+由于 $f(x_1)\leq f(x_0^-)<y<f(x_0)$,
+而 $f(x_1)$ 和 $f(x_0)$ 都属于区间 $\Y$, 这样的 $y$ 也必属于 $\Y$.
+这就与函数取遍 $\Y$ 的条件矛盾.
+
+若函数在 $x_0$ 右间断, 则有 $f(x_0)<f(x_0^+)$.
+当 $x\leq x_0$ 时, $f(x)\leq f(x_0)$;
+当 $x>x_0$ 时, $f(x)\geq f(x_0^+)$.
+取右方一点 $x_1\in\X$, 由区间 $\Y$ 包含 $f(x_0)$ 和 $f(x_1)$,
+可知介于 $f(x_0)$ 与 $f(x_0^+)$ 之间的数也属于 $\Y$,
+却不能被函数取到. 这又产生矛盾.
+因此, 函数在 $\X$ 上没有间断.
+单调不增时, 对 $-f(x)$ 及其值集所成的区间应用上述证明即可.
+
+下一小节中的例子将说明这个判据的应用.
+
+\subsection{初等函数的连续性}\label{subsec:72}
+在 \emref{subsec:68} 中, 我们已经用例题的形式证明了一些初等函数的连续性.
+应用前一小节的判据 \ref{thm:monotone_interval_range_continuity},
+还可以重新得到指数函数和正弦函数的连续性.
+
+当 $x$ 在区间 $\X=(-\infty,+\infty)$ 上变动时,
+函数 $y=a^x$ ($a>1$) 单调递增, 它的函数值都是正数, 并取遍区间
+$\Y=(0,+\infty)$.
+这是因为对于任意 $y>0$, 对数 $x=\log_a y$ 都存在
+[\emref{subsec:20}], 并满足 $a^x=y$.
+因此, 指数函数在每个实数点都连续.
+
+在区间 $\X=\bbrac{-\dfrac\pi2,\dfrac\pi2}$ 上,
+函数 $y=\sin x$ 单调递增, 并且取遍区间 $[-1,1]$.
+后一事实可以由正弦函数的几何意义得到.
+所以, 正弦函数在这个区间上连续.
+在任意形如
+$$
+\bbrac{k\pi-\frac\pi2,k\pi+\frac\pi2}\qquad(k\in\Z)
+$$
+的区间上, 它也具有单调性并取遍 $[-1,1]$, 因而连续.
+在相邻区间的公共端点, 左右连续性合在一起给出连续性.
+
+更有用的是, 同一判据还可以得到新的结果.
+下面接续 \emref{subsec:68} 中基本初等函数的例题编号.
+
+\myrefparagraph{5\textdegree}\label{ex:logarithm_continuity}
+对数函数 $y=\log_a x$ ($a>0$, $a\neq1$).
+当 $x$ 在区间 $\X=(0,+\infty)$ 上变动时,
+若 $a>1$, 这个函数单调递增; 若 $0<a<1$, 则单调递减.
+对于任意实数 $y$, 取 $x=a^y>0$, 就有 $\log_a x=y$.
+所以它的值集是整个区间 $\Y=(-\infty,+\infty)$.
+由前面的判据, 对数函数在 $(0,+\infty)$ 上连续.
+
+\myrefparagraph{6\textdegree}\label{ex:real_power_continuity}
+幂函数 $y=x^\mu$ ($\mu\neq0$).
+当 $x$ 在 $(0,+\infty)$ 上变动时,
+若 $\mu>0$, 则函数单调递增; 若 $\mu<0$, 则函数单调递减.
+对于任意 $y>0$, 取 $x=y^{1/\mu}>0$, 就有 $x^\mu=y$.
+因此它取遍 $(0,+\infty)$, 也是连续的
+\footnote{当 $\mu>0$ 时, 还可把 $x=0$ 和 $y=0$ 包括在相应区间内;
+当 $\mu<0$ 时, 零点不包括在内.
+此外, 若 $\mu$ 是非零整数或最简分数的分母为奇数的有理数,
+则也可以在 $x<0$ 时考察 $x^\mu$, 这时的连续性可用相同的判据证明.}.
+
+\myrefparagraph{7\textdegree}\label{ex:inverse_trigonometric_continuity}
+反三角函数
+$$
+y=\arcsin x,\qquad y=\arccos x,\qquad
+y=\arctan x,\qquad y=\operatorname{arccot}x.
+$$
+这里都取 \emref{subsec:50} 中的主值.
+前两个函数在区间 $[-1,1]$ 上连续, 后两个函数在区间
+$(-\infty,+\infty)$ 上连续.
+它们的连续性也可应用前面的判据证明, 证明留给读者.
+
+这样可以总括起来说:
+{\kaishu 基本初等函数在它们的自然定义域内都是连续的.}
+
+\subsection{连续函数的复合}\label{subsec:73}
+将已知的连续函数进行复合 [\emref{subsec:51}], 可以构成更多的连续函数.
+这以下面的定理为基础.
+
+\begin{theorem}\label{thm:continuity_composition}
+设函数 $\varphi(y)$ 定义在区间 $\Y$ 上, 函数 $f(x)$ 定义在区间 $\X$ 上,
+并且当 $x$ 在 $\X$ 内变动时, $f(x)$ 的值都属于 $\Y$.
+若 $f(x)$ 在点 $x_0\in\X$ 处连续,
+而 $\varphi(y)$ 在相应的点 $y_0=f(x_0)\in\Y$ 处连续,
+则复合函数 $\varphi(f(x))$ 在点 $x_0$ 处也连续.
+\end{theorem}
+\index{fuhehanshu@复合函数!lianxuxing@连续性}
+
+\begin{proof}
+任给 $\epsilon>0$. 由于 $\varphi(y)$ 在 $y_0$ 处连续,
+存在 $\sigma>0$, 使 $\Y$ 内满足 $\abs{y-y_0}<\sigma$ 的一切 $y$ 都满足
+$$
+\abs{\varphi(y)-\varphi(y_0)}<\epsilon.
+$$
+
+另一方面, 由于 $f(x)$ 在 $x_0$ 处连续, 对这个 $\sigma$,
+存在 $\delta>0$, 使 $\X$ 内满足 $\abs{x-x_0}<\delta$ 的一切 $x$ 都满足
+$$
+\abs{f(x)-f(x_0)}=\abs{f(x)-y_0}<\sigma.
+$$
+由假设, $f(x)\in\Y$, 因而可以把 $y=f(x)$ 代入前面的不等式, 得到
+$$
+\abs{\varphi(f(x))-\varphi(f(x_0))}
+=\abs{\varphi(f(x))-\varphi(y_0)}<\epsilon.
+$$
+这就用“$\epsilon$--$\delta$ 的语言”证明了复合函数在 $x_0$ 处的连续性.
+\end{proof}
+
+例如, 把幂函数 $x^\mu$ ($x>0$) 写成
+$$
+x^\mu=\e^{\mu\ln x},
+$$
+这个表示由对数函数、乘以常数及指数函数复合而成.
+由它们的连续性和上面的定理, 就可以得到幂函数在 $(0,+\infty)$ 上的连续性.
+
+\subsection{一个函数方程的解}\label{subsec:74}
+为使下一小节的叙述简化, 先研究下面这个本身也很有趣的问题:
+{\kaishu 求在整个区间 $(-\infty,+\infty)$ 上连续, 并且对任意实数 $x$、$y$ 都满足
+\begin{equation}\label{eq:additive_function_equation}
+f(x+y)=f(x)+f(y)
+\tag{A}
+\end{equation}
+的所有函数 $f(x)$.}
+
+方程 \eqref{eq:additive_function_equation} 是\emph{函数方程}\index{hanshufangcheng@函数方程}的一个最简单的例子.
+它表示所求函数的一种性质, 我们要根据这种性质求出未知函数.
+这里的任务是求出这个方程的全部连续解.
+
+很容易看出, 线性齐次函数
+\begin{equation}\label{eq:additive_linear_solution}
+f(x)=cx\qquad(c\text{ 是常数})
+\tag{a}
+\end{equation}
+满足这个方程.
+现在的问题是, 方程的每一个连续解是否都具有形式 \eqref{eq:additive_linear_solution}?
+为此, 我们先假定连续函数 $f(x)$ 满足 \eqref{eq:additive_function_equation},
+然后证明它必定具有这个形式.
+
+首先, 用数学归纳法把加法关系推广到任意有限个加数:
+\begin{equation}\label{eq:additive_finite_sum}
+f(x_1+x_2+\cdots+x_n)=f(x_1)+f(x_2)+\cdots+f(x_n).
+\end{equation}
+当 $n=2$ 时, 这就是原来的方程.
+若关系式对 $n\geq2$ 个加数成立, 则
+\begin{align*}
+f(x_1+\cdots+x_n+x_{n+1})
+&=f(x_1+\cdots+x_n)+f(x_{n+1})\\
+&=f(x_1)+\cdots+f(x_n)+f(x_{n+1}),
+\end{align*}
+因而对 $n+1$ 个加数也成立.
+在 \eqref{eq:additive_finite_sum} 中令各个加数都等于 $x$, 就得到
+\begin{equation}\label{eq:additive_positive_integer_scaling}
+f(nx)=nf(x)\qquad(n=1,2,\cdots).
+\end{equation}
+这里 $n=1$ 时的关系当然也成立.
+把 $x$ 换成 $\dfrac{x}{n}$, 得到
+$$
+f\brac{\frac{x}{n}}=\frac1n f(x).
+$$
+再把这里的 $x$ 换成 $mx$, 并应用前面的整数倍关系, 就有
+\begin{equation}\label{eq:additive_positive_rational_scaling}
+f\brac{\frac mn x}=\frac mn f(x)\qquad(m,n=1,2,\cdots).
+\end{equation}
+
+在基本方程 \eqref{eq:additive_function_equation} 中令 $x=y=0$, 得到
+\begin{equation}\label{eq:additive_zero_value}
+f(0)=2f(0),\qquad\text{因而}\quad f(0)=0.
+\end{equation}
+再取 $y=-x$, 便有
+$$
+0=f(x)+f(-x),\qquad\text{即}\quad f(-x)=-f(x).
+$$
+所以函数在自变量变号时也变号.
+由 \eqref{eq:additive_positive_integer_scaling} 和
+\eqref{eq:additive_positive_rational_scaling}, 分别得到
+\begin{equation}\label{eq:additive_negative_integer_scaling}
+f(-nx)=-f(nx)=-nf(x),
+\end{equation}
+以及
+\begin{equation}\label{eq:additive_negative_rational_scaling}
+f\brac{-\frac mn x}=-\frac mn f(x).
+\end{equation}
+
+结合 \eqref{eq:additive_zero_value}, 这些关系可以合写为
+$$
+f(rx)=rf(x),
+$$
+其中 $x$ 是任意实数, $r$ 是任意有理数.
+取 $x=1$, 并记 $c=f(1)$, 就得到
+$$
+f(r)=cr\qquad(r\in\Q).
+$$
+至此, 我们只利用了函数满足方程 \eqref{eq:additive_function_equation} 这一事实,
+还没有用到连续性; 形式 \eqref{eq:additive_linear_solution} 也只在有理点上得到证明.
+
+现在任取一个无理数 $\rho$, 选取收敛于它的有理数列
+$$
+r_1,\ r_2,\ \cdots,\ r_n,\ \cdots.
+$$
+对每个 $n$, 都有
+$$
+f(r_n)=cr_n.
+$$
+令 $n\to+\infty$. 右边趋于 $c\rho$;
+由 $f$ 在 $\rho$ 处的连续性, 左边趋于 $f(\rho)$.
+因此
+$$
+f(\rho)=c\rho.
+$$
+这就证明了形式 \eqref{eq:additive_linear_solution} 对所有实数都成立.
+于是, {\kaishu 方程 \eqref{eq:additive_function_equation} 的全部连续解恰为
+$f(x)=cx$, 其中 $c$ 是任意实常数.}
+
+\subsection{指数函数、对数函数及幂函数的函数特性}\label{subsec:75}
+\myrefparagraph{1\textdegree}\label{ex:exponential_functional_characterization}
+如果
+\begin{equation}\label{eq:exponential_function_form}
+f(x)=a^x\qquad(a>0),
+\tag{b}
+\end{equation}
+则对任意实数 $x$、$y$, 都有
+\begin{equation}\label{eq:exponential_function_equation}
+f(x+y)=f(x)f(y).
+\tag{B}
+\end{equation}
+这就是乘幂法则 $a^{x+y}=a^x a^y$.
+
+与上一小节类似, 性质 \eqref{eq:exponential_function_equation} 加上连续性,
+就完全确定了指数函数. 准确地说:
+{\kaishu 除去恒等于零的函数, 方程 \eqref{eq:exponential_function_equation}
+在整个区间 $(-\infty,+\infty)$ 上的连续解恰为
+$f(x)=a^x$, 其中 $a>0$.}
+\index{hanshufangcheng@函数方程!zhishuhanshu@指数函数}
+也就是说, 公式 \eqref{eq:exponential_function_form} 给出了这个方程的全部非零连续解.
+
+为证明这一点, 设连续函数 $f(x)$ 在整个实数轴上满足
+\eqref{eq:exponential_function_equation}, 并且不恒等于零.
+于是存在 $x_0$, 使 $f(x_0)\neq0$.
+在方程中令 $y=x_0-x$, 得到
+$$
+f(x)f(x_0-x)=f(x_0)\neq0.
+$$
+因此, 对每个实数 $x$, 都有 $f(x)\neq0$.
+再把方程中的 $x$、$y$ 都换成 $\dfrac x2$, 就有
+$$
+f(x)=\bbrac{f\brac{\frac x2}}^2>0.
+$$
+这样就可以对 \eqref{eq:exponential_function_equation} 两边取自然对数:
+$$
+\ln f(x+y)=\ln f(x)+\ln f(y).
+$$
+令 $\varphi(x)=\ln f(x)$. 由 \emref{subsec:73} 的复合函数连续性定理,
+$\varphi$ 连续, 并且满足
+$$
+\varphi(x+y)=\varphi(x)+\varphi(y).
+$$
+这就是上一小节研究的方程 \eqref{eq:additive_function_equation}, 因而
+$$
+\varphi(x)=\ln f(x)=cx\qquad(c\text{ 是常数}).
+$$
+最后, 令 $a=\e^c>0$, 便得到
+$$
+f(x)=\e^{cx}=a^x.
+$$
+这就证明了所说的结论.
+
+\myrefparagraph{2\textdegree}\label{ex:logarithm_functional_characterization}
+若
+\begin{equation}\label{eq:logarithm_function_form}
+f(x)=\log_a x\qquad(a>0,\ a\neq1),
+\tag{c}
+\end{equation}
+则对任意正数 $x$、$y$, 都有
+\begin{equation}\label{eq:logarithm_function_equation}
+f(xy)=f(x)+f(y).
+\tag{C}
+\end{equation}
+这就是积的对数法则 $\log_a(xy)=\log_a x+\log_a y$.
+这里, 这个等式加上连续性, 也给出了对数函数的全部特征性质:
+{\kaishu 除去恒等于零的函数, 方程 \eqref{eq:logarithm_function_equation}
+在区间 $(0,+\infty)$ 上的连续解恰为
+$f(x)=\log_a x$, 其中 $a>0$ 且 $a\neq1$.}
+\index{hanshufangcheng@函数方程!duishuhanshu@对数函数}
+
+为着证明, 设 $f(x)$ 是这个方程在 $(0,+\infty)$ 上的任意连续解.
+引入可取一切实数值的新变量 $\xi$, 令
+$$
+x=\e^\xi,\qquad\varphi(\xi)=f(\e^\xi).
+$$
+于是 $\xi=\ln x$, 且 $f(x)=\varphi(\ln x)$.
+由 \emref{subsec:73}, 函数 $\varphi$ 连续; 而由
+\eqref{eq:logarithm_function_equation}, 有
+$$
+\varphi(\xi+\eta)
+=f(\e^{\xi+\eta})=f(\e^\xi\e^\eta)
+=f(\e^\xi)+f(\e^\eta)=\varphi(\xi)+\varphi(\eta).
+$$
+所以, 再应用 \emref{subsec:74} 的结论, 得到
+$$
+\varphi(\xi)=c\xi,\qquad f(x)=c\ln x.
+$$
+当 $c=0$ 时, $f(x)\equiv0$.
+除去这个情形, 令 $a=\e^{1/c}$, 就有 $a>0$、$a\neq1$, 并且
+$$
+f(x)=\log_a x.
+$$
+
+\myrefparagraph{3\textdegree}\label{ex:power_functional_characterization}
+最后, 考察幂函数
+\begin{equation}\label{eq:power_function_form}
+f(x)=x^\mu\qquad(x>0),
+\tag{d}
+\end{equation}
+其中 $\mu$ 是任意实常数.
+对任意正数 $x$、$y$, 它满足函数方程
+\begin{equation}\label{eq:power_function_equation}
+f(xy)=f(x)f(y),
+\tag{D}
+\end{equation}
+因为 $(xy)^\mu=x^\mu y^\mu$.
+这个方程加上连续性, 同样给出了幂函数的全部特征性质:
+{\kaishu 除去恒等于零的函数, 方程 \eqref{eq:power_function_equation}
+在区间 $(0,+\infty)$ 上的连续解恰为 $f(x)=x^\mu$, 其中 $\mu\in\R$.}
+\index{hanshufangcheng@函数方程!mihanshu@幂函数}
+
+同样, 设 $f(x)$ 是这个方程在 $(0,+\infty)$ 上的非零连续解.
+仍作上一题中的代换, 令 $\varphi(\xi)=f(\e^\xi)$.
+函数 $\varphi$ 在整个实数轴上连续、不恒等于零, 并且满足
+$$
+\varphi(\xi+\eta)
+=f(\e^{\xi+\eta})=f(\e^\xi\e^\eta)
+=f(\e^\xi)f(\e^\eta)=\varphi(\xi)\varphi(\eta).
+$$
+由本节第 \ref{ex:exponential_functional_characterization} 题的结论,
+存在 $a>0$, 使
+\begin{center}
+$
+\varphi(\xi)=a^\xi.
+$
+\end{center}
+因此, 令 $\mu=\ln a$, 就得到
+$$
+f(x)=\varphi(\ln x)=a^{\ln x}=x^\mu.
+$$
+
+\subsection{三角余弦及双曲余弦的函数特性}\label{subsec:76}
+\myrefparagraph{4\textdegree}\label{ex:cosine_functional_characterization}
+若
+\begin{equation}\label{eq:cosine_function_forms}
+f(x)=\cos(ax)\qquad\text{或}\qquad f(x)=\cosh(ax)
+\qquad(a\geq0),
+\tag{e}
+\end{equation}
+则对任意实数 $x$、$y$, 都有
+\begin{equation}\label{eq:cosine_function_equation}
+f(y+x)+f(y-x)=2f(x)f(y).
+\tag{E}
+\end{equation}
+这可以由两种余弦的加法公式得到 [\emref{subsec:48}]:
+\begin{align*}
+\cos(y\pm x)&=\cos x\cos y\mp\sin x\sin y,\\
+\cosh(y\pm x)&=\cosh x\cosh y\pm\sinh x\sinh y.
+\end{align*}
+这里, 方程 \eqref{eq:cosine_function_equation} 加上连续性,
+便完全确定了两种余弦:
+{\kaishu 除去恒等于零的函数, 这个方程在整个区间 $(-\infty,+\infty)$ 上的连续解,
+恰为 \eqref{eq:cosine_function_forms} 中的三角余弦及双曲余弦.}
+\index{hanshufangcheng@函数方程!yuxianhanshu@余弦函数}
+
+设 $f(x)$ 是这个方程在整个实数轴上的连续解, 并且不恒等于零.
+取一个使 $f(y)\neq0$ 的 $y$, 再在方程中令 $x=0$, 就得到
+\begin{equation}\label{eq:cosine_solution_zero_value}
+f(0)=1.
+\end{equation}
+然后令 $y=0$, 有
+\begin{equation}\label{eq:cosine_solution_evenness}
+f(-x)=f(x),
+\end{equation}
+所以 $f$ 是偶函数.
+
+因为 $f$ 连续, 且 $f(0)=1>0$, 可以选取一个 $c>0$,
+使 $f(x)$ 在整个区间 $[0,c]$ 上为正.
+下面分 $f(c)\leq1$ 与 $f(c)>1$ 两种情形讨论.
+
+先设 $f(c)\leq1$. 由于 $0<f(c)\leq1$, 存在
+$0\leq\theta<\dfrac\pi2$, 使
+\begin{equation}\label{eq:cosine_solution_initial_value}
+f(c)=\cos\theta.
+\end{equation}
+把 \eqref{eq:cosine_function_equation} 改写成
+$$
+f(y+x)=2f(x)f(y)-f(y-x),
+$$
+并依次取 $x=c$, $y=c,2c,3c,\ldots$.
+利用 \eqref{eq:cosine_solution_zero_value} 和
+\eqref{eq:cosine_solution_initial_value}, 得到
+\begin{align*}
+f(2c)&=2\cos^2\theta-1=\cos(2\theta),\\
+f(3c)&=2\cos\theta\cos(2\theta)-\cos\theta=\cos(3\theta),\\
+f(4c)&=2\cos\theta\cos(3\theta)-\cos(2\theta)=\cos(4\theta).
+\end{align*}
+继续应用这个递推关系, 用数学归纳法便得到
+\begin{equation}\label{eq:cosine_solution_integer_multiples}
+f(mc)=\cos(m\theta)\qquad(m=1,2,\ldots).
+\end{equation}
+
+另一方面, 在 \eqref{eq:cosine_function_equation} 中令 $x=y=\dfrac c2$, 有
+$$
+\bbrac{f\brac{\frac c2}}^2
+=\frac{f(0)+f(c)}2
+=\frac{1+\cos\theta}2
+=\cos^2\frac\theta2.
+$$
+由于 $f$ 在 $[0,c]$ 上为正, 而 $\cos x$ 在 $[0,\theta]$ 上为正,
+两边取正平方根, 得到
+$$
+f\brac{\frac c2}=\cos\frac\theta2.
+$$
+再取 $x=y=\dfrac{c}{2^2}$, 就有
+$$
+f\brac{\frac{c}{2^2}}=\cos\frac{\theta}{2^2}.
+$$
+依次重复, 用数学归纳法得到
+\begin{equation}\label{eq:cosine_solution_dyadic_subdivision}
+f\brac{\frac{c}{2^n}}=\cos\frac{\theta}{2^n}
+\qquad(n=1,2,\ldots).
+\end{equation}
+再把从 \eqref{eq:cosine_solution_initial_value} 推出
+\eqref{eq:cosine_solution_integer_multiples} 的过程用于
+$\dfrac{c}{2^n}$ 和 $\dfrac{\theta}{2^n}$, 就有
+$$
+f\brac{\frac{m}{2^n}c}=\cos\brac{\frac{m}{2^n}\theta}
+\qquad(m,n=1,2,\ldots).
+$$
+于是, 对一切形如 $x=\dfrac{m}{2^n}$ 的正数, 都有
+\begin{equation}\label{eq:cosine_solution_scaled_identity}
+f(cx)=\cos(\theta x).
+\end{equation}
+由于任意正数 $x$ 都是一列这种数的极限.
+由 $f$ 和余弦函数的连续性, 对这列数取极限,
+就知道 \eqref{eq:cosine_solution_scaled_identity} 对所有 $x>0$ 都成立.
+再由两边都是偶函数, 等式对 $x<0$ 也成立;
+$x=0$ 时, 它由 \eqref{eq:cosine_solution_zero_value} 成立.
+最后, 在式中把 $x$ 换成 $\dfrac xc$, 并令 $a=\dfrac\theta c\geq0$, 得到
+\begin{center}
+$
+f(x)=\cos(ax).
+$
+\end{center}
+
+再设 $f(c)>1$. 这时存在 $\theta>0$, 使 $f(c)=\cosh\theta$.
+重复上面的递推和逐次二等分过程, 使用相应的双曲余弦恒等式
+$$
+\cosh((m+1)\theta)
+=2\cosh\theta\cosh(m\theta)-\cosh((m-1)\theta),\qquad
+\cosh^2\frac\theta2=\frac{1+\cosh\theta}2,
+$$
+便得到
+$$
+f\brac{\frac{m}{2^n}c}=\cosh\brac{\frac{m}{2^n}\theta}.
+$$
+取平方根时仍取正号, 因为 $f$ 在 $[0,c]$ 上为正, 而双曲余弦恒为正.
+再由连续性和偶性推广到所有实数, 并令 $a=\dfrac\theta c>0$, 就有
+\begin{center}
+$
+f(x)=\cosh(ax).
+$
+\end{center}
+当 $a=0$ 时, 两种形式都给出 $f(x)\equiv1$.
+
+函数方程 \eqref{eq:additive_function_equation}、\eqref{eq:exponential_function_equation}、
+\eqref{eq:logarithm_function_equation}、\eqref{eq:power_function_equation}
+及 \eqref{eq:cosine_function_equation} 最先由 Cauchy 研究,
+他也给出了这些方程的连续解.
