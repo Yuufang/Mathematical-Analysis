@@ -2001,7 +2001,7 @@ $$
 $$
 \lim_{x\to0}\frac{\sqrt[m]{1+x}-1-\dfrac xm}{x^2},
 $$
-其中 $m$ 是自然数.
+其中 $m$ 是自然数. 
 仍令 $y=\sqrt[m]{1+x}-1$, 对于 $m\geq2$ 有
 $$
 \frac{y-\dfrac1m\bbrac{(1+y)^m-1}}{\bbrac{(1+y)^m-1}^2}
@@ -2354,7 +2354,7 @@ $$
 因此, 当自然数 $m>1$ 时, 前两个是关于 $x$ 的二阶无穷小,
 最后一个是三阶无穷小.
 
-再看一个更复杂的例子.
+再看一个更复杂的例子. 
 考察
 $$
 \beta=\sqrt{x+1}+\sqrt{x-1}-2\sqrt{x}\qquad(x>1).
@@ -2545,7 +2545,7 @@ $$
 同时, 这些结果又可以用来建立近似公式.
 设
 $
-\beta\sim c\alpha^k$,
+\beta\sim c\alpha^k$, 
 即
 $
 \beta=c\alpha^k+\gamma,
@@ -2841,6 +2841,7 @@ $$
 由 \emref{subsec:63} 中的结果, 分子和分母可以分别换成它们的主部,
 于是
 $$
+\displaystyle
 \lim_{\varphi\to0^+}\frac f{f_1}
 =\lim_{\varphi\to0^+}
 \frac{\dfrac12\varphi^2}{\dfrac12\brac{\dfrac\varphi2}^2}
@@ -2897,10 +2898,10 @@ $$
 $$
 \lim_{x\to x_0}f(x)
 $$
-时, 我们强调 $x$ 并不取数值 $x_0$,
+时, 我们强调 $x$ 并不取数值 $x_0$, 
 $x_0$ 甚至可以不属于函数的定义域;
 即使属于定义域, 研究这个极限时也不考察 $f(x_0)$.
-连续性正是将极限与函数值联系起来的桥梁. 我们说, {\kaishu 当函数满足
+连续性正是将极限与函数值联系起来的桥梁. 我们说, {\kaishu 当函数满足 
 \begin{equation}\label{eq:continuity_limit_value}
 \lim_{x\to x_0}f(x)=f(x_0),
 \end{equation}
@@ -2922,7 +2923,7 @@ $$
 (当然,这里所取的 $x_0+\Delta x_0$ 都须属于定义域).
 换句话说, {\kaishu 对应于自变量的无穷小增量, 连续函数的增量也是无穷小.}
 
-回到基本定义 \eqref{eq:continuity_limit_value},
+回到基本定义 \eqref{eq:continuity_limit_value}, 
 用“$\epsilon$--$\delta$ 的语言” [\emref{subsec:52}] 表述连续性, 就得到:
 {\kaishu 对于任意 $\epsilon>0$, 都存在 $\delta>0$, 使定义域内满足
 $$
@@ -2937,7 +2938,7 @@ $$
 这里可以包含 $x=x_0$, 因为这时函数值的差等于零.
 
 最后, 根据\emref{subsec:53}, 也可以用数列语言表达连续性:
-{\kaishu
+{\kaishu 
 若在 $\X$ 内任取一个收敛于 $x_0$ 的数列
 $$
 x_1,\ x_2,\ \cdots,\ x_n,\ \cdots,
@@ -3110,7 +3111,7 @@ $x=(2k+1)\dfrac\pi2$;
 当 $x_0$ 是定义区间的内点时, 求这个极限可以使 $x$ 从右方或从左方趋于 $x_0$.
 现在分别考察这两个方向, 引入单侧连续与单侧间断的概念.
 
-{\kaishu
+{\kaishu 
 设函数 $f(x)$ 在点 $x_0$ 及其右方 (左方) 的某个区间内有定义.
 若满足下面第一式 (第二式), 就称 $f(x)$ 在点 $x_0$ 处是
 \emph{右连续}\index{youlianxu@右连续}
@@ -3123,7 +3124,7 @@ f(x_0^-)&=\lim_{x\to x_0^-}f(x)=f(x_0).
 \end{equation}
 }
 若相应的关系不成立, 就说
-{\kaishu
+{\kaishu 
 函数在这点有
 \emph{右间断}\index{youjianduan@右间断}或\emph{左间断}\index{zuojianduan@左间断}.
 }
@@ -3136,7 +3137,7 @@ f(x_0^-)&=\lim_{x\to x_0^-}f(x)=f(x_0).
 \eqref{eq:one_sided_continuity} 中的两式同时成立.
 换句话说, {\kaishu 函数在区间内点处连续, 当且仅当它在这点同时右连续和左连续.}
 
-我们来详细考察下右方的情形.
+我们来详细考察下右方的情形. 
 假定函数 $f(x)$ 在区间 $[x_0,x_0+h]$ ($h>0$) 内有定义.
 它在 $x_0$ 处右连续的充要条件是: 右极限 $f(x_0^+)$ 存在且有限,
 并且等于函数值 $f(x_0)$.
@@ -3377,7 +3378,7 @@ $$
 {\kaishu 单调函数 $f(x)$ 在区间 $\X$ 内若有间断,
 只能有第一类间断, 即跃度.}
 
-先设 $f(x)$ 单调不减.
+先设 $f(x)$ 单调不减. 
 取 $x_0\in\X$, 并设它不是区间的左端点.
 在 $x_0$ 左方的部分区间上, $f(x)$ 仍单调不减, 而且有上界 $f(x_0)$.
 应用 \emref{subsec:57} 中关于单调函数的极限定理, 可知存在有限的极限

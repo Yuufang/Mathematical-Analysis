@@ -1,0 +1,65 @@
+% 公式编号：每个 section 重新计数，仅显示阿拉伯序号。
+\counterwithin{equation}{section}
+\renewcommand{\theequation}{\arabic{equation}}
+
+% ----------------------------------------------------------------------
+% 钩子函数：正文开始时执行 (配置数学符号与定理环境)
+% ----------------------------------------------------------------------
+\AtBeginDocument{
+    % 在正文开始时统一实部、虚部和空集符号的写法
+    \renewcommand{\Re}{\operatorname{Re}}       % 实部符号
+    \renewcommand{\Im}{\operatorname{Im}}       % 虚部符号
+    \renewcommand{\emptyset}{\ensuremath{\varnothing}} % 空集符号
+    
+    % 定义供证明环境使用的空心方格结束符
+    \newcommand{\openbox}{\leavevmode   
+    \hbox to.77778em{%
+        \hfil\vrule
+        \vbox to.675em{\hrule width.6em\vfil\hrule}%
+        \vrule\hfil}}
+        
+    % ntheorem 基础配置
+    \theorembodyfont{\fangsong}                          % 定理内容默认字体为仿宋
+    \theoremheaderfont{\sffamily\bfseries\thmheiti}      % 定理标题字体
+    \theoremseparator{\ }                                % 标题与正文间距符号
+    \setlength{\theorempreskipamount}{2mm}               % 定理上方留白
+    \setlength{\theorempostskipamount}{2mm}              % 定理下方留白
+    
+    % 核心定理环境定义 (简体中文体系)
+    \theorembodyfont{\kaishu}                    % 核心定理内容使用楷体
+    \newtheorem{lemma}{引理}
+    \counterwithin{lemma}{chapter}
+    \renewcommand{\thelemma}{\arabic{lemma}}
+    \newtheorem{proposition}{命题}
+    \theoremstyle{nonumberplain}   
+    \newtheorem{definition}{定义}
+    \newtheorem{theorem}{定理}              
+    \newtheorem{corollary}{推论}
+
+    % --- 定义“仅显示标题”的定理环境 ---
+    \theoremstyle{empty}                         % empty 样式省略固定环境名称，显示自定义标题
+    \theoremheaderfont{\sffamily\bfseries\thmheiti} % 保持与其他定理一致的标题字体
+    \theorembodyfont{\kaishu}                    % 内容依然使用楷体
+    \theoremseparator{\ }                        % 标题后的间距
+    \newtheorem{namedtheorem}{定理}               % 环境名设为 namedtheorem
+
+    % --- 恢复正常的带编号样式 ---
+    \theoremstyle{plain}                         % 后续 example 环境使用带编号样式
+    \theorembodyfont{\songti}                    % 辅助说明环境内容使用宋体
+    \newtheorem{example}{例}                     % 定义带编号的例环境
+
+    % --- 无编号注记、约定与练习 ---
+    \theoremstyle{nonumberplain}                 % 切换为无编号样式
+    \newtheorem{remark}{注记}                    % 定义无编号的注记
+    \newtheorem{convention}[theorem]{约定}
+    \newtheorem{exercise}[theorem]{练习}
+    
+    % 证明环境定义
+    \theorembodyfont{}                           % 证明内容使用正文默认字体
+    \theoremstyle{nonumberplain}                 % 证明环境不编号
+    \theoremheaderfont{\sffamily\bfseries\CJKfamily{pffont}}
+    \theoremseparator{\enspace}
+    \theoremsymbol{\openbox}                     % 结尾处自动添加空心方块
+    \newtheorem{proof}{证明}
+}
+

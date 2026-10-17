@@ -31,6 +31,10 @@
     \par\phantomsection{#1}\quad
     \protected@edef\@currentlabel{#1}% 强制更新 \ref 的目标为当前标签内容
 }
+\newcommand{\mywraprefparagraph}[1]{%
+    \par\leavevmode\phantomsection{#1}\quad
+    \protected@edef\@currentlabel{#1}%
+}
 \makeatother
 
 % ==========================================

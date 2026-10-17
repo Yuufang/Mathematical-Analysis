@@ -1,0 +1,87 @@
+% ----------------------------------------------------------------------
+% 钩子函数：导言区末尾执行 (配置页面与链接等)
+% ----------------------------------------------------------------------
+\AtEndPreamble{
+    % 载入定理宏包，需等待前面必要的数学和字体设置完成
+    \RequirePackage[thmmarks, amsmath, hyperref]{ntheorem}
+    
+    % 检测是否载入了 hyperref 宏包，并根据 colors 选项决定超链接颜色配置
+    \@ifpackageloaded{hyperref}{
+        \if@AJ@colors
+            \hypersetup{
+                colorlinks = true,
+                linkcolor = blue,
+                citecolor = red,
+                urlcolor = teal
+            }
+        \else
+            \hypersetup{hidelinks} % 隐藏超链接颜色和边框
+        \fi
+    }{}
+    
+    % 页面尺寸配置
+    \RequirePackage{geometry}
+    \IfStrEq{\@AJ@geometry}{b5}{% 如果选项为 b5
+        \geometry{
+            paper=b5paper,
+            headheight=5ex, headsep=5ex,
+            textwidth=132mm, textheight=198mm,
+            twoside,
+            asymmetric  % 单双数页边距不区分对称
+        }
+    }{}
+
+    \IfStrEq{\@AJ@geometry}{a4}{% 如果选项为 a4
+        \geometry{
+            paper=a4paper,
+            top=3cm, bottom=3cm,
+            inner=2.54cm, outer=2.54cm,
+            headheight=6ex, headsep=6ex,
+            twoside,
+            asymmetric
+        }
+    }{}
+
+    % 页眉页脚 (天眉地脚) 设置
+    \RequirePackage{fancyhdr}
+    
+    % 重新定义 plain 样式，使每章首页的页眉保持为空
+    \fancypagestyle{plain}{
+        \fancyhead{}
+        \renewcommand{\headrulewidth}{0pt}
+    }
+    
+    % 设置 fancy 全局页眉页脚样式
+    \pagestyle{fancy}
+    
+    % 设定左页眉的章名格式 (支持中文数字或阿拉伯数字)
+    \if@AJ@CJKthechapter
+        \renewcommand{\chaptermark}[1]{\markboth{第\zhnumber{\thechapter}章\quad #1}{}}
+    \else
+        \renewcommand{\chaptermark}[1]{\markboth{第 \thechapter 章\quad #1}{}}
+    \fi
+    
+    % 设定右页眉的节名格式，直接调用新定义的 \thesection
+    \renewcommand{\sectionmark}[1]{\markright{\thesection \quad #1}}
+    
+    \fancyhf{} % 清空当前所有页眉页脚设置
+    
+    % 具体位置设置: E(偶数页), O(奇数页), C(中), L(左), R(右)
+    \fancyhead[EC]{\CJKfamily{hei2}\footnotesize{\leftmark}\vspace{1mm}}
+    \fancyhead[OC]{\CJKfamily{hei2}\footnotesize{\rightmark}\vspace{1mm}}
+    \fancyhead[LE,RO]{{\footnotesize \thepage}\vspace{1mm}} 
+    \fancyhead[RE,LO]{}
+    
+    % 如果开启了 draftmark 选项，在页脚居中位置打印版本信息
+    \if@AJ@draftmark
+        \fancyfoot[C]{\@AJ@draftstring} 
+    \fi
+    
+    \renewcommand{\headrulewidth}{0pt}  % 去掉页眉下方的装饰横线
+    \renewcommand{\footrulewidth}{0pt}  % 去掉页脚上方的装饰横线
+    \addtolength{\headheight}{0.5pt}    % 略微增加页眉高度防止溢出警告
+}
+
+
+% 通用版心增量：在上述页面设置钩子完成后执行。
+\AtEndPreamble{\addtolength{\textheight}{15mm}}
