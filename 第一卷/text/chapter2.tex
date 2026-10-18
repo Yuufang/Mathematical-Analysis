@@ -3891,3 +3891,346 @@ $
 \eqref{eq:logarithm_function_equation}、\eqref{eq:power_function_equation}
 及 \eqref{eq:cosine_function_equation} 最先由 Cauchy 研究,
 他也给出了这些方程的连续解.
+
+\subsection{函数的连续性在计算极限时的应用}\label{subsec:77}
+函数的连续性在极限计算中有各种各样的应用
+\footnote{实际上, 我们在前面的例题中已经这样做过.
+例如, 在 \emref{subsec:56} 的例 \ref{ex:rational_power_increment_limit} 中,
+曾用到根式在 $x=1$ 处的连续性;
+在例 \ref{ex:trigonometric_limit_applications} 中, 也用到了 $\cos x$ 在 $x=0$ 处的连续性.}.
+本节再讨论一些这类例题.
+
+\myrefparagraph{1)}\label{ex:scaled_e_limit}
+对于任意实数 $x$, 都有
+$$
+\lim_{n\to+\infty}\brac{1+\frac xn}^n=\e^x.
+$$
+当 $x=0$ 时, 等式直接成立.
+设 $x\neq0$. 对充分大的 $n$, 有 $1+\dfrac xn>0$, 因而可以把所考察的式子改写为
+$$
+\brac{1+\frac xn}^n
+=\bbrac{\brac{1+\frac xn}^{n/x}}^x.
+$$
+因为 $\dfrac xn\to0$, 由 [\emref{subsec:54}, \eqref{eq:e_limit_at_zero}], 方括号内的式子趋于 $\e$.
+再利用幂函数的连续性 (这里 $x$ 是常数), 就得到所求极限 $\e^x$.
+
+\myrefparagraph{2)}\label{ex:root_product_difference_limit}
+求极限
+$$
+\lim_{x\to+\infty}\bbrac{\sqrt[k]{(x+a_1)(x+a_2)\cdots(x+a_k)}-x}
+\qquad(\infty-\infty),
+$$
+其中 $k$ 是自然数, $a_1,a_2,\ldots,a_k$ 是给定的实常数.
+当 $x$ 充分大时, 各因子 $x+a_i$ 都为正, 根式取正值.
+$k=1$ 时, 所求极限就是 $a_1$; 以下设 $k\geq2$.
+
+应用恒等式
+$$
+y-z=\frac{y^k-z^k}{y^{k-1}+y^{k-2}z+\cdots+z^{k-1}},
+$$
+并令
+$$
+y=\sqrt[k]{(x+a_1)\cdots(x+a_k)},\qquad z=x.
+$$
+于是
+$$
+y-x=\frac{(x+a_1)\cdots(x+a_k)-x^k}
+{y^{k-1}+xy^{k-2}+\cdots+x^{k-1}}.
+$$
+把分子和分母同除以 $x^{k-1}$, 得到
+$$
+y-x=
+\frac{(a_1+\cdots+a_k)+\dfrac{\sum_{i<j}a_i a_j}{x}+\cdots+
+\dfrac{a_1\cdots a_k}{x^{k-1}}}
+{\brac{\dfrac yx}^{k-1}+\brac{\dfrac yx}^{k-2}+\cdots+1}.
+$$
+这里分子的各项由乘积展开得到; $k=2$ 时, 分子就是 $a_1+a_2+\dfrac{a_1a_2}{x}$.
+在 $x\to+\infty$ 时,
+$$
+\frac yx=\sqrt[k]{\brac{1+\frac{a_1}{x}}\cdots\brac{1+\frac{a_k}{x}}}\to1,
+$$
+因为被开方式趋于 $1$, 而根式是连续的幂函数.
+分母是关于 $\dfrac yx$ 的连续多项式, 因此趋于 $k$.
+分子趋于 $a_1+\cdots+a_k$, 从而所求极限为
+$$
+\frac{a_1+a_2+\cdots+a_k}{k}.
+$$
+
+\myrefparagraph{3)}\label{prop:geometric_mean_limit}
+回到 \emref{subsec:33} 的例 \ref{ex:cesaro_mean} 中的 Cauchy 命题.
+设 $a_n>0$, 且 $a_n\to a$. 先假定 $0<a<+\infty$, 并把该命题应用于数列 $\seqset{\ln a}$.
+由对数函数的连续性, 有 $\ln a_n\to\ln a$, 因此
+$$
+\lim_{n\to+\infty}\ln\sqrt[n]{a_1\cdots a_n}
+=\lim_{n\to+\infty}\frac{\ln a_1+\cdots+\ln a_n}{n}=\ln a.
+$$
+再由指数函数的连续性,
+$$
+\sqrt[n]{a_1\cdots a_n}
+=\e^{\ln\sqrt[n]{a_1\cdots a_n}}\to\e^{\ln a}=a.
+$$
+利用 \emref{subsec:54} 的例 \ref{ex:exponential_limits_at_infinity}、
+\ref{ex:logarithmic_limits_at_endpoints}, 还可以把这一结果推广到 $a=0$ 和 $a=+\infty$ 的情形.
+于是得到下面的结论:
+
+{\kaishu 若正数列 $\seqset{a}$ 有有限或无穷极限, 则其前 $n$ 项的\emph{几何平均值}
+\index{jihepingjunzhi@几何平均值}
+$$
+b_n=\sqrt[n]{a_1\cdots a_n}
+$$
+也有同一极限.}
+
+\myrefparagraph{4)}\label{ex:root_limit_from_ratio}
+设 $\seqset{a}$ 是正数列. 把上面的结论应用于数列
+$$
+a_1,\quad\frac{a_2}{a_1},\quad\frac{a_3}{a_2},\quad\ldots,\quad
+\frac{a_n}{a_{n-1}},\quad\frac{a_{n+1}}{a_n},\quad\ldots,
+$$
+就得到一个有趣的推论:
+$$
+\lim_{n\to+\infty}\sqrt[n]{a_n}
+=\lim_{n\to+\infty}\frac{a_{n+1}}{a_n},
+$$
+只要右端的极限存在 (有限或为 $+\infty$).
+
+例如, 求极限
+$$
+\lim_{n\to+\infty}\frac{\sqrt[n]{n!}}n.
+$$
+令 $a_n=\dfrac{n!}{n^n}$, 就有
+$$
+\frac{a_{n+1}}{a_n}
+=\frac{(n+1)!}{(n+1)^{n+1}}\cdot\frac{n^n}{n!}
+=\frac1{\brac{1+\dfrac1n}^n}\to\frac1\e.
+$$
+所以所求极限为 $\dfrac1\e$.
+
+\myrefparagraph{5)}\label{ex:logarithmic_exponential_power_increment_limits}\label{derivative_ex}
+再来确定下面一组重要的极限, 它们在下一章中很有用:
+\begin{align*}
+\text{(a)}\quad&\lim_{\alpha\to0}\frac{\log_a(1+\alpha)}{\alpha}=\log_a\e,
+&&a>0,\ a\neq1,\\
+\text{(b)}\quad&\lim_{\alpha\to0}\frac{a^\alpha-1}{\alpha}=\ln a,
+&&a>0,\\
+\text{(c)}\quad&\lim_{\alpha\to0}\frac{(1+\alpha)^\mu-1}{\alpha}=\mu,
+&&\mu\in\R.
+\end{align*}
+这三个极限都是 $\dfrac00$ 型未定式; 在 (a)、(c) 中, 取 $1+\alpha>0$.
+
+对于 (a), 有
+$$
+\frac{\log_a(1+\alpha)}{\alpha}
+=\log_a\bbrac{(1+\alpha)^{1/\alpha}}.
+$$
+当 $\alpha\to0$ 时, 对数的真数由 \eqref{eq:e_limit_at_zero} 趋于 $\e$.
+再由对数函数的连续性, 便得到极限 $\log_a\e$.
+特别地, 取 $a=\e$, 就有
+$$
+\lim_{\alpha\to0}\frac{\ln(1+\alpha)}{\alpha}=1.
+$$
+这个结果很简便, 自然对数的优点在本质上正是根源于此.
+
+转向 (b). 当 $a=1$ 时, 等式直接成立.
+设 $a\neq1$, 并令 $a^\alpha-1=\beta$.
+当 $\alpha\to0$ 时, 由指数函数的连续性, 有 $\beta\to0$.
+又因为 $\alpha=\log_a(1+\beta)$, 应用 (a) 的结果便得
+$$
+\lim_{\alpha\to0}\frac{a^\alpha-1}{\alpha}
+=\lim_{\beta\to0}\frac{\beta}{\log_a(1+\beta)}
+=\frac1{\log_a\e}=\ln a.
+$$
+特别地, 取 $\alpha=\dfrac1n\ (n=1,2,\ldots)$, 得到公式
+$$
+\lim_{n\to+\infty}n\brac{\sqrt[n]{a}-1}=\ln a
+\qquad(a>0;\ \infty\cdot0).
+$$
+
+最后证明 (c). 当 $\mu=0$ 时, 等式直接成立.
+设 $\mu\neq0$, 并令 $(1+\alpha)^\mu-1=\beta$.
+当 $\alpha\to0$ 时, 由幂函数的连续性, 有 $\beta\to0$.
+在等式 $(1+\alpha)^\mu=1+\beta$ 的两边取自然对数, 得
+$$
+\mu\ln(1+\alpha)=\ln(1+\beta).
+$$
+利用这一关系, 可以把所求式改写为
+$$
+\frac{(1+\alpha)^\mu-1}{\alpha}
+=\frac\beta\alpha
+=\frac{\beta}{\ln(1+\beta)}\cdot\mu\cdot\frac{\ln(1+\alpha)}{\alpha}.
+$$
+由已经证明的自然对数极限, 第一个因子和第三个因子都趋于 $1$,
+因此乘积趋于 $\mu$, 即得 (c).
+在 \emref{subsec:56} 的例 \ref{ex:rational_power_increment_limit} 中考察的极限,
+就是 $\mu$ 为有理数时的特例.
+
+\subsection{幂指数式}\label{subsec:78}
+现在考察\emph{幂指数式}\index{mizhishushi@幂指数式} $u^v$,
+其中 $u=u(x)$ 与 $v=v(x)$ 是定义在同一数集 $\X$ 上的函数, $x_0$ 是 $\X$ 的聚点.
+特别地, 它们也可以是两个数列 $\seqset{u}$ 与 $\seqset{v}$.
+
+先设当 $x\to x_0$ 时, 有有限极限
+$$
+\lim_{x\to x_0}u=a,\qquad \lim_{x\to x_0}v=b,
+$$
+并且 $a>0$. 这时, 对充分接近 $x_0$ 而异于 $x_0$ 的 $x\in\X$, 有 $u>0$,
+可以把幂指数式写成
+$$
+u^v=\e^{v\ln u}.
+$$
+由对数函数的连续性, $\ln u\to\ln a$, 因而
+$$
+v\ln u\to b\ln a.
+$$
+再由指数函数的连续性, 得到
+$$
+\lim_{x\to x_0}u^v=\e^{b\ln a}=a^b.
+$$
+
+在其他情形中, 仍在 $u>0$ 的范围内讨论.
+只要积 $v\ln u$ 有有限或有确定符号的无穷极限 $c$, 就能确定 $u^v$ 的极限:
+$$
+\lim u^v=
+\begin{cases}
+\e^c, & c\in\R,\\
+0, & c=-\infty,\\
++\infty, & c=+\infty.
+\end{cases}
+$$
+后两种情形由 \emref{subsec:54} 的例 \ref{ex:exponential_limits_at_infinity} 得到.
+
+如果底数和指数各有有限或有确定符号的无穷极限, 通常可以仅由这两个极限确定 $v\ln u$ 的极限.
+例外恰好是积 $v\ln u$ 成为 $0\cdot\infty$ 型未定式的情形, 即
+$$
+\begin{array}{lll}
+a=1, & b=\pm\infty;\\
+a=0, & b=0;\\
+a=+\infty, & b=0.
+\end{array}
+$$
+在这三种情形中, 分别称 $u^v$ 为
+{\kaishu $1^\infty$、$0^0$、$\infty^0$ 型\emph{未定式}}\index{weidingshi@未定式}
+仅知道 $u$ 与 $v$ 的极限, 还不能确定 $u^v$ 的极限;
+必须进一步研究这两个函数趋于各自极限时的具体规律.
+
+数列 $\brac{1+\dfrac1n}^n$ 在 $n\to+\infty$ 时趋于 $\e$,
+更一般地, $(1+\alpha)^{1/\alpha}$ 在 $\alpha\to0$ 时趋于 $\e$
+[\emref{subsec:54}, \eqref{eq:e_limit_at_zero}], 都是 $1^\infty$ 型未定式的例子.
+在 \emref{subsec:77} 的例 \ref{ex:root_limit_from_ratio} 中考察过的
+$$
+\sqrt[n]{\frac{n!}{n^n}}=\brac{\frac{n!}{n^n}}^{1/n}
+$$
+是 $0^0$ 型未定式, 而 \emref{subsec:32} 的例 \ref{ex:nth_root_n_limit} 中的
+$\sqrt[n]n=n^{1/n}$ 是 $\infty^0$ 型未定式.
+下面再举几个这类未定式的定值例题.
+
+\subsection{例题}\label{subsec:79}
+\myrefparagraph{1)}\label{ex:logarithm_variable_root_limit}
+求极限
+$$
+\lim_{x\to+\infty}(\ln x)^{1/x}\qquad(\infty^0).
+$$
+用 $y$ 表示所给的幂指数式. 当 $x>1$ 时, $y>0$, 且
+$$
+\ln y=\frac{\ln(\ln x)}x
+=\frac{\ln(\ln x)}{\ln x}\cdot\frac{\ln x}x.
+$$
+由 \emref{subsec:54} 的例 \ref{ex:logarithmic_limits_at_endpoints}, $\ln x\to+\infty$;
+再用例 \ref{ex:logarithm_over_real_power}, 上式右端的两个因子都趋于 $0$.
+因此 $\ln y\to0$, 从而
+$$
+y=\e^{\ln y}\to\e^0=1.
+$$
+
+\myrefparagraph{2)}\label{ex:power_sine_limit_at_zero}
+求极限
+$$
+\lim_{x\to0^+}x^{\sin x}\qquad(0^0).
+$$
+在实数范围内取 $x>0$, 并令 $y=x^{\sin x}$. 这时
+$$
+\ln y=\sin x\cdot\ln x=\frac{\sin x}x\cdot x\ln x.
+$$
+由 \emref{subsec:54} 的例 \ref{ex:sine_over_argument_limit}、\ref{ex:logarithm_over_real_power},
+这两个因子分别趋于 $1$ 和 $0$, 所以 $\ln y\to0$, 仍有 $y\to1$.
+
+\myrefparagraph{3)}\label{ex:variable_scaled_e_limit}
+现在可以推广 \emref{subsec:77} 的例 \ref{ex:scaled_e_limit}:
+{\kaishu 若数列 $\seqset{x}$ 趋于有限实数 $x$, 则
+$$
+\lim_{n\to+\infty}\brac{1+\frac{x_n}n}^n=\e^x.
+$$}
+因为 $\seqset{x}$ 有界, 所以 $\dfrac{x_n}n\to0$,
+并且对充分大的 $n$, 有 $1+\dfrac{x_n}n>0$.
+对于 $x_n\neq0$ 的项, 把所给的幂指数式改写为
+$$
+\brac{1+\frac{x_n}n}^n
+=\bbrac{\brac{1+\frac{x_n}n}^{n/x_n}}^{x_n}.
+$$
+若 $x_n=0$, 把方括号内的式子补定义为 $\e$, 上式仍然成立.
+由 \eqref{eq:e_limit_at_zero}, 方括号内的式子趋于 $\e$, 而外面的指数趋于 $x$.
+应用 \emref{subsec:78} 的结论, 就得到所求极限 $\e^x$.
+
+\myrefparagraph{4)}\label{ex:trigonometric_power_sequence_limit}
+对于任意给定的实数 $x$ 和 $\lambda$, 有
+$$
+\lim_{n\to+\infty}\brac{\cos\frac xn+\lambda\sin\frac xn}^n
+=\e^{\lambda x}\qquad(1^\infty).
+$$
+当 $x=0$ 时, 等式直接成立. 以下设 $x\neq0$.
+令括号内的式子等于 $1+\dfrac{x_n}n$, 则
+$$
+\begin{aligned}
+x_n
+&=n\bbrac{\cos\frac xn-1+\lambda\sin\frac xn}\\
+&=\lambda x\cdot\frac{\sin\dfrac xn}{\dfrac xn}
+-x\cdot\frac{1-\cos\dfrac xn}{\dfrac xn}\to\lambda x.
+\end{aligned}
+$$
+这里用到了 \eqref{eq:sine_over_argument_limit} 以及
+\emref{subsec:56} 的例 \ref{ex:one_minus_cosine_limit} 中的结果.
+再应用本节例 \ref{ex:variable_scaled_e_limit}, 就得到上面的等式.
+
+\myrefparagraph{5)}\label{ex:mean_roots_power_limit}
+同样的方法还可以求得
+$$
+\lim_{n\to+\infty}\brac{\frac{\sqrt[n]a+\sqrt[n]b}2}^n
+=\sqrt{ab}\qquad(a,b>0;\ 1^\infty).
+$$
+这时令
+$$
+x_n=n\bbrac{\frac{\sqrt[n]a+\sqrt[n]b}2-1}
+=\frac12\bbrac{n\brac{\sqrt[n]a-1}+n\brac{\sqrt[n]b-1}}.
+$$
+根据 \emref{subsec:77} 的例 \ref{ex:logarithmic_exponential_power_increment_limits} 中 (b) 的特殊推论,
+$$
+x_n\to\frac12(\ln a+\ln b)=\ln\sqrt{ab}.
+$$
+所以由本节例 \ref{ex:variable_scaled_e_limit}, 所求极限就是
+$\e^{\ln\sqrt{ab}}=\sqrt{ab}$.
+
+\myrefparagraph{6)}\label{ex:cosine_inverse_sine_square_power_limit}
+最后, 考察极限
+$$
+\lim_{x\to0}(\cos x)^{1/\sin^2x}\qquad(1^\infty).
+$$
+当 $x$ 充分接近于 $0$ 而 $x\neq0$ 时, 有 $\cos x>0$ 且 $\sin x\neq0$.
+利用恒等式
+$$
+\cos x=1-2\sin^2\frac x2,\qquad
+\sin^2x=4\sin^2\frac x2\cos^2\frac x2,
+$$
+并令 $\alpha=-2\sin^2\dfrac x2$, 可以写成
+$$
+(\cos x)^{1/\sin^2x}
+=\bbrac{(1+\alpha)^{1/\alpha}}^{-1/(2\cos^2(x/2))}.
+$$
+当 $x\to0$ 时, $\alpha\to0$, 方括号内的式子由 \eqref{eq:e_limit_at_zero} 趋于 $\e$,
+而外面的指数趋于 $-\dfrac12$.
+于是由 \emref{subsec:78}, 得到
+$$
+\lim_{x\to0}(\cos x)^{1/\sin^2x}=\e^{-1/2}=\frac1{\sqrt\e}.
+$$
+
+可见, 在处理 $1^\infty$ 型未定式时, 把问题直接归结到数 $\e$ 的极限往往很方便.
+关于各种类型未定式的一般求法, 将在第四章中讨论.
+\flushbottom
