@@ -1880,11 +1880,13 @@ $$
 $$
 却是发散的.
 
-最后总结一下: 定理 \ref{thm:monotone_convergence} 是典型的存在性定理.
+\begin{remark}
+\hyperref[thm:monotone_convergence]{\emph{单调有界数列收敛定理}}是典型的存在性定理.
 它只保证极限存在, 并不直接给出计算极限的方法; 但在许多问题中,
 一旦先由它证明了极限存在, 就可以在递推关系中取极限, 从而求出极限值.
 对于例 \ref{ex:arithmetic_geometric_mean}, 虽然目前还不能写出公共极限的初等表达式,
 但因它始终夹在 $a_n$ 与 $b_n$ 之间, 仍可通过迭代得到任意精度的近似值.
+\end{remark}
 
 \subsection{数 \texorpdfstring{$\e$}{e}}\label{subsec:36}
 现在应用单调有界数列的收敛定理来定义一个新的数.
@@ -2084,70 +2086,6 @@ $$
 等式左边是整数, 右边括号中的有限和乘以 $q!$ 后也是整数;
 但 $0<\dfrac{\theta}{q}<1$, 所以右边不是整数, 产生矛盾.
 因此 $\e$ 是无理数.
-
-\begin{comment}
-
-\subsection{Euler 常数 \texorpdfstring{$\gamma$}{gamma}}
-下面我们介绍一个全新的常数, 尽管它不如 $\e$ 和 $\pi$ 那般出名, 但在分析学中也有一些比较有用的场景.
-
-考虑数列 $\{c_n\}$, 它有通项公式
-$$
-c_n=1+\dfrac{1}{2}+\cdots+\dfrac{1}{n}-\ln n.
-$$
-为证明 $\{c_n\}$ 收敛, 我们先建立一个十分重要的不等式
-$$
-\frac{1}{n+1}<\ln\brac{1+\frac{1}{n}}<\frac{1}{n}.
-$$
-这只需证
-$$
-\brac{1+\frac{1}{n}}^n < \e < \brac{1+\frac{1}{n}}^{n+1}
-$$
-成立.显然左边那个不等式就是前一小节所说, 单调递增数列 $\bbbrac{\brac{1+\dfrac{1}{n}}^n}$ 有极限 $\e$. 类似地, 我们考虑数列 $\seqset{b}$ 及其通项
-$$
-b_n = \brac{1+\frac{1}{n}}^{n+1}.
-$$
-
-运用绪论中的均值不等式 \eqref{AGinequality}, 我们有
-$$
-\begin{aligned}
-    \frac{1}{b_n} &= 1\cdot \underbrace{\brac{\frac{n}{n+1}} \cdots \brac{\frac{n}{n+1}}}_{n+1 \text{个}} < \brac{\frac{1+ \overbrace{\frac{n}{n+1} + \cdots + \frac{n}{n+1}}^{n+1 \text{个}} }{n+2}}^{n+2} \\
-    &=\brac{\frac{n+1}{n+2}}^{n+2} = \frac{1}{b_{n+1}}.
-\end{aligned}
-$$
-因此 $\seqset{b}$ 严格单调减少, 又
-$$
-\limto{n} \brac{1+\frac{1}{n}}^{n+1} = \limto{n} \brac{1+\frac{1}{n}}^{n\cdot\frac{n+1}{n}} = \e^{\limto{n} \frac{n+1}{n}} = \e.
-$$
-则说明 $\seqset{b}$ 递减趋于 $\e$, 自然有 $\e < \brac{1+\dfrac{1}{n}}^{n+1}$.
-
-注意到
-$$c_{n+1}-c_n=\frac{1}{n+1}-\ln(n+1)+\ln n=\frac{1}{n+1}-\ln \brac{1+\frac{1}{n}}<0$$
-因此 $\{c_n\}$ 是递减数列, 另一方面
-$$\begin{aligned}
-    1+\dfrac{1}{2}+\cdots+\dfrac{1}{n} &>\ln2 +\ln\frac{3}{2}+\cdots+\ln\brac{1+\frac{1}{n}} \\
-        &=\ln(n+1) =\ln n +\ln\brac{1+\frac{1}{n}}  \\
-        &>\ln n +\frac{1}{n+1}.
-    \end{aligned}$$
-因此有 $c_n>0$ 单调递减收敛.
-
-我们称 $\{c_n\}$ 的极限为 Euler 常数, 记为 $\gamma$ \footnote{ $\gamma \approx 0.5772156649 \cdots$ 看似是一个无理数, 但是关于它的无理性至今仍无证明.}.
-
-\begin{example}
-    有了 $\gamma$ 我们可以快速求一些分数和的极限, 比如
-    $$
-    \limto{n} \brac{\frac{1}{n+1}+\frac{1}{n+2} +\cdots+\frac{1}{2n}}
-    $$
-    注意到
-    $$
-    c_{2n}-c_n=\frac{1}{n+1}+\frac{1}{n+2} +\cdots+\frac{1}{2n} -\ln 2
-    $$
-    那么显然
-    $$
-    \limto{n} \brac{\frac{1}{n+1}+\frac{1}{n+2} +\cdots+\frac{1}{2n}} = \limto{n} \brac{c_{2n}-c_n} +\ln 2 = \ln2.
-    $$
-\end{example}
-
-\end{comment}
 
 \subsection{关于区间套的引理}\label{subsec:38}
 在这一节的末尾, 我们再讨论两个从相反方向互相接近的单调数列.
