@@ -4234,3 +4234,195 @@ $$
 可见, 在处理 $1^\infty$ 型未定式时, 把问题直接归结到数 $\e$ 的极限往往很方便.
 关于各种类型未定式的一般求法, 将在第四章中讨论.
 \flushbottom
+
+\section{连续函数的性质}\label{sec:continuous_function_properties}
+\subsection{零点存在性定理}\label{subsec:80}
+现在开始研究在区间上连续的函数的一些基本性质.
+这些性质很有用, 在以后的叙述中, 我们会经常把它们作为各种论证的依据.
+先从 Bolzano 和 Cauchy 的一个简单定理讲起.
+
+\begin{namedtheorem}[Bolzano--Cauchy 第一定理]\label{thm:bolzano_cauchy_zero}
+设函数 $f(x)$ 在闭区间 $[a,b]\ (a<b)$ 上定义且连续,
+并且在两个端点处取异号的值.
+则在 $a$ 与 $b$ 之间至少存在一点 $c$, 使
+$$
+f(c)=0\qquad(a<c<b).
+$$
+\end{namedtheorem}
+
+这个定理有简单的几何意义: 一条连续曲线从 $x$ 轴的一侧转到另一侧, 必须与 $x$ 轴相交.
+由于函数的零点就是方程 $f(x)=0$ 的根, 这个定理也称为\emph{零点存在性定理}\index{lingdiancunzaixingdingli@零点存在性定理},
+或\emph{根的存在性定理}\index{gendecunzaixingdingli@根的存在性定理}.
+
+\begin{wrapfigure}{r}{0.49\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.64]
+        \draw[-latex] (-4.9,0) -- (4.1,0) node[above,scale=0.8] {$x$};
+        \draw[-latex] (0,-2.1) -- (0,2.2) node[right,scale=0.8] {$y$};
+        \draw[thick,domain=-4.5:3.5,samples=90,smooth]
+            plot (\x,{1.2*atan(2*(\x-1))*pi/180});
+        \foreach \p in {-4.5,-0.5,0.5,1.5,3.5} {
+            \draw[dashed] (\p,0) -- (\p,{1.2*atan(2*(\p-1))*pi/180});
+            \draw[fill=white] (\p,0) circle (1.3pt);
+        }
+        \fill (-4.5,{1.2*atan(-11)*pi/180}) circle (1.5pt);
+        \fill (3.5,{1.2*atan(5)*pi/180}) circle (1.5pt);
+        \node[above,scale=0.8] at (-4.5,0) {$a$};
+        \node[above left,scale=0.8] at (-0.5,0) {$a_1=a_2$};
+        \node[above,scale=0.8] at (0.5,0) {$a_3$};
+        \node[below right,scale=0.8] at (1.5,0) {$b_2=b_3$};
+        \node[above left,scale=0.8] at (3.5,0.06) {$b=b_1$};
+        \node[above left,scale=0.8] at (0,0) {$O$};
+        \node[right,scale=0.8] at (-4.5,-1.1) {$f(a)<0$};
+        \node[above left,scale=0.8] at (3.5,1.65) {$f(b)>0$};
+    \end{tikzpicture}
+\end{wrapfigure}
+\noindent{\sffamily\bfseries\CJKfamily{pffont}第一种证明}\quad
+我们采用 Bolzano 的方法[\emref{subsec:41}], 逐次把区间分成两半.
+为确定起见, 设 $f(a)<0$, $f(b)>0$.
+用中点 $\dfrac{a+b}2$ 把 $[a,b]$ 分成两半.
+如果函数恰在中点等于零, 取 $c=\dfrac{a+b}2$, 证明就完成了.
+
+若中点处的函数值不为零, 则两个半区间中必有一个在两端取异号的函数值,
+而且左端为负, 右端为正.
+把这个半区间记作 $[a_1,b_1]$, 于是
+$$
+f(a_1)<0,\qquad f(b_1)>0.
+$$
+
+再把 $[a_1,b_1]$ 分成两半.
+如果函数在新的中点等于零, 证明仍已完成;
+否则, 选取左端函数值为负、右端函数值为正的半区间 $[a_2,b_2]$.
+继续这个过程, 或者在有限次二等分后找到一个零点,
+或者得到一个闭区间套
+$$
+[a,b]\supseteq[a_1,b_1]\supseteq\cdots\supseteq[a_n,b_n]\supseteq\cdots.
+$$
+在后一种情形中, 对每个自然数 $n$, 都有
+\begin{equation}\label{eq:bisection_endpoint_signs}
+f(a_n)<0,\qquad f(b_n)>0,
+\end{equation}
+并且区间的长度为
+\begin{equation}\label{eq:bisection_interval_length}
+b_n-a_n=\frac{b-a}{2^n}\to0.
+\end{equation}
+由关于区间套的引理 [\emref{subsec:38}], 存在 $c\in[a,b]$, 使
+$$
+\lim_{n\to+\infty}a_n=\lim_{n\to+\infty}b_n=c.
+$$
+现在证明 $c$ 就是所求的零点.
+对 \eqref{eq:bisection_endpoint_signs} 取极限, 并利用 $f$ 在 $c$ 处的连续性, 得
+$$
+f(c)=\lim_{n\to+\infty}f(a_n)\leq0,\qquad
+f(c)=\lim_{n\to+\infty}f(b_n)\geq0.
+$$
+所以 $f(c)=0$.
+又因为 $f(a)$ 与 $f(b)$ 都不为零, $c$ 不可能是端点, 因而 $a<c<b$.
+
+下面给出 Cauchy 的另一种证明, 它基于不同的想法.
+先说明一个引理.
+
+\begin{namedtheorem}[引理]\label{lem:continuous_sign_preservation}
+若函数 $f(x)$ 在点 $x_0$ 连续, 且 $f(x_0)\neq0$,
+则对于定义域中充分接近 $x_0$ 的一切 $x$, $f(x)$ 都与 $f(x_0)$ 同号.
+\end{namedtheorem}
+
+这是函数极限的保号性 [\emref{subsec:55}, \ref{prop:function_eventual_sign_preservation}] 的直接推论:
+由连续性, 其中的极限值 $A$ 就是 $f(x_0)$;
+把 $x=x_0$ 也包括在内, 结论仍然成立.
+
+\noindent{\sffamily\bfseries\CJKfamily{pffont}第二种证明}\quad
+仍设 $f(a)<0$, $f(b)>0$.
+考察区间 $[a,b]$ 中使函数值为负的所有点组成的集合
+$$
+S=\bbbrac{t\in[a,b]:f(t)<0}.
+$$
+这个集合包含 $a$; 由引理, 它还包含位于 $a$ 右侧而充分接近 $a$ 的点.
+又因为 $b$ 是它的一个上界, 由\hyperref[thm:supremum_infimum_existence]{\emph{确界存在定理}}
+[\emref{subsec:11}], 存在有限的上确界
+$$
+c=\sup S,\qquad a<c\leq b.
+$$
+我们将证明 $f(c)=0$.
+
+假定结论不成立, 则或者 $f(c)<0$, 或者 $f(c)>0$.
+若 $f(c)<0$, 由 $f(b)>0$ 知 $c<b$.
+再由引理, 在 $c$ 的右侧充分接近 $c$ 的地方仍有函数值为负的点,
+也就是有属于 $S$ 而大于 $c$ 的点, 这与 $c$ 是 $S$ 的上界矛盾.
+
+若 $f(c)>0$, 由引理, 可以取充分小的 $\delta>0$, 使 $a<c-\delta$,
+并使区间 $(c-\delta,c]$ 上的函数值全为正.
+因此这个区间中没有 $S$ 的点.
+但 $c$ 是 $S$ 的上确界, 所以对每个 $\delta>0$ 都应有 $t\in S$ 满足
+$c-\delta<t\leq c$, 又得到矛盾.
+
+两个可能的情形都被排除, 故 $f(c)=0$.
+由于 $f(b)>0$, 还有 $c<b$, 于是 $a<c<b$.
+
+需要注意, 函数在整个闭区间 $[a,b]$ 上连续的要求很重要.
+只要在一点处有间断, 函数就可能从负值转为正值而不经过零.
+例如,
+$$
+f(x)=\floor{x}-\frac12.
+$$
+虽然 $f(0)=-\dfrac12$, $f(1)=\dfrac12$, 但这个函数在任何点都不等于零;
+它在 $x=1$ 处有跳跃间断.
+
+\subsection{应用于解方程}\label{subsec:81}
+第 \emref{subsec:80} 小节的\hyperref[thm:bolzano_cauchy_zero]{\emph{零点存在性定理}}在解方程时很有用.
+首先, 可以用它来确定根的存在.
+例如, 对于方程
+$$
+2^x=4x,
+$$
+$x=4$ 是一个容易看出的根, 但要指出它还有另一个根, 就不那么直接了.
+考察连续函数 $f(x)=2^x-4x$. 因为
+$$
+f(0)=1>0,\qquad f\brac{\frac12}=\sqrt2-2<0,
+$$
+所以在 $0$ 与 $\dfrac12$ 之间至少有一点使 $f(x)=0$.
+这就证明了原方程还有一个位于 $\brac{0,\dfrac12}$ 内的根.
+
+再考察一般的奇数次代数方程
+$$
+f(x)=a_0x^{2n+1}+a_1x^{2n}+\cdots+a_{2n}x+a_{2n+1}=0,
+$$
+其中各系数都是实数, $a_0\neq0$, $n$ 是非负整数.
+当 $\abs{x}$ 充分大时, 多项式的符号由最高次项决定:
+$x>0$ 时与 $a_0$ 同号, $x<0$ 时与 $a_0$ 异号.
+因此, 可以选取充分大的 $R>0$, 使 $f(-R)$ 与 $f(R)$ 异号.
+又因为多项式是连续函数, 所以它在区间 $[-R,R]$ 内至少有一个零点.
+于是得到结论:
+{\kaishu 每一个实系数的奇数次代数方程至少有一个实根.}
+
+零点存在性定理不仅可以确定实根的存在, 还可以用来计算根的\emph{近似值}\index{gendejinshizhi@根的近似值}.
+例如, 设
+$$
+f(x)=x^4-x-1.
+$$
+因为 $f(1)=-1$, $f(2)=13$, 所以在 $1$ 与 $2$ 之间至少有一个根.
+把区间 $[1,2]$ 分成十等份, 在各分点依次计算, 得
+$$
+f(1.1)=-0.63\ldots,\quad
+f(1.2)=-0.12\ldots,\quad
+f(1.3)=+0.55\ldots.
+$$
+因此在 $1.2$ 与 $1.3$ 之间至少有一个根.
+再把区间 $[1.2,1.3]$ 分成十等份, 计算得到
+$$
+f(1.21)=-0.06\ldots,\quad
+f(1.22)=-0.004\ldots,\quad
+f(1.23)=+0.058\ldots.
+$$
+于是可以把一个根夹在 $1.22$ 与 $1.23$ 之间.
+这个区间的长度为 $0.01$, 取区间内的数作为这个根的近似值, 误差就小于 $0.01$.
+如此继续, 可以进一步提高精度\footnote{不过, 这种逐次试算的方法在实际计算中并不方便.
+第四章第五节讨论方程的近似解时, 将介绍比它更有效的方法.}.
+
+有了这些例子, 再比较上一节的两种证明就很有意思了.
+第二种证明只给出了方程 $f(x)=0$ 的根的\emph{存在性证明}
+\index{cunzaixingzhengming@存在性证明}, 并没有指出怎样求出这个根.
+第一种证明则还给出了实际确定根的方法: 逐次把区间分成两半,
+也可以像上面那样分成十等份.
+若某个分点恰为零点, 就已求得根; 否则每次保留两端函数值异号的子区间.
+这样就能把根夹在长度任意小的区间内, 从而把根计算到所要求的精度.
