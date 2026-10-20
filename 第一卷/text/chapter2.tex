@@ -824,7 +824,7 @@ $$
 $x=+\sqrt{y}$ 和 $x=-\sqrt{y}$.
 若把原函数的定义域分别限制在 $[0,+\infty)$ 和 $(-\infty,0]$,
 这两个单值支便分别成为函数 $y=x^2$ 的反函数
-\footnote{关于反函数的存在性和单值性, 后文还会重新讨论.}.
+\footnote{关于反函数的存在性和单值性, 见 \emref{subsec:83}.}.
 
 \myrefparagraph{3)}\label{ex:inverse_hyperbolic_cosine}
 类似的, 设 $y=\cosh x$, 其中 $x$ 仍在 $(-\infty,+\infty)$ 内变动.
@@ -3407,7 +3407,7 @@ $$
 (即 $\Y$ 中每个数 $y$ 都至少有一次被取作函数值),
 则 $f(x)$ 在 $\X$ 上连续}
 \footnote{函数的值集填满区间 $\Y$ 在这里是单调函数连续的充分条件;
-后面还将证明它也是必要条件.}.
+它也是必要条件, 证明见 \emref{subsec:82}.}.
 
 仍先设 $f(x)$ 单调不减. 假定它在某点 $x_0\in\X$ 左间断.
 由刚才的结论, 存在有限的极限, 并且
@@ -4426,3 +4426,202 @@ $$
 也可以像上面那样分成十等份.
 若某个分点恰为零点, 就已求得根; 否则每次保留两端函数值异号的子区间.
 这样就能把根夹在长度任意小的区间内, 从而把根计算到所要求的精度.
+
+\subsection{介值定理}\label{subsec:82}
+\emref{subsec:80} 内的\hyperref[thm:bolzano_cauchy_zero]{\emph{零点存在性定理}}也可以直接推广为下面的定理.
+
+\begin{namedtheorem}[Bolzano--Cauchy 第二定理]\label{thm:bolzano_cauchy_intermediate_value}
+设函数 $f(x)$ 在区间 $\X$ 上定义且连续.
+这区间可以是闭的、开的或一端开的, 也可以是有限的或无穷的.
+若在区间内的两点 $a,b$ ($a<b$) 处, 函数取不相等的值
+$$
+f(a)=A,\qquad f(b)=B,
+$$
+则对于 $A$ 与 $B$ 之间的任意数 $C$, 在 $a$ 与 $b$ 之间至少存在一点 $c$, 使
+$$
+f(c)=C\qquad(a<c<b).
+$$
+\end{namedtheorem}
+这个定理也称为\emph{介值定理}\index{jiezhidingli@介值定理}\footnote{第一定理是这个定理的特殊情形: 若 $A$ 与 $B$ 异号, 只须取 $C=0$.}.
+
+\begin{proof}
+先设 $A<B$, 于是 $A<C<B$.
+在区间 $[a,b]$ 上考察辅助函数
+$
+\varphi(x)=f(x)-C.
+$
+它在 $[a,b]$ 上连续, 并且在两个端点处取异号的值:
+$$
+\varphi(a)=f(a)-C=A-C<0,\qquad
+\varphi(b)=f(b)-C=B-C>0.
+$$
+由\hyperref[thm:bolzano_cauchy_zero]{\emph{零点存在性定理}}, 在 $a$ 与 $b$ 之间存在一点 $c$, 使
+$$
+\varphi(c)=0,\qquad\text{即}\qquad f(c)-C=0.
+$$
+因此 $f(c)=C$.
+若 $A>B$, 对连续函数 $-f(x)$ 及介于 $-A$ 与 $-B$ 之间的数 $-C$
+应用上述论证, 仍得到同一结论.
+\end{proof}
+
+这样, 我们得到了区间上连续函数的一条重要性质:
+{\kaishu 当函数从一个值变到另一个值时, 必须至少经过它们之间的每个值一次.}
+换句话说, 当 $x$ 在任意区间 $\X$ 上变动时,
+连续函数 $f(x)$ 的值集 $\Y$ 也填满一个区间.
+
+事实上, 设
+$$
+\Y=\bbbrac{f(x):x\in\X},\qquad
+m=\inf\Y,\qquad M=\sup\Y.\footnotemark
+$$
+\footnotetext{若 $\Y$ 没有上界或下界, 按照 \emref{subsec:11} 中的约定,
+分别令 $M=+\infty$ 或 $m=-\infty$.}
+若 $m=M$, 则函数是常值函数, 值集只有一个点.
+下面设 $m<M$, 并任取实数 $y_0$, 使
+$$
+m<y_0<M.
+$$
+由下确界和上确界的定义, 必能分别找到函数值
+$y_1=f(x_1)$ 和 $y_2=f(x_2)$, 其中 $x_1,x_2\in\X$, 使
+$$
+m\leq y_1<y_0<y_2\leq M.
+$$
+由介值定理, 在 $x_1$ 与 $x_2$ 之间存在一点 $x_0$, 使 $f(x_0)=y_0$.
+由于 $\X$ 是区间, $x_0$ 也属于 $\X$; 因而 $y_0\in\Y$.
+所以, $m$ 与 $M$ 之间的每个实数都属于 $\Y$.
+而 $\Y$ 中的每个数都在 $m$ 与 $M$ 之间或等于其中一个有限端点.
+因此, $\Y$ 就是以 $m$、$M$ 为端点的一个区间
+(常值函数的情形退化为一个点).
+有限端点本身能否取到, 要依具体情形而定, 后面还将讨论这一点.
+
+在 \emref{subsec:71} 的判据 \ref{thm:monotone_interval_range_continuity} 中,
+我们已经看到, 对单调函数, 可以从值集填满区间这一性质反过来推出函数的连续性.
+但对一般函数, 不能作这样的推断.
+例如, 考察 \emref{subsec:70} 的例 \ref{ex:oscillating_sine_discontinuity} 中的函数, 并补充定义零点处的值:
+$$
+f(x)=\sin\frac1x\quad(x\neq0),\qquad f(0)=0.
+$$
+这个函数在 $x=0$ 处间断, 但当 $x$ 在任何包含零点、且不止一个点的区间上变动时,
+它的值集都填满整个区间 $[-1,1]$.
+
+
+\subsection{反函数的存在}\label{subsec:83}
+现在应用连续函数的性质, 来讨论反函数在什么条件下是单值且连续的
+[\emref{subsec:49}].
+
+\begin{theorem}\label{thm:inverse_function_existence_continuity}
+设函数 $y=f(x)$ 在区间 $\X$ 上定义, 连续且单调递增 (递减)
+\footnote{这里的单调性取狭义, 即严格递增或严格递减. 这一点在本定理中很重要.}.
+则在它的值集所成的区间 $\Y$ 上, 存在单值的反函数 $x=g(y)$,
+并且这反函数也连续且单调递增 (递减).
+\end{theorem}
+\index{fanhanshu@反函数!cunzaixingyulianxuxing@存在性与连续性}
+
+\begin{proof}
+不妨假设 $f(x)$ 单调递增.
+由 \emref{subsec:82}, 连续函数 $f(x)$ 的值集 $\Y$ 是一个区间.
+对于其中的每个数 $y_0$, 至少能找到一点 $x_0\in\X$, 使
+$$ 
+f(x_0)=y_0.
+$$
+当 $x>x_0$ 时, $f(x)>f(x_0)$; 当 $x<x_0$ 时, $f(x)<f(x_0)$.
+所以, 其他任何点的函数值都不等于 $y_0$.
+因此这样的 $x_0$ 只能有一个.
+把每个 $y_0\in\Y$ 与这个唯一的 $x_0$ 对应起来, 就得到单值函数
+$$
+x=g(y),
+$$
+它正是 $y=f(x)$ 的反函数.
+
+这个反函数也单调递增.
+设 $y'<y''$, 并记
+$$
+x'=g(y'),\qquad x''=g(y'').
+$$
+根据反函数的定义, 有 $y'=f(x')$, $y''=f(x'')$.
+若 $x'>x''$, 则原函数的单调性给出 $y'>y''$, 与假设矛盾.
+若 $x'=x''$, 又会得到 $y'=y''$, 也不可能.
+所以只能有 $x'<x''$, 这就证明了 $g(y)$ 单调递增.
+
+最后证明连续性.
+函数 $g(y)$ 的定义域 $\Y$ 是一个区间, 它在这个区间上单调,
+并且它的值集恰好填满区间 $\X$
+\footnote{任取 $x\in\X$, 令 $y=f(x)$, 则按照反函数的定义, $g(y)$ 的值就是所取的 $x$.}.
+因此, 由 \emref{subsec:71} 的判据 \ref{thm:monotone_interval_range_continuity},
+$g(y)$ 在 $\Y$ 上连续.
+\end{proof}
+
+该定理在几何上很直观, 可以结合右图来理解.
+利用这个定理, 可以重新得到一系列已经知道的结果.
+
+\begin{wrapfigure}{r}{0.44\textwidth}
+    \centering
+    \begin{tikzpicture}[x=0.76cm,y=1.02cm]
+        \draw[-latex] (-0.15,0) -- (5.3,0) node[below,scale=0.8] {$x$};
+        \draw[-latex] (0,-0.12) -- (0,4.05) node[left,scale=0.8] {$y$};
+        \node[below left,scale=0.8] at (0,0) {$O$};
+        \draw[thick,domain=0:4.98,samples=65,smooth]
+            plot (\x,{0.11*\x*\x+0.08*\x+0.68});
+        \foreach \p in {0.9,1.9,3,3.9,4.8} {
+            \draw[dashed] (\p,0) -- (\p,{0.11*\p*\p+0.08*\p+0.68})
+                -- (0,{0.11*\p*\p+0.08*\p+0.68});
+            \draw[fill=white] (\p,{0.11*\p*\p+0.08*\p+0.68}) circle (1.4pt);
+        }
+        \node[below,scale=0.8] at (0.9,0) {$x'$};
+        \node[below,scale=0.8] at (1.9,0) {$x''$};
+        \node[below,scale=0.8] at (3,0) {$x=g(y)$};
+        \node[left,scale=0.8] at (0,0.8411) {$y'$};
+        \node[left,scale=0.8] at (0,1.2291) {$y''$};
+        \node[left,scale=0.8] at (0,1.91) {$y=f(x)$};
+    \end{tikzpicture}
+\end{wrapfigure}
+对于区间 $\X=[0,+\infty)$ 上的函数 $y=x^n$ ($n=1,2,\ldots$),
+定理给出了算术根 $x=\sqrt[n]y$ 在区间 $\Y=[0,+\infty)$ 上的存在性和连续性.
+从实数轴上定义的指数函数 $y=a^x$ ($a>0$, $a\neq1$) 出发,
+又能得到对数函数 $x=\log_a y$ 在区间 $\Y=(0,+\infty)$ 上的存在性和连续性.
+最后, 考察函数 $y=\sin x$ 和 $y=\tan x$.
+前一个限制在区间 $\X_1=[-\pi/2,\pi/2]$ 上,
+后一个限制在区间 $\X_2=(-\pi/2,\pi/2)$ 上.
+于是得到它们的反函数 $x=\arcsin y$ 和 $x=\arctan y$,
+分别在区间 $\Y_1=[-1,1]$ 和 $\Y_2=(-\infty,+\infty)$ 上存在且连续.
+
+这里, 我们必须预先知道 $x^n$、$a^x$、$\sin x$、$\tan x$ 的连续性,
+而且证明这些函数连续时不能先利用它们的反函数的存在, 否则就会陷入循环论证.
+所需的证明已在 \emref{subsec:68} 中给出;
+\emref{subsec:72} 中借助单调函数连续性判据所作的论证, 在这里不能采用.
+
+再考察一个例子. 设 $x\in(-\infty,+\infty)$, 并令
+\begin{equation}\label{eq:kepler_monotone_map}
+y=x-\epsilon\sin x,\qquad 0<\epsilon<1.
+\end{equation}
+这个函数连续且单调递增.
+连续性由连续函数的算术运算得到.
+为证明严格递增, 设 $x''>x'$, 相应的函数值为 $y''$、$y'$, 则
+$$
+y''-y'=(x''-x')-\epsilon(\sin x''-\sin x').
+$$
+根据 \emref{subsec:68} 中的 \eqref{eq:sine_difference_bound}, 有
+$$
+\abs{\sin x''-\sin x'}\leq x''-x'.
+$$
+所以
+$$
+y''-y'\geq(1-\epsilon)(x''-x')>0.
+$$
+又因为 $\abs{y-x}\leq\epsilon$, 当 $x$ 趋于 $+\infty$ 或 $-\infty$ 时,
+$y$ 也分别趋于 $+\infty$ 或 $-\infty$.
+因此, 它的值集是整个实数轴.
+应用上面的定理, 就知道 $x$ 是 $y$ 的单值连续函数.
+
+这个例子还涉及理论天文学中的一个问题.
+方程
+\begin{equation}\label{eq:kepler_equation}
+E=M+\epsilon\sin E
+\tag{\ref*{eq:kepler_monotone_map}a}
+\end{equation}
+就是著名的\emph{Kepler 方程}\index{keplerfangcheng@Kepler 方程}.
+它表示行星的平近点角 $M$ 与偏近点角 $E$ 之间的关系,
+其中 $\epsilon$ 是轨道的离心率.
+这里的 $E$、$M$ 都以弧度计.
+把 \eqref{eq:kepler_monotone_map} 中的 $x$、$y$ 分别换成 $E$、$M$, 就得到这个方程.
+因此, 不论平近点角 $M$ 取什么实数值, Kepler 方程都唯一地确定偏近点角 $E$ 的值.
