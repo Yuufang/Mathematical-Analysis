@@ -4492,7 +4492,7 @@ $$
 而 $\Y$ 中的每个数都在 $m$ 与 $M$ 之间或等于其中一个有限端点.
 因此, $\Y$ 就是以 $m$、$M$ 为端点的一个区间
 (常值函数的情形退化为一个点).
-有限端点本身能否取到, 要依具体情形而定, 后面还将讨论这一点.
+有限端点本身能否取到, 要依具体情形而定, 见 \emref{subsec:85}.
 
 在 \emref{subsec:71} 的判据 \ref{thm:monotone_interval_range_continuity} 中,
 我们已经看到, 对单调函数, 可以从值集填满区间这一性质反过来推出函数的连续性.
@@ -4625,3 +4625,181 @@ E=M+\epsilon\sin E
 这里的 $E$、$M$ 都以弧度计.
 把 \eqref{eq:kepler_monotone_map} 中的 $x$、$y$ 分别换成 $E$、$M$, 就得到这个方程.
 因此, 不论平近点角 $M$ 取什么实数值, Kepler 方程都唯一地确定偏近点角 $E$ 的值.
+
+\subsection{有界性定理}\label{subsec:84}
+如果函数 $f(x)$ 在某个有限区间内处处有定义,
+也就是说它在每一点都取有限值, 但我们并不能由此推出函数有界.
+例如, 设
+$$
+f(x)=
+\begin{cases}
+    \dfrac1x, & 0<x\leq1; \\
+    0, & x=0.
+\end{cases}
+$$
+这个函数在 $[0,1]$ 上处处取有限值, 但它无界:
+当 $x$ 从右侧趋于零时, 函数值可以任意大.
+顺便指出, 它在半开区间 $(0,1]$ 上连续, 但在 $x=0$ 处间断.
+
+对于在闭区间上连续的函数, 情形就不同了.
+
+\begin{namedtheorem}[Weierstrass 第一定理]\label{thm:weierstrass_boundedness}
+若函数 $f(x)$ 在有限闭区间 $[a,b]$ 上定义且连续, 则它在这个区间上有界.
+也就是说, 存在有限常数 $m$、$M$, 使对于一切 $x\in[a,b]$, 都有
+$$
+m\leq f(x)\leq M.
+$$
+\end{namedtheorem}
+\index{weierstrassdiyidingli@Weierstrass 第一定理}
+\index{lianxuhanshu@连续函数!youjiexing@有界性}
+
+\begin{proof}
+用反证法. 假设 $f(x)$ 在 $[a,b]$ 上无界.
+那么, 对于每个自然数 $n$, 都可以在 $[a,b]$ 内选取一点 $x_n$, 使
+\begin{equation}\label{eq:unbounded_function_sequence}
+\abs{f(x_n)}\geq n.
+\end{equation}
+数列 $\seqset{x}$ 的所有项都在 $[a,b]$ 内, 因而有界.
+由 \emref{subsec:41} 的 Bolzano--Weierstrass 引理,
+可以从中选出一个收敛于有限极限的子列 $\bbbrac{x_{n_k}}$:
+$$
+x_{n_k}\to x_0\qquad(k\to+\infty).
+$$
+由于 $a\leq x_{n_k}\leq b$, 极限也满足 $a\leq x_0\leq b$.
+因此, 函数在 $x_0$ 处连续.
+按照连续性的数列表述 [\emref{subsec:66}], 必有
+$$
+f(x_{n_k})\to f(x_0).
+$$
+但由 \eqref{eq:unbounded_function_sequence},
+$$
+\abs{f(x_{n_k})}\geq n_k\to+\infty,
+$$
+这与函数值数列收敛于有限数 $f(x_0)$ 矛盾.
+所得的矛盾就证明了定理.
+\end{proof}
+
+\subsection{函数的最值}\label{subsec:85}
+我们知道, 一个无穷数集即使有界, 也可能没有最大的或最小的元素.
+因此, 函数 $f(x)$ 在某个区间上有定义且有界,
+并不保证它的值集中有最大的或最小的数,
+也就是说, 函数不一定能达到自己的上确界或下确界.
+例如, 考察函数
+$$
+f(x)=x-\floor{x}.
+$$
+\begin{wrapfigure}[6]{r}{0.40\textwidth}
+    \vspace{-0.5cm}
+    \centering
+    \begin{tikzpicture}[x=1.12cm,y=1.35cm]
+        \draw[-latex] (-0.15,0) -- (3.55,0) node[below,scale=0.8] {$x$};
+        \draw[-latex] (0,-0.15) -- (0,1.35) node[left,scale=0.8] {$y$};
+        \node[below left,scale=0.8] at (0,0) {$O$};
+        \foreach \k in {0,1,2} {
+            \draw[thick] (\k,0) -- ({\k+1},1);
+            \draw[fill=white] ({\k+1},1) circle (1.5pt);
+        }
+        \draw[thick] (3,0) -- (3.25,0.25);
+        \foreach \k in {1,2,3} {
+            \draw[dashed] (\k,0) -- (\k,0.98);
+            \fill (\k,0) circle (1.3pt);
+            \node[below,scale=0.8] at (\k,0) {$\k$};
+        }
+    \end{tikzpicture}
+\end{wrapfigure}
+它的图像如右图所示.
+当 $x$ 在任意区间 $[0,b]$ ($b\geq1$) 上变动时,
+都有 $0\leq f(x)<1$, 而当 $x$ 从左侧趋于 1 时, $f(x)$ 趋于 1.
+所以函数值的上确界是 1, 但这个值不能取到, 函数没有最大值.
+
+这里, 函数在正整数处有间断.
+对于在有限闭区间上连续的函数, 则成立下面的定理.
+
+\begin{namedtheorem}[Weierstrass 第二定理]\label{thm:weierstrass_extrema}
+若函数 $f(x)$ 在有限闭区间 $[a,b]$ 上定义且连续,
+则它在这个区间上能达到自己的上确界和下确界.
+换句话说, 在 $[a,b]$ 内存在点 $x_0$、$x_1$,
+使 $f(x_0)$、$f(x_1)$ 分别为函数在这个区间上的最大值和最小值.
+\end{namedtheorem}
+\index{weierstrassdierdingli@Weierstrass 第二定理}
+\index{zuidazhi@最大值}
+\index{zuixiaozhi@最小值}
+
+\begin{proof}[第一种证明]
+令
+$$
+M=\sup\bbbrac{f(x):x\in[a,b]}.
+$$
+由 \emref{subsec:84}, $M$ 是有限数.
+假设函数不能达到 $M$, 即对一切 $x\in[a,b]$ 都有 $f(x)<M$.
+考察辅助函数
+$$
+\varphi(x)=\frac1{M-f(x)}.
+$$
+它的分母在 $[a,b]$ 上处处不为零, 因而它在这个区间上连续.
+再由 \emref{subsec:84}, 它有界, 所以可以选取常数 $\mu>0$, 使
+$
+0<\varphi(x)\leq\mu.
+$
+由此得到
+$$
+f(x)\leq M-\frac1\mu\qquad(x\in[a,b]).
+$$
+这样, 比 $M$ 小的数 $M-1/\mu$ 也是函数值集的上界,
+与 $M$ 是上确界矛盾.
+因此, 必存在 $x_0\in[a,b]$, 使 $f(x_0)=M$.
+关于最小值的结论取 $-f(x)$ 转化为最大值即可证明.
+\end{proof}
+
+\begin{proof}[第二种证明]
+也可以直接从 \emref{subsec:41} 的 Bolzano--Weierstrass 引理出发.
+仍只证明最大值的存在性, 和刚才一样, 令
+$$
+M=\sup\bbbrac{f(x):x\in[a,b]}.
+$$
+由上确界的性质 [\emref{subsec:11}], 对每个自然数 $n$,
+都可以在 $[a,b]$ 内选取一点 $x_n$, 使
+\begin{equation}\label{eq:extremum_approaching_supremum}
+f(x_n)>M-\frac1n.
+\end{equation}
+从有界数列 $\seqset{x}$ 中可以选出一个子列 $\bbbrac{x_{n_k}}$,
+使它收敛于 $[a,b]$ 内的某一点 $x_0$,
+由函数在 $x_0$ 处的连续性, 有
+$$
+f(x_{n_k})\to f(x_0).
+$$
+同时, 由 \eqref{eq:extremum_approaching_supremum},
+$$
+f(x_{n_k})>M-\frac1{n_k}.
+$$
+取极限得到 $f(x_0)\geq M$.
+但 $M$ 是函数值集的上界, 所以又有 $f(x_0)\leq M$.
+因此 $f(x_0)=M$, 这就证明了所要的结论.
+\end{proof}
+
+须注意, 上面两种证明都是纯粹的存在性证明,
+并没有给出求出点 $x_0$ 的方法.
+以后在第四章第一节中, 对函数加上进一步的条件后,
+我们将学习怎样实际求出函数达到最大值或最小值时的自变量的值.
+
+\phantomsection\label{def:function_oscillation}
+设函数 $f(x)$ 在任意区间 $\X$ 上有界, 记
+$$
+M=\sup\bbbrac{f(x):x\in\X},\qquad
+m=\inf\bbbrac{f(x):x\in\X}.
+$$
+差
+$$
+\omega=M-m
+$$
+称为函数在区间 $\X$ 上的\emph{振幅}\index{zhenfu@振幅}.
+振幅也可以定义为一切可能的差 $f(x'')-f(x')$ 所成的集合的上确界,
+其中 $x'$、$x''$ 是在 $\X$ 内独立选取的任意两点:
+$$
+\omega=\sup_{x',x''\in\X}\bbbrac{f(x'')-f(x')}.
+$$
+
+当 $f(x)$ 在有限闭区间 $\X=[a,b]$ 上连续时,
+由刚才证明的定理, 振幅就是函数在这个区间上的最大值与最小值之差.
+结合 \emref{subsec:82}, 函数的值集 $\Y$ 恰好是闭区间 $[m,M]$,
+而振幅就是这个区间的长度.

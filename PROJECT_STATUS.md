@@ -1,25 +1,27 @@
 # 项目当前状态
 
-最后更新：2026-10-20
+最后更新：2026-10-21
 
 ## 已审核发布
 
-第一卷连续第 **1—83 小节**已由用户审核并发布，包含第 107 页异常空白修复。2026-10-20 续入第 82“介值定理”和第 83“反函数的存在”及第 49、71 脚注补链，沿用按 `section` 重置的公式计数及原字体。发布 PDF **143 页、1282324 字节**；[公开下载](https://github.com/Yuufang/Mathematical-Analysis/raw/refs/heads/main/%E7%AC%AC%E4%B8%80%E5%8D%B7/main.pdf?download=1)。发布源码与 PDF 由 Git 保存，提交与验证摘要见 CHANGELOG。
+第一卷连续第 **1—85 小节**已由用户审核并发布，包含第 107 页异常空白修复。2026-10-21 续入第 84“有界性定理”、第 85“函数的最值”及第 82 端点讨论补链，沿用按 `section` 重置的公式计数及原字体。发布 PDF **145 页、1296452 字节**；[公开下载](https://github.com/Yuufang/Mathematical-Analysis/raw/refs/heads/main/%E7%AC%AC%E4%B8%80%E5%8D%B7/main.pdf?download=1)。发布源码与 PDF 由 Git 保存，提交与验证摘要见 CHANGELOG。
 
 ## 正式工程与本地存稿
 
-入口为 [第一卷/main.tex](第一卷/main.tex)，工作 PDF 为 [第一卷/main.pdf](第一卷/main.pdf)，职责见[模板说明](模板说明.md)。本地完整稿第 1—83 已启用，第 84 起存稿仍在 comment 中；Git 发布第二章只收录已审核内容。后续存稿、未载入章节、其他卷册及原书不上传。本次保留用户工作 PDF（1282309 字节），临时发布 PDF 不覆盖工作工程。
+入口为 [第一卷/main.tex](第一卷/main.tex)，工作 PDF 为 [第一卷/main.pdf](第一卷/main.pdf)，职责见[模板说明](模板说明.md)。本地完整稿第 1—85 已启用，第 86 起存稿仍在 comment 中；Git 发布第二章只收录已审核内容。后续存稿、未载入章节、其他卷册及原书不上传。本次保留用户工作 PDF（1296472 字节），临时发布 PDF 不覆盖工作工程。
 
-本次采用用户当前审核保存稿，第 82—83 原书印刷第 140—143 页／PDF 物理页 156—159，标签 `subsec:82`、`subsec:83`、`thm:bolzano_cauchy_intermediate_value`、`thm:inverse_function_existence_continuity`、`eq:kepler_monotone_map`、`eq:kepler_equation`。此前正文仅含第 49、71 脚注补链，其他数学正文不变；模板、宏与字体不变。完整本地第二章 SHA-256 `10f51a948d319d261a099d31d3533db0c6e78a7c1c8ab07c5b5bcbd088410f22`，发布第二章 SHA-256 `0772c72b532656fea8d5348e28301ff0f7675d9cb51539ca78bd384ffc9b80a1`。
+本次采用用户当前审核保存稿，原书印刷第 143—145 页／PDF 物理页 159—161，标签 `subsec:84`、`subsec:85`、`thm:weierstrass_boundedness`、`eq:unbounded_function_sequence`、`thm:weierstrass_extrema`、`eq:extremum_approaching_supremum`、`def:function_oscillation`。保留用户第 84 措辞、第 85 右侧图形和证明改写，仅修正一处“有界,.”标点笔误；第 1—83 除第 82 补链外与上次发布一致，主文件、宏、模板与字体不变。
 
-发布副本四遍原字体 XeLaTeX、两轮 main／names texindy，第 3、4 遍 11 个关键辅助文件一致；143 页、1282324 字节，388 个活动标签、508 次引用、821 个内部链接有效，Noto Regular／Black／Medium 实际嵌入。本批正文页 131—134／物理页 137—140、第 49、71 补链页、交界、目录及三页索引已独立渲染看图。无致命／未定义／重复目标／Overfull／缺字／引用不稳定／wrapfig 警告；保留 43 条 Underfull（42 条在正文第 127 页及以前，1 条在第 82 所在正文第 131 页）及既有索引／locale 提示。发布 PDF SHA-256 `deeceab32798f9d698a80473e2f0b6f70d09f9dd6b9aeca5f18662bf07dfe95b`。该复验仅对应本次保存版本；临时基线、构建、日志与图像记录后清理。
+完整本地第二章 SHA-256 `d19adc57d138df435d7b10bae3672752823ca77cfcc1722ecdb614bfdab82608`，发布第二章 SHA-256 `d7f28396d6990e54cb48dd301a9a3038aa471e074ffadca0455510fbc91f8892`；发布副本只去除第 86 起注释存稿。
+
+发布副本按正式字体配置四遍 XeLaTeX、两轮 main／names texindy，第 3、4 遍 11 个关键辅助文件一致；145 页、1296452 字节，395 个活动标签、518 次引用、839 个内部链接有效，Noto Regular／Black／Medium 实际嵌入。本批正文页 134—136／物理页 140—142、第 82 补链页（正文 132／物理 138）、交界、目录及三页索引已独立渲染看图，公式 (4)、(5) 及振幅锚点正确。无致命／未定义／重复目标／Overfull／缺字／引用不稳定／wrapfig 警告；保留 44 条既有 Underfull（正文第 134 页及以前）及索引／locale 提示。发布 PDF SHA-256 `6380191ff2f88677527e56fd8e2a82cc6c6868f122fd6216deaac7b0122b4d71`。本次独立复验当前用户保存稿，未沿用精校阶段结果代替发布验证；临时基线、构建、日志及图像记录后清理。
 
 ## 稿件范围
 
 | 范围 | 状态与位置 |
 | --- | --- |
-| 第一卷第 1—83 小节 | 已审核发布；当前工作工程保留全部现稿 |
-| 第一卷第 84 起第二章现存后续稿 | `第一卷/text/chapter2.tex` 外层 comment 中保留，未启用；不视为完整连续队列 |
+| 第一卷第 1—85 小节 | 已审核发布；当前工作工程保留全部现稿 |
+| 第一卷第 86 起第二章现存后续稿 | `第一卷/text/chapter2.tex` 外层 comment 中保留，未启用；不视为完整连续队列 |
 | 第一卷第 90—256 小节 | `第一卷/text/chapter3.tex` 至 `chapter7.tex`；外层 comment 且未载入 |
 | 第一卷第 257—262 小节 | 尚未起草 |
 | 第二卷第 263—469 小节 | 第八至十二章初稿，五个 text/chapter 文件；comment 且未载入 |
@@ -28,13 +30,13 @@
 
 ## 下一次自动精校起点
 
-第一卷第二章第 **84 小节“有界性定理”**（原书题“关于函数的有界性的定理”），印刷第 143 页／PDF 物理页 159 起，对应 `第一卷/text/chapter2.tex` 的 `subsec:84` 现有注释初稿。
+第一卷第二章第 **86 小节“一致连续的概念”**，原书印刷第 145 页／PDF 物理页 161 起，对应 `第一卷/text/chapter2.tex` 的 `subsec:86` 现有注释初稿。
 
-第 82、83 已审核发布，保留当前保存稿，不重复重写；接续第 84 时每轮仍只处理一个原书编号小节，不追加第 85 或启用其他后文。
+第 84、85 已审核发布，保留当前保存稿，不重复重写；接续第 86 时每轮仍只处理一个原书编号小节，不追加第 87 或启用其他后文。
 
 ## 当前待处理问题
 
-- 每轮精校按 AGENTS.md 回查前文暂缓引用，目标启用后再核对并补链：第 55、79 小节未定式一般方法指第四章 `sec:indeterminate_forms`（未载入且 comment）；第 63 小节主部系统方法指 `subsec:104`、`subsec:124`（第三章未载入且 comment）；第 81 小节脚注的更有效求根方法指第四章第五节 `sec:approximate_solution_equations`（未载入且 comment）。第 82 小节值集区间端点能否取到的后文讨论，原书指第 84（`subsec:84`，comment），待启用后再核对补链。不因补引用启用存稿或恢复删稿。
+- 每轮精校按 AGENTS.md 回查前文暂缓引用，目标启用后再核对并补链：第 55、79 小节未定式一般方法指第四章 `sec:indeterminate_forms`（未载入且 comment）；第 63 小节主部系统方法指 `subsec:104`、`subsec:124`（第三章未载入且 comment）；第 81 小节脚注的更有效求根方法指第四章第五节 `sec:approximate_solution_equations`（未载入且 comment）。第 85 小节关于实际求极值点方法的前瞻指第四章第一节 `sec:function_variation`（未载入且 comment），暂保留普通文字。不因补引用启用存稿或恢复删稿。
 - 右侧直接 PDF 预览缺中文的应用内原因尚未确认；此前相同文件已核验字体嵌入且可独立渲染。源码未修改时，不据预览异常改变书稿字体。
 
 ## 审核与发布
