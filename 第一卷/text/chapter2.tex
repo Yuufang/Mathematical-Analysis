@@ -4803,3 +4803,200 @@ $$
 由刚才证明的定理, 振幅就是函数在这个区间上的最大值与最小值之差.
 结合 \emref{subsec:82}, 函数的值集 $\Y$ 恰好是闭区间 $[m,M]$,
 而振幅就是这个区间的长度.
+
+\subsection{一致连续的概念}\label{subsec:86}
+我们知道, 设函数 $f(x)$ 在区间 $\X$ 上定义.
+这个区间可以是闭的或不闭的, 也可以是有限的或无穷的.
+若函数在其中一点 $x_0$ 处连续, 则
+$$
+\lim_{\substack{x\to x_0\\x\in\X}}f(x)=f(x_0).
+$$
+用“$\epsilon$--$\delta$ 的语言” [\emref{subsec:66}] 来说,
+就是对于任意 $\epsilon>0$, 都存在 $\delta>0$,
+使区间 $\X$ 内满足 $\abs{x-x_0}<\delta$ 的一切 $x$ 都满足
+$$
+\abs{f(x)-f(x_0)}<\epsilon.
+$$
+
+现在假设 $f(x)$ 在整个区间 $\X$ 上连续,
+即它在区间内每一点 $x_0$ 处都连续.
+这样, 对于每一点 $x_0$ 和给定的 $\epsilon>0$,
+都可以分别找到相应的 $\delta>0$.
+就算我们固定其中一个量, 比如说 $\epsilon$ 固定不变, 当 $x_0$ 在区间内变动时,
+所选的 $\delta$ 一般也要随之改变.
+例如, 看右下图所示的情形.
+在函数变化较慢、图像较平缓的地方,
+对于给定的函数值误差 $\epsilon$, 可以选取较大的 $\delta$;
+在函数变化较快、图像较陡的地方, 对应的 $\delta$ 就要小得多.
+换句话说, {\kaishu 所选的 $\delta$ 一般不仅依赖于 $\epsilon$,
+还依赖于点 $x_0$ 的位置.}
+
+\begin{wrapfigure}[8]{r}{0.47\textwidth}
+    \vspace{-1.2cm}
+    \centering
+    \begin{tikzpicture}[x=1.2cm,y=1.35cm]
+        \draw[-latex] (-0.18,0) -- (3.95,0) node[below,scale=0.8] {$x$};
+        \draw[-latex] (0,-0.12) -- (0,2.98) node[left,scale=0.8] {$y$};
+        \node[below left,scale=0.8] at (0,0) {$O$};
+        \draw[thick,domain=0.4:3.6,samples=80,smooth]
+            plot (\x,{0.85+0.1*(\x-1.5)+0.16*(\x-1.5)^3});
+        \draw (0.4,0) -- (0.4,{0.85+0.1*(0.4-1.5)+0.16*(0.4-1.5)^3});
+        \draw (3.6,0) -- (3.6,{0.85+0.1*(3.6-1.5)+0.16*(3.6-1.5)^3});
+        \foreach \p in {0.75,1.5,2.25,2.88,3,3.12} {
+            \draw[dashed] (\p,0) -- (\p,{0.85+0.1*(\p-1.5)+0.16*(\p-1.5)^3});
+        }
+        \draw[dashed] (0,0.69) -- (0.75,0.69);
+        \draw[dashed] (0,1.01) -- (2.25,1.01);
+        \draw[dashed] (0,0.85) -- (1.5,0.85);
+        \draw (-0.10,0.69) -- (-0.10,1.01);
+        \draw (-0.15,0.69) -- (-0.05,0.69);
+        \draw (-0.15,1.01) -- (-0.05,1.01);
+        \draw[dashed] (0,1.4) -- (2.88,1.4);
+        \draw[dashed] (0,1.54) -- (3,1.54);
+        \draw[dashed] (0,1.7) -- (3.12,1.7);
+        \draw (-0.10,1.4) -- (-0.10,1.7);
+        \draw (-0.15,1.4) -- (-0.05,1.4);
+        \draw (-0.15,1.7) -- (-0.05,1.7);
+        \node[left,scale=0.8] at (-0.16,0.85) {$\epsilon$};
+        \node[left,scale=0.8] at (-0.16,1.54) {$\epsilon$};
+        \draw[fill=white] (1.5,0.85) circle (1.4pt);
+        \draw[fill=white] (3,1.54) circle (1.4pt);
+        \node[above left,scale=0.8] at (0.4,0) {$a$};
+        \node[below,scale=0.8] at (0.75,-0.05) {$x_0-\delta$};
+        \node[below,scale=0.8] at (1.5,0) {$x_0$};
+        \node[below,scale=0.8] at (2.25,-0.05) {$x_0+\delta$};
+        \node[above left,scale=0.6] at (2.88,0.05) {$x_0'-\delta'$};
+        \node[above right,scale=0.6] at (3.12,0.05) {$x_0'+\delta'$};
+        \node[below,scale=0.8] at (3,0) {$x'_0$};
+        \node[below,scale=0.8] at (3.6,0) {$b$};
+    \end{tikzpicture}
+\end{wrapfigure}
+如果只考虑有限多个点 $x_0$, 并固定 $\epsilon$,
+那么可以从相应的有限多个正数 $\delta$ 中选出最小的一个.
+这个正数就同时适用于所考虑的一切点.
+但对于区间内无穷多个点, 不能照此推断:
+相应的无穷多个 $\delta$ 可能任意小, 未必有一个共同的正下界.
+于是产生一个问题: 对于给定的 $\epsilon>0$,
+能否找到同一个 $\delta>0$, 同时适用于区间 $\X$ 内的一切点 $x_0$?
+
+{\kaishu 若对于任意 $\epsilon>0$, 都存在 $\delta>0$,
+使任意两点 $x_0,x\in\X$ 只要满足
+$$
+\abs{x-x_0}<\delta,\quad
+\text{就有}
+\quad\abs{f(x)-f(x_0)}<\epsilon,
+$$
+则称函数 $f(x)$ 在区间 $\X$ 上\emph{一致连续}\index{yizhilianxu@一致连续}.}
+
+在这个定义中, $\delta$ 不依赖于点 $x_0$ 的位置.
+对于固定的函数和区间, 它只须随 $\epsilon$ 选定,
+而且可以在选取 $x_0$ 以前就指出: 这个 $\delta$ 同时适用于一切 $x_0$.
+一致连续表示, 在区间的任何部分,
+只要自变量的两个值达到一定的接近程度,
+对应的函数值就达到所要求的接近程度.
+因此, 一致连续的函数在每一点都连续.
+但反过来, 在区间内处处连续的函数不一定一致连续.
+
+例如, 考察函数
+$$
+f(x)=\sin\frac1x,\qquad x\in\left(0,\frac2\pi\right].
+$$
+它在这个非闭区间的每一点处都连续.
+令
+$$
+x_0=\frac2{(2n+1)\pi},\qquad x=\frac1{n\pi},
+\qquad n=1,2,\ldots.
+$$
+这两点都属于上述区间, 而且
+$$
+f(x_0)=\sin\frac{(2n+1)\pi}{2}=(-1)^n,\qquad
+f(x)=\sin n\pi=0.
+$$
+所以
+$$
+\abs{f(x)-f(x_0)}=1,
+$$
+尽管
+$$
+\abs{x-x_0}=\frac1{n(2n+1)\pi}\to0\qquad(n\to+\infty).
+$$
+因而对于 $\epsilon=1$, 无论选取怎样的 $\delta>0$,
+只要 $n$ 足够大, 就能得到满足 $\abs{x-x_0}<\delta$ 的两点,
+但它们的函数值之差的绝对值仍等于 1.
+所以不存在同时适用于区间内一切点 $x_0$ 的 $\delta$,
+这个函数在所考察的区间上不一致连续.
+不过, 对于每个单独固定的 $x_0$, 连续性仍保证相应的 $\delta$ 存在.
+
+值得注意的是, 对于在有限闭区间 $[a,b]$ 上连续的函数,
+不会出现上面这种情形. 这由 \emref{subsec:87} 中的 Cantor 定理说明.
+
+\subsection{Cantor 定理}\label{subsec:87}
+{\kaishu 若函数 $f(x)$ 在有限闭区间 $[a,b]$ 上定义且连续,
+则它在这个区间上一致连续.}
+\index{cantordingli@Cantor 定理}
+
+\begin{proof}
+用反证法. 假设 $f(x)$ 在 $[a,b]$ 上不一致连续.
+按照 \emref{subsec:86} 的定义, 这就是说, 存在某个确定的 $\epsilon_0>0$,
+使无论取怎样的 $\delta>0$, 总能在 $[a,b]$ 内找到两点 $x$、$y$, 满足
+$$
+\abs{x-y}<\delta,\qquad
+\abs{f(x)-f(y)}\geq\epsilon_0.
+$$
+
+取一个趋于零的正数列 $\seqset{\delta}$.
+对于每个 $\delta_n$, 依照上述假设选取两点 $x_n,y_n\in[a,b]$, 使
+$$
+\abs{x_n-y_n}<\delta_n,\qquad
+\abs{f(x_n)-f(y_n)}\geq\epsilon_0.
+$$
+由 \emref{subsec:41} 的 Bolzano--Weierstrass 引理,
+可以从有界数列 $\seqset{x}$ 中选出一个子列 $\bbbrac{x_{n_k}}$,
+使它收敛于 $[a,b]$ 内的某一点 $c$.
+由于
+$$
+\abs{y_{n_k}-c}
+\leq\abs{y_{n_k}-x_{n_k}}+\abs{x_{n_k}-c}
+<\delta_{n_k}+\abs{x_{n_k}-c}\to0,
+$$
+相应的子列 $\bbbrac{y_{n_k}}$ 也收敛于 $c$.
+函数在 $c$ 处连续, 因而
+$$
+f(x_{n_k})\to f(c),\qquad f(y_{n_k})\to f(c).
+$$
+于是
+$$
+f(x_{n_k})-f(y_{n_k})\to0.
+$$
+但对于每个 $k$, 都有
+$$
+\abs{f(x_{n_k})-f(y_{n_k})}\geq\epsilon_0,
+$$
+这就得到了矛盾. 定理得证.
+\end{proof}
+
+这个定理还有一个有用的推论.
+\begin{corollary}\label{cor:uniform_small_interval_oscillation}
+设函数 $f(x)$ 在有限闭区间 $[a,b]$ 上定义且连续.
+对于任意 $\epsilon>0$, 都存在 $\delta>0$,
+使把 $[a,b]$ 任意分成长度均小于 $\delta$ 的闭子区间时,
+函数在每个子区间上的振幅都小于 $\epsilon$.
+\end{corollary}
+
+\begin{proof}
+根据刚才证明的一致连续性, 对于给定的 $\epsilon>0$,
+选取相应的 $\delta>0$.
+在任意一个长度小于 $\delta$ 的子区间 $[u,v]\subseteq[a,b]$ 内,
+任意两点 $s$、$t$ 都满足
+$$
+\abs{s-t}\leq v-u<\delta,
+$$
+因而
+$$
+\abs{f(s)-f(t)}<\epsilon.
+$$
+特别地, 由 \emref{subsec:85}, 可以取 $s$、$t$ 分别为函数在 $[u,v]$ 上
+达到最大值和最小值的点.
+这时 $f(s)-f(t)$ 正是函数在这个子区间上的振幅,
+所以振幅小于 $\epsilon$.
+\end{proof}
