@@ -5000,3 +5000,303 @@ $$
 这时 $f(s)-f(t)$ 正是函数在这个子区间上的振幅,
 所以振幅小于 $\epsilon$.
 \end{proof}
+
+\subsection{Borel 引理}\label{subsec:88}
+下面证明一个与 Bolzano--Weierstrass 引理 [\emref{subsec:41}] 类似的辅助命题.
+这个命题由 Borel 提出, 在以后的细致讨论中常常有用.
+
+考察有限闭区间 $[a,b]$, 并给定一个由开区间 $\sigma$ 组成的区间族 $\Sigma$.
+其中区间的个数可以是有限的, 也可以是无穷的.
+若对于每个 $x\in[a,b]$, 都能在 $\Sigma$ 中找到一个包含 $x$ 的开区间,
+就称区间族 $\Sigma$ \emph{覆盖}\index{fugai@覆盖}闭区间 $[a,b]$.
+也可以说, $[a,b]$ 被 $\Sigma$ 覆盖.
+这个说法可以简化下面命题的表述与证明.
+
+\begin{namedtheorem}[Borel 引理]\label{lem:borel_finite_cover}若有限闭区间 $[a,b]$ 被开区间族 $\Sigma$ 覆盖,
+则可以从 $\Sigma$ 中选出有限个区间, 组成子族
+$$
+\Sigma^*=\{\sigma_1,\sigma_2,\ldots,\sigma_n\},
+$$
+使 $\Sigma^*$ 仍覆盖整个 $[a,b]$.
+\end{namedtheorem}
+\index{borelyinli@Borel 引理}
+
+当 $\Sigma$ 本身是有限族时, 结论已经成立.
+下面只须考察 $\Sigma$ 为无穷族的情形.
+
+\begin{proof}[第一种方法]
+采用 Bolzano 的二等分方法 [\emref{subsec:41}], 用反证法证明.
+假设不能从 $\Sigma$ 中选出有限个区间覆盖 $[a,b]$.
+把 $[a,b]$ 分成两个闭的半区间, 则其中至少有一个不能被 $\Sigma$ 中的有限个区间覆盖.
+因为, 若两个半区间都能分别被有限个区间覆盖,
+把这些区间合在一起, 就会得到整个 $[a,b]$ 的有限覆盖, 与假设矛盾.
+
+选取这样的一个半区间, 记作 $[a_1,b_1]$;
+若两个半区间都符合条件, 就任取一个.
+再将 $[a_1,b_1]$ 二等分, 选取一个同样不能被有限个区间覆盖的半区间 $[a_2,b_2]$.
+这样继续下去, 得到一列相互嵌套的闭区间
+$$
+[a_n,b_n]\qquad(n=1,2,\ldots),
+$$
+每个区间都是前一个的一半, 而且都不能被 $\Sigma$ 中的有限个区间覆盖.
+由区间套引理 [\emref{subsec:38}], 它们有一个公共点 $c$,
+且两端点 $a_n$ 和 $b_n$ 都趋于这个点.
+
+因为 $c\in[a,b]$, 所以它属于 $\Sigma$ 中的某个开区间
+$\sigma_0=(\alpha,\beta)$, 即 $\alpha<c<\beta$.
+由极限的性质 [\emref{subsec:26}], 从某一项起就有
+$$
+\alpha<a_n\leq b_n<\beta.
+$$
+于是整个 $[a_n,b_n]$ 都包含在 $\sigma_0$ 内,
+只用这一个区间就能覆盖它, 与选取 $[a_n,b_n]$ 的条件矛盾.
+所得的矛盾证明了引理.
+\end{proof}
+
+下面给出另一种证明, 它的思路来自 Lebesgue.
+\begin{proof}[第二种方法]
+考察 $[a,b]$ 内具有下述性质的点 $x^*$:
+区间 $[a,x^*]$ 能被 $\Sigma$ 中的有限个区间覆盖.
+这样的点是存在的. 例如, 点 $a$ 属于某个开区间 $\sigma$,
+因而 $a$ 本身就具有这种性质; 区间 $[a,b]$ 内充分接近 $a$ 的点也具有这种性质.
+我们要证明 $b$ 也具有这种性质.
+
+所有这样的点都不大于 $b$, 所以它们组成的集合有上确界 [\emref{subsec:11}], 记为
+$$
+c=\sup\{x^*\},\qquad a\leq c\leq b.
+$$
+点 $c$ 也属于 $\Sigma$ 中的某个开区间 $\sigma_0=(\alpha,\beta)$,
+其中 $\alpha<c<\beta$.
+根据上确界的性质, 可以找到一个具有上述性质的点 $x_0^*$, 使
+$$
+\alpha<x_0^*\leq c.
+$$
+区间 $[a,x_0^*]$ 已能被有限个区间覆盖.
+再加上 $\sigma_0$, 就能覆盖整个 $[a,c]$,
+所以 $c$ 本身也具有所考察的性质.
+
+若 $c<b$, 则可以在 $c$ 与 $\min\{b,\beta\}$ 之间选取一点 $t$.
+刚才选出的有限个区间再加上 $\sigma_0$, 同样覆盖 $[a,t]$.
+于是 $t$ 也是一个具有上述性质的点, 但 $t>c$, 与 $c$ 是上确界矛盾.
+因此 $c=b$, 而 $c$ 已被证明具有所考察的性质.
+这就说明整个 $[a,b]$ 能被 $\Sigma$ 中的有限个区间覆盖.
+\end{proof}
+
+须注意, 基本区间 $[a,b]$ 是闭区间, 而覆盖它的区间是开区间,
+这两个条件对于引理都很重要.
+例如, 开区间族
+$$
+\left(\frac12,\frac32\right),\quad
+\left(\frac14,\frac34\right),\quad
+\left(\frac18,\frac38\right),\quad\ldots,\quad
+\left(\frac1{2^n},\frac3{2^n}\right),\quad\ldots
+$$
+覆盖半开区间 $(0,1]$, 却不能从中选出一个仍覆盖 $(0,1]$ 的有限子族.
+因为有限个这样的区间的左端点有一个正的最小值,
+它们不能覆盖任意接近零的正数.
+
+类似地, 闭区间族
+$$
+\left[0,\frac12\right],\quad
+\left[\frac12,\frac34\right],\quad
+\left[\frac34,\frac78\right],\quad\ldots,\quad
+\left[\frac{2^n-1}{2^n},\frac{2^{n+1}-1}{2^{n+1}}\right],\quad\ldots
+$$
+再加上 $[1,2]$, 就覆盖整个闭区间 $[0,2]$.
+但它同样没有覆盖 $[0,2]$ 的有限子族:
+从前一列中只选有限个区间时, 它们的右端点都小于 1,
+而 $[1,2]$ 又不包含小于 1 的数, 所以总会漏掉一些从左侧接近 1 的点.
+
+\subsection{基本定理的新证明}\label{subsec:89}
+下面说明怎样应用 \emref{subsec:88} 的 \hyperref[lem:borel_finite_cover]{\emph{Borel 引理}},
+重新证明连续函数的三个基本定理: 零点存在性定理、有界性定理和 Cantor 定理.
+
+\myrefparagraph{1\textdegree}\label{proof:borel_zero_existence}
+\emph{零点存在性定理} [\emref{subsec:80}].
+仍用反证法. 设函数 $f(x)$ 在有限闭区间 $[a,b]$ 上连续,
+且 $f(a)$ 与 $f(b)$ 异号, 但假设它在区间内任何点都不等于零.
+由 \emref{subsec:80} 的\hyperref[lem:continuous_sign_preservation]{\emph{保号引理}},
+对于每个 $x'\in[a,b]$, 都能选取一个邻域
+$$
+\sigma'=(x'-\delta',x'+\delta'),\qquad \delta'>0,
+$$
+使 $f(x)$ 在这个邻域内保持与 $f(x')$ 相同的符号
+\footnote{这里以及下面所说的邻域内, 都只考虑它与 $[a,b]$ 的公共部分,
+因为自变量 $x$ 只在这个区间内取值.}.
+
+这些邻域组成一个覆盖 $[a,b]$ 的区间族 $\Sigma$.
+根据 \hyperref[lem:borel_finite_cover]{\emph{Borel 引理}}, 可以从中选出有限个邻域, 仍覆盖整个 $[a,b]$.
+将这个有限族记作 $\Sigma^*$.
+
+点 $a$ 属于 $\Sigma^*$ 中的某个邻域
+$\sigma_1=(x_1-\delta_1,x_1+\delta_1)$.
+它的右端点 $x_1+\delta_1$ 又属于 $\Sigma^*$ 中的某个邻域
+$\sigma_2=(x_2-\delta_2,x_2+\delta_2)$,
+点 $x_2+\delta_2$ 又属于 $\Sigma^*$ 中的某个邻域
+$\sigma_3=(x_3-\delta_3,x_3+\delta_3)$,
+等等.
+如下图所示.
+\begin{figure}[!ht]
+    \centering
+    \begin{tikzpicture}[x=0.95cm,y=0.9cm]
+        \draw[dashed] (-0.3,0) -- (9.2,0);
+        \draw[thick] (0.55,0)--(8.5,0);
+        \foreach \l/\r in {0.1/2.6,2.2/4.6,4.2/6.3,7.1/8.9} {
+            \draw (\l,0.25) .. controls (\l-0.13,0.1) and (\l-0.13,-0.1) .. (\l,-0.25);
+            \draw (\r,0.25) .. controls (\r+0.13,0.1) and (\r+0.13,-0.1) .. (\r,-0.25);
+        }
+        \draw[thick] (0.1,0.32) .. controls (0.1,0.46) and (0.2,0.5) .. (0.3,0.5)
+            -- (2.4,0.5) .. controls (2.5,0.5) and (2.6,0.46) .. (2.6,0.32);
+        \draw[thick] (2.2,-0.32) .. controls (2.2,-0.46) and (2.3,-0.5) .. (2.4,-0.5)
+            -- (4.4,-0.5) .. controls (4.5,-0.5) and (4.6,-0.46) .. (4.6,-0.32);
+        \draw[thick] (4.2,0.32) .. controls (4.2,0.46) and (4.3,0.5) .. (4.4,0.5)
+            -- (6.1,0.5) .. controls (6.2,0.5) and (6.3,0.46) .. (6.3,0.32);
+        \draw[thick] (7.1,-0.32) .. controls (7.1,-0.46) and (7.2,-0.5) .. (7.3,-0.5)
+            -- (8.7,-0.5) .. controls (8.8,-0.5) and (8.9,-0.46) .. (8.9,-0.32);
+        \node[above,scale=0.8] at (1.35,0.5) {$\sigma_1$};
+        \node[below,scale=0.8] at (3.4,-0.5) {$\sigma_2$};
+        \node[above,scale=0.8] at (5.25,0.5) {$\sigma_3$};
+        \node[below,scale=0.8] at (8,-0.5) {$\sigma_n$};
+        \node[scale=0.8,fill=white,inner sep=1pt] at (6.7,0) {$\cdots$};
+        \foreach \x/\lab in {1.35/x_1,3.4/x_2,8/x_n} {
+            \draw (\x,-0.1) -- (\x,0.1);
+            \node[below,scale=0.8] at (\x,-0.1) {$\lab$};
+        }
+        \draw[fill=white] (0.55,0) circle (1.4pt);
+        \draw[fill=white] (8.5,0) circle (1.4pt);
+        \node[above,scale=0.8] at (0.55,0.08) {$a$};
+        \node[above,scale=0.8] at (8.5,0.08) {$b$};
+    \end{tikzpicture}
+\end{figure}
+
+每走一步, 所选邻域的右端点都严格向右移动,
+所以同一个邻域不会被重复选取.
+而 $\Sigma^*$ 只有有限个邻域, 因而经过有限步以后,
+必定到达一个包含 $b$ 的邻域 $\sigma_n$.
+若 $\Sigma^*$ 中还有其余邻域, 就把它们略去, 只保留
+\begin{equation}\label{eq:borel_finite_neighborhoods}
+\sigma_1,\sigma_2,\ldots,\sigma_n.
+\end{equation}
+
+在 $\sigma_1$ 内, 函数 $f(x)$ 保持 $f(a)$ 的符号.
+相邻两个邻域在 $[a,b]$ 内有公共部分,
+而函数在每个邻域内都保持定号, 所以它们所对应的符号相同.
+因此, 沿着 \eqref{eq:borel_finite_neighborhoods} 中的邻域依次向右,
+函数始终保持 $f(a)$ 的符号.
+特别地, $f(b)$ 与 $f(a)$ 同号, 与定理的条件矛盾.
+零点存在性定理得证.
+
+\myrefparagraph{2\textdegree}\label{proof:borel_boundedness}
+\emph{有界性定理} [\emref{subsec:84}].
+设函数 $f(x)$ 在有限闭区间 $[a,b]$ 上连续.
+对于每个 $x'\in[a,b]$ 及给定的 $\epsilon>0$,
+由连续性可以选取一个邻域 $\sigma'=(x'-\delta',x'+\delta')$,
+使其中一切 $x\in[a,b]$ 都满足
+$$
+\abs{f(x)-f(x')}<\epsilon,
+$$
+也就是
+$$
+f(x')-\epsilon<f(x)<f(x')+\epsilon.
+$$
+这说明 $f(x)$ 在每个这样的邻域内都有界:
+可以分别取 $f(x')-\epsilon$ 和 $f(x')+\epsilon$ 为下界与上界.
+
+这些邻域构成 $[a,b]$ 的一个开区间覆盖.
+应用 \hyperref[lem:borel_finite_cover]{\emph{Borel 引理}}, 从中选出仍覆盖 $[a,b]$ 的有限个邻域
+$\sigma_1,\sigma_2,\ldots,\sigma_n$.
+设函数在这些邻域内分别满足
+$$
+\begin{aligned}
+\text{在 }\sigma_1\text{ 内}:&\qquad m_1\leq f(x)\leq M_1,\\
+\text{在 }\sigma_2\text{ 内}:&\qquad m_2\leq f(x)\leq M_2,\\
+&\qquad\cdots\cdots\cdots\cdots\cdots\\
+\text{在 }\sigma_n\text{ 内}:&\qquad m_n\leq f(x)\leq M_n.
+\end{aligned}
+$$
+取
+$$
+m=\min\{m_1,m_2,\ldots,m_n\},\qquad
+M=\max\{M_1,M_2,\ldots,M_n\}.
+$$
+由于每个 $x\in[a,b]$ 至少属于一个选出的邻域, 所以在整个 $[a,b]$ 上都有
+$$
+m\leq f(x)\leq M.
+$$
+这就证明了函数在 $[a,b]$ 上有界.
+
+\myrefparagraph{3\textdegree}\label{proof:borel_uniform_continuity}
+\emph{Cantor 定理} [\emref{subsec:87}].
+仍设 $f(x)$ 在有限闭区间 $[a,b]$ 上连续, 我们要证明的是给定任意的 $\epsilon>0$,
+存在一个不依赖于 $[a,b]$ 中任一点的 $\delta$, 当 $[a,b]$ 中任意两点 $x,x_0$, 满足
+$|x-x_0|<\delta$ 时, 都有 $|f(x)-f(x_0)|<\epsilon$.
+
+现在我们先考察每个 $x'\in[a,b]$ 的一个邻域 $\sigma'=(x'-\delta',x'+\delta')$.
+根据连续性, 对任意 $\epsilon > 0$, 存在 $\delta'$, 使这个邻域中的一切 $x$ 都满足
+$$
+\abs{f(x)-f(x')}<\frac\epsilon2.
+$$
+若 $x_0$ 也属于这个邻域, 就同样有
+$$
+\abs{f(x')-f(x_0)}<\frac\epsilon2.
+$$
+因此, 对于 $\sigma'$ 内的任意两点 $x$、$x_0$, 它们之间的距离显然不超过邻域长度 $2\delta'$, 且都有
+$$
+\abs{f(x)-f(x_0)}
+\leq\abs{f(x)-f(x')}+\abs{f(x')-f(x_0)}<\epsilon.
+$$
+这里得到的是对当前给定的 $\epsilon$ 的控制:
+同一邻域内任意两点的函数值之差都小于 $\epsilon$.
+
+现在把每个邻域 $\sigma'$ 向中心缩短一半, 改为考察
+$$
+\bar\sigma'=\left(x'-\frac{\delta'}2,x'+\frac{\delta'}2\right).
+$$
+缩短后的这些邻域仍覆盖 $[a,b]$.
+对它们应用 \hyperref[lem:borel_finite_cover]{\emph{Borel 引理}}, 可以选出有限个邻域
+$$
+\bar\sigma_i=\left(x_i-\frac{\delta_i}2,x_i+\frac{\delta_i}2\right)
+\qquad(i=1,2,\ldots,n),
+$$
+仍覆盖整个 $[a,b]$.
+
+取
+$$
+\delta=\min\left\{\frac{\delta_1}2,\frac{\delta_2}2,\ldots,\frac{\delta_n}2\right\}>0,
+$$
+并设 $x_0$、$x$ 是 $[a,b]$ 内满足
+\begin{equation}\label{eq:borel_uniform_point_distance}
+\abs{x-x_0}<\delta
+\end{equation}
+的任意两点.
+由于邻域族是 $[a,b]$ 的一个有限开覆盖, 
+那么点 $x_0$ 必属于某个选出的邻域 $\bar\sigma_{i_0}=\left(x_{i_0}-\dfrac{\delta_{i_0}}2,x_{i_0}+\dfrac{\delta_{i_0}}2\right)$, 因而
+$$
+\abs{x_0-x_{i_0}}<\frac{\delta_{i_0}}2.
+$$
+又由 $\delta\leq\delta_{i_0}/2$ 及 \eqref{eq:borel_uniform_point_distance}, 得
+$$
+\abs{x-x_0}<\frac{\delta_{i_0}}2.
+$$
+于是
+$$
+\abs{x-x_{i_0}}
+\leq\abs{x-x_0}+\abs{x_0-x_{i_0}}<\delta_{i_0}.
+$$
+这说明 $x$ 和 $x_0$ 都属于缩短前的同一个邻域
+$$
+\sigma_{i_0}=(x_{i_0}-\delta_{i_0},x_{i_0}+\delta_{i_0}).
+$$
+前面已经得到同一邻域内任意两点的上述估计, 因而有
+$$
+\abs{f(x)-f(x_0)}<\epsilon.
+$$
+这里选出的 $\delta$ 不依赖于点 $x_0$ 的位置
+\footnote{这里 \hyperref[lem:borel_finite_cover]{\emph{Borel 引理}}就帮助我们从无穷个不依赖于邻域内任意点的 $\delta'$ 中
+选出了一个不依赖于 $[a,b]$ 内任意点的 $\delta$, 
+因为只有在有限个正数中取最小, 才能保证取出的数仍然是正数;
+如果有无穷多个半径, 它们可能越来越小, 像 \(1/n\) 那样, 无法保证有统一的正下界.},
+所以 $f(x)$ 在整个 $[a,b]$ 上一致连续.
+
+从这三个证明可以看出, 当我们要把各点邻域中的\emph{局部性质}
+推广到整个所考察的区间时, \hyperref[lem:borel_finite_cover]{\emph{Borel 引理}}就能有效地帮助我们完成这一步.
