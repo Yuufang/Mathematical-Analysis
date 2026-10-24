@@ -4,10 +4,13 @@
 
 ## 已审核发布
 
-第一卷连续第 **1—89 小节**已由用户审核并发布，包含第 107 页异常空白修复。2026-10-23 续入 Borel 引理及连续函数三个基本定理的新证明，沿用原字体和按 `section` 重置的公式计数。发布 PDF **153 页、1346459 字节**；[公开下载](https://github.com/Yuufang/Mathematical-Analysis/raw/refs/heads/main/%E7%AC%AC%E4%B8%80%E5%8D%B7/main.pdf?download=1)。发布源码与 PDF 提交 `8a225d43cbe65e816e632f4d600e6f22875e4974` 已推送并核验 origin/main，版本与验证摘要见 CHANGELOG。
+第一卷连续第 **1—91 小节**已由用户审核并发布，包含第 107 页异常空白修复。2026-10-24 续入第三章第 90“瞬时速度”、第 91“切线问题”，沿用原字体和按 `section` 重置的公式计数。发布 PDF **157 页、1374054 字节**；[公开下载](https://github.com/Yuufang/Mathematical-Analysis/raw/refs/heads/main/%E7%AC%AC%E4%B8%80%E5%8D%B7/main.pdf?download=1)。源码、PDF 及进度提交 `6cfb77e5037d1d3f41cd53a8b198b6571ba2d3df` 已推送并核验 origin/main。
 
-发布副本四遍原字体编译、两轮双索引，最后两遍 11 辅助文件稳定；406 标签、542 引用、873 内部链接及 Noto 三种字重嵌入有效，正文 139—143、目录与索引已看图。无未定义、重复、Overfull 或引用不稳定；保留 47 条 Underfull（正文 142 及以前）和索引／locale 提示。本次以用户当前保存稿及已确认修正独立复验，未沿用原轮结果。
+原书范围为印刷 152—155 页／PDF 物理页 168—171；源码标签 `subsec:90`、`eq:free_fall_motion_law`、`subsec:91`、`def:tangent_line`、`fig:tangent_as_secant_limit`、`fig:parabola_tangent_construction`。本次保留用户已审核保存稿，不重写数学正文。
 
+发布副本四遍原字体 XeLaTeX、main/names texindy 各两轮，最后两遍 12 个关键辅助文件稳定；157 页、1374054 字节，414 个活动标签、542 次显式交叉引用、884 个内部链接及 682 个命名目标有效，Noto Regular/Black/Medium 实际嵌入。正文 145—147／物理页 151—153、章前交界、目录、空白和三页索引已看图。无致命错误、未定义引用／命令、重复标签／目标、Overfull、缺字、引用不稳定或 wrapfig 警告；保留 47 条既有 Underfull（正文 142 及以前，本批无新增）及索引／locale 提示。
+
+发布第三章仅含第 90、91，SHA-256 `b12ba9311c19b8fc19b9645c08fbdd84f56d92bec7836ee7a4b187add2879d06`；入口 `6d059bfe780dc8ca6bc5e8488de6e7bff4dd75bd3dfd34b6a860ac2d4a799c80`。第 1—89 正文、模板和宏与前次发布逐字节一致；第二章为已发布版本 `94dfcaa7dbe6b2e5270e8bf0d782ec84f0a923ce9133f9ae04dda2f82245e798`，未纳入第 89 后续本地删改。发布 PDF SHA-256 `3fbb50ee05402d26996ac3c0c562c76ab1682423dadb1f133a47952b09f5a5a4`。 临时基线、日志、散列清单及图像记录后清理，历史验证边界见 CHANGELOG。
 
 ## 正式工程与本地存稿
 
@@ -19,23 +22,12 @@
 
 | 范围 | 状态与位置 |
 | --- | --- |
-| 第一卷第 1—89 小节 | 已审核发布 |
-| 第一卷第 90—91 小节 | 已审核，发布复验通过，等待推送核验 |
+| 第一卷第 1—91 小节 | 已审核发布 |
 | 第一卷第 92—256 小节 | 第三章已载入但第 92 起仍注释；第四至七章仍注释且未载入 |
 | 第一卷第 257—262 小节 | 尚未起草 |
 | 第二卷第 263—469 小节 | 第八至十二章初稿，五个 text/chapter 文件；comment 且未载入 |
 | 第二卷第 470—542 小节 | 尚未起草 |
 | 第三卷 | 保存旧稿，主文件未载入；不计作正式精校队列 |
-
-## 已审核待上传
-
-用户于 2026-10-24 确认第 90、91 审核完毕并授权上传，当前保存稿已独立复验；推送核验成功后清除本条。
-
-范围：原书印刷 152—155 页／PDF 物理页 168—171；第 90“瞬时速度”、第 91“切线问题”。标签 `subsec:90`、`eq:free_fall_motion_law`、`subsec:91`、`def:tangent_line`、`fig:tangent_as_secant_limit`、`fig:parabola_tangent_construction`。保留用户对段落和图形的保存修改，仅增载第三章入口，不改数学正文。
-
-发布副本四遍原字体 XeLaTeX、main/names texindy 各两轮，最后两遍 12 个关键辅助文件稳定；157 页、1374054 字节，414 个活动标签、542 次显式交叉引用、884 个内部链接及 682 个命名目标有效，Noto Regular/Black/Medium 实际嵌入。正文 145—147／物理页 151—153、章前交界、目录、空白和三页索引已看图。无致命错误、未定义引用／命令、重复标签／目标、Overfull、缺字、引用不稳定或 wrapfig 警告；保留 47 条既有 Underfull（正文 142 及以前，本批无新增）及索引／locale 提示。
-
-发布第三章仅含第 90、91，SHA-256 `b12ba9311c19b8fc19b9645c08fbdd84f56d92bec7836ee7a4b187add2879d06`；入口 `6d059bfe780dc8ca6bc5e8488de6e7bff4dd75bd3dfd34b6a860ac2d4a799c80`。第 1—89 正文、模板和宏与前次发布逐字节一致；第二章为已发布版本 `94dfcaa7dbe6b2e5270e8bf0d782ec84f0a923ce9133f9ae04dda2f82245e798`，未纳入第 89 后续本地删改。发布 PDF SHA-256 `3fbb50ee05402d26996ac3c0c562c76ab1682423dadb1f133a47952b09f5a5a4`。
 
 ## 下一次自动精校起点
 
@@ -45,7 +37,6 @@
 
 - 每轮精校按 AGENTS.md 回查前文暂缓引用，目标启用后再核对并补链：第 55、79 小节未定式一般方法指第四章 `sec:indeterminate_forms`（未载入且 comment）；第 63 小节主部系统方法指 `subsec:104`、`subsec:124`（第三章已载入，但这两处仍在 comment 中）；第 81 小节脚注的更有效求根方法指第四章第五节 `sec:approximate_solution_equations`（未载入且 comment）。第 85 小节关于实际求极值点方法的前瞻指第四章第一节 `sec:function_variation`（未载入且 comment），暂保留普通文字。不因补引用启用存稿或恢复删稿。
 - 右侧直接 PDF 预览缺中文的应用内原因尚未确认；此前相同文件已核验字体嵌入且可独立渲染。源码未修改时，不据预览异常改变书稿字体。
-
 
 ## 审核与发布
 
