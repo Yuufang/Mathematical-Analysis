@@ -4,13 +4,13 @@
 
 ## 已审核发布
 
-第一卷连续第 **1—91 小节**已由用户审核并发布，包含第 107 页异常空白修复。2026-10-24 续入第三章第 90“瞬时速度”、第 91“切线问题”，沿用原字体和按 `section` 重置的公式计数。发布 PDF **157 页、1374054 字节**；[公开下载](https://github.com/Yuufang/Mathematical-Analysis/raw/refs/heads/main/%E7%AC%AC%E4%B8%80%E5%8D%B7/main.pdf?download=1)。源码、PDF 及进度提交 `6cfb77e5037d1d3f41cd53a8b198b6571ba2d3df` 已推送并核验 origin/main。
+第一卷连续第 **1—95 小节**已由用户审核并发布，包含第 107 页异常空白修复。2026-10-25 续入第 92“导数的定义”、第 93“求导数的例题”、第 94“反函数的导数”、第 95“导数公式一览表”，以及第 77 例 5 的定向引用。发布 PDF **163 页、1421233 字节**；[公开下载](https://github.com/Yuufang/Mathematical-Analysis/raw/refs/heads/main/%E7%AC%AC%E4%B8%80%E5%8D%B7/main.pdf?download=1)。源码、PDF 与进度提交 `98b3ced02832e8caeb73c30df9878be594631886` 已推送并核验 origin/main。
 
-原书范围为印刷 152—155 页／PDF 物理页 168—171；源码标签 `subsec:90`、`eq:free_fall_motion_law`、`subsec:91`、`def:tangent_line`、`fig:tangent_as_secant_limit`、`fig:parabola_tangent_construction`。本次保留用户已审核保存稿，不重写数学正文。
+本批原书印刷 155—162／物理 171—178；源码标签 `subsec:92`、`def:derivative`、`subsec:93`、`subsec:94`、`thm:inverse_function_derivative`、`fig:inverse_function_derivative`、`subsec:95`、`tab:elementary_derivatives`。用户在发布期间保存的第 93 分数字号调整已保留并另行完整复验。
 
-发布副本四遍原字体 XeLaTeX、main/names texindy 各两轮，最后两遍 12 个关键辅助文件稳定；157 页、1374054 字节，414 个活动标签、542 次显式交叉引用、884 个内部链接及 682 个命名目标有效，Noto Regular/Black/Medium 实际嵌入。正文 145—147／物理页 151—153、章前交界、目录、空白和三页索引已看图。无致命错误、未定义引用／命令、重复标签／目标、Overfull、缺字、引用不稳定或 wrapfig 警告；保留 47 条既有 Underfull（正文 142 及以前，本批无新增）及索引／locale 提示。
+发布副本四遍原字体 XeLaTeX、main/names texindy 各两轮，最后两遍 12 个关键辅助文件稳定；163 页、1421233 字节，431 活动标签、561 次显式引用、922 内部链接及 711 命名目标有效，Noto Regular/Black/Medium 实际嵌入。正文 147—154／物理 153—160、第 77 补链页、交界、目录及三页索引已独立渲染看图。无致命错误、未定义引用／命令、重复标签／目标、Overfull、缺字、引用不稳定或 wrapfig 警告；保留 48 条 Underfull（47 条在正文 142 及以前，另在 147）及索引／locale 提示。
 
-发布第三章仅含第 90、91，SHA-256 `b12ba9311c19b8fc19b9645c08fbdd84f56d92bec7836ee7a4b187add2879d06`；入口 `6d059bfe780dc8ca6bc5e8488de6e7bff4dd75bd3dfd34b6a860ac2d4a799c80`。第 1—89 正文、模板和宏与前次发布逐字节一致；第二章为已发布版本 `94dfcaa7dbe6b2e5270e8bf0d782ec84f0a923ce9133f9ae04dda2f82245e798`，未纳入第 89 后续本地删改。发布 PDF SHA-256 `3fbb50ee05402d26996ac3c0c562c76ab1682423dadb1f133a47952b09f5a5a4`。 临时基线、日志、散列清单及图像记录后清理，历史验证边界见 CHANGELOG。
+发布第三章 SHA-256 `15af4de7ef71445ec0e8d7566b7d5203f69d76aa50aa1642178d67818cd9a756`，第二章 `3c7209db27814f6682e7a83dce47354e6b1cad87ac92fe99c4104a3562606fcf`，PDF `3c1ecac19c43796ef1060dd9bf3c756b79fb3098ad4cc41545c88d33d86c394f`。发布第三章第 92—95 逐字节取自用户当前保存稿；第 90、91 沿用此前已发布版本，第二章仅增加第 77 例 5 指向第 93 的引用，入口、宏与模板均不改。 临时基线、差异、日志与图像记录后清理，历史验证边界见 CHANGELOG。
 
 ## 正式工程与本地存稿
 
@@ -22,25 +22,16 @@
 
 | 范围 | 状态与位置 |
 | --- | --- |
-| 第一卷第 1—91 小节 | 已审核发布 |
-| 第一卷第 92—95 小节及第 77 定向引用 | 已审核，复验通过，等待推送核验 |
+| 第一卷第 1—95 小节及第 77 配套引用 | 已审核发布 |
 | 第一卷第 96—256 小节 | 第三章第 96 起仍注释；第四至七章仍注释且未载入 |
 | 第一卷第 257—262 小节 | 尚未起草 |
 | 第二卷第 263—469 小节 | 第八至十二章初稿，五个 text/chapter 文件；comment 且未载入 |
 | 第二卷第 470—542 小节 | 尚未起草 |
 | 第三卷 | 保存旧稿，主文件未载入；不计作正式精校队列 |
 
-## 已审核待上传
-
-用户于 2026-10-25 确认第 92—95 均审核完毕并授权一并上传，包含第 77 定向引用；推送核验成功后清除此条。范围为原书印刷 155—162／物理 171—178；源码标签 `subsec:92`、`def:derivative`、`subsec:93`、`subsec:94`、`thm:inverse_function_derivative`、`fig:inverse_function_derivative`、`subsec:95`、`tab:elementary_derivatives`。
-
-发布副本四遍原字体 XeLaTeX、main/names texindy 各两轮，最后两遍 12 个关键辅助文件稳定；163 页、1421233 字节，431 活动标签、561 次显式引用、922 内部链接及 711 命名目标有效，Noto Regular/Black/Medium 实际嵌入。正文 147—154／物理 153—160、第 77 补链页、交界、目录及三页索引已独立渲染看图。无致命错误、未定义引用／命令、重复标签／目标、Overfull、缺字、引用不稳定或 wrapfig 警告；保留 48 条 Underfull（47 条在正文 142 及以前，另在 147）及索引／locale 提示。
-
-发布第三章 SHA-256 `15af4de7ef71445ec0e8d7566b7d5203f69d76aa50aa1642178d67818cd9a756`，第二章 `3c7209db27814f6682e7a83dce47354e6b1cad87ac92fe99c4104a3562606fcf`，PDF `3c1ecac19c43796ef1060dd9bf3c756b79fb3098ad4cc41545c88d33d86c394f`。发布第三章第 92—95 逐字节取自用户当前保存稿；第 90、91 沿用此前已发布版本，第二章仅增加第 77 例 5 指向第 93 的引用，入口、宏与模板均不改。
-
 ## 下一次自动精校起点
 
-第一卷第三章第 **96 小节“函数增量的公式”**，原书印刷第 162 页／PDF 物理页 178 起，对应 `第一卷/text/chapter3.tex` 的 `subsec:96` 现有注释初稿。下轮只精校第 96，保留第 97 起注释；第 1—95 已获用户审核，不重复重写。
+第一卷第三章第 **96 小节“函数增量的公式”**，原书印刷第 162 页／PDF 物理页 178 起，对应 `第一卷/text/chapter3.tex` 的 `subsec:96` 现有注释初稿。下轮只精校第 96，保留第 97 起注释；第 1—95 已审核发布，不重复重写。
 
 ## 当前待处理问题
 
