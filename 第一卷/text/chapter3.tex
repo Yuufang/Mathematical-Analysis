@@ -218,3 +218,478 @@ $$
 \tan\alpha=\lim_{\Delta x\to0}\tan\varphi
 =\lim_{\Delta x\to0}\frac{\Delta y}{\Delta x}.
 $$
+
+\subsection{导数的定义}\label{subsec:92}
+把前面两个基本问题中的运算加以比较, 就会发现, 虽然变量的意义不同,
+所用的方法却是相同的: 先用函数的增量除以自变量的增量, 再求这个比值的极限.
+这样就引出了微分学中的基本概念——导数.
+
+设函数 $y=f(x)$ 在区间 $\mathcal{X}$ 内有定义.
+从自变量的某个值 $x=x_0$ 出发, 给它一个非零增量 $\Delta x$,
+并使新值 $x_0+\Delta x$ 仍属于区间 $\mathcal{X}$.
+于是函数值由 $y=f(x_0)$ 变为 $y+\Delta y=f(x_0+\Delta x)$,
+相应的函数增量为
+$$
+\Delta y=\Delta f(x_0)=f(x_0+\Delta x)-f(x_0).
+$$
+
+\phantomsection\label{def:derivative}
+{\kaishu 若函数增量 $\Delta y$ 与引起它的自变量增量 $\Delta x$ 之比,
+在 $\Delta x\to0$ 时有有限极限,
+\footnote{这里暂时只考虑极限为有限数的情形; 无穷导数留待第 101 小节讨论.}
+即极限
+$$
+\lim_{\Delta x\to0}\frac{\Delta y}{\Delta x}
+=\lim_{\Delta x\to0}\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}
+$$
+存在, 就称这个极限为函数 $y=f(x)$ 在点 $x=x_0$ 处关于自变量 $x$ 的\emph{导数}.}
+\index{daoshu2@导数}
+
+因此, 对于自变量的一个定值 $x=x_0$, 导数若存在, 就是一个确定的数.
+若在整个区间 $\mathcal{X}$ 内, 对每一个 $x$ 都存在导数,
+那么导数本身也是 $x$ 的函数.
+
+应用这个概念, 第 \emref{subsec:90} 小节中瞬时速度的定义就可以简述为:
+{\kaishu 速度 $v$ 是位置量 $s$ 关于时间 $t$ 的导数.}
+若把“速度”理解得更广一些, 就可以把导数看作某种\emph{变化率}.
+\index{bianhualv@变化率}
+也就是说, 对于自变量 $x$ 的函数 $y$, 可以考察 $y$ 关于 $x$ 在给定点处的瞬时变化率.
+
+若自变量的增量 $\Delta x$ 引起函数的增量 $\Delta y$,
+那么, 仿照第 \emref{subsec:90} 小节的做法, 比值
+$$
+\bar V=\frac{\Delta y}{\Delta x}
+$$
+就表示在这段增量内 $y$ 关于 $x$ 的\emph{平均变化率}.
+\index{pingjunbianhualv@平均变化率}
+当 $\Delta x\to0$ 时, 这个比值的极限自然就称为 $y$ 在给定点处关于 $x$ 的变化率:
+$$
+V=\lim_{\Delta x\to0}\bar V
+=\lim_{\Delta x\to0}\frac{\Delta y}{\Delta x}.
+$$
+这正是 $y$ 关于 $x$ 的导数.
+
+在第 \emref{subsec:91} 小节中, 我们考察了由方程 $y=f(x)$ 给定的曲线,
+并求出了它在给定点处切线的斜率.
+现在可以把这个结果表述为:
+{\kaishu 切线的斜率 $\tan\alpha$ 是纵坐标 $y$ 关于横坐标 $x$ 的导数.}
+这是导数的几何意义, 经常会用到.
+
+我们再补充几个与前面所考察的问题相似的例子, 进一步说明导数的概念.
+若运动的速度 $v$ 不是常量, 而是随时间 $t$ 变化, 即 $v=f(t)$,
+就把速度的变化率称为\emph{加速度}.
+\index{jiasudu@加速度}
+具体地说, 若时间的增量 $\Delta t$ 引起速度的增量 $\Delta v$,
+则比值
+$$
+\bar a=\frac{\Delta v}{\Delta t}
+$$
+表示这段时间内的\emph{平均加速度}.
+\index{pingjunjiasudu@平均加速度}
+它的极限给出运动在所考察时刻的加速度:
+$$
+a=\lim_{\Delta t\to0}\bar a
+=\lim_{\Delta t\to0}\frac{\Delta v}{\Delta t}.
+$$
+因此, {\kaishu 加速度是速度关于时间的导数.}
+
+\begin{samepage}
+在热学中, 导数可以用来建立物体在给定温度下的\emph{热容量}概念.
+\index{rerongliang@热容量}
+用 $\theta$ 表示温度(摄氏度), 用 $W$ 表示使物体从 $0\,{}^\circ\mathrm{C}$
+加热到 $\theta\,{}^\circ\mathrm{C}$ 所需要的热量(卡).
+这里 $W$ 是 $\theta$ 的函数, 记为 $W=f(\theta)$.
+给 $\theta$ 一个增量 $\Delta\theta$, 热量就得到相应的增量 $\Delta W$.
+物体从 $\theta\,{}^\circ\mathrm{C}$ 加热到 $(\theta+\Delta\theta)\,{}^\circ\mathrm{C}$
+时的平均热容量为
+$$
+\bar c=\frac{\Delta W}{\Delta\theta}.
+$$
+\end{samepage}
+一般来说, 这个平均热容量随 $\Delta\theta$ 而变化,
+所以还不能把它作为物体在温度 $\theta$ 下的热容量.
+要求后者, 就要取极限:
+$$
+c=\lim_{\Delta\theta\to0}\bar c
+=\lim_{\Delta\theta\to0}\frac{\Delta W}{\Delta\theta}.
+$$
+因此, {\kaishu 物体的热容量是热量关于温度的导数.}
+
+最后再从电学中举一个例子, 建立给定时刻的\emph{电流强度}概念.
+\index{dianliuqiangdu@电流强度}
+用 $t$ 表示从某个时刻起算的时间(秒),
+用 $Q$ 表示在这段时间内通过导线某一横截面的电量(库仑).
+这里 $Q$ 是 $t$ 的函数, 记为 $Q=f(t)$.
+时间间隔 $\Delta t$ 内的平均电流强度为
+$$
+\bar I=\frac{\Delta Q}{\Delta t},
+$$
+而给定时刻的电流强度则由极限
+$$
+I=\lim_{\Delta t\to0}\bar I
+=\lim_{\Delta t\to0}\frac{\Delta Q}{\Delta t}
+$$
+来表示.
+因此, {\kaishu 电流强度是通过横截面的电量关于时间的导数.}
+
+类似的例子还可以举出很多,
+这些应用都清楚地表明, 导数概念与各个领域中的基本概念有着密切的联系,
+
+导数的求法、性质及其应用, 就是微分学的主要研究对象.
+
+导数常用的记号有:
+$$
+\begin{array}{lll}
+\displaystyle\odo{y}{x}&\text{或 }\ \displaystyle\odo{f(x_0)}{x}\text{\footnotemark},&\text{G.\,W.\,Leibniz};\\
+y'&\text{或 }\ f'(x_0),&\text{J.\,L.\,Lagrange};\\
+Dy&\text{或 }\ Df(x_0),&\text{A.\,L.\,Cauchy}.
+\end{array}
+$$
+\footnotetext{这里暂时把 Leibniz 记号看作一个整体; 到第 104 小节时将会看到, 也可以把它看作两个量的比.}
+以后我们主要采用 Lagrange 的简单记号.
+若用 $f'(x_0)$ 表示导数, 括号内的 $x_0$ 就是求导数处的自变量数值.
+
+当需要指出是关于哪个变量求导数时, 可以把这个变量写成下标:
+$$
+y'_x,\quad f'_x(x_0),\quad D_xy,\quad D_xf(x_0).
+$$
+下标 $x$ 表示求导所针对的变量, 与求导处的特定数值 $x_0$ 无关.
+
+从这个意义上说, 整个记号
+$$
+\odo{f}{x},\quad f'\text{ 或 }f'_x,\quad Df\text{ 或 }D_xf
+$$
+都可以看作导函数的函数记号.
+\index{daohanshu@导函数}
+
+用这些记号, 可以把前面得到的结果写得更简洁.
+对于运动的速度, 有
+$$
+v=\odo{s}{t}\qquad\text{或}\qquad v=s'_t;
+$$
+对于加速度, 有
+$$
+a=\odo{v}{t}\qquad\text{或}\qquad a=v'_t.
+$$
+类似地, 曲线 $y=f(x)$ 的切线斜率可以写成
+$$
+\tan\alpha=\odo{y}{x}\qquad\text{或}\qquad\tan\alpha=y'_x,
+$$
+其余各例也可以这样表述.
+
+\subsection{求导数的例题}\label{subsec:93}
+现在从导数的定义出发, 求几类基本初等函数的导数.
+以后的导数计算, 都要以这些结果为基础.
+
+\myrefparagraph{1\textdegree}\label{ex:derivative_constant_identity}
+若 $y=c$ 是常量, 则无论非零增量 $\Delta x$ 怎样选取, 总有 $\Delta y=0$,
+所以 $y'=0$.
+若 $y=x$, 则 $\Delta y=\Delta x$, 从而 $y'=1$.
+
+\myrefparagraph{2\textdegree}\label{ex:derivative_natural_power}
+设 $y=x^n$, 其中 $n$ 是正整数.
+$n=1$ 的情形已经讨论过, 以下设 $n\geq2$.
+给 $x$ 一个非零增量 $\Delta x$
+\footnote{这里求的是自变量任意取值处的导数, 因而直接用 $x$ 表示自变量, 不再加下标 $0$.},
+由二项式公式, 有
+$$
+y+\Delta y=(x+\Delta x)^n
+=x^n+nx^{n-1}\Delta x+\frac{n(n-1)}2x^{n-2}\Delta x^2+\cdots.
+$$
+因此
+$$
+\Delta y=nx^{n-1}\Delta x+\frac{n(n-1)}2x^{n-2}\Delta x^2+\cdots,
+$$
+从而
+$$
+\frac{\Delta y}{\Delta x}
+=nx^{n-1}+\frac{n(n-1)}2x^{n-2}\Delta x+\cdots.
+$$
+当 $\Delta x\to0$ 时, 除首项外的各项都趋于零, 故
+$$
+y'=\lim_{\Delta x\to0}\frac{\Delta y}{\Delta x}=nx^{n-1}.
+$$
+这个公式对于 $n=1$ 也成立.
+
+\myrefparagraph{3\textdegree}\label{ex:derivative_reciprocal}
+若 $y=\dfrac1x$, 其中 $x\neq0$, 则对充分小的增量 $\Delta x$, 有
+$$
+y+\Delta y=\frac1{x+\Delta x},
+$$
+于是
+$$
+\Delta y=\frac1{x+\Delta x}-\frac1x
+=-\frac{\Delta x}{x(x+\Delta x)},
+\qquad
+\frac{\Delta y}{\Delta x}=-\frac1{x(x+\Delta x)}.
+$$
+由此得到
+$$
+y'=\lim_{\Delta x\to0}\frac{\Delta y}{\Delta x}=-\frac1{x^2}.
+$$
+
+\myrefparagraph{4\textdegree}\label{ex:derivative_square_root}
+考察函数 $y=\sqrt{x}$, 其中 $x>0$.
+对充分小的增量 $\Delta x$, 有
+$$
+y+\Delta y=\sqrt{x+\Delta x},
+$$
+因而
+\begin{center}
+$
+\Delta y=\sqrt{x+\Delta x}-\sqrt{x}
+=\dfrac{\Delta x}{\sqrt{x+\Delta x}+\sqrt{x}},
+\qquad
+\dfrac{\Delta y}{\Delta x}=\dfrac1{\sqrt{x+\Delta x}+\sqrt{x}}.
+$
+\end{center}
+利用根式的连续性, 得
+$$
+y'=\lim_{\Delta x\to0}\frac{\Delta y}{\Delta x}=\frac1{2\sqrt{x}}.
+$$
+
+\myrefparagraph{5\textdegree}\label{ex:derivative_real_power}
+前面几个结果都可以包括在更一般的幂函数情形中:
+$
+y=x^\mu,
+$
+其中 $\mu$ 为任意实数, 函数的定义域随 $\mu$ 而定
+[参见 \emref{subsec:48} 的 \ref{par:power_functions}].
+在 $x\neq0$ 处, 有
+$$
+\frac{\Delta y}{\Delta x}
+=\frac{(x+\Delta x)^\mu-x^\mu}{\Delta x}
+=x^{\mu-1}\cdot
+\frac{\brac{1+\dfrac{\Delta x}{x}}^\mu-1}{\dfrac{\Delta x}{x}}.
+$$
+由 \emref{subsec:77} 中例 \ref{ex:logarithmic_exponential_power_increment_limits} 的极限 (c), 得
+$$
+y'=\lim_{\Delta x\to0}\frac{\Delta y}{\Delta x}=\mu x^{\mu-1}.\text{\footnotemark}
+$$
+\footnotetext{若 $\mu>1$, 并在定义域中取 $f(0)=0$, 则由导数定义也容易直接求得 $y'(0)=0$.}
+特别地,
+$$
+\begin{aligned}
+y=x^{-1}=\frac1x&\quad\Longrightarrow\quad
+ y'=(-1)x^{-2}=-\frac1{x^2},\\
+y=x^{1/2}=\sqrt{x}&\quad\Longrightarrow\quad
+ y'=\frac12x^{-1/2}=\frac1{2\sqrt{x}}.
+\end{aligned}
+$$
+
+\myrefparagraph{6\textdegree}\label{ex:derivative_exponential}
+对于指数函数
+$
+y=a^x\ (a>0,\ -\infty<x<+\infty),
+$
+有
+$$
+\frac{\Delta y}{\Delta x}
+=\frac{a^{x+\Delta x}-a^x}{\Delta x}
+=a^x\cdot\frac{a^{\Delta x}-1}{\Delta x}.
+$$
+利用 \emref{subsec:77} 中例 \ref{ex:logarithmic_exponential_power_increment_limits} 的极限 (b), 得
+$$
+y'=\lim_{\Delta x\to0}\frac{\Delta y}{\Delta x}=a^x\ln a.
+$$
+特别地, 当 $y=\e^x$ 时, 有 $y'=\e^x$.
+
+因此, 当 $a>1$ 时, 指数函数的增长率与函数值成正比:
+函数值越大, 它在该点增长得越快.
+这表明了指数函数增长很快的本质, 与 \emref{subsec:65} 中的比较结果相符.
+
+\myrefparagraph{7\textdegree}\label{ex:derivative_logarithm}
+对于对数函数
+$
+y=\log_a x\ (a>0,\ a\neq1,\ x>0),
+$
+有
+$$
+\frac{\Delta y}{\Delta x}
+=\frac{\log_a(x+\Delta x)-\log_a x}{\Delta x}
+=\frac1x\cdot
+\frac{\log_a\brac{1+\dfrac{\Delta x}{x}}}{\dfrac{\Delta x}{x}}.
+$$
+利用 \emref{subsec:77} 中例 \ref{ex:logarithmic_exponential_power_increment_limits} 的极限 (a), 得
+$$
+y'=\lim_{\Delta x\to0}\frac{\Delta y}{\Delta x}
+=\frac{\log_a\e}{x}=\frac1{x\ln a}.
+$$
+特别地, 对于自然对数 $y=\ln x$, 可以得到很简单的结果: $y'=\dfrac1x$.
+这也是在理论研究中采用自然对数的一个理由.
+
+当 $a>1$ 时, 对数函数的增长率与自变量的值成反比,
+并且当自变量无限增大时, 增长率保持正值而趋于零.
+这也与 \emref{subsec:65} 中的讨论相符.
+
+\myrefparagraph{8\textdegree}\label{ex:derivative_trigonometric}
+再考察三角函数. 设 $y=\sin x$, 则
+\begin{center}
+$
+\dfrac{\Delta y}{\Delta x}
+=\dfrac{\sin(x+\Delta x)-\sin x}{\Delta x}
+=\dfrac{\sin\dfrac{\Delta x}2}{\dfrac{\Delta x}2}
+ \cos\brac{x+\dfrac{\Delta x}2}.
+$
+\end{center}
+利用余弦函数的连续性及 \emref{subsec:54} 中的极限 \eqref{eq:sine_over_argument_limit}, 得
+$$
+y'=\lim_{\Delta x\to0}\frac{\Delta y}{\Delta x}=\cos x.\text{\footnotemark}
+$$
+\footnotetext{这里以弧度为角度单位. 若用度数作单位, 则相应的基本极限为 $\dfrac{\pi}{180}$, 因而有 $(\sin x)'=\dfrac{\pi}{180}\cos x$.}
+类似地, 对于 $y=\cos x$, 有 $y'=-\sin x$.
+
+对于 $y=\tan x$, 在 $\cos x\neq0$ 处, 有
+$$
+\begin{aligned}
+\frac{\Delta y}{\Delta x}
+&=\frac{\tan(x+\Delta x)-\tan x}{\Delta x}\\
+&=\frac{\sin(x+\Delta x)\cos x-\cos(x+\Delta x)\sin x}
+{\Delta x\cos x\cos(x+\Delta x)}\\
+&=\frac{\sin\Delta x}{\Delta x}\cdot
+\frac1{\cos x\cos(x+\Delta x)}.
+\end{aligned}
+$$
+因此
+$$
+y'=\lim_{\Delta x\to0}\frac{\Delta y}{\Delta x}
+=\frac1{\cos^2x}=\sec^2x.
+$$
+类似地, 对于 $y=\cot x$, 在 $\sin x\neq0$ 处, 有
+\begin{center}
+$
+y'=-\dfrac1{\sin^2x}=-\csc^2x.
+$
+\end{center}
+
+\subsection{反函数的导数}\label{subsec:94}
+在求反三角函数的导数之前, 先证明一个一般定理.
+
+\begin{theorem}\label{thm:inverse_function_derivative}
+设函数 $y=f(x)$ 在区间 $\mathcal{X}$ 上连续且严格单调,
+并在点 $x_0\in\mathcal{X}$ 处有异于零的有限导数 $f'(x_0)$.
+则反函数 $x=g(y)$ 在相应点 $y_0=f(x_0)$ 处也有导数, 且
+$$
+g'(y_0)=\frac1{f'(x_0)}.
+$$
+\end{theorem}
+\index{fanhanshu@反函数!daoshu@导数}
+
+\begin{proof}
+由 \emref{subsec:83} 的反函数存在定理,
+反函数 $x=g(y)$ 在值集所成的区间上存在且连续.
+给 $y_0$ 一个非零增量 $\Delta y$, 使 $y_0+\Delta y$ 仍属于这个区间,
+相应地, $x_0$ 得到增量 $\Delta x$.
+这时 $\Delta x\neq0$, 因为若 $\Delta x=0$, 由 $y=f(x)$ 便会得到 $\Delta y=0$.
+于是
+$$
+\frac{\Delta x}{\Delta y}=\frac1{\dfrac{\Delta y}{\Delta x}}.
+$$
+当 $\Delta y\to0$ 时, 由反函数的连续性, 有 $\Delta x\to0$.
+右端的分母趋于非零极限 $f'(x_0)$,
+所以左端的极限存在, 且等于 $1/f'(x_0)$.
+这个极限正是 $g'(y_0)$.
+\end{proof}
+
+因此, 可以把反函数的导数公式简写为
+$$
+x'_y=\frac1{y'_x} \qquad \text{或} \qquad y'_x=\frac1{x'_y} .
+$$
+
+\begin{wrapfigure}[7]{r}{0.46\textwidth}
+    \vspace{-0.7cm}
+    \centering
+    \phantomsection\label{fig:inverse_function_derivative}
+    \begin{tikzpicture}[scale=0.92]
+        \draw[-latex] (-0.35,0) -- (4.55,0) node[below,scale=0.8] {$x$};
+        \draw[-latex] (0,-0.7) -- (0,3.15) node[left,scale=0.8] {$y$};
+        \node[above left,scale=0.8] at (0,0) {$O$};
+        \draw[thick,domain=0.25:4.05,samples=65,smooth]
+            plot (\x,{0.12*(\x-2.6)^2+0.75*\x-0.55});
+        \draw[thick] (-0.2,-0.7) -- (4.05,2.4875);
+        \draw[dashed] (0,1.4) -- (2.6,1.4) -- (2.6,0);
+        \draw[fill=white] (2.6,1.4) circle (1.4pt) node[above left,scale=0.8] {$M$};
+        \node[below,scale=0.8] at (2.6,0) {$x_0$};
+        \node[left,scale=0.8] at (0,1.4) {$y_0$};
+        \node[above left,scale=0.8] at (4.05,2.79) {$x=g(y)$};
+        \node[below right,scale=0.8] at (3.7,2.225) {$y=f(x)$};
+        \draw (1.1133,0) arc (0:36.8699:0.38);
+        \node[above,scale=0.8] at (1.25,0) {$\alpha$};
+        \draw (0.336,-0.298) arc (36.8699:90:0.42);
+        \node[right,scale=0.8] at (0.18,-0.1) {$\beta$};
+    \end{tikzpicture}
+\end{wrapfigure}
+这个公式的几何意义也很容易说明.
+导数 $y'_x$ 是曲线 $y=f(x)$ 在所考察点处的切线斜率,
+即切线与 $x$ 轴所成角 $\alpha$ 的正切.
+反函数 $x=g(y)$ 有着同一条图像, 只是把 $y$ 看作自变量.
+因此 $x'_y$ 等于同一条切线与 $y$ 轴所成角 $\beta$ 的正切.
+在图示的递增情形中, $\alpha+\beta=\pi/2$, 所以公式成为熟悉的关系
+$$
+\tan\beta=\frac1{\tan\alpha}.
+$$
+
+以 $y=a^x$ ($a>0$, $a\neq1$) 为例, 它的反函数为 $x=\log_a y$.
+由例 \ref{ex:derivative_exponential}, 有 $y'_x=a^x\ln a$, 从而
+$$
+x'_y=\frac1{y'_x}=\frac1{a^x\ln a}=\frac{\log_a\e}{y},
+$$
+与例 \ref{ex:derivative_logarithm} 的结果一致.
+
+\myrefparagraph{9\textdegree}\label{ex:derivative_inverse_trigonometric}
+现在转向反三角函数.
+考察函数 $y=\arcsin x$, 其中 $-1<x<1$,
+对应的主值满足 $-\pi/2<y<\pi/2$.
+它是函数 $x=\sin y$ 在这个区间上的反函数.
+因为 $x'_y=\cos y>0$, 所以
+$$
+y'_x=\frac1{x'_y}=\frac1{\cos y}
+=\frac1{\sqrt{1-\sin^2y}}=\frac1{\sqrt{1-x^2}}.
+$$
+这里 $\cos y>0$, 因而根式前取正号.
+
+我们暂不取 $x=\pm1$, 因为相应的 $y=\pm\pi/2$ 使 $x'_y=\cos y=0$,
+不能直接应用上面的定理.
+
+函数 $y=\arctan x$ ($-\infty<x<+\infty$)
+是 $x=\tan y$ 在 $-\pi/2<y<\pi/2$ 上的反函数.
+因此
+$$
+y'_x=\frac1{x'_y}=\frac1{\sec^2y}
+=\frac1{1+\tan^2y}=\frac1{1+x^2}.
+$$
+类似地, 可以得到
+$$
+\begin{aligned}
+y=\arccos x&\quad\Longrightarrow\quad
+ y'=-\frac1{\sqrt{1-x^2}},&&-1<x<1,\\
+y=\operatorname{arccot}x&\quad\Longrightarrow\quad
+ y'=-\frac1{1+x^2},&&-\infty<x<+\infty.
+\end{aligned}
+$$
+
+\subsection{导数公式一览表}\label{subsec:95}
+现在把已经求得的导数公式汇列如下, 各式均在前面说明的相应条件下使用.
+\index{daoshugongshi@导数公式}
+\phantomsection\label{tab:elementary_derivatives}
+$$
+\begin{array}{r@{\quad}l@{\qquad}l}
+1.&y=c&y'=0\\
+2.&y=x&y'=1\\
+3.&y=x^\mu&y'=\mu x^{\mu-1}\\
+ &y=\dfrac1x&y'=-\dfrac1{x^2}\\
+ &y=\sqrt{x}&y'=\dfrac1{2\sqrt{x}}\\
+4.&y=a^x&y'=a^x\ln a\\
+ &y=\e^x&y'=\e^x\\
+5.&y=\log_a x&y'=\dfrac{1}{x\ln a}\\
+ &y=\ln x&y'=\dfrac1x\\
+6.&y=\sin x&y'=\cos x\\
+7.&y=\cos x&y'=-\sin x\\
+8.&y=\tan x&y'=\sec^2x=\dfrac1{\cos^2x}\\
+9.&y=\cot x&y'=-\csc^2x=-\dfrac1{\sin^2x}\\
+10.&y=\arcsin x&y'=\dfrac1{\sqrt{1-x^2}}\\
+11.&y=\arccos x&y'=-\dfrac1{\sqrt{1-x^2}}\\
+12.&y=\arctan x&y'=\dfrac1{1+x^2}\\
+13.&y=\operatorname{arccot}x&y'=-\dfrac1{1+x^2}.
+\end{array}
+$$
