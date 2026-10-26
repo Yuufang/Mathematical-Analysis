@@ -693,3 +693,227 @@ $$
 13.&y=\operatorname{arccot}x&y'=-\dfrac1{1+x^2}.
 \end{array}
 $$
+
+\subsection{函数增量的公式}\label{subsec:96}
+先在这里证明两个简单的命题, 它们以后会经常用到, 也说明了导数与连续性之间的联系.
+
+设函数 $y=f(x)$ 在区间 $\mathcal{X}$ 内有定义.
+从固定值 $x=x_0\in\mathcal{X}$ 出发, 取非零增量 $\Delta x$,
+并使 $x_0+\Delta x$ 仍属于这个区间.
+相应的函数增量为
+$$
+\Delta y=\Delta f(x_0)=f(x_0+\Delta x)-f(x_0).
+$$
+
+\myrefparagraph{1\textdegree}\label{prop:function_increment_expansion}
+{\kaishu 若函数 $y=f(x)$ 在点 $x_0$ 处有有限导数 $y'_x=f'(x_0)$,
+则函数增量可以表示为
+\begin{equation}\label{Incremental1}
+\Delta f(x_0)=f'(x_0)\Delta x+\alpha\Delta x,
+\end{equation}
+或简写为
+\begin{equation}\tag{\theequation a}\label{Incremental1'}
+\Delta y=y'_x\Delta x+\alpha\Delta x,
+\end{equation}
+其中 $\alpha$ 依赖于 $\Delta x$, 并且在 $\Delta x\to0$ 时趋于零.}
+
+由导数的定义, 当 $\Delta x\to0$ 时,
+$$
+\frac{\Delta y}{\Delta x}\to y'_x.
+$$
+因此, 令
+$$
+\alpha=\frac{\Delta y}{\Delta x}-y'_x,
+$$
+就有 $\alpha\to0$.
+由此解出 $\Delta y$, 即得 \eqref{Incremental1'}.
+
+因为 $\alpha\Delta x$ 是比 $\Delta x$ 更高阶的无穷小量,
+所以用 \emref{subsec:60} 中的 $o$ 记号, 可以把上面的公式改写为
+\begin{equation}\label{Incremental2}
+\Delta f(x_0)=f'(x_0)\Delta x+o(\Delta x),
+\end{equation}
+或
+\begin{equation}\tag{\theequation a}\label{Incremental2'}
+\Delta y=y'_x\Delta x+o(\Delta x).
+\end{equation}
+这些\emph{无穷小增量公式}\index{wuqiongxiaozenglianggongshi@无穷小增量公式}
+是微分学中的重要工具.
+
+\begin{remark}\label{note:increment_parameter_at_zero}
+到现在为止, 我们都假定 $\Delta x\neq0$,
+所以按上面的定义, $\alpha$ 在 $\Delta x=0$ 时还没有意义.
+通常说 $\Delta x\to0$ 时 $\alpha\to0$, 是指 $\Delta x$ 可以按任意规律趋于零,
+但不取零值.
+现在补充规定: 当 $\Delta x=0$ 时, $\alpha=0$.
+这时也有 $\Delta y=0$, 所以 \eqref{Incremental1}
+及 \eqref{Incremental1'} 仍然成立.
+而关系 $\alpha\to0$ 就可以作更广的理解:
+在 $\Delta x$ 趋于零的过程中, 也允许它取零值.
+\end{remark}
+
+由已经证明的公式, 可以立即推出第二个命题.
+
+\myrefparagraph{2\textdegree}\label{prop:differentiability_implies_continuity}
+{\kaishu 若函数 $y=f(x)$ 在点 $x_0$ 处有有限导数,
+则它在这点必然连续.}
+\index{daoshu2@导数!yulianxuxingdeguanxi@与连续性的关系}
+
+事实上, 当 $\Delta x\to0$ 时, 由 \eqref{Incremental1'}, 有
+$$
+\Delta y=y'_x\Delta x+\alpha\Delta x\to0.
+$$
+这正是函数在 $x_0$ 处连续的增量表述.
+因此, 可导一定连续, 但反过来不一定成立; 相应的反例留待第 102 小节讨论.
+
+\subsection{求导数的几个简单法则}\label{subsec:97}
+\begingroup
+\setlength{\abovedisplayskip}{6pt plus 2pt minus 2pt}
+\setlength{\belowdisplayskip}{6pt plus 2pt minus 2pt}
+\setlength{\abovedisplayshortskip}{3pt plus 2pt}
+\setlength{\belowdisplayshortskip}{6pt plus 2pt minus 2pt}
+前面已经求出了初等函数的导数.
+本节和下一节将建立一系列求导法则, 利用它们就可以求由初等函数经过有限次算术运算及复合
+[\emref{subsec:51}] 所得函数的导数.
+\index{qiudaofaze@求导法则}
+
+\myrefparagraph{I.}\label{rule:derivative_constant_multiple}
+{\kaishu 设函数 $u=\varphi(x)$ 在定点 $x$ 处有有限导数 $u'$.}
+我们来证明, {\kaishu 函数 $y=cu$ ($c$ 为常数) 在同一点处也有导数, 并求出它.}
+
+给自变量 $x$ 一个非零增量 $\Delta x$, 函数 $u$ 相应地得到增量 $\Delta u$,
+由原来的值 $u$ 变为 $u+\Delta u$.
+函数 $y$ 的新值为
+$
+y+\Delta y=c(u+\Delta u).
+$
+由此 $\Delta y=c\Delta u$, 因而
+$$
+\lim_{\Delta x\to0}\frac{\Delta y}{\Delta x}
+=c\lim_{\Delta x\to0}\frac{\Delta u}{\Delta x}=cu'.
+$$
+所以导数存在, 且
+$$
+y'=(cu)'=cu'.
+$$
+这就是说: {\kaishu 常数因子可以从导数符号内提出.}
+\index{qiudaofaze@求导法则!changshuyinzi@常数因子}
+
+\myrefparagraph{II.}\label{rule:derivative_sum_difference}
+{\kaishu 设函数 $u=\varphi(x)$ 和 $v=\psi(x)$ 在定点 $x$ 处有有限导数 $u'$ 和 $v'$.}
+我们来证明,{\kaishu 函数 $y=u\pm v$ 在同一点处也有导数, 并求出它.}
+
+给 $x$ 一个增量 $\Delta x$, 则 $u$, $v$, $y$ 分别得到相应增量
+$\Delta u$, $\Delta v$, $\Delta y$.
+新值之间仍满足原来的关系:
+$$
+y+\Delta y=(u+\Delta u)\pm(v+\Delta v).
+$$
+因此,
+$$
+\Delta y=\Delta u\pm\Delta v,\qquad
+\frac{\Delta y}{\Delta x}
+=\frac{\Delta u}{\Delta x}\pm\frac{\Delta v}{\Delta x}.
+$$
+当 $\Delta x\to0$ 时,
+$$
+\lim_{\Delta x\to0}\frac{\Delta y}{\Delta x}
+=\lim_{\Delta x\to0}\frac{\Delta u}{\Delta x}
+\pm\lim_{\Delta x\to0}\frac{\Delta v}{\Delta x}
+=u'\pm v'.
+$$
+所以导数存在, 且
+$$
+y'=(u\pm v)'=u'\pm v'.
+$$
+用同样的方法, 就可以把这个结果推广到任意有限个加数的情形.
+\index{qiudaofaze@求导法则!heyucha@和与差}
+
+\myrefparagraph{III.}\label{rule:derivative_product}
+{\kaishu 在关于 $u$, $v$ 的同样假定下, 函数 $y=uv$ 在同一点处也有导数.
+我们来求出它.}
+
+仍用上面的增量记号, 有
+$$
+y+\Delta y=(u+\Delta u)(v+\Delta v),
+$$
+因而
+$$
+\Delta y=\Delta u\cdot v+u\cdot\Delta v+\Delta u\cdot\Delta v,
+$$
+以及
+$$
+\frac{\Delta y}{\Delta x}
+=\frac{\Delta u}{\Delta x}\,v
++u\frac{\Delta v}{\Delta x}
++\frac{\Delta u}{\Delta x}\,\Delta v.
+$$
+根据 \emref{subsec:96} 的
+\hyperref[prop:differentiability_implies_continuity]{$2^\circ$},
+$v$ 在所考察的点连续, 所以当 $\Delta x\to0$ 时, 也有 $\Delta v\to0$.
+于是
+$$
+\lim_{\Delta x\to0}\frac{\Delta y}{\Delta x}
+=\lim_{\Delta x\to0}\frac{\Delta u}{\Delta x}\,v
++u\lim_{\Delta x\to0}\frac{\Delta v}{\Delta x}
+=u'v+uv'.
+$$
+所以导数存在, 且
+$$
+y'=(uv)'=u'v+uv'.
+$$
+\index{qiudaofaze@求导法则!chengji@乘积}
+
+若 $y=uvw$, 并且 $u'$, $v'$, $w'$ 都存在, 则
+$$
+y'=[(uv)w]'=(uv)'w+(uv)w'=u'vw+uv'w+uvw'.
+$$
+
+对于 $n$ 个在该点有有限导数的函数, 它们的乘积类似地有
+\begin{equation}\label{eq:derivative_finite_product}
+(\underbrace{uvw\cdots s}_{n})'
+=u'vw\cdots s+uv'w\cdots s+uvw'\cdots s+\cdots+uvw\cdots s'.
+\end{equation}
+
+我们用数学归纳法来证明这个公式.
+假定公式 \eqref{eq:derivative_finite_product} 对 $n$ 个因子的乘积成立,
+再考察 $n+1$ 个因子的乘积:
+$$
+(\underbrace{uvw\cdots st}_{n+1})'
+=[(uvw\cdots s)t]'
+=(uvw\cdots s)'t+(uvw\cdots s)t'.
+$$
+将右边的 $(uvw\cdots s)'$ 按 \eqref{eq:derivative_finite_product} 展开, 就得到
+$$
+(uvw\cdots st)'
+=u'vw\cdots st+uv'w\cdots st+\cdots+uvw\cdots s't+uvw\cdots st'.
+$$
+这正是 $n+1$ 个因子时的同一公式.
+由于 $n=2$ 和 $n=3$ 的情形已经直接证明, 所以公式
+\eqref{eq:derivative_finite_product} 对任意 $n\ge2$ 都成立.
+
+\myrefparagraph{IV.}\label{rule:derivative_quotient}
+\index{qiudaofaze@求导法则!shang@商}
+{\kaishu 最后, 设 $u$, $v$ 满足前面的假定, 并且 $v$ 在所考察的点不等于零.
+我们来证明, 函数 $y=u/v$ 在同一点处也有导数, 并求出它.}
+
+由于 $v$ 在这点连续且不为零, 当 $\Delta x$ 足够小时,
+$v+\Delta v$ 也不为零, 因而可以写出
+$$
+y+\Delta y=\frac{u+\Delta u}{v+\Delta v}.
+$$
+于是
+\begin{align*}
+\Delta y&=\frac{\Delta u\cdot v-u\cdot\Delta v}{v(v+\Delta v)},\\
+\frac{\Delta y}{\Delta x}
+&=\frac{\dfrac{\Delta u}{\Delta x}\,v-u\dfrac{\Delta v}{\Delta x}}
+{v(v+\Delta v)}.
+\end{align*}
+令 $\Delta x\to0$, 此时也有 $\Delta v\to0$,
+而分母趋于不为零的 $v^2$.
+由此证明导数存在, 且
+$$
+y'=\left(\frac{u}{v}\right)'=\frac{u'v-uv'}{v^2}.
+$$
+\par\endgroup
+
