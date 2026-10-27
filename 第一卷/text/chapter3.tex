@@ -773,7 +773,7 @@ $$
 \setlength{\abovedisplayshortskip}{3pt plus 2pt}
 \setlength{\belowdisplayshortskip}{6pt plus 2pt minus 2pt}
 前面已经求出了初等函数的导数.
-本节和下一节将建立一系列求导法则, 利用它们就可以求由初等函数经过有限次算术运算及复合
+本节和下一节 [\emref{subsec:98}] 将建立一系列求导法则, 利用它们就可以求由初等函数经过有限次算术运算及复合
 [\emref{subsec:51}] 所得函数的导数.
 \index{qiudaofaze@求导法则}
 
@@ -917,3 +917,613 @@ y'=\left(\frac{u}{v}\right)'=\frac{u'v-uv'}{v^2}.
 $$
 \par\endgroup
 
+\subsection{复合函数的导数}\label{subsec:98}
+现在来建立一条在实际求导中十分重要的法则.
+只要知道参与复合的各个函数的导数, 就可以利用这条法则求复合函数的导数.
+
+\myrefparagraph{V.}\label{rule:derivative_composition}
+{\kaishu 设复合函数 $y=f(\varphi(x))$ 在点 $x_0$ 的某邻域内有定义.
+若函数 $u=\varphi(x)$ 在 $x_0$ 处有有限导数
+$u'_x=\varphi'(x_0)$, 而函数 $y=f(u)$ 在对应点
+$u_0=\varphi(x_0)$ 处也有有限导数 $y'_u=f'(u_0)$,
+则复合函数在 $x_0$ 处也有导数, 且有\footnote{这里的 $f'(\varphi(x_0))$
+表示函数 $f(u)$ 关于变量 $u$ 的导数在 $u=u_0=\varphi(x_0)$ 处的值,
+并非直接关于 $x$ 求导.}
+$$
+\left.[f(\varphi(x))]'\right|_{x=x_0}
+=f'(\varphi(x_0))\varphi'(x_0),
+$$
+或简写为
+$$
+y'_x=y'_u u'_x.
+$$
+}
+这条法则称为\emph{链式法则}.
+\index{lianshifaze@链式法则}
+\index{qiudaofaze@求导法则!fuhehanshu@复合函数}
+
+为了证明, 给 $x$ 一个非零增量 $\Delta x$.
+函数 $u=\varphi(x)$ 得到相应增量
+$$
+\Delta u=\varphi(x_0+\Delta x)-\varphi(x_0),
+$$
+函数 $y=f(u)$ 再由 $\Delta u$ 得到增量
+$$
+\Delta y=f(u_0+\Delta u)-f(u_0).
+$$
+利用 \emref{subsec:96} 的增量公式 \eqref{Incremental1'},
+把其中的自变量 $x$ 换成 $u$, 就得到
+$$
+\Delta y=y'_u\Delta u+\alpha\Delta u,
+$$
+其中 $\alpha$ 依赖于 $\Delta u$, 并且在 $\Delta u\to0$ 时趋于零.
+两边除以 $\Delta x$, 得
+$$
+\frac{\Delta y}{\Delta x}
+=y'_u\frac{\Delta u}{\Delta x}
++\alpha\frac{\Delta u}{\Delta x}.
+$$
+
+因为 $\varphi$ 在 $x_0$ 处可导, 所以由 \emref{subsec:96} 的
+\hyperref[prop:differentiability_implies_continuity]{$2^\circ$},
+当 $\Delta x\to0$ 时, 也有 $\Delta u\to0$.
+于是 $\alpha\to0$.
+又因 $\Delta u/\Delta x\to u'_x$, 故
+$$
+\lim_{\Delta x\to0}\frac{\Delta y}{\Delta x}
+=y'_u\lim_{\Delta x\to0}\frac{\Delta u}{\Delta x}
+=y'_u u'_x.
+$$
+这就证明了复合函数的导数 $y'_x$ 存在, 并得到了上面的公式.
+
+\begin{remark}\label{note:chain_rule_zero_inner_increment}
+这里可以看出 \emref{subsec:96} 中
+\hyperref[note:increment_parameter_at_zero]{零增量附注}的用处.
+$\Delta x$ 是自变量的增量, 我们可以假定它不为零;
+但对函数 $u=\varphi(x)$ 的增量 $\Delta u$,
+即使 $\Delta x\ne0$, 也不能假定 $\Delta u\ne0$.
+按照那里的约定, 当 $\Delta u=0$ 时取 $\alpha=0$,
+增量公式仍成立, 上面的证明因而也适用于这种情形.
+\end{remark}
+
+\subsection{例题}\label{subsec:99}
+先举几个应用 \emref{subsec:97} 中四条求导法则的例题.\footnote{除特别说明外,
+以下求导式中用 $x,y,u,v$ 表示变量, 其他字母表示常量.}
+各式均在所写函数有定义、相应求导法则适用的点上讨论.
+
+\myrefparagraph{1)}\label{ex:differentiate_polynomial}
+考察多项式
+$$
+y=a_0x^n+a_1x^{n-1}+\cdots+a_{n-2}x^2+a_{n-1}x+a_n.
+$$
+先用和的求导法则, 再把常数因子提出, 得
+\begin{align*}
+y'&=(a_0x^n)'+(a_1x^{n-1})'+\cdots+(a_{n-1}x)'+(a_n)'\\
+&=a_0(x^n)'+a_1(x^{n-1})'+\cdots+a_{n-1}(x)'+(a_n)'.
+\end{align*}
+利用 \emref{subsec:95} 中常数及幂函数的导数公式, 最后得到
+$$
+y'=na_0x^{n-1}+(n-1)a_1x^{n-2}+\cdots+2a_{n-2}x+a_{n-1}.
+$$
+
+\myrefparagraph{2)}\label{ex:differentiate_polynomial_exponential}
+设 $y=(2x^2-5x+1)\e^x$.
+由\hyperref[rule:derivative_product]{乘积法则},
+$$
+y'=(2x^2-5x+1)'\e^x+(2x^2-5x+1)(\e^x)'.
+$$
+利用前一例和指数函数的导数公式, 得
+\begin{align*}
+y'&=(4x-5)\e^x+(2x^2-5x+1)\e^x\\
+&=(2x^2-x-4)\e^x.
+\end{align*}
+
+\myrefparagraph{3)}\label{ex:differentiate_linear_over_quadratic}
+设 $y=(ax+b)/(x^2+1)$.
+由\hyperref[rule:derivative_quotient]{商法则},
+\begin{align*}
+y'&=\frac{(ax+b)'(x^2+1)-(ax+b)(x^2+1)'}{(x^2+1)^2}\\
+&=\frac{a(x^2+1)-(ax+b)2x}{(x^2+1)^2}
+=\frac{-ax^2-2bx+a}{(x^2+1)^2}.
+\end{align*}
+
+\myrefparagraph{4)}\label{ex:differentiate_tangent_again}
+从 $y=\sin x/\cos x$ 出发, 再求一次正切函数的导数.
+应用商法则及正弦、余弦的导数公式, 得
+\begin{align*}
+y'&=\frac{(\sin x)'\cos x-\sin x(\cos x)'}{\cos^2x}\\
+&=\frac{\cos^2x+\sin^2x}{\cos^2x}=\frac1{\cos^2x}.
+\end{align*}
+这与 \emref{subsec:95} 的公式一致.
+
+\myrefparagraph{5)}\label{ex:differentiate_trigonometric_quotient}
+设
+$$
+y=\frac{x\sin x+\cos x}{x\cos x-\sin x}.
+$$
+先用商法则, 再用和与乘积的求导法则, 得
+\begin{align*}
+y'&=\frac{(x\sin x+\cos x)'(x\cos x-\sin x)
+ -(x\sin x+\cos x)(x\cos x-\sin x)'}{(x\cos x-\sin x)^2}\\
+&=\frac{x\cos x\,(x\cos x-\sin x)
+ +(x\sin x+\cos x)x\sin x}{(x\cos x-\sin x)^2}\\
+&=\frac{x^2}{(x\cos x-\sin x)^2}.
+\end{align*}
+
+下面举应用 \emref{subsec:98} 中\hyperref[rule:derivative_composition]{链式法则}的例题.
+
+\myrefparagraph{6)}\label{ex:differentiate_log_sine}
+设 $y=\ln\sin x$, 即 $y=\ln u$, $u=\sin x$.
+在 $\sin x>0$ 时,
+$$
+y'_x=y'_u u'_x=\frac1{\sin x}(\sin x)'
+=\frac{\cos x}{\sin x}=\cot x.
+$$
+这里 $y'_u=1/u$ 要在 $u=\sin x$ 处取值.
+
+\myrefparagraph{7)}\label{ex:differentiate_sqrt_one_plus_square}
+设 $y=\sqrt{1+x^2}$, 即 $y=\sqrt u$, $u=1+x^2$.
+于是
+$$
+y' =\frac1{2\sqrt{1+x^2}}(1+x^2)'
+=\frac{x}{\sqrt{1+x^2}}.
+$$
+
+\myrefparagraph{8)}\label{ex:differentiate_exp_square}
+设 $y=\e^{x^2}$, 即 $y=\e^u$, $u=x^2$.
+于是
+$$
+y'=\e^{x^2}(x^2)'=2x\e^{x^2}.
+$$
+当然, 实际求导时不必每次都把中间函数另外写出.
+
+\myrefparagraph{9)}\label{ex:differentiate_sine_ax}
+设 $y=\sin ax$, 则
+$$
+y'=\cos ax\,(ax)'=a\cos ax.
+$$
+
+\myrefparagraph{10)}\label{ex:differentiate_polynomial_power}
+设 $y=(x^2+x+1)^n$, 则
+$$
+y'=n(x^2+x+1)^{n-1}(x^2+x+1)'
+=n(2x+1)(x^2+x+1)^{n-1}.
+$$
+
+\myrefparagraph{11)}\label{ex:differentiate_two_power_sine}
+设 $y=2^{\sin x}$, 则
+$$
+y'=2^{\sin x}\ln2\,(\sin x)'=\ln2\,\cos x\,2^{\sin x}.
+$$
+
+\myrefparagraph{12)}\label{ex:differentiate_arctan_reciprocal}
+设 $y=\arctan(1/x)$ ($x\ne0$), 则
+$$
+y'=\frac1{1+(1/x)^2}\left(\frac1x\right)'
+=\frac{x^2}{1+x^2}\left(-\frac1{x^2}\right)
+=-\frac1{1+x^2}.
+$$
+
+遇到多层复合函数, 必须逐层应用链式法则, 不要遗漏其中的任何一层.
+
+\myrefparagraph{13)}\label{ex:differentiate_nested_tangent_root}
+设 $y=\sqrt{\tan(x/2)}$.
+在 $\tan(x/2)>0$ 时,
+\begin{align*}
+y'&=\frac1{2\sqrt{\tan(x/2)}}\left(\tan\frac x2\right)'\\
+&=\frac{\sec^2(x/2)}{2\sqrt{\tan(x/2)}}\left(\frac x2\right)'
+=\frac{\sec^2(x/2)}{4\sqrt{\tan(x/2)}}.
+\end{align*}
+
+% 例 14--18 局部收紧公式间距，使例 18 尽量与前页连排。
+\begingroup
+\setlength{\abovedisplayskip}{6pt plus 2pt minus 2pt}
+\setlength{\belowdisplayskip}{6pt plus 2pt minus 2pt}
+\setlength{\abovedisplayshortskip}{3pt plus 2pt}
+\setlength{\belowdisplayshortskip}{6pt plus 2pt minus 2pt}
+\setlength{\jot}{2pt}
+\myrefparagraph{14)}\label{ex:differentiate_nested_exponential_sine}
+设 $y=\e^{\sin^2(1/x)}$ ($x\ne0$).
+逐层求导, 得
+\begin{align*}
+y'&=\e^{\sin^2(1/x)}\left(\sin^2\frac1x\right)'\\
+&=\e^{\sin^2(1/x)}\,2\sin\frac1x\left(\sin\frac1x\right)'\\
+&=\e^{\sin^2(1/x)}\,2\sin\frac1x\cos\frac1x
+ \left(\frac1x\right)'\\
+&=-\frac1{x^2}\sin\frac2x\,\e^{\sin^2(1/x)}.
+\end{align*}
+
+再举几个综合应用各条法则的例题.
+
+\myrefparagraph{15)}\label{ex:differentiate_hyperbolic_functions}
+由双曲正弦的定义 [\emref{subsec:48}],
+$
+y=\sinh x=\dfrac{\e^x-\e^{-x}}2,
+$
+得到
+$$
+y'=\frac12\bigl[(\e^x)'-(\e^{-x})'\bigr]
+=\frac{\e^x+\e^{-x}}2=\cosh x.
+$$
+反过来, 若 $y=\cosh x$, 则 $y'=\sinh x$.
+再像\hyperref[ex:differentiate_tangent_again]{例 4)}那样应用商法则, 就得到
+$$
+(\tanh x)'=\frac1{\cosh^2x},\qquad
+(\coth x)'=-\frac1{\sinh^2x}\quad(x\ne0).
+$$
+\index{shuangquhanshu@双曲函数!daoshu@导数}
+
+\myrefparagraph{16)}\label{ex:differentiate_inverse_hyperbolic_sine_form}
+设 $y=\ln\bigl(x+\sqrt{x^2+1}\bigr)$, 则
+\begin{align*}
+y'&=\frac1{x+\sqrt{x^2+1}}\left(x+\sqrt{x^2+1}\right)'\\
+&=\frac1{x+\sqrt{x^2+1}}
+ \left(1+\frac{x}{\sqrt{x^2+1}}\right)\\
+&=\frac1{\sqrt{x^2+1}}.
+\end{align*}
+也可以从另一个角度得到这个结果.
+在 \emref{subsec:49} 的\hyperref[ex:inverse_hyperbolic_sine]{例 $4)$}中,
+已经知道这个函数是 $x=\sinh y$ 的反函数.
+利用 \emref{subsec:94} 的\hyperref[thm:inverse_function_derivative]{反函数求导定理}、
+前一例及双曲函数的恒等式, 得
+$$
+y'_x=\frac1{x'_y}=\frac1{\cosh y}
+=\frac1{\sqrt{\sinh^2y+1}}=\frac1{\sqrt{x^2+1}}.
+$$
+
+\myrefparagraph{17)}\label{ex:differentiate_x_over_radical}
+设
+$
+y=\dfrac{x}{a^2\sqrt{x^2+a^2}}\; (a\ne0).
+$
+则
+$$
+y'=\frac1{a^2}
+\frac{\sqrt{x^2+a^2}-x\dfrac{x}{\sqrt{x^2+a^2}}}{x^2+a^2}
+=\frac1{(x^2+a^2)^{3/2}}.
+$$
+
+\myrefparagraph{18)}\label{ex:differentiate_half_arctangent}
+设
+$
+y=\dfrac12\arctan\dfrac{2x}{1-x^2}\; (-1<x<1).
+$
+则
+$$
+\begin{aligned}
+y'&=\frac12\frac1{1+\left(\dfrac{2x}{1-x^2}\right)^2}
+\frac{2(1-x^2)-2x(-2x)}{(1-x^2)^2}\\
+&=\frac1{1+x^2}.
+\end{aligned}
+$$
+
+\par\endgroup
+\newpage
+
+% 例 19--23 局部收紧公式间距，使幂指函数的推导尽量同页排完。
+\begingroup
+\setlength{\abovedisplayskip}{4pt plus 1pt minus 1pt}
+\setlength{\belowdisplayskip}{4pt plus 1pt minus 1pt}
+\setlength{\abovedisplayshortskip}{1.5pt plus 1pt}
+\setlength{\belowdisplayshortskip}{4pt plus 1pt minus 1pt}
+\setlength{\jot}{2pt}
+
+\myrefparagraph{19)}\label{ex:differentiate_log_radical_form}
+设
+$
+y=\dfrac1{\sqrt{b-ac}}
+\ln\dfrac{\sqrt{ax+b}-\sqrt{b-ac}}{\sqrt{ax+b}+\sqrt{b-ac}}\;
+(b-ac>0).
+$
+在对数真数为正的定义区间内, 有
+\begin{align*}
+y'=\frac1{\sqrt{b-ac}}\left[
+\frac{\dfrac{a}{2\sqrt{ax+b}}}{\sqrt{ax+b}-\sqrt{b-ac}}
+-\frac{\dfrac{a}{2\sqrt{ax+b}}}{\sqrt{ax+b}+\sqrt{b-ac}}
+\right]
+=\frac1{(x+c)\sqrt{ax+b}}.
+\end{align*}
+
+\myrefparagraph{20)}\label{ex:differentiate_arctangent_radical_form}
+设
+$
+y=\dfrac2{\sqrt{ac-b}}\arctan\sqrt{\dfrac{ax+b}{ac-b}}\; (ac-b>0).
+$
+在 $ax+b>0$ 时,
+$$
+y'=\frac2{\sqrt{ac-b}}\,
+\frac1{1+\dfrac{ax+b}{ac-b}}\,
+\frac1{\sqrt{ac-b}}\,
+\frac{a}{2\sqrt{ax+b}}
+=\frac1{(x+c)\sqrt{ax+b}}.
+$$
+
+\myrefparagraph{21)}\label{ex:differentiate_arcsine_fractional_sine}
+设
+$
+y=\dfrac1{\sqrt{a^2-b^2}}\arcsin\dfrac{a\sin x+b}{a+b\sin x}\;
+(|b|<a, -\dfrac\pi2<x<\dfrac\pi2).
+$
+由这些条件, $a+b\sin x>0$, $\cos x>0$, 并且
+$$
+\sqrt{1-\left(\dfrac{a\sin x+b}{a+b\sin x}\right)^2}
+=\dfrac{\sqrt{a^2-b^2}\cos x}{a+b\sin x}.
+$$
+因此
+\begin{align*}
+y'=\frac1{\sqrt{a^2-b^2}}\,
+\frac{a+b\sin x}{\sqrt{a^2-b^2}\cos x}
+\frac{a\cos x\,(a+b\sin x)-(a\sin x+b)b\cos x}
+{(a+b\sin x)^2}=\frac1{a+b\sin x}.
+\end{align*}
+
+\myrefparagraph{22)}\label{ex:differentiate_log_fractional_sine}
+设
+$
+y=\dfrac1{\sqrt{b^2-a^2}}
+\ln\dfrac{b+a\sin x-\sqrt{b^2-a^2}\cos x}{a+b\sin x}\; (|a|<|b|).
+$
+仍在对数真数为正、分母不为零的区间内讨论. 有
+\begin{align*}
+y'=\frac1{\sqrt{b^2-a^2}}\left[
+\frac{a\cos x+\sqrt{b^2-a^2}\sin x}
+{b+a\sin x-\sqrt{b^2-a^2}\cos x}
+-\frac{b\cos x}{a+b\sin x}\right]
+=\frac1{a+b\sin x}.
+\end{align*}
+
+\myrefparagraph{23)}\label{ex:differentiate_variable_power}
+再来研究\emph{幂指函数}
+\index{mizhihanshu@幂指函数} $y=u^v$ ($u>0$) 的导数.
+设 $u$, $v$ 都是 $x$ 的函数, 在所考察的点有有限导数 $u'$, $v'$.
+两边取对数, 得
+\begin{equation}\label{eq:variable_power_logarithm}
+\ln y=v\ln u.
+\end{equation}
+将 $y$ 写成 $\e^{v\ln u}$, 就可以由已有法则知道它的导数存在.
+求导时, 直接对 \eqref{eq:variable_power_logarithm} 两边关于 $x$ 求导更为方便.
+利用链式法则和乘积法则, 得
+$$
+\frac{y'}y=v'\ln u+v\frac{u'}u.
+$$
+于是
+$$
+y'=y\left(\frac{vu'}u+v'\ln u\right),
+$$
+或用 $y=u^v$ 代入, 写成
+\begin{equation}\label{eq:variable_power_derivative}
+y'=u^v\left(\frac{vu'}u+v'\ln u\right).
+\end{equation}
+这个公式最早由 Johann Bernoulli 建立.
+\index[names]{Bernoulli, Johann}
+例如, 若 $y=x^{\sin x}$ ($x>0$), 则
+$$
+y'=x^{\sin x}\left(\frac{\sin x}x+\cos x\ln x\right).
+$$
+
+\par\endgroup
+\newpage
+
+\myrefparagraph{24)}\label{ex:differentiate_compositions_with_unspecified_function}
+假定函数 $f$ 有导数 $f'$, 试写出下面各函数的导数:
+$$
+\sin f(x),\qquad \e^{f(x)},\qquad \ln f(x),
+$$
+以及下面各函数关于 $t$ 的导数:
+$$
+f(\sin t),\qquad f(\e^t),\qquad f(\ln t).
+$$
+答案分别为
+$$
+\begin{aligned}
+(\sin f(x))'&=\cos f(x)f'(x),\\
+(\e^{f(x)})'&=\e^{f(x)}f'(x),\\
+(\ln f(x))'&=\frac{f'(x)}{f(x)},
+\end{aligned}
+\qquad
+\begin{aligned}
+\odo{f(\sin t)}{t}&=f'(\sin t)\cos t,\\
+\odo{f(\e^t)}{t}&=f'(\e^t)\e^t,\\
+\odo{f(\ln t)}{t}&=\frac{f'(\ln t)}t.
+\end{aligned}
+$$
+在后三式中, $f'(\cdot)$ 仍表示 $f$ 对它本身自变量的导数,
+只是再把该自变量分别取为 $\sin t$, $\e^t$, $\ln t$.
+代入以后, 所得表达式已经依赖于 $t$.
+这正是 \emref{subsec:98} 脚注中说明的记号含义.
+
+\myrefparagraph{25)}\label{ex:derivative_parity}
+设函数 $f$ 在关于原点对称的区间内有定义.
+若 $f(-x)=f(x)$, 就称它为\emph{偶函数}\index{ouhanshu@偶函数},
+例如 $x^2$, $x^4$, $\cos x$, $\cosh x$;
+若 $f(-x)=-f(x)$, 就称它为\emph{奇函数}\index{qihanshu@奇函数},
+例如 $x$, $x^3$, $\sin x$, $\sinh x$.
+
+试证明: {\kaishu 偶函数的导数 (若存在) 是奇函数,
+奇函数的导数 (若存在) 是偶函数.}
+
+\myrefparagraph{26)}\label{ex:differentiate_log_absolute_value}
+求函数 $y=\ln\abs{x}$ 在 $x\ne0$ 时的导数.
+当 $x>0$ 时, 显然 $y'=1/x$.
+当 $x<0$ 时, 把 $y=\ln(-x)$ 看作复合函数, 仍得到
+$$
+y'=\frac1{-x}(-1)=\frac1x.
+$$
+
+% 两幅作图例各自保持完整，避免环绕图在页末超出版心。
+\par\noindent\begin{minipage}{\linewidth}
+\setlength{\parindent}{2em}
+\myrefparagraph{27)}\label{ex:subtangent_power_curve}
+考察幂曲线 $$y=ax^n\qquad n>0.$$
+取图示的 $a>0$, $x>0$ 情形.
+
+\par\noindent
+\begin{minipage}[c]{0.60\linewidth}
+由 \emref{subsec:91}、\emref{subsec:92}, 曲线上点 $M=(x,y)$ 处切线的斜率为
+$$
+\tan\alpha=y'=nax^{n-1}.
+$$
+设 $T$ 为切线与横轴的交点, $P$ 为纵标的足.
+线段 $TP$ 称为\emph{次切距}\index{ciqieju@次切距}.
+由图可见,
+\end{minipage}\hfill
+\begin{minipage}[c]{0.37\linewidth}
+\centering
+\phantomsection\label{fig:power_curve_subtangent}
+\begin{tikzpicture}[scale=.95,every node/.style={scale=.8}]
+\draw[-latex] (-.2,0)--(4.1,0) node[below] {$x$};
+\draw[-latex] (0,-.2)--(0,2.8) node[left] {$y$};
+\node[below left] at (0,0) {$O$};
+\draw[thick,domain=0:3.65,samples=80] plot (\x,{.18*\x*\x});
+\coordinate (M) at (3,1.62);
+\coordinate (P) at (3,0);
+\coordinate (T) at (1.5,0);
+\draw[thick] (T)--(3.7,2.376);
+\draw (M)--(P) node[midway,right] {$y$};
+\draw[fill=white] (M) circle (1.4pt) node[above left] {$M$};
+\node[below] at (P) {$P$};
+\node[below] at (T) {$T$};
+\draw (2,0) arc (0:47.20:.5);
+\node at (2.16,.22) {$\alpha$};
+\end{tikzpicture}
+\end{minipage}
+\par
+\begin{align*}
+TP=\frac y{\tan\alpha}=\frac{ax^n}{nax^{n-1}}=\frac xn.
+\end{align*}
+由此得到切线的简易作图法: 从 $P$ 沿横轴向左取 $TP=x/n$, 再连接 $T$ 与 $M$.
+这推广了 \emref{subsec:91} 中抛物线的作图结果.
+\end{minipage}
+\par\medskip
+
+% 例 28 另页开始，避免齐底把前页的公式间距拉大。
+\newpage
+
+\par\noindent\begin{minipage}{\linewidth}
+\setlength{\parindent}{2em}
+\myrefparagraph{28)}\label{ex:catenary_tangent_construction}
+对于\emph{悬链线}\index{xuanlianxian@悬链线}
+$$
+y=a\cosh\frac xa,\qquad a>0,
+$$
+同样求得
+$$
+\tan\alpha=y'=\sinh\frac xa.
+$$
+
+\par\noindent
+\begin{minipage}[c]{0.59\linewidth}
+取 $x>0$, 则切线的倾角 $\alpha$ 为锐角, 因而
+\begin{align*}
+\cos\alpha
+&=\frac1{\sqrt{1+\tan^2\alpha}}\\
+&=\frac1{\sqrt{1+\sinh^2(x/a)}}\\
+&=\frac1{\cosh(x/a)}=\frac ay.
+\end{align*}
+所以 $y\cos\alpha=a$.
+若从纵标 $DM$ 的足 $D$ 向切线 $MT$ 作垂线 $DS$, 就有
+$$
+DS=DM\cos\alpha=y\cos\alpha=a.
+$$
+\end{minipage}\hfill
+\begin{minipage}[c]{0.39\linewidth}
+\centering
+\phantomsection\label{fig:catenary_tangent_construction}
+\begin{tikzpicture}[scale=1.05,every node/.style={scale=.8}]
+\pgfmathsetmacro{\cath}{cosh(1.4)}
+\pgfmathsetmacro{\catm}{sinh(1.4)}
+\pgfmathsetmacro{\catfx}{1.4-tanh(1.4)}
+\pgfmathsetmacro{\catfy}{1/cosh(1.4)}
+\pgfmathsetmacro{\cattx}{1.4-\cath/\catm}
+\draw[-latex] (-.4,0)--(2.7,0) node[below] {$x$};
+\draw[-latex] (0,-.2)--(0,3.25) node[left] {$y$};
+\node[below left] at (0,0) {$O$};
+\draw[thick,domain=-1:1.7,samples=90] plot (\x,{cosh(\x)});
+\node[above] at (1.05,3.35) {$y=a\cosh(x/a)$};
+\coordinate (D) at (1.4,0);
+\coordinate (M) at (1.4,\cath);
+\coordinate (S) at (\catfx,\catfy);
+\coordinate (T) at (\cattx,0);
+\draw[dashed] (2.4,0) arc (0:180:1);
+\draw[dashed] (M) arc (90:270:{\cath/2});
+\draw (D)--(M) node[midway,right] {$y$};
+\draw (D)--(S);
+\node at (1.12,.43) {$a$};
+\draw[thick] (T)--(1.9,{\cath+\catm*.5});
+\draw[fill=white] (M) circle (1.4pt) node[above right] {$M$};
+\fill (S) circle (1.2pt) node[left] {$S$};
+\node[below] at (D) {$D$};
+\node[below] at (T) {$T$};
+\node[below] at (2.4,0) {$N$};
+\node[below left] at (0,1) {$A$};
+\draw ({\cattx+.34},0) arc (0:{atan(\catm)}:.34);
+\node at ({\cattx+.25},.17) {$\alpha$};
+\draw ({\catfx+.11*.88535},{\catfy-.11*.46492})
+ --({\catfx+.11*(.88535+.46492)},{\catfy+.11*(.88535-.46492)})
+ --({\catfx+.11*.46492},{\catfy+.11*.88535});
+\end{tikzpicture}
+\end{minipage}
+\par\smallskip
+这又给出一种切线作图法: 以 $DM$ 为直径作半圆,
+再以 $D$ 为中心、$a$ 为半径作圆弧, 取图示一侧的交点 $S$.
+由直径所对的圆周角为直角, $MS\perp DS$,
+所以直线 $MS$ 就是所求的切线.
+\end{minipage}
+\par\medskip
+
+\myrefparagraph{29)}\label{ex:simple_harmonic_motion}
+设质点在某个中心附近按规律
+$$
+S=A\sin(\omega t+\alpha),\qquad A,\omega>0,
+$$
+振动, 其中 $S$ 表示相对于中心的位移.
+这称为\emph{简谐振动}\index{jianxiezhendong@简谐振动};
+$A$ 是振幅\index{zhenfu@振幅}, $\omega$ 是角频率\index{jiaopinlv@角频率},
+$\alpha$ 是初相\index{chuxiang@初相}.
+对 $S$ 关于时间 $t$ 求导, 得速度
+$$
+v=A\omega\cos(\omega t+\alpha).
+$$
+当 $S=0$, 即质点经过中心时, 速率达到最大值 $A\omega$, 速度为 $\pm A\omega$.
+反之, 当质点离中心最远, 即 $S=\pm A$ 时, 速度为零.
+再对速度关于 $t$ 求导, 得加速度
+$$
+a=-A\omega^2\sin(\omega t+\alpha)=-\omega^2S.
+$$
+若质点的质量为 $m$, 由 Newton 定律, 引起这种振动的力为
+$$
+F=-m\omega^2S.
+$$
+因此, 这个力始终指向中心, 大小与质点离中心的距离成正比.
+
+\myrefparagraph{30)}\label{ex:damped_harmonic_motion}
+按规律
+$$
+S=A\e^{-kt}\sin\omega t,\qquad A,k,\omega>0,
+$$
+发生的运动称为\emph{阻尼振动}\index{zunizhendong@阻尼振动}.
+因为 $\e^{-kt}\to0$, 所以质点虽然仍在中心附近振动, 却逐渐趋向中心:
+$$
+\lim_{t\to\infty}S=0.
+$$
+在这种情形,
+$$
+v=\odo{S}{t}=A\e^{-kt}(\omega\cos\omega t-k\sin\omega t),
+$$
+再求一次导数, 得
+$$
+a=\odo{v}{t}
+=-A\e^{-kt}(\omega^2\sin\omega t+2\omega k\cos\omega t-k^2\sin\omega t).
+$$
+在括号内加上再减去 $k^2\sin\omega t$, 整理为
+\begin{align*}
+a&=-A\e^{-kt}\bigl[(\omega^2+k^2)\sin\omega t
+ +2k(\omega\cos\omega t-k\sin\omega t)\bigr]\\
+&=-(\omega^2+k^2)S-2kv.
+\end{align*}
+因此, 作用力为
+$$
+F=-(\omega^2+k^2)mS-2kmv.
+$$
+它是两种力的合力: 一种与离中心的距离成正比并指向中心, 和简谐振动的情形一样;
+另一种与速度成正比、方向与速度相反, 起阻碍运动的作用.
