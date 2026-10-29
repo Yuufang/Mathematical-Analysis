@@ -10,6 +10,8 @@
 
 发布副本完成四遍本机原字体 XeLaTeX、双索引各两轮，末两遍 aux／toc 一致；178 页，正文 167—168 与索引起页已看图。无致命、未定义、重复或 Overfull 警告；保留 51 条 Underfull 和索引提示。发布第三章 SHA-256 `9b9a84d848f4d20f4d4c77e56da66922de4e70f6f2ebf495204e1e422e642760`，PDF `f484c1cc689a25d80c87105845b485c38c8b267dc1d1b868a2ea1df03e794768`。发布文件对应本次审核保存稿，工作 PDF 保持原样。
 
+发布提交 `52054e4225191e95cfab1a54b537ab292f77bcd8` 已直接推送并核验 origin/main；第 103 对应待审状态已清除，下一起点第 104。
+
 ## 正式工程与本地存稿
 
 入口 [第一卷/main.tex](第一卷/main.tex)，正文与全部存稿仍在 [第一卷/text/chapter3.tex](第一卷/text/chapter3.tex)，工作 PDF 为 [第一卷/main.pdf](第一卷/main.pdf)。本地已启用“微分”标题及第 103；第 104 起保持 comment，第四至七章及其他卷册未载入、不上传。完整本地第三章 SHA-256 `cddfc5d2520ec1b353a1d4adae1c5e8a89b192880392278c3c66d4ec1945d354`，发布截取稿不覆盖该文件。
