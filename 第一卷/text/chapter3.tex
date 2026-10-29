@@ -1720,3 +1720,88 @@ $$
 零点处的导数及间断均按右侧的意义理解.}
 在这些例子中, 导函数的间断都属于第二类.
 这并非偶然: 后面第 113 小节将说明, 导函数不能有第一类间断, 因而不能有跃度.
+
+\section{微分}\label{sec:differentials}
+\subsection{微分的定义}\label{subsec:103}
+设函数 $y=f(x)$ 在区间 $\mathcal{X}$ 上有定义, 并在点 $x_0\in\mathcal{X}$ 处连续.
+自变量的增量 $\Delta x$ 引起函数的增量
+$$
+\Delta y=\Delta f(x_0)=f(x_0+\Delta x)-f(x_0),
+$$
+其中 $x_0+\Delta x$ 仍属于 $\mathcal{X}$.
+当 $\Delta x\to0$ 时, 由连续性, 也有 $\Delta y\to0$.
+现在提出一个重要问题:
+能否找到一个关于 $\Delta x$ 的线性量 $A\Delta x$, 其中 $A$ 是常数,
+使它与 $\Delta y$ 的差是比 $\Delta x$ 更高阶的无穷小?
+也就是说, 能否使
+\begin{equation}\label{differential1}
+\Delta y=A\Delta x+o(\Delta x)
+\end{equation}
+成立?
+
+当 $A\neq0$ 时, \eqref{differential1} 表明 $A\Delta x$ 与 $\Delta y$ 等价.
+因此, 若取 $\Delta x$ 为基本无穷小, 则 $A\Delta x$ 就是 $\Delta y$ 的主部
+[\emref{subsec:62}、\emref{subsec:63}].
+
+\phantomsection\label{def:differential}
+{\kaishu 若存在常数 $A$, 使 \eqref{differential1} 成立,
+就称函数 $y=f(x)$ 在点 $x=x_0$ 处\emph{可微},
+并把表达式 $A\Delta x$ 称为函数在该点处的\emph{微分},
+记作 $\d y$ 或 $\d f(x_0)$.}\index{keweixing@可微性}\index{weifen@微分}
+在后一种记号中, 括号内的 $x_0$ 表示自变量的初值.
+\footnote{这里的 $\d f$ 是一个整体记号, 表示函数 $f(x)$ 的微分.}
+
+再强调一次, 函数的微分具有两个特性:
+{\kaishu (a) 它是自变量增量 $\Delta x$ 的线性(齐次)函数;
+(b) 它与函数增量之差, 在 $\Delta x\to0$ 时是比 $\Delta x$ 更高阶的无穷小.}
+\footnote{上面用楷体列出的 (a)、(b) 两点合在一起, 构成函数 $f$ 在固定点 $x_0$ 处微分的定义.
+这里应强调, 微分 $\d y=\d f(x_0)$ 作为 $\Delta x$ 的线性函数, 定义域是整个实轴 $\mathbb{R}$.
+也就是说, 每个实数 $\Delta x$ 都对应一个确定的微分值 $\d y=A\Delta x$,
+其中 $A$ 是这个线性函数的斜率.}
+
+下面考察几个例子.
+
+\myrefparagraph{1)}\label{ex:differential_circle_area}
+半径为 $r>0$ 的圆的面积为 $S=\pi r^2$.
+若半径增大 $\Delta r$, 相应的面积增量 $\Delta S$
+就是半径为 $r$ 和 $r+\Delta r$ 的两个同心圆之间的圆环面积.
+由
+$$
+\Delta S=\pi(r+\Delta r)^2-\pi r^2
+=2\pi r\Delta r+\pi(\Delta r)^2,
+$$
+可以看出, 当 $\Delta r\to0$ 时, $\Delta S$ 的主部为 $2\pi r\Delta r$.
+因此, 面积的微分为
+$$
+\d S=2\pi r\Delta r.
+$$
+在几何上, 它表示底边长等于圆周长 $2\pi r$、高为 $\Delta r$ 的矩形的面积,
+好像是把圆环“拉直”后得到的矩形.
+
+\myrefparagraph{2)}\label{ex:differential_sphere_volume}
+类似地, 半径为 $r>0$ 的球的体积为 $V=\dfrac43\pi r^3$.
+当半径增大 $\Delta r$ 时, 体积的增量为
+$$
+\Delta V=\frac43\pi(r+\Delta r)^3-\frac43\pi r^3=4\pi r^2\Delta r+4\pi r(\Delta r)^2+\frac43\pi(\Delta r)^3.
+$$
+当 $\Delta r\to0$ 时, 它的主部就是体积的微分:
+\begin{center}$
+\d V=4\pi r^2\Delta r.
+$\end{center}
+它表示底面积等于球面面积 $4\pi r^2$、高为 $\Delta r$ 的薄片的体积,
+好像是把半径为 $r$ 和 $r+\Delta r$ 的两个同心球面之间的球壳展开后得到的薄片.
+
+\myrefparagraph{3)}\label{ex:differential_free_fall}
+最后, 考察按规律 $s=\dfrac g2t^2$ 运动的自由落体.
+在某个时刻 $t>0$ 以后的时间间隔 $\Delta t>0$ 内, 质点经过的路程为
+$$
+\Delta s=\frac g2(t+\Delta t)^2-\frac g2t^2
+=gt\Delta t+\frac g2(\Delta t)^2.
+$$
+当 $\Delta t\to0$ 时, 它的主部为
+$$
+\d s=gt\Delta t.
+$$
+回想 \emref{subsec:90} 中已经求得的瞬时速度 $v=gt$, 就可以看到:
+路程的微分 $\d s=v\Delta t$ 近似地表示路程的增量,
+它相当于质点在整个时间间隔 $\Delta t$ 内始终以时刻 $t$ 的速度 $v$ 匀速运动所经过的路程.
