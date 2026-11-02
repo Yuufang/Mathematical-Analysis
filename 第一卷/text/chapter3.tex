@@ -345,7 +345,7 @@ y'&\text{或 }\ f'(x_0),&\text{J.\,L.\,Lagrange};\\
 Dy&\text{或 }\ Df(x_0),&\text{A.\,L.\,Cauchy}.
 \end{array}
 $$
-\footnotetext{这里暂时把 Leibniz 记号看作一个整体; 到第 104 小节时将会看到, 也可以把它看作两个量的比.}
+\footnotetext{这里暂时把 Leibniz 记号看作一个整体; 到 \emref{subsec:104} 时将会看到, 也可以把它看作两个量的比.}
 以后我们主要采用 Lagrange 的简单记号.
 若用 $f'(x_0)$ 表示导数, 括号内的 $x_0$ 就是求导数处的自变量数值.
 
@@ -1805,3 +1805,190 @@ $$
 回想 \emref{subsec:90} 中已经求得的瞬时速度 $v=gt$, 就可以看到:
 路程的微分 $\d s=v\Delta t$ 近似地表示路程的增量,
 它相当于质点在整个时间间隔 $\Delta t$ 内始终以时刻 $t$ 的速度 $v$ 匀速运动所经过的路程.
+
+\subsection{可微性与导数存在之间的关系}\label{subsec:104}
+现在可以建立下面的命题.
+
+\phantomsection\label{thm:differentiability_derivative_equivalence}
+{\kaishu 函数 $y=f(x)$ 在点 $x_0$ 处可微的充要条件是它在该点有有限导数 $y'_x=f'(x_0)$.
+在这个条件下, \eqref{differential1} 中的常数 $A$ 就等于这个导数:}
+\begin{equation}\label{differential2}
+\Delta y=y'_x\Delta x+o(\Delta x).\tag{\ref{differential1}a}
+\end{equation}
+
+\emph{必要性.} 若 \eqref{differential1} 成立, 则对于非零增量 $\Delta x$, 有
+$$
+\frac{\Delta y}{\Delta x}=A+\frac{o(\Delta x)}{\Delta x}.
+$$
+令 $\Delta x\to0$, 就得到
+$$
+A=\lim_{\Delta x\to0}\frac{\Delta y}{\Delta x}=y'_x.
+$$
+
+\emph{充分性.} 若有限导数 $y'_x$ 存在, 则由 \emref{subsec:96} 的
+\hyperref[prop:function_increment_expansion]{1\textdegree} 中的函数增量公式,
+立即得到 \eqref{differential2}, 因而函数在该点可微.
+
+因此, 函数 $y=f(x)$ 的微分总可以写成
+\footnotemark
+\begin{equation}\label{differential}
+\d y=y'_x\cdot\Delta x.
+\end{equation}
+\footnotetext{前一小节所考察的各个例子都按这个式子构成微分.
+例如, 在例 1) 中, $S=\pi r^2$, $S'_r=2\pi r$, 因而 $\d S=2\pi r\cdot\Delta r$.}
+这里还要强调, $\Delta x$ 是自变量的任意增量, 也就是一个任意数;
+把它看作不依赖于 $x$ 的量, 常常更为方便.
+此时不必假定 $\Delta x$ 是无穷小.
+但当 $\Delta x\to0$ 时, 微分 $\d y$ 也是无穷小;
+若 $y'_x\neq0$, 它就是函数无穷小增量 $\Delta y$ 的主部.
+这就给近似等式
+\begin{equation}\label{eq:differential_increment_approximation}
+\Delta y\approx\d y
+\end{equation}
+提供了根据: $\Delta x$ 越小, 近似的准确度就越高.
+我们将在第 107 小节再来考察这个近似等式.
+
+\begin{wrapfigure}[10]{r}{0.43\textwidth}
+\centering
+\vspace{-0.8\baselineskip}
+\phantomsection\label{fig:differential_geometric_interpretation}
+\begin{tikzpicture}[scale=0.9,every node/.style={scale=0.8}]
+\draw[-latex] (-0.3,0)--(5,0) node[right] {$x$};
+\draw[-latex] (0,-0.2)--(0,3.8) node[above] {$y$};
+\node[below left] at (0,0) {$O$};
+\draw[thick,domain=0.65:4.15,samples=80] plot (\x,{0.17*(\x-1)*(\x-1)+0.65*(\x-1)+0.8});
+\draw (0.0,-0.36)--(4.2,3.798);
+\draw[dashed] (2,0)--(2,1.62) (3.7,0)--(3.7,3.7943);
+\draw (2,1.62)--(3.7,1.62);
+\draw[dashed] (3.7,3.303)--(4.6,3.303) (3.7,3.7943)--(4.6,3.7943);
+\draw[latex-latex] (4.05,1.62)--(4.05,3.303) node[midway,right] {$\d y$};
+\draw[latex-latex] (4.6,1.62)--(4.6,3.7943) node[midway,right] {$\Delta y$};
+\draw[dashed] (3.7,1.62)--(4.5,1.62);
+\draw (2.48,1.62) arc[start angle=0,end angle=44.7,radius=0.48];
+\node at (2.65,1.80) {$\alpha$};
+\node[below] at (2.85,1.62) {$\Delta x$};
+\node[below] at (2,0) {$x$};
+\node[below] at (3.7,0) {$x+\Delta x$};
+\node[below right] at (3.7,1.62) {$N$};
+\node[below right] at (0.364,0) {$T$};
+\draw[fill=white] (2,1.62) circle (1.5pt) node[above left] {$M$};
+\draw[fill=white] (3.7,3.303) circle (1.5pt) node[above left] {$K$};
+\draw[fill=white] (3.7,3.7943) circle (1.5pt) node[above left] {$M_1$};
+\end{tikzpicture}
+\end{wrapfigure}
+为说明微分 $\d y$ 与增量 $\Delta y$ 的几何关系, 我们可以用右图来解释.
+点 $M$ 的坐标为 $(x,y)$, 在该点作切线 $MT$.
+由 \emref{subsec:92}, 切线的斜率 $\tan\alpha=y'_x$.
+自变量增加 $\Delta x$ 后, 曲线的纵标增量为 $\Delta y=NM_1$,
+而切线的纵标增量为 $NK$.
+由直角三角形 $MNK$, 有
+$$
+NK=MN\cdot\tan\alpha=y'_x\cdot\Delta x=\d y.
+$$
+
+
+因此, $\Delta y$ 是曲线纵标的增量, 而 $\d y$ 是切线纵标的相应增量.
+
+最后考察自变量 $x$ 本身. 通常把它的微分定义为它的增量, 即
+\footnotemark
+\begin{equation}\label{eq:independent_variable_differential}
+\d x=\Delta x.
+\end{equation}
+\footnotetext{严格说来, $\d x$ 是自变量增量 $\Delta x$ 的函数, 而且正是斜率为 1 的线性函数.}
+若把自变量的微分也看作函数 $y=x$ 的微分, 则由 \eqref{differential}, 同样得到
+$\d x=x'_x\cdot\Delta x=1\cdot\Delta x=\Delta x$.
+利用这个约定, \eqref{differential} 就可以改写为通常使用的形式
+\footnotemark
+\begin{equation}\label{Differential}
+\d y=y'_x\cdot\d x.
+\end{equation}
+\footnotetext{传统记号 $\d y$ 没有标明所考察的点.
+实际上, 它依赖于两个参数: 点 $x$ 和增量 $\Delta x$, 即 $\d y=\d y(x,\Delta x)$.
+前面固定 $x$, 把它看作 $\Delta x$ 的函数; 把 $\Delta x$ 固定, 视为 $x$ 的函数也同样重要,
+例如定义高阶微分时就要用到后一种看法.}
+由此得到
+\begin{equation}\label{eq:derivative_as_differential_ratio}
+y'_x=\frac{\d y}{\d x}.
+\end{equation}
+于是, 原来作为整体记号的导数符号, 现在也可以看作一个分数.
+这里的比值在 $\d x\neq0$ 时有意义.
+虽然 $\d y$ 和 $\d x$ 都随任意增量而变, 它们却成比例变化,
+比例系数正是确定的导数 $y'_x$.
+
+“微分”一词来自拉丁文 differentia, 意为“差”.
+Leibniz 考察微分时, 同时考察它们的比, 即我们所说的导数, 因而称之为“微商”;
+在他那里, 微分是原始概念.
+自 Cauchy 用极限理论建立分析的基础, 并首先明确规定导数的定义以后,
+研究通常从导数出发, 微分的概念则建立在导数的基础之上.
+
+\subsection{微分法的基本公式及法则}\label{subsec:105}
+求函数微分的运算称为\emph{微分法}.
+\index{weifenfa@微分法}
+\footnote{通常也用“微分法”表示求导数的运算, 汉语术语并不作严格区分.
+在多数外国语中, 这两种运算有不同的名称, 例如法语分别称为 derivation 和 differentiation.}
+因为微分与导数 $y'_x$ 只相差一个因子 $\d x$,
+由 \emref{subsec:95} 的导数表, 很容易得到下面的微分表.
+
+\phantomsection\label{tab:elementary_differentials}
+$$
+\renewcommand{\arraystretch}{1.45}
+\begin{array}{rlll}
+1.&y=c&\d y=0\\
+2.&y=x^\mu&\d y=\mu x^{\mu-1}\,\d x\\
+&y=\dfrac1x&\d y=-\dfrac{\d x}{x^2}\\
+&y=\sqrt{x}&\d y=\dfrac{\d x}{2\sqrt{x}}\\
+3.&y=a^x&\d y=a^x\ln a\,\d x\\
+&y=\e^x&\d y=\e^x\,\d x\\
+4.&y=\log_a x&\d y=\dfrac{\log_a \e}{x}\,\d x\\
+&y=\ln x&\d y=\dfrac{\d x}{x}\\
+5.&y=\sin x&\d y=\cos x\,\d x\\
+6.&y=\cos x&\d y=-\sin x\,\d x\\
+\end{array}
+$$
+\newpage
+$$
+\renewcommand{\arraystretch}{1.45}
+\begin{array}{rlll}
+7.&y=\tan x&\d y=\sec^2x\,\d x=\dfrac{\d x}{\cos^2x}\\
+8.&y=\cot x&\d y=-\csc^2x\,\d x=-\dfrac{\d x}{\sin^2x}\\
+9.&y=\arcsin x&\d y=\dfrac{\d x}{\sqrt{1-x^2}}\\
+10.&y=\arccos x&\d y=-\dfrac{\d x}{\sqrt{1-x^2}}\\
+11.&y=\arctan x&\d y=\dfrac{\d x}{1+x^2}\\
+12.&y=\operatorname{arccot}x&\d y=-\dfrac{\d x}{1+x^2}.
+\end{array}
+$$
+
+微分法的法则如下.
+\footnote{这里指求微分的运算法则.}
+设 $u$、$v$ 是同一自变量 $x$ 的可微函数, $c$ 为常数.
+
+\myrefparagraph{I.}\label{rule:differential_constant_multiple}
+$\d(cu)=c\,\d u$.
+
+\myrefparagraph{II.}\label{rule:differential_sum_difference}
+$\d(u\pm v)=\d u\pm\d v$.
+
+\myrefparagraph{III.}\label{rule:differential_product}
+$\d(uv)=u\,\d v+v\,\d u$.
+
+\myrefparagraph{IV.}\label{rule:differential_quotient}
+$\displaystyle\d\brac{\frac uv}=\frac{v\,\d u-u\,\d v}{v^2}$, 其中 $v\neq0$.
+
+这些法则都可以从 \emref{subsec:97} 的相应求导法则推出.
+例如, 对于后两式, 有
+$$
+\begin{aligned}
+\d(uv)&=(uv)'\,\d x=(u'v+uv')\,\d x\\
+&=v(u'\,\d x)+u(v'\,\d x)=v\,\d u+u\,\d v,
+\end{aligned}
+$$
+以及
+$$
+\begin{aligned}
+\d\brac{\frac uv}
+&=\brac{\frac uv}'\,\d x
+=\frac{u'v-uv'}{v^2}\,\d x\\
+&=\frac{v(u'\,\d x)-u(v'\,\d x)}{v^2}
+=\frac{v\,\d u-u\,\d v}{v^2}.
+\end{aligned}
+$$
