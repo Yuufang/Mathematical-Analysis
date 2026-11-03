@@ -1992,3 +1992,120 @@ $$
 =\frac{v\,\d u-u\,\d v}{v^2}.
 \end{aligned}
 $$
+
+\subsection{微分的形式不变性}\label{subsec:106}
+\begingroup
+\abovedisplayskip=8pt plus 2pt minus 2pt
+\belowdisplayskip=8pt plus 2pt minus 2pt
+\abovedisplayshortskip=4pt plus 2pt
+\belowdisplayshortskip=4pt plus 2pt minus 2pt
+复合函数的微分法则使我们得到微分的一个显著而重要的性质.
+
+设函数 $y=f(x)$ 和 $x=\varphi(t)$ 可以组成复合函数 $y=f(\varphi(t))$.
+若在所考察的对应点有有限导数 $y'_x$ 和 $x'_t$,
+则由 \emref{subsec:98} 的链式法则, 有
+\begin{equation}\label{eq:differential_chain_rule}
+y'_t=y'_x\cdot x'_t.
+\end{equation}
+
+若把 $x$ 看作自变量, 则 $y$ 的微分由 \eqref{Differential} 表示.
+现在改取 $t$ 为自变量, 就有另一种表示式
+$$
+\d y=y'_t\cdot\d t.
+$$
+将 \eqref{eq:differential_chain_rule} 代入, 并注意到 $x'_t\cdot\d t$
+就是 $x$ 作为 $t$ 的函数时的微分, 得
+$$
+\d y=y'_x\cdot x'_t\,\d t=y'_x\cdot\d x,
+$$
+又回到了微分原来的形式.
+\par\endgroup
+\begingroup
+\abovedisplayskip=8pt plus 2pt minus 2pt
+\belowdisplayskip=8pt plus 2pt minus 2pt
+\abovedisplayshortskip=4pt plus 2pt
+\belowdisplayshortskip=4pt plus 2pt minus 2pt
+
+
+由此可见, {\kaishu 微分的形式 \eqref{Differential} 在更换自变量以后仍保持不变.
+无论 $x$ 是否为自变量, 我们总可以把 $y$ 的微分写成这个形式.}
+区别只在于, {\kaishu 选择 $t$ 为自变量时, $\d x$ 不再表示任意增量 $\Delta x$,
+而是表示 $x$ 作为 $t$ 的函数时的微分.}
+这一性质称为\emph{微分的形式不变性}.
+\index{weifen@微分!xingshi bu bianxing@形式不变性}
+
+从 \eqref{Differential} 立即得到, 用微分之比表示导数的公式
+\eqref{eq:derivative_as_differential_ratio} 仍然有效,
+只要两个微分是相对于同一个自变量求出的, 并且分母 $\d x\neq0$.
+
+例如, 设 $y=\sqrt{1-x^2}$, 其中 $-1<x<1$, 则
+$$
+y'_x=-\frac{x}{\sqrt{1-x^2}}.
+$$
+若令 $x=\sin t$, 其中 $-\dfrac\pi2<t<\dfrac\pi2$, 则
+$y=\sqrt{1-\sin^2t}=\cos t$, 因而
+$$
+\d x=\cos t\,\d t,\qquad \d y=-\sin t\,\d t.
+$$
+取 $\d t\neq0$, 因为此时 $\cos t>0$, 所以
+$$
+y'_x=\frac{\d y}{\d x}
+=\frac{-\sin t\,\d t}{\cos t\,\d t}
+=-\frac{\sin t}{\cos t}.
+$$
+这不过是上面已经求得的导数的另一种表示式.
+
+当 $y$ 与 $x$ 的关系不是直接给定, 而是分别给出 $x$、$y$
+与第三个辅助变量 $t$ 的关系时, 应用上述论点求导就很便利.
+这个辅助变量称为\emph{参数}:
+\index{canshu@参数}
+\begin{equation}\label{Parametric_equation}
+x=\varphi(t),\qquad y=\psi(t).
+\end{equation}
+假定两个函数都有有限导数, 而且第一个函数存在可微的反函数 $t=\theta(x)$
+[\emref{subsec:83}、\emref{subsec:94}].
+于是 $y$ 就成为 $x$ 的函数,
+\begin{equation}\label{eq:parametric_function_composition}
+y=\psi(\theta(x))=f(x),
+\end{equation}
+并且有导数.
+在所考察的点 $x'_t=\varphi'(t)\neq0$ 时, 取非零 $\d t$, 便得到
+\begin{equation}\label{eq:parametric_derivative}
+y'_x=\frac{\d y}{\d x}
+=\frac{y'_t\,\d t}{x'_t\,\d t}
+=\frac{y'_t}{x'_t}
+=\frac{\psi'(t)}{\varphi'(t)}.
+\end{equation}
+因此, 不必先求出 $y$ 与 $x$ 的直接关系, 就可以计算导数.
+
+例如, 对于 $x=\sin t$, $y=\cos t$, 其中 $-\dfrac\pi2<t<\dfrac\pi2$,
+可以像上面那样直接求得 $y'_x$, 而不必先写出关系式 $y=\sqrt{1-x^2}$.
+
+若把 $x$、$y$ 看作平面上点的直角坐标, 则对于参数 $t$ 的每个值,
+方程组 \eqref{Parametric_equation} 都给出一个点;
+当 $t$ 变化时, 这个点就在平面上描出一条曲线.
+方程组 \eqref{Parametric_equation} 称为这条曲线的\emph{参数方程}.
+\index{canshu fangcheng@参数方程}
+
+当曲线由参数方程给出时, \eqref{eq:parametric_derivative}
+可以直接由方程组 \eqref{Parametric_equation} 确定切线的斜率,
+不必先把它化成 \eqref{eq:parametric_function_composition} 的形式.
+若切线与 $x$ 轴的夹角为 $\alpha$, 则
+\begin{equation}\label{eq:parametric_tangent_slope}
+\tan\alpha=\frac{y'_t}{x'_t},\qquad x'_t\neq0.
+\end{equation}
+\par\endgroup
+
+\begin{remark}\label{note:differential_form_invariance_limits}
+由同一自变量的微分之比可以表示导数, 特别地就有
+$$
+\frac{\d y}{\d x}=\frac1{\dfrac{\d x}{\d y}},\qquad
+\frac{\d y}{\d x}=\frac{\d y}{\d u}\cdot\frac{\d u}{\d x}.
+$$
+这里各比值都须有意义.
+这些原来表示反函数及复合函数求导法则的 Leibniz 记号,
+现在看起来就像简单的代数恒等式, 因为这里所有微分都可以对同一自变量求出.
+但不能把这看作那些求导法则的新证明.
+首先, 这里并没有证明左边导数的存在;
+更主要的是, 我们已经使用了微分的形式不变性, 而它本身正是链式法则的推论.
+\end{remark}
