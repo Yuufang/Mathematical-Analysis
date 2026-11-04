@@ -1846,7 +1846,7 @@ $$
 \Delta y\approx\d y
 \end{equation}
 提供了根据: $\Delta x$ 越小, 近似的准确度就越高.
-我们将在第 107 小节再来考察这个近似等式.
+我们将在 \emref{subsec:107} 中再回头考察近似等式 \eqref{eq:differential_increment_approximation}.
 
 \begin{wrapfigure}[10]{r}{0.43\textwidth}
 \centering
@@ -2109,3 +2109,170 @@ $$
 首先, 这里并没有证明左边导数的存在;
 更主要的是, 我们已经使用了微分的形式不变性, 而它本身正是链式法则的推论.
 \end{remark}
+
+\subsection{微分是近似公式的来源}\label{subsec:107}
+\begingroup
+\abovedisplayskip=8pt plus 2pt minus 2pt
+\belowdisplayskip=8pt plus 2pt minus 2pt
+\abovedisplayshortskip=4pt plus 2pt
+\belowdisplayshortskip=4pt plus 2pt minus 2pt
+我们已经看到, 若函数 $y=f(x)$ 在点 $x_0$ 处可微, 且 $f'(x_0)\neq0$,
+则当 $\Delta x\to0$ 时, 微分 $\d y$ 是函数增量 $\Delta y$ 的主部.
+因此 $\Delta y\sim\d y$, 可以用微分近似代替增量:
+\begin{equation*}
+\Delta y\approx\d y,
+\tag{\ref{eq:differential_increment_approximation}}
+\end{equation*}
+具体写来, 就是
+\begin{equation*}
+\Delta f(x_0)=f(x_0+\Delta x)-f(x_0)\approx f'(x_0)\cdot\Delta x.
+\tag{\ref{eq:differential_increment_approximation}a}\label{eq:function_increment_linear_approximation}
+\end{equation*}
+这里的误差 $\Delta y-\d y$ 是比 $\Delta x$ 更高阶的无穷小.
+在 $f'(x_0)\neq0$ 的条件下, 由 \emref{subsec:62},
+这种替换的相对误差也随 $\Delta x\to0$ 而趋于零, 因而可以任意小.
+
+先看一个简单的例子. 设 $y=x^3$, 则
+$$
+\Delta y=(x_0+\Delta x)^3-x_0^3
+=3x_0^2\cdot\Delta x+3x_0\cdot(\Delta x)^2+(\Delta x)^3.
+$$
+其中关于 $\Delta x$ 的线性项正是函数的微分:
+$$
+\d y=3x_0^2\cdot\Delta x=y'_x\cdot\Delta x.
+$$
+例如, 取 $x_0=2.3$.
+当 $\Delta x=0.1$ 时,
+$$
+\Delta y=2.4^3-2.3^3=1.657,
+\qquad
+\d y=3\cdot2.3^2\cdot0.1=1.587.
+$$
+用 $\d y$ 代替 $\Delta y$, 绝对误差为 $0.070$, 相对误差超过 $4\%$.
+当 $\Delta x=0.01$ 时, $\Delta y=0.159391$, $\d y=0.1587$,
+相对误差已小于 $0.5\%$;
+当 $\Delta x=0.001$ 时, 相对误差又小于 $0.05\%$.
+可见, 增量越小, 这里的近似就越准确.
+
+同样的关系也可以从 \emref{subsec:104} 的几何说明中看出:
+$\Delta y$ 是曲线纵标的增量, $\d y$ 是切线纵标的相应增量.
+当 $\Delta x$ 越来越小时, 用后者代替前者的相对误差也越来越小.
+这种替换的便利在于, 微分 $\d y$ 是 $\Delta x$ 的线性函数,
+而增量 $\Delta y$ 与 $\Delta x$ 的关系通常要复杂得多.
+
+现在令 $\Delta x=x-x_0$, 则 $x_0+\Delta x=x$.
+近似式 \eqref{eq:function_increment_linear_approximation} 就成为
+$$
+f(x)-f(x_0)\approx f'(x_0)\cdot(x-x_0),
+$$
+也就是
+$$
+f(x)\approx f(x_0)+f'(x_0)\cdot(x-x_0).
+$$
+这说明, 当 $x$ 接近 $x_0$ 时, 可以用右边的线性函数近似代替 $f(x)$.
+从几何上说, 就是用点 $(x_0,f(x_0))$ 处的一小段切线,
+近似代替该点附近的一小段曲线.
+这条切线的方程为\footnotemark
+$$
+y=f(x_0)+f'(x_0)\cdot(x-x_0).
+$$
+\footnotetext{经过点 $(x_0,y_0)$、斜率为 $k$ 的直线方程是
+$y=y_0+k(x-x_0)$. 对于这里的切线, $y_0=f(x_0)$, $k=f'(x_0)$.}
+这一点也与 \emref{subsec:104} 中微分的几何说明一致.
+特别地, 取 $x_0=0$, 对充分接近于零的 $x$, 就有
+$$
+f(x)\approx f(0)+f'(0)\cdot x.
+$$
+
+把不同的初等函数代入这个公式, 就能得到一系列常用的近似式.
+例如, 对固定的实数 $\mu$, 当 $x$ 接近于零且 $1+x>0$ 时,
+\begin{gather*}
+(1+x)^\mu\approx1+\mu x,
+\qquad \sqrt{1+x}\approx1+\frac12x,\\
+\e^x\approx1+x,\qquad \ln(1+x)\approx x,\\
+\sin x\approx x,\qquad \tan x\approx x.
+\end{gather*}
+其中有些公式我们已经见过, 其他类似的公式也可以这样得到.
+
+下面再看两个应用近似式 \eqref{eq:differential_increment_approximation} 的例子.
+
+\myrefparagraph{1)}\label{ex:hanging_cable_differential}
+设一条有自重的线两端悬挂, 如电线、锚索或皮带.
+记全长为 $2s$, 跨度为 $2l$, 垂度为 $f$, 如下图左所示.
+计算半长 $s$ 时, 常用近似公式
+$$
+s=l\brac{1+\frac23\cdot\frac{f^2}{l^2}}.
+$$
+保持跨度不变, 把 $f$ 看作自变量, $s$ 看作 $f$ 的函数.
+为了考察半长的改变量 $\Delta s$ 与垂度的改变量 $\Delta f$ 之间的关系,
+用微分 $\d s$ 近似代替 $\Delta s$, 得
+$$
+\Delta s\approx\d s=\frac{4f}{3l}\cdot\Delta f,
+$$
+因而, 当 $f>0$ 时,
+$$
+\Delta f\approx\frac{3l}{4f}\cdot\Delta s.
+$$
+例如, 若已估计出电线因温度或负荷变化而引起的长度变化,
+就可以用这个公式估计垂度的变化.
+
+\begin{center}
+    \centering
+    \phantomsection\label{fig:differential_approximation_examples}
+    \begin{tikzpicture}[x=1cm,y=1cm]
+        \begin{scope}
+            \draw[dashed] (-2.6,0)--(2.6,0);
+            \draw[thick,domain=-2.6:2.6,samples=80]
+                plot (\x,{1.0*(cosh(0.55*\x)-2.195)});
+            \draw[fill=white] (-2.6,0) circle (1.2pt);
+            \draw[fill=white] (2.6,0) circle (1.2pt);
+            \draw[latex-latex] (0,-1.17)--(0,-0.03);
+            \node[left,scale=0.8] at (-0.06,-0.6) {$f$};
+            \draw[latex-latex] (0,0.3)--(2.6,0.3);
+            \draw (0,0.15)--(0,0.45) (2.6,0.15)--(2.6,0.45);
+            \node[above,scale=0.8] at (1.3,0.32) {$l$};
+            \node[above,scale=0.8] at (1.72,-0.62) {$s$};
+        \end{scope}
+        \begin{scope}[xshift=4.6cm]
+            \draw[thick] (0,0) ellipse (0.42 and 1.45);
+            \draw[-latex] (-0.58,1.02) to[bend left=35] (-0.38,1.28);
+            \draw (0,0)--(4.35,0);
+            \draw (0,0)--(0.29,0.99);
+            \node[right,scale=0.8] at (0.15,0.40) {$a$};
+            \node[below left,scale=0.8] at (0.06,0) {$O$};
+            \node[above,scale=0.8] at (1.75,0.1) {$x$};
+            \draw[line width=5pt] (3.25,0)--(4.45,0);
+            \draw[latex-latex] (3.25,0.45)--(4.45,0.45);
+            \draw (3.25,0.3)--(3.25,0.6) (4.45,0.3)--(4.45,0.6);
+            \node[above,scale=0.8] at (3.85,0.47) {$\Delta x$};
+            \node[left,scale=0.8] at (3.18,0.22) {$+m$};
+            \node[right,scale=0.8] at (4.52,0.22) {$-m$};
+            \node[below,scale=0.8] at (3.25,-0.1) {$N$};
+            \node[below,scale=0.8] at (4.45,-0.1) {$S$};
+        \end{scope}
+    \end{tikzpicture}
+\end{center}
+
+\myrefparagraph{2)}\label{ex:circular_current_differential_force}
+设半径为 $a$ 的圆形电路, 对其轴线上距中心 $O$ 为 $x$ 的单位磁极所施的力为
+$$
+\frac{k}{(a^2+x^2)^{3/2}},
+$$
+其中 $k$ 为常数.
+现在求它对沿轴线放置的短磁铁 $NS$ 所施的合力, 如前图右所示.
+设磁铁长度为 $\Delta x$, $N$ 极距 $O$ 为 $x$;
+把正磁量 $m$ 看作集中在 $N$ 极, 与它等量的负磁量 $-m$ 集中在 $S$ 极.
+
+
+两极所受力的合力 $F$ 为
+$$
+F=\frac{km}{(a^2+x^2)^{3/2}}
+-\frac{km}{\bbrac{a^2+(x+\Delta x)^2}^{3/2}}
+=-km\cdot\Delta\bbrac{\frac1{(a^2+x^2)^{3/2}}}.
+$$
+当磁铁的长度 $\Delta x$ 很小时, 可以用函数的微分近似代替增量, 得
+$$
+F\approx-km\,\d\bbrac{\frac1{(a^2+x^2)^{3/2}}}
+=\frac{3kmx}{(a^2+x^2)^{5/2}}\cdot\Delta x.
+$$
+\par\endgroup
