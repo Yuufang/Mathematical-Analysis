@@ -342,7 +342,7 @@ $$
 \begin{array}{lll}
 \displaystyle\odo{y}{x}&\text{或 }\ \displaystyle\odo{f(x_0)}{x}\text{\footnotemark},&\text{G.\,W.\,Leibniz};\\
 y'&\text{或 }\ f'(x_0),&\text{J.\,L.\,Lagrange};\\
-Dy&\text{或 }\ Df(x_0),&\text{A.\,L.\,Cauchy}.
+\mathrm{D}y&\text{或 }\ \mathrm{D}f(x_0),&\text{A.\,L.\,Cauchy}.
 \end{array}
 $$
 \footnotetext{这里暂时把 Leibniz 记号看作一个整体; 到 \emref{subsec:104} 时将会看到, 也可以把它看作两个量的比.}
@@ -351,13 +351,13 @@ $$
 
 当需要指出是关于哪个变量求导数时, 可以把这个变量写成下标:
 $$
-y'_x,\quad f'_x(x_0),\quad D_xy,\quad D_xf(x_0).
+y'_x,\quad f'_x(x_0),\quad \mathrm{D}_xy,\quad \mathrm{D}_xf(x_0).
 $$
 下标 $x$ 表示求导所针对的变量, 与求导处的特定数值 $x_0$ 无关.
 
 从这个意义上说, 整个记号
 $$
-\odo{f}{x},\quad f'\text{ 或 }f'_x,\quad Df\text{ 或 }D_xf
+\odo{f}{x},\quad f'\text{ 或 }f'_x,\quad \mathrm{D}f\text{ 或 }\mathrm{D}_xf
 $$
 都可以看作导函数的函数记号.
 \index{daohanshu@导函数}
@@ -1719,7 +1719,7 @@ $$
 \footnote{对于一般实数指数 $\alpha$, 这里在 $x\geq0$ 上考察函数,
 零点处的导数及间断均按右侧的意义理解.}
 在这些例子中, 导函数的间断都属于第二类.
-这并非偶然: 后面第 113 小节将说明, 导函数不能有第一类间断, 因而不能有跃度.
+这并非偶然: \emref{subsec:113} 将说明, 导函数不能有第一类间断, 因而不能有跃度.
 
 \section{微分}\label{sec:differentials}
 \subsection{微分的定义}\label{subsec:103}
@@ -1905,7 +1905,7 @@ $\d x=x'_x\cdot\Delta x=1\cdot\Delta x=\Delta x$.
 \footnotetext{传统记号 $\d y$ 没有标明所考察的点.
 实际上, 它依赖于两个参数: 点 $x$ 和增量 $\Delta x$, 即 $\d y=\d y(x,\Delta x)$.
 前面固定 $x$, 把它看作 $\Delta x$ 的函数; 把 $\Delta x$ 固定, 视为 $x$ 的函数也同样重要,
-例如定义高阶微分时就要用到后一种看法.}
+例如 \emref{subsec:119} 定义高阶微分时就要用到后一种看法.}
 由此得到
 \begin{equation}\label{eq:derivative_as_differential_ratio}
 y'_x=\frac{\d y}{\d x}.
@@ -2276,3 +2276,1233 @@ F\approx-km\,\d\bbrac{\frac1{(a^2+x^2)^{3/2}}}
 =\frac{3kmx}{(a^2+x^2)^{5/2}}\cdot\Delta x.
 $$
 \par\endgroup
+
+\subsection{应用微分来估计误差}\label{subsec:108}
+应用微分估计近似计算中的误差, 特别方便而自然.
+例如, 量 $x$ 可以直接测量或计算, 而依赖于它的量 $y$ 则由公式 $y=f(x)$ 确定.
+测量 $x$ 时若有误差 $\Delta x$, 就会引起 $y$ 的误差 $\Delta y$.
+当这些误差很小时, 可以用微分近似代替函数增量:
+$$
+\Delta y\approx y'_x\cdot\Delta x.
+$$
+设 $\delta x$ 是 $x$ 的\emph{最大绝对误差}, 即 $\abs{\Delta x}\leq\delta x$.
+\index{zuidajueduiwucha@最大绝对误差}
+通常可以知道测量误差的限度, 因而可以采用
+\begin{equation}\label{eq:differential_maximum_error}
+\delta y=\abs{y'_x}\cdot\delta x
+\end{equation}
+作为 $y$ 的最大绝对误差的近似估计.
+
+\myrefparagraph{1)}\label{ex:sphere_volume_measurement_error}
+要确定球的体积, 可以先用游标卡尺、测微器等直接测量球的直径 $D$, 再由
+$$
+V=\frac\pi6D^3
+$$
+计算体积 $V$.
+因为 $V'_D=\dfrac\pi2D^2$, 由 \eqref{eq:differential_maximum_error}, 得
+$$
+\delta V=\frac\pi2D^2\delta D.
+$$
+两边除以体积公式, 就有
+$$
+\frac{\delta V}{V}=3\frac{\delta D}{D}.
+$$
+因此, 算得体积的最大相对误差约为直径最大相对误差的三倍.
+
+\myrefparagraph{2)}\label{ex:common_logarithm_error}
+设正数 $x$ 有误差, 由它求得的常用对数 $y=\lg x$ 也会有误差.
+记 $M=\lg\e=0.4343\ldots$, 则 $y'_x=M/x$.
+由 \eqref{eq:differential_maximum_error}, 有
+$$
+\delta y=M\frac{\delta x}{x}.
+$$
+可见, 对数的最大绝对误差只由真数的最大相对误差决定, 反过来也一样.
+
+这个结果有各种应用. 例如, 可以借它考察长度为 $25$ 厘米, 即 $250$ 毫米的算尺的精度.
+放置准线或读数时, 若向任一方向的误差不超过 $0.1$ 毫米,
+则对数的误差为
+$$
+\delta y=\frac{0.1}{250}=0.0004.
+$$
+于是, 根据上面的公式,
+$$
+\frac{\delta x}{x}=\frac{0.0004}{0.4343}
+=0.00092\ldots\approx0.001.
+$$
+因此, 在算尺各处读数的相对精度相同.
+
+\myrefparagraph{3)}\label{ex:trigonometric_log_table_error}
+用三角函数对数表求角 $\varphi$ 时, 正弦表和正切表哪一种更有利?
+在 $0<\varphi<\dfrac\pi2$ 内, 设
+$$
+y_1=\lg\sin\varphi,\qquad y_2=\lg\tan\varphi,
+$$
+并假定两个对数值的最大误差 $\delta y_1$、$\delta y_2$ 相等,
+例如都等于表中末位数的半个单位.
+用 $\delta_1\varphi$、$\delta_2\varphi$ 表示由两张表所得角的最大误差, 就有
+$$
+\delta y_1=\frac{M\cos\varphi}{\sin\varphi}\,\delta_1\varphi,
+\qquad
+\delta y_2=\frac{M}{\tan\varphi}\sec^2\varphi\,\delta_2\varphi.
+$$
+由 $\delta y_1=\delta y_2$, 得
+\phantomsection\label{eq:tangent_table_smaller_angle_error}
+$$
+\delta_2\varphi=\delta_1\varphi\cos^2\varphi<\delta_1\varphi.
+$$
+因此, 对数值误差相等时, 正切对数表给出的角度误差较小, 用它更有利.
+\footnote{上述运算假定角用弧度表示. 若改用其他角度单位, 比较结论仍然相同.}
+
+\myrefparagraph{4)}\label{ex:wheatstone_bridge_error}
+最后考察用 Wheatstone 电桥测量未知电阻 $y$ 的精度问题, 如下图所示.
+沿着刻度尺 $AC$ 移动接触点 $D$, 直到检流计中没有电流通过.
+这时未知电阻由公式
+\begin{equation}\label{eq:wheatstone_bridge_resistance}
+y=\frac{Rx}{a-x}
+\end{equation}
+确定, 其中 $a=AC$, $x=AD$, $R$ 是支路 $BC$ 中的已知电阻;
+这里 $R>0$, $0<x<a$.
+
+\begin{center}
+\phantomsection\label{fig:wheatstone_bridge}
+\begin{tikzpicture}[scale=0.9,every node/.style={scale=0.8}]
+\coordinate (A) at (-3,0);
+\coordinate (D) at (0.8,0);
+\coordinate (C) at (3,0);
+\coordinate (B) at (0,2.5);
+\draw[thick] (A)--(B)--(C);
+\draw[thick] (A)--(C);
+\draw (-3,0)--(-3,-1)--(-0.15,-1);
+\draw (0.15,-1)--(3,-1)--(3,0);
+\draw[thick] (-0.15,-1.25)--(-0.15,-0.75);
+\draw (0.15,-1.15)--(0.15,-0.85);
+\node[below] at (0,-1.25) {$E$};
+\draw (B)--(0,1.7);
+\draw (0,1.4) circle (0.3);
+\node at (0,1.4) {$G$};
+\draw[-latex] (0,1.1)--(D);
+\node[left] at (A) {$A$};
+\node[above] at (B) {$B$};
+\node[right] at (C) {$C$};
+\node[below] at (D) {$D$};
+\node[above left] at (-1.5,1.25) {$y$};
+\node[above right] at (1.5,1.25) {$R$};
+\node[above] at (-1.1,0) {$R_1$};
+\node[above] at (1.9,0) {$R_2$};
+\fill (A) circle (1.3pt);
+\fill (C) circle (1.3pt);
+\end{tikzpicture}
+\end{center}
+
+由 \eqref{eq:differential_maximum_error}, 得
+$$
+\delta y=\brac{\frac{Rx}{a-x}}'_x\delta x
+=\frac{aR}{(a-x)^2}\delta x.
+$$
+再用 \eqref{eq:wheatstone_bridge_resistance} 除这个等式, 就得到最大相对误差的估计:
+$$
+\frac{\delta y}{y}=\frac{a\delta x}{x(a-x)}.
+$$
+刻度尺长度固定时, 可以把读数误差 $\delta x$ 看作不依赖于 $x$ 的量.
+因此, 分母 $x(a-x)$ 最大时, 相对误差最小.
+这个最大值在 $x=a/2$ 时取得.
+\footnote{由 $x^2-ax+\dfrac{a^2}{4}=\brac{x-\dfrac a2}^2\geq0$,
+立即得到 $x(a-x)\leq a^2/4$, 等号在 $x=a/2$ 时成立.}
+所以应当调节已知电阻 $R$ 的值, 使检流计电流消失时,
+接触点 $D$ 尽可能接近 $AC$ 的中点, 从而提高测量精度.
+
+\section{微分学的基本定理}\label{sec:fundamental_differential_theorems}
+\subsection{Fermat 定理}\label{subsec:109}
+知道了函数 $f(x)$ 的导数 $f'(x)$, 往往就能对函数 $f(x)$ 本身的性态作出结论.
+本节和下一节将讨论这一类问题.
+在此之前, 先证明一个简单的引理.
+
+\begin{lemma}\label{lem:derivative_sign_local_behavior}
+设函数 $f(x)$ 在点 $x_0$ 处有有限导数.
+若 $f'(x_0)>0$, 则当 $x$ 从右方充分接近 $x_0$ 时, 有 $f(x)>f(x_0)$;
+当 $x$ 从左方充分接近 $x_0$ 时, 有 $f(x)<f(x_0)$.
+若 $f'(x_0)<0$, 则上述两个不等号都反向.
+\end{lemma}
+
+换言之, 函数 $f(x)$ 在点 $x_0$ 处增大或减小.
+若考察的是单侧导数, 例如右导数, 则上述结论只对 $x_0$ 右方的 $x$ 有效.
+
+\begin{proof}
+由导数的定义,
+$$
+f'(x_0)=\lim_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}.
+$$
+先设 $f'(x_0)>0$.
+由函数极限的保号性
+[\emref{subsec:55}, \ref{prop:function_eventual_sign_preservation}],
+存在 $\delta>0$, 使得当 $0<\abs{x-x_0}<\delta$ 时,
+$$
+\frac{f(x)-f(x_0)}{x-x_0}>0.
+$$
+当 $x_0<x<x_0+\delta$ 时, 分母为正, 因而 $f(x)-f(x_0)>0$.
+当 $x_0-\delta<x<x_0$ 时, 分母为负, 因而 $f(x)-f(x_0)<0$.
+这就证明了第一种情形.
+若 $f'(x_0)<0$, 则充分接近 $x_0$ 时差商为负, 从而得到相反的不等式.
+\end{proof}
+
+\begin{theorem}[Fermat]\label{thm:fermat_stationary_point}
+设函数 $f(x)$ 在某一区间 $\mathcal{X}$ 内定义, 并在这区间的内点 $c$ 处取得最大值或最小值.
+若在该点存在有限导数 $f'(c)$, 则必有 $f'(c)=0$.
+\end{theorem}
+\index[names]{Fermat@Fermat}
+\index{feimadingli@Fermat 定理}
+
+\begin{proof}
+设 $f(x)$ 在点 $c$ 处取得最大值.
+若 $f'(c)>0$, 则由引理, 当 $x>c$ 且充分接近 $c$ 时, 有 $f(x)>f(c)$.
+若 $f'(c)<0$, 则当 $x<c$ 且充分接近 $c$ 时, 也有 $f(x)>f(c)$.
+由于 $c$ 是内点, 这两种情形都与 $f(c)$ 为最大值矛盾.
+因此只能有 $f'(c)=0$.
+取得最小值的情形中, 非零导数会在相应一侧给出 $f(x)<f(c)$, 同样产生矛盾.
+\end{proof}
+
+回想 \emref{subsec:91}、\emref{subsec:92}, 导数 $f'(c)$ 是曲线 $y=f(x)$ 在对应点处的切线斜率.
+因此, $f'(c)=0$ 表示这条切线平行于 $x$ 轴, 如下图左所示.
+
+定理中 $c$ 为区间内点的假设十分重要, 因为证明需要同时考察它左、右两侧的点.
+若函数在闭区间的一个端点处取得最大值或最小值, 则该点的单侧导数即使存在, 也可以不等于零, 如下图右所示.
+
+\begin{center}
+    \phantomsection\label{fig:fermat_interior_endpoint_extrema}
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \begin{tikzpicture}[every node/.style={scale=0.8}]
+            \draw[-latex] (-0.5, 0) -- (4, 0) node[below] {$x$};
+            \draw[-latex] (0, -0.5) -- (0, 2.5) node[right] {$y$};
+            \node[below left] at (0, 0) {$O$};
+
+            \draw[domain=0.5:3.4, thick] plot (\x, {-0.25*\x*\x + \x + 0.8});
+            \draw[-, thick] (0.5, 1.8) -- (3.4, 1.8);
+            \draw[dashed] (0.5, 0) -- (0.5, 1.2375);
+            \draw[dashed] (3.4, 0) -- (3.4, 1.31);
+            \draw[dashed] (2, 0) -- (2, 1.8);
+            \node[below] at (2, 0) {$c$};
+            \node[below] at (0.5, 0) {$a$};
+            \node[below] at (3.4, 0) {$b$};
+
+            \draw[fill=white] (2, 1.8) circle (1.5pt);
+        \end{tikzpicture}
+    \end{minipage}
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \begin{tikzpicture}[every node/.style={scale=0.8}]
+            \draw[-latex] (-0.5, 0) -- (4, 0) node[below] {$x$};
+            \draw[-latex] (0, -0.5) -- (0, 2.5) node[right] {$y$};
+            \node[below left] at (0, 0) {$O$};
+
+            \draw[domain=1:3.1, thick] plot (\x, {0.5*(\x-1.5)*(\x-1.5) +1 });
+            \draw[domain=1.675:3.1, thick] plot (\x, {1.6*(\x-3.1)+2.28});
+            \draw[dashed] (1, 0) -- (1, 1.125);
+            \draw[dashed] (3.1, 0) -- (3.1, 2.28);
+            \node[below] at (1, 0) {$a$};
+            \node[below] at (3.1, 0) {$b$};
+            \draw[fill=white] (3.1, 2.28) circle (1.5pt);
+        \end{tikzpicture}
+    \end{minipage}
+\end{center}
+
+作为 Fermat 定理的应用, 我们将证明一个关于连续函数的导数的有趣定理.
+
+\subsection{Darboux 定理}\label{subsec:110}
+{\kaishu 
+设 $a<b$, 函数 $f(x)$ 在区间 $[a,b]$ 上有有限导数.
+则对于严格介于 $f'(a)$ 与 $f'(b)$ 之间的每一个数 $C$,
+都存在点 $c\in(a,b)$, 使得 $f'(c)=C$.
+\footnote{端点处的 $f'(a)$ 与 $f'(b)$ 分别指右导数与左导数.}
+\index{dabudingli@Darboux 定理}
+\index[names]{Darboux@Darboux}}
+
+\begin{proof}
+先设 $f'(a)$ 与 $f'(b)$ 异号, 例如 $f'(a)>0$, $f'(b)<0$.
+我们证明在 $(a,b)$ 内存在点 $c$, 使 $f'(c)=0$.
+
+由 \emref{subsec:96}, 有限导数的存在保证 $f(x)$ 在 $[a,b]$ 上连续.
+因此, 由 \emref{subsec:85} 的
+\hyperref[thm:weierstrass_extrema]{Weierstrass 第二定理}, $f(x)$ 在某点 $c\in[a,b]$ 处取得最大值.
+由 \emref{subsec:109} 的引理, 在 $a$ 点的右侧充分近处有 $f(x)>f(a)$,
+在 $b$ 点的左侧充分近处有 $f(x)>f(b)$.
+所以最大值点既不是 $a$, 也不是 $b$, 即 $a<c<b$.
+再由 \hyperref[thm:fermat_stationary_point]{Fermat 定理}, 得 $f'(c)=0$.
+若 $f'(a)<0$, $f'(b)>0$, 则考察最小值即可.
+
+现在取严格介于 $f'(a)$ 与 $f'(b)$ 之间的任意数 $C$.
+为明确起见, 设 $f'(a)>C>f'(b)$, 并考察辅助函数
+$$
+\varphi(x)=f(x)-Cx.
+$$
+它在 $[a,b]$ 上连续, 且有有限导数 $\varphi'(x)=f'(x)-C$.
+由于 $\varphi'(a)>0$, $\varphi'(b)<0$, 由刚才证明的结论,
+存在点 $c\in(a,b)$, 使得
+$$
+\varphi'(c)=f'(c)-C=0,
+$$
+即 $f'(c)=C$.
+端点导数的大小次序相反时, 对 $\varphi$ 应用另一种异号情形, 结论相同.
+\end{proof}
+
+这个结论与 \emref{subsec:82} 的介值定理很相似:
+导函数从一个值变到另一个值时, 必经过它们之间的每一个值.
+但它并不是连续函数介值定理的直接推论, 因为导函数本身未必连续.
+
+\subsection{Rolle 定理}\label{subsec:111}
+下面这个简单而重要的定理, 是许多微分学定理和公式的基础.
+
+\begin{theorem}[Rolle]\label{thm:rolle}
+设 $a<b$, 函数 $f(x)$ 满足下列条件:
+1) 在闭区间 $[a,b]$ 上定义且连续;
+2) 在开区间 $(a,b)$ 内有有限导数;
+3) $f(a)=f(b)$.
+则在 $(a,b)$ 内至少存在一点 $c$, 使得 $f'(c)=0$.
+\footnote{条件 2) 已保证 $f$ 在 $(a,b)$ 内连续.
+这里及以后不要求定理中列出的各项条件彼此独立.}
+\end{theorem}
+\index{luoerdingli@Rolle 定理}
+\index[names]{Rolle@Rolle}
+
+\begin{proof}
+由 \emref{subsec:85} 的
+\hyperref[thm:weierstrass_extrema]{Weierstrass 第二定理},
+$f(x)$ 在 $[a,b]$ 上有最大值 $M$ 和最小值 $m$.
+
+若 $M=m$, 则由 $m\leq f(x)\leq M$, 函数在整个区间上为常数.
+因此, 在 $(a,b)$ 内处处有 $f'(x)=0$, 可以取任意一点作为 $c$.
+
+若 $M>m$, 则函数能取得这两个不同的值.
+由于 $f(a)=f(b)$, 至少有一个最值在区间内点 $c$ 处取得.
+由 \hyperref[thm:fermat_stationary_point]{Fermat 定理}, 在该点有 $f'(c)=0$.
+\end{proof}
+
+\begin{wrapfigure}{r}{0.40\textwidth}
+    \vspace{-0.8cm}
+\centering
+\begin{tikzpicture}[every node/.style={scale=0.8}]
+\draw[-latex] (-0.3,0)--(4,0) node[right] {$x$};
+\draw[-latex] (0,-0.2)--(0,2.35) node[above] {$y$};
+\node[below left] at (0,0) {$O$};
+\draw[thick,domain=0.5:3.5,samples=80] plot (\x,{1.2+0.48*sin(120*(\x-0.5))});
+\draw[dashed] (0.5,0)--(0.5,1.2)--(3.5,1.2)--(3.5,0);
+\draw[dashed] (1.25,0)--(1.25,1.68);
+\draw (0.6,1.68)--(2.05,1.68);
+\node[below] at (0.5,0) {$a$};
+\node[below] at (3.5,0) {$b$};
+\node[below] at (1.25,0) {$c$};
+\draw[fill=white] (0.5,1.2) circle (1.5pt) node[left] {$A$};
+\draw[fill=white] (3.5,1.2) circle (1.5pt) node[right] {$B$};
+\draw[fill=white] (1.25,1.68) circle (1.5pt) node[above] {$M$};
+\end{tikzpicture}
+\end{wrapfigure}
+从几何角度来看, 若曲线 $y=f(x)$ 的两端纵标相等,
+则在满足上述连续、可导条件的曲线上, 至少有一点的切线平行于 $x$ 轴, 如右图所示.
+
+需要注意的是, 闭区间上的连续性和开区间内每一点处的可导性都很重要.
+例如, 函数 $f(x)=x-\floor{x}$ 在 $[0,1]$ 上除 $x=1$ 处不连续外,
+满足其余全部条件, 但在 $(0,1)$ 内处处有 $f'(x)=1$.
+再考察函数
+$$
+f(x)=
+\begin{cases}
+x,&0\leq x\leq\dfrac12,\\
+1-x,&\dfrac12\leq x\leq1.
+\end{cases}
+$$
+它在 $[0,1]$ 上连续, 两端函数值相等,
+但在 $x=1/2$ 处没有双侧导数.
+在 $(0,1/2)$ 内导数为 $1$, 在 $(1/2,1)$ 内导数为 $-1$, 因而导数没有零点.
+
+定理的条件 3) 也不能省去.
+函数 $f(x)=x$ 在 $[0,1]$ 上满足前两个条件, 但 $f(0)\neq f(1)$,
+而且处处有 $f'(x)=1$.
+
+\subsection{Lagrange 公式}\label{subsec:112}
+现在讨论 Rolle 定理的一个直接推论.
+
+\begin{theorem}[Lagrange]\label{thm:lagrange_mean_value}
+设 $a<b$, 函数 $f(x)$ 在闭区间 $[a,b]$ 上定义且连续,
+并在开区间 $(a,b)$ 内有有限导数.
+则在 $(a,b)$ 内至少存在一点 $c$, 使得
+\begin{equation}\label{eq:lagrange_mean_value_formula}
+\frac{f(b)-f(a)}{b-a}=f'(c).
+\end{equation}
+\end{theorem}
+\index{lagelangrizhongzhidingli@Lagrange 中值定理}
+\index[names]{Lagrange@Lagrange}
+\begin{proof}
+\enlargethispage{\baselineskip}
+在 $[a,b]$ 上引入辅助函数
+$$
+F(x)=f(x)-f(a)-\frac{f(b)-f(a)}{b-a}(x-a).
+$$
+它是连续函数 $f(x)$ 与一个线性函数的差, 因而在 $[a,b]$ 上连续.
+在 $(a,b)$ 内, 它有有限导数
+$$
+F'(x)=f'(x)-\frac{f(b)-f(a)}{b-a}.
+$$
+直接代入端点, 得 $F(a)=F(b)=0$.
+因此 $F(x)$ 满足 \emref{subsec:111} 的 Rolle 定理的全部条件.
+存在点 $c\in(a,b)$, 使得 $F'(c)=0$, 即
+$$
+f'(c)-\frac{f(b)-f(a)}{b-a}=0.
+$$
+这就得到所要证明的等式.
+\end{proof}
+
+这个定理也称为微分学的\emph{中值定理}\index{zhongzhidingli@中值定理}.
+Rolle 定理是它在 $f(a)=f(b)$ 时的特殊情形;
+前面关于 Rolle 定理条件 1)、2) 的说明, 在这里仍然适用.
+
+\begin{wrapfigure}[8]{l}{0.40\textwidth}
+    \vspace{-0.2cm}
+\centering
+\begin{tikzpicture}[every node/.style={scale=0.8}]
+\draw[-latex] (-0.3,0)--(4,0) node[right] {$x$};
+\draw[-latex] (0,-0.2)--(0,2.65) node[above] {$y$};
+\node[below left] at (0,0) {$O$};
+\draw[thick,domain=0.5:3.5,samples=80] plot (\x,{1.2+4/15*(\x-0.5)+0.4*sin(120*(\x-0.5))});
+\draw[dashed] (0.5,0)--(0.5,1.2)--(3.5,1.2)--(3.5,0);
+\draw[dashed] (0.5,1.2)--(3.5,2);
+\draw (3.5,1.2)--(3.5,2);
+\draw (0.45,{1.8+4/15*(0.45-1.25)})--(3.6,{1.8+4/15*(3.6-1.25)});
+\draw[dashed] (1.25,0)--(1.25,1.8);
+\node[below] at (0.5,0) {$a$};
+\node[below] at (3.5,0) {$b$};
+\node[below] at (1.25,0) {$c$};
+\draw[fill=white] (0.5,1.2) circle (1.5pt) node[left] {$A$};
+\draw[fill=white] (3.5,2) circle (1.5pt) node[right] {$B$};
+\draw[fill=white] (1.25,1.8) circle (1.5pt) node[above left] {$M$};
+\node[right] at (3.5,1.2) {$C$};
+\end{tikzpicture}
+\end{wrapfigure}
+\noindent 从几何上看,
+$$
+\frac{f(b)-f(a)}{b-a}=\frac{CB}{AC}
+$$
+是割线 $AB$ 的斜率, 而 $f'(c)$ 是曲线上横坐标为 $c$ 的点处的切线斜率.
+因此, Lagrange 定理表示, 在弧 $AB$ 上至少存在一点 $M$,
+使该点处的切线平行于弦 $AB$.
+
+等式 \eqref{eq:lagrange_mean_value_formula}, 或写成
+$$
+f(b)-f(a)=f'(c)(b-a),
+$$
+称为\emph{Lagrange 公式}或\emph{有限增量公式}\index{youxianzenglianggongshi@有限增量公式}.
+交换 $a$、$b$ 后等式不变, 因而公式在 $a>b$ 时仍成立, 此时 $c$ 位于 $b$ 与 $a$ 之间.
+
+取原区间内一点 $x_0$, 给自变量一个非零增量 $\Delta x$,
+使 $x_0+\Delta x$ 仍在区间内.
+当 $\Delta x>0$ 时, 对 $[x_0,x_0+\Delta x]$ 应用 Lagrange 公式;
+当 $\Delta x<0$ 时, 则对 $[x_0+\Delta x,x_0]$ 应用公式.
+介于这两个端点之间的 $c$ 都可以写成
+$$
+c=x_0+\theta\Delta x,\qquad0<\theta<1.
+$$
+这里 $\theta$ 是一个实数.\footnote{$\theta$ 可以是有理数, 也可以是无理数.}
+于是 Lagrange 公式成为
+\begin{equation*}\label{Lagrange'}
+\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}
+=f'(x_0+\theta\Delta x).
+\tag{\ref{eq:lagrange_mean_value_formula}a}
+\end{equation*}
+或
+\begin{equation}\label{Lagrange''}
+\Delta f(x_0)=f(x_0+\Delta x)-f(x_0)
+=f'(x_0+\theta\Delta x)\cdot\Delta x,\qquad0<\theta<1.
+\end{equation}
+这个等式给出自变量任意有限增量所对应的函数增量的准确表达式.
+它与 \emref{subsec:107} 的近似式 \eqref{eq:function_increment_linear_approximation}
+$$
+\Delta f(x_0)=f(x_0+\Delta x)-f(x_0)\approx f'(x_0)\cdot\Delta x
+$$
+相对应.
+在 $f'(x_0)\neq0$ 的条件下, 后一种替换的相对误差随 $\Delta x\to0$ 而趋于零.
+“有限增量公式”的名称正是由此而来.
+尽管该公式中的 $\theta$ (或 $c$) 通常未知, 
+但这并不妨碍其在分析中的各种应用\footnote{只有少数情形能确定 $\theta$.
+例如, 对二次函数 $f(x)=Ax^2+Bx+C$ ($A\neq0$), 直接代入即可验证 $\theta=1/2$.}.
+
+\subsection{导数的极限}\label{subsec:113}
+下面给出 Lagrange 公式的一个应用.
+设 $H>0$, 函数 $f(x)$ 在 $[x_0,x_0+H]$ 上连续,
+并在 $(x_0,x_0+H)$ 内有有限导数.
+{\kaishu 若存在有限或无穷极限
+\begin{center}
+$
+\displaystyle\lim_{x\to x_0^+}f'(x)=K,
+$\end{center}
+则 $f$ 在 $x_0$ 处的右导数也等于 $K$.}
+
+事实上, 对 $0<\Delta x\leq H$, 由 \emref{subsec:112} 的公式 \eqref{Lagrange'}, 有
+$$
+\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}
+=f'(x_0+\theta\Delta x),\qquad0<\theta<1.
+$$
+虽然 $\theta$ 可随 $\Delta x$ 改变, 但
+$0<\theta\Delta x<\Delta x$, 因此当 $\Delta x\to0^+$ 时,
+$x_0+\theta\Delta x\to x_0^+$.
+于是右端趋于 $K$, 左端也趋于 $K$, 即得所要证明的结论.
+对 $x_0$ 的左侧邻域, 可以得到相应的结论.
+
+例如, 考察在 $[-1,1]$ 上连续的函数
+$$
+f(x)=x\arcsin x+\sqrt{1-x^2}.
+$$
+当 $-1<x<1$ 时, 由求导法则,
+$$
+f'(x)=\arcsin x+\frac{x}{\sqrt{1-x^2}}
+-\frac{x}{\sqrt{1-x^2}}=\arcsin x.
+$$
+当 $x\to1^-$ 时, 导数趋于 $\pi/2$;
+当 $x\to-1^+$ 时, 导数趋于 $-\pi/2$.
+因此, 在两个端点处分别存在左导数和右导数, 并且
+$$
+f'_-(1)=\frac\pi2,\qquad f'_+(-1)=-\frac\pi2.
+$$
+
+上述结论常用于判定无穷单侧导数:
+在端点连续的条件下, 若导函数从相应一侧趋于 $+\infty$ 或 $-\infty$,
+则端点处相应的单侧导数也等于这个无穷量.
+回顾 \emref{subsec:101} 考察的函数
+$$
+f_1(x)=x^{1/3},\qquad f_2(x)=x^{2/3},
+$$
+当 $x\neq0$ 时,
+$$
+f'_1(x)=\frac1{3x^{2/3}},\qquad f'_2(x)=\frac2{3x^{1/3}}.
+$$
+第一式在 $x\to0$ 时从两侧都趋于 $+\infty$, 故 $f_1$ 在零点有双侧无穷导数 $+\infty$.
+第二式在 $x\to0^+$、$x\to0^-$ 时分别趋于 $+\infty$、$-\infty$,
+故 $f_2$ 在零点的右导数为 $+\infty$, 左导数为 $-\infty$.
+
+由上面的结论还可知道:
+{\kaishu 若有限导数 $f'(x)$ 在某区间内处处存在,
+则在区间内点处, 导函数只能连续或者有第二类间断, 不可能有第一类间断.}
+因为若在内点 $x_0$ 处左右极限都存在且有限,
+则它们分别等于 $f$ 在该点的左导数与右导数,
+从而都等于 $f'(x_0)$, 导函数便在该点连续.
+这也说明了 \emref{subsec:102} 中导函数间断的例子为何都属于第二类间断.
+
+\subsection{Cauchy 公式}\label{subsec:114}
+有限增量公式还可以推广如下.
+
+\begin{theorem}[Cauchy]\label{thm:cauchy_mean_value}
+设 $a<b$, 函数 $f(x)$、$g(x)$ 满足条件:
+1) 在闭区间 $[a,b]$ 上连续;
+2) 在开区间 $(a,b)$ 内有有限导数;
+3) 在 $(a,b)$ 内处处有 $g'(x)\neq0$.
+则在 $(a,b)$ 内至少存在一点 $c$, 使得
+\begin{equation}\label{Cauchy}
+\frac{f(b)-f(a)}{g(b)-g(a)}=\frac{f'(c)}{g'(c)}.
+\end{equation}
+\end{theorem}
+这个等式称为\emph{Cauchy 公式}\index{kexigongshi@Cauchy 公式}.
+\index[names]{Cauchy@Cauchy}
+
+\begin{proof}
+先证明左端分母不为零.
+若 $g(b)=g(a)$, 则由 \emref{subsec:111} 的 Rolle 定理,
+存在点 $\xi\in(a,b)$, 使 $g'(\xi)=0$, 与条件 3) 矛盾.
+所以 $g(b)\neq g(a)$.
+
+现在引入辅助函数
+$$
+F(x)=f(x)-f(a)-\frac{f(b)-f(a)}{g(b)-g(a)}\brac{g(x)-g(a)}.
+$$
+由于 $f$、$g$ 都连续, $F$ 在 $[a,b]$ 上连续.
+在 $(a,b)$ 内, 它有有限导数
+$$
+F'(x)=f'(x)-\frac{f(b)-f(a)}{g(b)-g(a)}\cdot g'(x).
+$$
+直接代入端点, 得 $F(a)=F(b)=0$.
+由 Rolle 定理, 存在点 $c\in(a,b)$, 使得
+$$
+f'(c)-\frac{f(b)-f(a)}{g(b)-g(a)}\cdot g'(c)=0.
+$$
+由于 $g'(c)\neq0$, 两边除以 $g'(c)$, 即得 Cauchy 公式.
+\end{proof}
+
+取 $g(x)=x$, 就得到 Lagrange 公式.
+因此, Lagrange 定理是 Cauchy 定理的特殊情形,
+后者也称为微分学的\emph{广义中值定理}\index{guangyizhongzhidingli@广义中值定理}.
+
+Cauchy 定理的几何意义与 Lagrange 定理相同.
+为说明这一点, 把自变量记为 $t$, 两个函数分别记为 $\psi(t)$、$\varphi(t)$.
+在 $[\alpha,\beta]$ 上, 若它们满足上述条件, 且分母所对应的 $\varphi'(t)\neq0$,
+则公式成为
+\begin{equation}\label{eq:cauchy_parametric_mean_value}
+\frac{\psi(\beta)-\psi(\alpha)}{\varphi(\beta)-\varphi(\alpha)}
+=\frac{\psi'(\gamma)}{\varphi'(\gamma)},
+\qquad\alpha<\gamma<\beta.
+\end{equation}
+考虑由参数方程
+\begin{equation}\label{eq:cauchy_parametric_curve}
+x=\varphi(t),\qquad y=\psi(t),\qquad\alpha\leq t\leq\beta
+\end{equation}
+给出的曲线.
+公式 \eqref{eq:cauchy_parametric_mean_value} 左端是连接曲线两端点的弦的斜率,
+右端则是参数 $t=\gamma$ 对应点处的切线斜率
+[\emref{subsec:106}, \eqref{eq:parametric_tangent_slope}].
+因此, 曲线上至少有一点的切线平行于连接两端点的弦.
+
+\begin{remark}
+这个解释也提示了由 Lagrange 公式推出 Cauchy 公式的方法.
+由 $\varphi'(t)\neq0$ 及 \emref{subsec:110} 的 Darboux 定理,
+$\varphi'$ 在 $(\alpha,\beta)$ 内保持同号,
+再由 Lagrange 公式, $x=\varphi(t)$ 严格单调.
+因此, 可以把参数关系 \eqref{eq:cauchy_parametric_curve} 化为直接关系 $y=f(x)$,
+并由 \emref{subsec:106} 求得其导数.
+对这个函数应用 Lagrange 公式,
+就得到与 \eqref{eq:cauchy_parametric_mean_value} 等价的式子.
+\end{remark}
+
+\section{高阶导数及高阶微分}\label{sec:higher_derivatives_differentials}
+\subsection{高阶导数的定义}\label{subsec:115}
+若函数 $y=f(x)$ 在某一区间 $\mathcal{X}$ 内有有限导数 $y'=f'(x)$,
+而导函数本身又是 $x$ 的一个函数, 因而它在某点 $x_0$ 处还可能有有限或无穷导数,
+这个导数就称为原函数在该点处的\emph{二阶导数}\index{erjiedaoshu@二阶导数}.
+常用记号有
+$$
+\frac{\d^2y}{\d x^2},\quad y'',\quad \mathrm{D}^2y;
+\qquad
+\left.\frac{\d^2f(x)}{\d x^2}\right|_{x=x_0},\quad f''(x_0),\quad \mathrm{D}^2f(x_0).
+$$
+
+例如, 在 \emref{subsec:92} 中, 动点经过的路程 $s$ 是时间 $t$ 的函数,
+速度是路程的导数 $v=\dfrac{\d s}{\d t}$, 加速度又是速度的导数 $a=\dfrac{\d v}{\d t}$.
+因此加速度就是路程关于时间的二阶导数
+$
+a=\dfrac{\d^2s}{\d t^2}.
+$
+
+类似地, 若函数在整个区间 $\mathcal{X}$ 内有有限二阶导数,
+则二阶导函数在点 $x_0$ 处的有限或无穷导数,
+称为原函数在该点处的\emph{三阶导数}\index{sanjiedaoshu@三阶导数}, 记为
+$$
+\frac{\d^3y}{\d x^3},\quad y''',\quad \mathrm{D}^3y;
+\qquad
+\left.\frac{\d^3f(x)}{\d x^3}\right|_{x=x_0},\quad f'''(x_0),\quad \mathrm{D}^3f(x_0).
+$$
+再对三阶导函数求导, 就得到四阶导, 等等.
+所以一般地, 设 $n\geq2$, 函数的 $(n-1)$ 阶导数已经定义,
+并且在区间 $\mathcal{X}$ 内处处存在且有限.
+则这个导函数在点 $x_0$ 处的有限或无穷导数,
+称为原函数在该点处的\emph{$n$ 阶导数}\index{gaojiedaoshu@高阶导数}.
+常用记号为
+$$
+\frac{\d^ny}{\d x^n},\quad y^{(n)},\quad \mathrm{D}^ny;
+\qquad
+\left.\frac{\d^nf(x)}{\d x^n}\right|_{x=x_0},\quad f^{(n)}(x_0),\quad \mathrm{D}^nf(x_0).
+$$
+有时需要指出对哪个变量求导, 可以在导数记号中加上下标, 例如
+$$
+y''_{x^2},\qquad \mathrm{D}^3_{x^3}y,\qquad f^{(n)}_{x^n}(x_0).
+$$
+这里下标中的 $x^2,x^3,\ldots$ 是 $xx,xxx,\ldots$ 的约定简写,
+表示对 $x$ 连续求导的次数.
+例如, 加速度也可以写成 $a=s''_{t^2}$.
+而当 $x$ 为任意一点时, 记号
+$$
+\frac{\d^nf}{\d x^n},\qquad f^{(n)}\ \text{或}\ f^{(n)}_{x^n},
+\qquad \mathrm{D}^nf\ \text{或}\ \mathrm{D}^n_{x^n}f
+$$
+本身可以看作高阶导函数的函数记号.
+
+这样, 从一阶导数依次定义后一阶导数, 就归纳地定义了 $n$ 阶导数.
+其关系式
+$$
+y^{(n)}=\brac{y^{(n-1)}}'
+$$
+也称为\emph{递推关系式}\index{dituiguanxishi@递推关系式}.
+给定 $n$ 后, 就可以逐次使用已经学过的求导法则来计算.
+
+例如, 若
+$$
+y=\frac14x^4-\frac13x^3+2x^2-6,
+$$
+则
+$$
+\begin{gathered}
+y'=x^3-x^2+4x,\qquad y''=3x^2-2x+4,\\
+y'''=6x-2,\qquad y^{(4)}=6,\qquad
+y^{(5)}=y^{(6)}=\cdots=0.
+\end{gathered}
+$$
+又如, 对实数 $x$ 考察
+$$
+y=\ln\brac{x+\sqrt{x^2+1}}.
+$$
+得
+$$
+y'=\frac1{\sqrt{x^2+1}},\qquad
+y''=-\frac{x}{(x^2+1)^{3/2}},\qquad
+y'''=\frac{2x^2-1}{(x^2+1)^{5/2}},\quad\ldots
+$$
+
+很显然, 高阶单侧导数[\emref{subsec:100}]也可以逐次定义.
+若函数只在某一区间内定义,
+则在区间端点处谈到任意阶导数时, 总是指相应的单侧导数.
+
+\subsection{任意阶导数的普遍公式}\label{subsec:116}
+一般说来, 求函数的 $n$ 阶导数, 需要先求出前面各阶导数.
+但在许多情形中, 可以建立只依赖于 $n$ 的公式,
+而不必逐一写出前面各阶导数.
+
+下面两个公式在推导中很有用:
+$$
+(cu)^{(n)}=c\,u^{(n)},\qquad
+(u\pm v)^{(n)}=u^{(n)}\pm v^{(n)}.
+$$
+这里 $c$ 是常数, $u$、$v$ 有所需的各阶导数, $n$ 为正整数.
+它们是 \emref{subsec:97} 中常数因子法则与和差法则的推广,
+逐次应用一阶求导法则即可得到.
+
+\myrefparagraph{1)}\label{ex:higher_derivative_power}
+先考察幂函数 $y=x^\mu$, 其中 $\mu$ 是任意实数.
+为使任意实指数都有定义, 取 $x>0$.
+逐次求导, 得
+$$
+y'=\mu x^{\mu-1},\qquad
+y''=\mu(\mu-1)x^{\mu-2},\qquad
+y'''=\mu(\mu-1)(\mu-2)x^{\mu-3},\quad\ldots
+$$
+由此可以猜出一般公式
+$$
+y^{(n)}=\mu(\mu-1)\cdots(\mu-n+1)x^{\mu-n}.
+$$
+下面我们用数学归纳法来证明这个规律对每个正整数 $n$ 都成立.
+当 $n=1$ 时, 它就是幂函数的求导公式.
+若公式对某个 $n$ 成立, 则再求一次导数,
+$$
+\begin{aligned}
+y^{(n+1)}
+&=\mu(\mu-1)\cdots(\mu-n+1)\brac{x^{\mu-n}}'\\
+&=\mu(\mu-1)\cdots(\mu-n+1)(\mu-n)x^{\mu-(n+1)}.
+\end{aligned}
+$$
+这正是把 $n$ 换成 $n+1$ 后的公式, 因而数学归纳法证明了结论.
+
+例如, 取 $\mu=-1$, 就有
+$$
+\left(\frac1x\right)^{(n)}
+=(-1)(-2)\cdots(-n)x^{-1-n}
+=\frac{(-1)^n n!}{x^{n+1}}.
+$$
+这个公式在 $x<0$ 时也成立, 因而适用于一切 $x\neq0$.
+取 $\mu=-1/2$, 则在 $x>0$ 时
+\footnote{这里 $(2n-1)!!$ 表示双阶乘.双阶乘是同奇偶性的正整数的连乘积.
+例如, $7!!=7\cdot5\cdot3\cdot1=105$,
+$8!!=8\cdot6\cdot4\cdot2=384$; 约定 $1!!=1$.}
+\index{shuangjiecheng@双阶乘},
+$$
+\left(\frac1{\sqrt{x}}\right)^{(n)}
+=\left(-\frac12\right)\left(-\frac32\right)
+\cdots\left(-\frac{2n-1}{2}\right)x^{-n-1/2}
+=\frac{(-1)^n(2n-1)!!}{(2x)^n\sqrt{x}}.
+$$
+
+当 $\mu$ 是正整数 $m$ 时, $x^m$ 在整个实轴上有定义,
+它的 $m$ 阶导数为常数 $m!$, 以后各阶导数都为零.
+同样, $m$ 次多项式的 $m$ 阶导数是常数, 更高阶导数都为零.
+
+\myrefparagraph{2)}\label{ex:higher_derivative_linear_power}
+再考察稍一般的函数
+$$
+y=(a+bx)^\mu,\qquad a,b\ \text{为常数}.
+$$
+对任意实指数 $\mu$, 在 $a+bx>0$ 的区间内, 每求一次导数就多出一个因子 $b$.
+因此
+$$
+y^{(n)}=\mu(\mu-1)\cdots(\mu-n+1)b^n(a+bx)^{\mu-n}.
+$$
+特别地,
+$$
+\left(\frac1{a+bx}\right)^{(n)}
+=\frac{(-1)^n n!b^n}{(a+bx)^{n+1}},
+\qquad
+\left(\frac1{\sqrt{a+bx}}\right)^{(n)}
+=\frac{(-1)^n(2n-1)!!b^n}{2^n(a+bx)^n\sqrt{a+bx}}.
+$$
+
+\myrefparagraph{3)}\label{ex:higher_derivative_logarithm}
+设 $y=\ln x$, 其中 $x>0$.
+由
+$$
+y'=(\ln x)'=\frac1x,
+$$
+再对 $1/x$ 求 $n-1$ 阶导数, 并使用
+\ref{ex:higher_derivative_power} 中的公式, 得
+$$
+y^{(n)}=(y')^{(n-1)}
+=\left(\frac1x\right)^{(n-1)}
+=\frac{(-1)^{n-1}(n-1)!}{x^n}.
+$$
+这里在 $n=1$ 时, 零阶导数理解为函数本身, 并取 $0!=1$.
+
+\myrefparagraph{4)}\label{ex:higher_derivative_exponential}
+设 $y=a^x$, 其中 $a>0$.
+逐次求导, 得
+$$
+y'=a^x\ln a,\qquad y''=a^x(\ln a)^2,\quad\ldots
+$$
+一般公式
+$$
+y^{(n)}=a^x(\ln a)^n.
+$$
+特别地,  $a=\e$ 时有
+$$
+(\e^x)^{(n)}=\e^x.
+$$
+\myrefparagraph{5)}\label{ex:higher_derivative_trigonometric}
+假定 $y = \sin x$, 则
+$$
+    y' = \cos x, \quad y'' = -\sin x, \quad y''' = -\cos x, 
+    y^{(4)} = \sin x, \quad y^{(5)} = \cos x, \quad \cdots
+$$
+由这一途径去求 $n$ 阶导数的普遍式是比较困难的.
+但若把一阶导数的公式改写成
+$
+y' = \sin \left( x + \dfrac{\pi}{2} \right),
+$
+事情就立刻简单化了.
+很明显, 每微分一次以后, 就只要在变元上加一个 $\dfrac{\pi}{2}$, 于是
+$$
+(\sin x)^{(n)} = \sin \left( x + n \cdot \frac{\pi}{2} \right).
+$$
+类似也有公式
+$$
+(\cos x)^{(n)} = \cos \left( x + n \cdot \frac{\pi}{2} \right).
+$$
+
+\myrefparagraph{6)}\label{ex:higher_derivative_partial_fractions}
+考察函数 $y=\dfrac{1}{x^2 - a^2}$, 
+把它表示成为
+$$
+y = \frac{1}{2a} \left( \frac{1}{x - a} - \frac{1}{x + a} \right),
+$$
+利用 \ref{ex:higher_derivative_linear_power} 得出
+$$
+\left( \frac{1}{x^2 - a^2} \right)^{(n)} = \frac{(-1)^n n!}{2a} \left[ \frac{1}{(x - a)^{n+1}} - \frac{1}{(x + a)^{n+1}} \right].
+$$
+
+\myrefparagraph{7)}\label{ex:higher_derivative_exponential_sine}
+设 $a,b$ 为实常数, 且 $a^2+b^2>0$.
+对于函数 $y = \e^{ax} \sin bx$ 的情形, 我们将利用一个巧妙的方法.
+对
+$$
+y' = a\e^{ax} \sin bx + b\e^{ax} \cos bx;
+$$
+引入辅助角 $\varphi$:
+$$
+\sin \varphi = \frac{b}{\sqrt{a^2 + b^2}}, \quad \cos \varphi = \frac{a}{\sqrt{a^2 + b^2}},
+$$
+则一阶导数的表达式就可以改写成
+$$
+y' = \sqrt{a^2 + b^2} \cdot \e^{ax} \cdot (\sin bx \cdot \cos \varphi + \cos bx \cdot \sin \varphi)
+= \sqrt{a^2 + b^2} \cdot \e^{ax} \cdot \sin(bx + \varphi).
+$$
+重复地微分, 很易根据数学归纳法建立普遍的规律
+$$
+y^{(n)} = (a^2 + b^2)^{\frac{n}{2}} \cdot \e^{ax} \cdot \sin(bx + n\varphi).
+$$
+
+\myrefparagraph{8)}\label{ex:higher_derivative_arctangent}
+再讨论函数 $y = \arctan x$.
+首先让我们设法用 $y$ 表示 $y^{(n)}$.
+因为 $x = \tan y$, 故
+$$
+y' = \frac{1}{1 + x^2} = \cos^2 y = \cos y \cdot \sin \left( y + \frac{\pi}{2} \right).
+$$
+再关于 $x$ 而微分它 (并记住 $y$ 是 $x$ 的函数), 则得
+\begin{align*}
+    y'' &= \left[ -\sin y \cdot \sin \left( y + \frac{\pi}{2} \right) + \cos y \cdot \cos \left( y + \frac{\pi}{2} \right) \right] \cdot y' \\
+    &= \cos^2 y \cdot \cos \left( 2y + \frac{\pi}{2} \right) = \cos^2 y \cdot \sin\left(2\brac{y+\frac\pi2}\right).
+\end{align*}
+又一次的微分给出
+\begin{align*}
+    y''' &= 2\cos y\brac{-\sin y\sin(2y+\pi)+\cos y\cos(2y+\pi)} \cdot y' \\
+    &= 2 \cos^3 y \cdot \cos \left( 3y + 2 \cdot \frac{\pi}{2} \right) = 2 \cos^3 y \cdot \sin\left(3\brac{y+\frac\pi2}\right).
+\end{align*}
+因此, 普遍的公式
+$$
+y^{(n)} = (n - 1)! \cos^n y \cdot \sin\left(n\brac{y+\frac\pi2}\right)
+$$
+可用数学归纳法证明.
+
+若 (在 $x > 0$ 时) 引入角
+$$
+z = \arctan \frac{1}{x} = \frac{\pi}{2} - y,
+$$
+则这公式可以改写成
+$$
+y^{(n)} = (n-1)! \frac{1}{(1+x^2)^{\frac{n}{2}}} \cdot \sin\brac{n(\pi-z)},
+$$
+或
+$$
+y^{(n)} = (-1)^{n-1}(n-1)! \frac{1}{(1+x^2)^{\frac{n}{2}}} \cdot \sin\left(n\arctan\frac1x\right).
+$$
+
+\myrefparagraph{9)}\label{ex:higher_derivative_exponential_reciprocal}
+在 $x\neq0$ 时, 作为练习可建立公式
+\phantomsection\label{eq:exponential_reciprocal_higher_derivative}
+$$
+    \mathrm{D}^n\left(x^{n-1}\e^{1/x}\right)
+    =(-1)^n\frac{\e^{1/x}}{x^{n+1}}
+    \qquad(n=1,2,\ldots).
+$$
+它在 $n=1,2$ 时可直接验证. 假设公式对 $n$ 和 $n-1$ ($n\geq2$) 均成立.\footnote{这是数学归纳法的一种形式: 由连续两项成立推出后一项成立, 因此先核对 $n=1,2$ 两个起始情形.} 则
+$$
+\begin{aligned}
+    \mathrm{D}^{n+1}\left(x^n\e^{1/x}\right)
+    &=\mathrm{D}^n\left[\mathrm{D}\left(x^n\e^{1/x}\right)\right]\\
+    &=\mathrm{D}^n\left(nx^{n-1}\e^{1/x}-x^{n-2}\e^{1/x}\right)\\
+    &=n\mathrm{D}^n\left(x^{n-1}\e^{1/x}\right)
+      -\mathrm{D}\left[\mathrm{D}^{n-1}\left(x^{n-2}\e^{1/x}\right)\right]\\
+    &=n(-1)^n\frac{\e^{1/x}}{x^{n+1}}
+      -\mathrm{D}\left[(-1)^{n-1}\frac{\e^{1/x}}{x^n}\right]\\
+    &=(-1)^{n+1}\frac{\e^{1/x}}{x^{n+2}}.
+\end{aligned}
+$$
+故公式对一切自然数 $n$ 成立.
+
+\subsection{Leibniz 公式}\label{subsec:117}
+在上一节中, 我们已经把 \emref{subsec:97} 的常数因子法则与和差法则推广到了高阶导数.
+乘积求导法则的推广则稍为复杂, 现在来讨论这个问题.
+
+设 $u$、$v$ 是 $x$ 的函数, 在所考察的区间内有直到 $n$ 阶为止的有限导数.
+我们要证明乘积 $y=uv$ 也有 $n$ 阶导数, 并求出它的表达式.
+
+逐次应用 \emref{subsec:97} 的乘积求导法则, 得
+$$
+\begin{aligned}
+y'&=u'v+uv',\\
+y''&=u''v+2u'v'+uv'',\\
+y'''&=u'''v+3u''v'+3u'v''+uv''',\quad\ldots
+\end{aligned}
+$$
+可以发现, 这些式子右端的系数与二项式 $(u+v)$、$(u+v)^2$、$(u+v)^3$ 的展开式相同,
+只是各次幂换成了相应阶数的导数.
+若约定 $u^{(0)}=u$、$v^{(0)}=v$, 这种对应就更为完整.
+由此得到一般公式\footnote{记号 $\sum$ 表示同类项的和,
+上下限指出求和指标依次取哪些整数值.
+例如,
+$
+    \displaystyle\sum_{i=0}^{n}a_i=a_0+a_1+\cdots+a_n,
+\sum_{k=1}^{m}\frac1k=1+\frac12+\cdots+\frac1m.
+$}
+\begin{equation}\label{eq:leibniz_formula}
+\begin{aligned}
+y^{(n)}=(uv)^{(n)}
+&=\sum_{i=0}^{n}\binom ni u^{(n-i)}v^{(i)}\\
+&=u^{(n)}v+nu^{(n-1)}v'
+ +\frac{n(n-1)}{1\cdot2}u^{(n-2)}v''+\cdots\\
+&\quad+\frac{n(n-1)\cdots(n-i+1)}{1\cdot2\cdots i}
+ u^{(n-i)}v^{(i)}+\cdots+uv^{(n)}.
+\end{aligned}
+\end{equation}
+
+下面用数学归纳法证明这个公式.
+当 $n=1$ 时, 它就是乘积求导法则.
+假设公式对某个正整数 $n$ 成立.
+若 $u$、$v$ 还有有限的 $n+1$ 阶导数, 则对公式两端再求一次导数, 得
+$$
+\begin{aligned}
+y^{(n+1)}
+&=\sum_{i=0}^{n}\binom ni\brac{u^{(n-i)}v^{(i)}}'\\
+&=\sum_{i=0}^{n}\binom ni u^{(n+1-i)}v^{(i)}
+ +\sum_{i=0}^{n}\binom ni u^{(n-i)}v^{(i+1)}.
+\end{aligned}
+$$
+
+接下来把两个和式中同类的乘积合并.
+每一项中两个导数的阶数之和都是 $n+1$.
+乘积 $u^{(n+1)}v$ 只出现在第一个和式的 $i=0$ 项中,
+系数为 $\displaystyle\binom n0=1$.
+乘积 $uv^{(n+1)}$ 只出现在第二个和式的 $i=n$ 项中,
+系数也为 $\displaystyle\binom nn=1$.
+其余各项的形式为 $u^{(n+1-k)}v^{(k)}$, 其中 $1\leq k\leq n$.
+在第一个和式中, 它对应 $i=k$,
+在第二个和式中, 它对应 $i=k-1$.
+因此, 合并后的系数为
+$$
+\binom nk+\binom n{k-1}=\binom{n+1}k.
+$$
+于是
+$$
+\begin{aligned}
+y^{(n+1)}
+&=u^{(n+1)}v
+ +\sum_{k=1}^{n}\binom{n+1}k u^{(n+1-k)}v^{(k)}
+ +uv^{(n+1)}\\
+&=\sum_{k=0}^{n+1}\binom{n+1}k u^{(n+1-k)}v^{(k)},
+\end{aligned}
+$$
+这正是把 \eqref{eq:leibniz_formula} 中的 $n$ 换成 $n+1$ 后的公式,
+所以结论对每个正整数 $n$ 都成立.
+
+公式 \eqref{eq:leibniz_formula} 称为\emph{Leibniz 公式}\index{laibunizigongshi@Leibniz 公式}.
+\index[names]{Leibniz@Leibniz}
+它在求高阶导数的一般表达式时常常很有用.
+
+对于多个函数的乘积 $y=uv\cdots t$, 也可以建立类似的高阶求导公式
+$$
+y^{(n)}=
+\sum_{\substack{k_1+\cdots+k_m=n\\k_1,\ldots,k_m\geqslant0}}
+\frac{n!}{k_1!\cdots k_m!}\,
+u_1^{(k_1)}\cdots u_m^{(k_m)}.
+$$
+它与多项式的幂 $(u+v+\cdots+t)^n$ 的展开式相对应.
+
+\subsection{例题}\label{subsec:118}
+
+\begingroup
+\abovedisplayskip=6pt plus 1pt minus 1pt
+\belowdisplayskip=6pt plus 1pt minus 1pt
+\abovedisplayshortskip=6pt plus 1pt
+\belowdisplayshortskip=6pt plus 1pt minus 1pt
+\myrefparagraph{1)}\label{ex:leibniz_fiftieth_derivative}
+用 Leibniz 公式求 $$(x^2\cos ax)^{(50)},$$ 其中 $a$ 是实常数.
+令 $u=\cos ax$, $v=x^2$.
+由 \emref{subsec:116} 的三角函数求导公式,
+$$
+u^{(k)}=a^k\cos\brac{ax+k\frac\pi2},\qquad
+v'=2x,\qquad v''=2,\qquad v'''=v^{(4)}=\cdots=0.
+$$
+因此, Leibniz 公式中只有前三项可能不为零:
+$$
+\begin{aligned}
+(uv)^{(50)}
+&=x^2a^{50}\cos\brac{ax+50\frac\pi2}+50\cdot2x\,a^{49}\cos\brac{ax+49\frac\pi2}\\
+&\qquad+\frac{50\cdot49}{2}\cdot2a^{48}\cos\brac{ax+48\frac\pi2}\\
+&=a^{48}\brac{(2450-a^2x^2)\cos ax-100ax\sin ax}.
+\end{aligned}
+$$
+
+\myrefparagraph{2)}\label{ex:leibniz_exponential_trigonometric}
+回顾 \emref{subsec:116} 的 \ref{ex:higher_derivative_exponential_sine},
+现在用 Leibniz 公式直接求 $y=\e^{ax}\sin bx$ 的 $n$ 阶导数, 其中 $a,b$ 是实常数, $n$ 为正整数.
+由于
+$$
+(\e^{ax})^{(n-k)}=a^{n-k}\e^{ax},\qquad
+(\sin bx)^{(k)}=b^k\sin\brac{bx+k\frac\pi2},
+$$
+得到
+$$
+\begin{aligned}
+y^{(n)}&=\sum_{k=0}^{n}\binom nk a^{n-k}\e^{ax}b^k\sin\brac{bx+k\frac\pi2}\\
+&=\e^{ax}\Bigl\{
+\sin bx\brac{a^n-\binom n2a^{n-2}b^2+\cdots}\\
+&~~~~~~+\cos bx\brac{\binom n1a^{n-1}b-\binom n3a^{n-3}b^3+\cdots}\Bigr\}.
+\end{aligned}
+$$
+
+\myrefparagraph{3)}\label{ex:leibniz_arcsine_derivative}
+求 $y=\arcsin x$ 的 $(n+1)$ 阶导数, 其中 $-1<x<1$.
+
+首先我们有
+$$
+y'=\frac1{\sqrt{1-x^2}}
+=\frac1{\sqrt{1+x}}\cdot\frac1{\sqrt{1-x}}.
+$$
+令 $u=(1+x)^{-1/2}$, $v=(1-x)^{-1/2}$.
+则根据 \emref{subsec:116} 的 \ref{ex:higher_derivative_linear_power}, 有
+$$
+u^{(j)}=\frac{(-1)^j(2j-1)!!}{2^j(1+x)^{j+1/2}},\qquad
+v^{(j)}=\frac{(2j-1)!!}{2^j(1-x)^{j+1/2}}.
+$$
+于是对 $y'=uv$ 应用 Leibniz 公式, 得到
+$$
+\begin{aligned}
+y^{(n+1)}
+&=\frac1{2^n\sqrt{1-x^2}}
+\sum_{k=0}^{n}\binom nk
+\frac{(-1)^{n-k}(2n-2k-1)!!(2k-1)!!}
+{(1+x)^{n-k}(1-x)^k}\\
+&=\frac{(-1)^n}{2^n\sqrt{1-x^2}}
+\Biggl\{
+\frac{(2n-1)!!}{(1+x)^n}
+-n\frac{(2n-3)!!}{(1+x)^{n-1}(1-x)}\\
+&~~~~~~~~~~~~~\qquad+\frac{n(n-1)}{2}
+\frac{(2n-5)!!\,3!!}{(1+x)^{n-2}(1-x)^2}
+-\cdots\Biggr\}.
+\end{aligned}
+$$
+\par\endgroup
+
+\myrefparagraph{4)}\label{ex:arctangent_derivatives_at_zero}
+求函数 $y=\arctan x$ 在 $x=0$ 处的各阶导数值.
+
+由 $y'=\dfrac{1}{(1+x^2)}$, 有
+$
+(1+x^2)y'=1.
+$
+这等式两端取 $n$ 阶导数, 并应用 Leibniz 公式,
+当 $n\geq2$ 时得到
+$$
+(1+x^2)y^{(n+1)}+2nx\,y^{(n)}+n(n-1)y^{(n-1)}=0.
+$$
+用下标 0 表示在 $x=0$ 处的值, 便有
+$$
+y_0^{(n+1)}=-n(n-1)y_0^{(n-1)}.
+$$
+注意到
+$$
+y_0'=1,\qquad
+y''=-\frac{2x}{(1+x^2)^2},\qquad y_0''=0,
+$$
+递推可知, 对一切 $m\geq1$,
+$$
+y_0^{(2m)}=0.
+$$
+对奇阶导数, 递推关系成为
+$$
+y_0^{(2m+1)}=-(2m)(2m-1)y_0^{(2m-1)},
+$$
+所以
+$$
+y_0^{(2m+1)}=(-1)^m(2m)!,\qquad m=0,1,2,\ldots.
+$$
+这也可以从 \emref{subsec:116} 的 \ref{ex:higher_derivative_arctangent}
+中用 $y=\arctan x$ 表示的通式得到.
+
+\myrefparagraph{5)}\label{ex:arcsine_derivatives_at_zero}
+对 $y=\arcsin x$, 同样应用 Leibniz 公式于
+\begin{center}
+$
+(1-x^2)y''-xy'=0.
+$\end{center}
+得到
+$$
+y_0^{(2m)}=0,\qquad
+y_0^{(2m-1)}=[(2m-1)!!]^2,\qquad m=1,2,\ldots,
+$$
+由 \ref{ex:leibniz_arcsine_derivative} 的通式也能求得这些值,
+但不如使用递推关系简便.
+
+\myrefparagraph{6)}\label{ex:legendre_polynomial_roots}
+我们再来考察一类特殊的多项式, Legendre 多项式, 它由下列等式
+$$
+X_n(x) = C_n \frac{\d^n (x^2 - 1)^n}{\d x^n} \quad (n=1, 2, \cdots)
+$$
+来定义, 其中 $C_n\neq0$ 是常数, 可按使用需要选择.
+\index{legendreduoxiangshi@Legendre 多项式}\index[names]{Legendre@Legendre}
+
+当 $C_n\neq0$ 时, 这个多项式的次数为 $n$. 
+首先证明: $n$ 次多项式 $X_n(x)$ 有 $n$ 个不同的实根, 这些根都在 $-1$ 与 $+1$ 之间.
+为简便起见, 假设 $C_n = 1$.
+
+不难看出, 多项式 $(x^2 - 1)^n = (x-1)^n (x+1)^n$ 和它的 $n-1$ 个相继各阶导数在 $x=\pm1$ 时变为零.
+于是根据 Rolle 定理[\emref{subsec:111}], 它的一阶导数也将有根在 $-1$ 与 $+1$ 之间.
+依同一定理, 二阶导数将有两个根在 $-1$ 与 $+1$ 之间, 这样一直到 $n-1$ 阶导数, 它除了有根 $-1$ 与 $+1$ 外, 还有 $n-1$ 个根介于其间.
+再对这导数应用一次 Rolle 定理, 就在 $(-1,1)$ 内得到至少 $n$ 个不同的根.
+由于 $X_n$ 的次数为 $n$, 这些就是它的全部根, 而且都是单根.
+$C_n$ 换成其他非零常数不会改变这些根.
+
+仍令 $C_n=1$. 
+把 $(x^2-1)^n$ 看成 $(x+1)^n$ 与 $(x-1)^n$ 的乘积, 依 Leibniz 公式有
+$$
+\begin{aligned}
+X_n(x)
+&=(x+1)^n\frac{\d^n(x-1)^n}{\d x^n}
++\binom{n}{1}\frac{\d(x+1)^n}{\d x}
+\frac{\d^{n-1}(x-1)^n}{\d x^{n-1}}\\
+&\quad+\cdots +\frac{\d^n(x+1)^n}{\d x^n}(x-1)^n.
+\end{aligned}
+$$
+从第二项起, 每一项都含有因式 $x-1$, 因而在 $x=1$ 时均为零. 
+所以
+$$
+X_n(1)=2^n n!,\qquad
+X_n(-1)=(-1)^n2^n n!.
+$$
+
+若在一般定义中取
+$
+C_n=\dfrac{1}{2^n n!},
+$
+就得到通常所用的 Legendre 多项式, 记为 $P_n(x)$, 它们在多项式的理论中有着重要的作用.
+
+Leibniz 公式还可进一步证明 $X_n(x)$ 满足微分方程
+$$
+(x^2-1)X_n''+2xX_n'-n(n+1)X_n=0.
+$$
+事实上, 令 $y=(x^2-1)^n$, 则
+$$
+y'=2nx(x^2-1)^{n-1},\qquad (x^2-1)y'=2nxy.
+$$
+对后一等式两端各取 $(n+1)$ 阶导数. 由 Leibniz 公式,
+$$
+\begin{aligned}
+&(x^2-1)y^{(n+2)}+(n+1)2x\,y^{(n+1)}
++\frac{n(n+1)}{2}\,2y^{(n)} \\
+&\qquad=2nx\,y^{(n+1)}+(n+1)2n\,y^{(n)}.
+\end{aligned}
+$$
+整理后得到
+$$
+(x^2-1)y^{(n+2)}+2xy^{(n+1)}-n(n+1)y^{(n)}=0.
+$$
+再乘以 $C_n$, 就得到上述微分方程.
+
+\subsection{高阶微分}\label{subsec:119}
+高阶导数可以用归纳方法定义, 很明显高阶微分也可以.
+函数 $y=f(x)$ 的一阶微分在某一点处的微分,
+称为函数在该点处的\emph{二阶微分}\index{erjieweifen@二阶微分}, 记为
+$$
+\d^2y=\d(\d y).
+$$
+二阶微分的微分称为\emph{三阶微分}:
+$$
+\d^3y=\d(\d^2y).
+$$
+一般地, 函数的 $(n-1)$ 阶微分的微分称为它的\emph{$n$ 阶微分}\index{gaojieweifen@高阶微分}\footnote{这里固定自变量增量 $\Delta x$, 把每一阶微分看作 $x$ 的函数.
+如 \emref{subsec:104} 的脚注所说明的, $\d y=f'(x)\d x$, 此时 $\d x=\Delta x$ 为常数.
+所以 $\d y$ 仍可作为 $x$ 的函数继续求微分, 得
+$\d(\d y)=f''(x)(\d x)^2$, 再继续求微分即可得到更高阶微分.}:
+$$
+\d^ny=\d(\d^{n-1}y).
+$$
+用函数记号, 还可以写成
+$$
+\d^2f(x_0),\quad\d^3f(x_0),\quad\ldots,\quad\d^nf(x_0),\quad\ldots,
+$$
+这里的符号明确指出了各阶微分是在 $x=x_0$ 处取值.
+
+求高阶微分时, 一定要记住 $x$ 是自变量,
+$\d x$ 是不依赖于 $x$ 的任意数, 关于 $x$ 微分时应当把它看作常数因子.
+这样, 在相应的各阶导数存在且有限时,
+$$
+\begin{aligned}
+\d^2y
+&=\d(\d y)=\d(y'\d x)=\d y'\cdot\d x
+=(y''\d x)\d x=y''\d x^2,\\
+\d^3y
+&=\d(\d^2y)=\d(y''\d x^2)=\d y''\cdot\d x^2
+=(y'''\d x)\d x^2=y'''\d x^3.
+\end{aligned}
+$$
+这里 $\d x^2,\d x^3,\ldots$ 表示微分的幂.
+\footnote{即 $(\d x)^2,(\d x)^3,\ldots$.
+幂的微分则写成 $\d(x^2),\d(x^3),\ldots$.}
+由此可以猜出一般公式
+\begin{equation}\label{eq:nth_differential}
+\d^ny=y^{(n)}\d x^n.
+\end{equation}
+它可以用数学归纳法证明.
+于是得到
+$$
+y^{(n)}=\frac{\d^ny}{\d x^n}.
+$$
+因此, 先前作为整体记号使用的这个式子, 现在可以看作两个微分量的比值.
+
+最后, 在 \emref{subsec:117} 的 Leibniz 公式
+\eqref{eq:leibniz_formula} 两端同乘 $\d x^n$, 并利用
+\eqref{eq:nth_differential}, 就得到它的微分形式
+\phantomsection\label{eq:leibniz_differential_form}
+$$
+\d^n(uv)=\sum_{i=0}^{n}\binom ni\d^{n-i}u\,\d^iv,
+\qquad\d^0u=u,\quad\d^0v=v.
+$$
+Leibniz 最初建立的公式, 原本就是关于微分的.
